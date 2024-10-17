@@ -1,0 +1,3 @@
+[submodule "lib/STM32FreeRTOS"]
+	path = lib/STM32FreeRTOS
+	url = https://github.com/stm32duino/STM32FreeRTOS
