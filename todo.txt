@@ -1,0 +1,21 @@
+---- général ----
+
+TODO: rewrite periodicProcess pour fonctionner avec FreeRTOS (Boris)
+TODO: Refaire les abstract de classes, noncopyable, etc...
+TODO: Revoir utlisation EEPROM
+TODO: Refaire un protocole de comm I2C
+TODO: Faire un protocole de comm Serial (ou autre) avec ESP32 (Wifi)
+TODO: Faire logger Teleplot en Serial (Boris)
+TODO: Utiliser CORDIC pour sin et cos ? (Boris)
+
+---- En pratique ----
+TODO: Tester wheel slip et mettre dans un flag FreeRTOS
+
+---- spécéfique aux libs ----
+
+TODO: Rewrite Dynamixel lib (Boris)
+TODO: Refaire BrushlessMotor
+TODO: Refaire Codewheel pour STM32 (Boris)
+TODO: Suppr/revoir FullSpeedServo
+TODO: Revoir PurePursuit ?
+TODO: Shift Register en + simple ?
