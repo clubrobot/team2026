@@ -1,21 +1,22 @@
+SOUS STM32DUINO
+
 ---- général ----
 
 TODO: rewrite periodicProcess pour fonctionner avec FreeRTOS (Boris)
-TODO: Refaire les abstract de classes, noncopyable, etc...
-TODO: Revoir utlisation EEPROM
-TODO: Refaire un protocole de comm I2C
+TODO: Refaire les abstract de classes, noncopyable, etc... (Connaitre OOP) => JN
+TODO: Revoir utlisation EEPROM (connaitre EEPROM arduino) => Nils
+TODO: Refaire un protocole de comm I2C (le truc le + fiable au monde)
 TODO: Faire un protocole de comm Serial (ou autre) avec ESP32 (Wifi)
-TODO: Faire logger Teleplot en Serial (Boris)
-TODO: Utiliser CORDIC pour sin et cos ? (Boris)
-
+TODO: Mettre de la couleur dans teleplot (ansi coloring)?
+TODO: Utiliser CORDIC pour sin et cos ? (connaitre STM32) => Clément https://www.st.com/resource/en/application_note/an5325-how-to-use-the-cordic-to-perform-mathematical-functions-on-stm32-mcus-stmicroelectronics.pdf
+TODO: Bouttons et leds et code IHM=> Guilhem
 ---- En pratique ----
 TODO: Tester wheel slip et mettre dans un flag FreeRTOS
 
 ---- spécéfique aux libs ----
 
 TODO: Rewrite Dynamixel lib (Boris)
-TODO: Refaire BrushlessMotor
+TODO: Refaire BrushlessMotor (PPM signal)
 TODO: Refaire Codewheel pour STM32 (Boris)
-TODO: Suppr/revoir FullSpeedServo
-TODO: Revoir PurePursuit ?
-TODO: Shift Register en + simple ?
+TODO: Revoir PurePursuit ? (Info)
+TODO: Shift Register en + simple ? (EII) => Elias
