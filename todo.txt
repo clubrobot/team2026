@@ -2,21 +2,14 @@ SOUS STM32DUINO
 
 ---- général ----
 
-TODO: rewrite periodicProcess pour fonctionner avec FreeRTOS (Boris)
-TODO: Refaire les abstract de classes, noncopyable, etc... (Connaitre OOP) => JN
-TODO: Revoir utlisation EEPROM (connaitre EEPROM arduino) => Nils
-TODO: Refaire un protocole de comm I2C (le truc le + fiable au monde)
-TODO: Faire un protocole de comm Serial (ou autre) avec ESP32 (Wifi)
-TODO: Mettre de la couleur dans teleplot (ansi coloring)?
-TODO: Utiliser CORDIC pour sin et cos ? (connaitre STM32) => Clément https://www.st.com/resource/en/application_note/an5325-how-to-use-the-cordic-to-perform-mathematical-functions-on-stm32-mcus-stmicroelectronics.pdf
-TODO: Bouttons et leds et code IHM=> Guilhem
----- En pratique ----
-TODO: Tester wheel slip et mettre dans un flag FreeRTOS
+TODO: FreeRTOS supremacy:
+Refractorer le code pour tout regrouper en un dossier
+Programmer les actions pour la coupe.
+Adapter le code Wheeledbase pour qu’il fonctionne avec FreeRTOS. En ce moment le code est adapté pour une communication avec la raspberry pi.
+TODO:Retransformer le code python en C++ :
+    1-    Programme de gestions des différentes tâches (basiquement une liste des taches et quand une est finie on commence la suivante).
+    3-    Réimplémenter l’initialisation du robot (choisir la team, initialiser l’odométrie). Nécessite d’implémenter des boutons. Il serait sympa de pouvoir revenir en arrière en cas de fausses manip.
+TODO Taches optionelle:
+    Planification dynamique des taches (au lieu d’executer les elements  d’une liste les uns apres les autres). Il faudrait communiquer avec la caméra pour que le robot utilise des infos supplémentaires lors de son choix. (SI on est chaud on peut utiliser des méthodes d’optimisation pour marquer un max de points)
+    Evitement dynamique des autres robots (code presque finit juste à tester).
 
----- spécéfique aux libs ----
-
-TODO: Rewrite Dynamixel lib (Boris)
-TODO: Refaire BrushlessMotor (PPM signal)
-TODO: Refaire Codewheel pour STM32 (Boris)
-TODO: Revoir PurePursuit ? (Info)
-TODO: Shift Register en + simple ? (EII) => Elias
