@@ -2,7 +2,7 @@
 #define __CLOCK_H__
 
 #include <Arduino.h>
-
+#include  <stm32h7xx_hal.h>
 /** class Clock
  *  \brief Utilitaire pour gérer le temps dans vos programmes Arduino.
  *	\author Ulysse Darmet
@@ -10,23 +10,23 @@
  * Cette objet vous permettera de mesurer le temps écoulé depuis le dernier appel de la méthode Clock::restart .
  * 
  */
-class Clock
-{
+class Clock{
+private:
+	unsigned long m_startTime; //!< temps en microsecondes du microcontroleur utilisé comme repère.
 public:
 	//! Constructeur de  Clock
 	/*!
 	* Le constructeur de Clock en plus de construire l'objet fait un premier marqueur qui vous permettra d'utiliser Clock::getElapsedTime pour avoir le temps écoulé depuis la création de l'objet.
 	*/
-	Clock() : m_startTime(micros()){}
+	Clock():m_startTime(HAL_GetTick()){}
 
 	//! Récupère le temps depuis le dernier reset.
 	/*!
 	* Récupère le temps écoulé en secondes depuis la construction de l'objet ou depuis le dernier Clock::restart.
 	* \return Temps écoulé en secondes.
 	*/
-	float getElapsedTime() const
-	{
-		unsigned long currentTime = micros();
+	float getElapsedTime(){
+		unsigned long currentTime = HAL_GetTick();
 		float elapsedTimeInSeconds = (currentTime - m_startTime) / float(1e6);
 		return elapsedTimeInSeconds;
 	}
@@ -36,17 +36,14 @@ public:
 	* Réinitialise le temps à 0s.
 	* \return Temps écoulé en secondes depuis le dernier reset.
 	*/
-	float restart()
-	{
-		unsigned long currentTime = micros();
+	float restart(){
+		unsigned long currentTime = HAL_GetTick();
 		float elapsedTimeInSeconds = (currentTime - m_startTime) / float(1e6);
 		m_startTime = currentTime;
 		return elapsedTimeInSeconds;
 	}
 
-private:
 
-	unsigned long m_startTime; //!< temps en microsecondes du microcontroleur utilisé comme repère.
 };
 
 #endif // __CLOCK_H__
