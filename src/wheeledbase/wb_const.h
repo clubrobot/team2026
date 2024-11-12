@@ -3,6 +3,11 @@
 
 #include <Arduino.h>
 
+// Timesteps
+#define ODOMETRY_TIMESTEP         20e-3 // s
+#define PID_CONTROLLERS_TIMESTEP  20e-3 // s
+#define POSITIONCONTROL_TIMESTEP  50e-3 // s
+
 // DC motors driver
 //TODO: Redo pinout
 #define LEFT_MOTOR_EN    6

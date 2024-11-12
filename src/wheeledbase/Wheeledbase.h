@@ -5,6 +5,7 @@
 #ifndef WHEELEDBASE_H
 #define WHEELEDBASE_H
 
+#include "Adresses.h"
 #include "DCMotor.h"
 #include "Codewheel.h"
 #include "Odometry.h"
@@ -75,9 +76,7 @@ extern PositionController positionControl;
 extern PurePursuit   purePursuit;
 extern TurnOnTheSpot turnOnTheSpot;
 
-class Wheeledbase {
-    public:
-    Wheeledbase();
+namespace  Wheeledbase {
     // Instructions prototypes
     void DISABLE();
 
