@@ -11,6 +11,8 @@
 #include "PositionController.h"
 #include "PurePursuit.h"
 #include "TurnOnTheSpot.h"
+
+#include "Wheeledbase.h"
 #include "mathutils.h"
 
 // Load the different modules

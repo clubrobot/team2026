@@ -3,6 +3,7 @@
 
 #include "NonCopyable.h"
 #include "Odometry.h"
+#include "EEPROM.h"
 
 #include <math.h>
 
