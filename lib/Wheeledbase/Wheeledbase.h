@@ -82,8 +82,6 @@ namespace  Wheeledbase {
 
     void GOTO_DELTA(float dx, float dy);
 
-    void RESET_PARAMETERS();
-
     void SET_OPENLOOP_VELOCITIES(float leftWheelVel, float rightWheelVel);
 
     void GET_CODEWHEELS_COUNTERS(float *leftCodewheelCounter, float *rightCodewheelCounter);
@@ -113,8 +111,6 @@ namespace  Wheeledbase {
     void SET_PARAMETER_VALUE(byte paramID, float value);
 
     float GET_PARAMETER_VALUE(byte paramID);
-
-    void SAVE_PARAMETERS();
 
     void PRINT_PARAMS();
 };

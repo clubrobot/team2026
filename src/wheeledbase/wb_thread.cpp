@@ -27,6 +27,67 @@ PositionController positionControl;
 PurePursuit purePursuit;
 TurnOnTheSpot turnOnTheSpot;
 
+void write_default_params() {
+    leftWheel.setWheelRadius(LEFTWHEEL_RADIUS_VALUE);
+    leftWheel.setConstant(LEFTWHEEL_CONSTANT_VALUE);
+    leftWheel.setMaxPWM(LEFTWHEEL_MAXPWM_VALUE);
+    rightWheel.setWheelRadius(RIGHTWHEEL_RADIUS_VALUE);
+    rightWheel.setConstant(RIGHTWHEEL_CONSTANT_VALUE);
+    rightWheel.setMaxPWM(RIGHTWHEEL_MAXPWM_VALUE);
+
+    leftCodewheel.setWheelRadius(LEFTCODEWHEEL_RADIUS_VALUE);
+    leftCodewheel.setCountsPerRev(LEFTCODEWHEEL_COUNTSPERREV_VALUE);
+    rightCodewheel.setWheelRadius(RIGHTCODEWHEEL_RADIUS_VALUE);
+    rightCodewheel.setCountsPerRev(RIGHTCODEWHEEL_COUNTSPERREV_VALUE);
+
+    odometry.setAxleTrack(ODOMETRY_AXLETRACK_VALUE);
+    odometry.setSlippage(ODOMETRY_SPLIPPAGE_VALUE);
+
+    velocityControl.setAxleTrack(VELOCITYCONTROL_AXLETRACK_VALUE);
+    velocityControl.setMaxLinAcc(VELOCITYCONTROL_MAXLINACC_VALUE);
+    velocityControl.setMaxLinDec(VELOCITYCONTROL_MAXLINDEC_VALUE);
+    velocityControl.setMaxAngAcc(VELOCITYCONTROL_MAXANGACC_VALUE);
+    velocityControl.setMaxAngDec(VELOCITYCONTROL_MAXANGDEC_VALUE);
+    velocityControl.setSpinShutdown(VELOCITYCONTROL_SPINSHUTDOWN_VALUE);
+
+    linVelPID.setTunings(LINVELPID_KP_VALUE, LINVELPID_KI_VALUE, LINVELPID_KD_VALUE);
+    linVelPID.setOutputLimits(LINVELPID_MINOUTPUT_VALUE, LINVELPID_MAXOUTPUT_VALUE);
+
+    angVelPID.setTunings(ANGVELPID_KD_VALUE, ANGVELPID_KI_VALUE, ANGVELPID_KD_VALUE);
+    angVelPID.setOutputLimits(ANGVELPID_MINOUTPUT_VALUE, ANGVELPID_MAXOUTPUT_VALUE);
+
+    positionControl.setVelLimits(POSITIONCONTROL_LINVELMAX_VALUE, POSITIONCONTROL_ANGVELMAX_VALUE);
+    positionControl.setPosThresholds(POSITIONCONTROL_LINPOSTHRESHOLD_VALUE, POSITIONCONTROL_ANGPOSTHRESHOLD_VALUE);
+    purePursuit.setLookAhead(PUREPURSUIT_LOOKAHEAD_VALUE);
+    purePursuit.setLookAheadBis(PUREPURSUIT_LOOKAHEADBIS_VALUE);
+}
+
+void reset_params() {
+    leftWheel.load(LEFTWHEEL_ADDRESS);
+    rightWheel.load(RIGHTWHEEL_ADDRESS);
+    leftCodewheel.load(LEFTCODEWHEEL_ADDRESS);
+    rightCodewheel.load(RIGHTCODEWHEEL_ADDRESS);
+    odometry.load(ODOMETRY_ADDRESS);
+    velocityControl.load(VELOCITYCONTROL_ADDRESS);
+    linVelPID.load(LINVELPID_ADDRESS);
+    angVelPID.load(ANGVELPID_ADDRESS);
+    positionControl.load(POSITIONCONTROL_ADDRESS);
+    purePursuit.load(PUREPURSUIT_ADDRESS);
+}
+
+void save_params() {
+    leftWheel.save(LEFTWHEEL_ADDRESS);
+    rightWheel.save(RIGHTWHEEL_ADDRESS);
+    leftCodewheel.save(LEFTCODEWHEEL_ADDRESS);
+    rightCodewheel.save(RIGHTCODEWHEEL_ADDRESS);
+    odometry.save(ODOMETRY_ADDRESS);
+    velocityControl.save(VELOCITYCONTROL_ADDRESS);
+    linVelPID.save(LINVELPID_ADDRESS);
+    angVelPID.save(ANGVELPID_ADDRESS);
+    positionControl.save(POSITIONCONTROL_ADDRESS);
+    purePursuit.save(PUREPURSUIT_ADDRESS);
+}
+
 void codewheels_setup(){
     //--------TIM23
     TIM_Encoder_InitTypeDef sConfig23 = {0};
@@ -119,6 +180,9 @@ void codewheels_setup(){
 
 // Setup
 void wb_setup(){
+    //TODO once
+    write_default_params();
+    save_params();
     // DC motors wheels
     driver.attach(DRIVER_RESET, DRIVER_FAULT);
     driver.reset();

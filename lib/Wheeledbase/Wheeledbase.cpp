@@ -97,7 +97,6 @@ void Wheeledbase::START_PUREPURSUIT(uint8_t direction, float finalAngle) {
 
 void Wheeledbase::ADD_PUREPURSUIT_WAYPOINT(float x, float y) {
     // Queue waypoint
-    Serial.println("B");
     purePursuit.addWaypoint(PurePursuit::Waypoint(x, y));
 }
 
@@ -293,18 +292,7 @@ void Wheeledbase::SET_PARAMETER_VALUE(byte paramID, float value) {
     }
 }
 
-void SAVE_PARAMETERS() {
-    leftWheel.save(LEFTWHEEL_ADDRESS);
-    rightWheel.save(RIGHTWHEEL_ADDRESS);
-    leftCodewheel.save(LEFTCODEWHEEL_ADDRESS);
-    rightCodewheel.save(RIGHTCODEWHEEL_ADDRESS);
-    odometry.save(ODOMETRY_ADDRESS);
-    velocityControl.save(VELOCITYCONTROL_ADDRESS);
-    linVelPID.save(LINVELPID_ADDRESS);
-    angVelPID.save(ANGVELPID_ADDRESS);
-    positionControl.save(POSITIONCONTROL_ADDRESS);
-    purePursuit.save(PUREPURSUIT_ADDRESS);
-}
+
 
 float Wheeledbase::GET_PARAMETER_VALUE(byte paramID) {
     if (paramID == LEFTWHEEL_RADIUS_ID) {
@@ -425,18 +413,7 @@ float Wheeledbase::GET_PARAMETER_VALUE(byte paramID) {
     }
 }
 
-void RESET_PARAMETERS() {
-    leftWheel.load(LEFTWHEEL_ADDRESS);
-    rightWheel.load(RIGHTWHEEL_ADDRESS);
-    leftCodewheel.load(LEFTCODEWHEEL_ADDRESS);
-    rightCodewheel.load(RIGHTCODEWHEEL_ADDRESS);
-    odometry.load(ODOMETRY_ADDRESS);
-    velocityControl.load(VELOCITYCONTROL_ADDRESS);
-    linVelPID.load(LINVELPID_ADDRESS);
-    angVelPID.load(ANGVELPID_ADDRESS);
-    positionControl.load(POSITIONCONTROL_ADDRESS);
-    purePursuit.load(PUREPURSUIT_ADDRESS);
-}
+
 
 void PRINT_PARAMS() {
     /*Serial.println(F(" LEFTWHEEL_RADIUS_ID:")); Serial.println(leftWheel.getWheelRadius());
