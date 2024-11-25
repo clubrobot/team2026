@@ -2,8 +2,12 @@
 #include "Dynamixel.h"	
 #include <Arduino.h>
 
-void AX12::SerialBegin(long baud, unsigned char rx, unsigned char tx, unsigned char control){
-	Dynamixel.begin(baud, rx, tx, control);
+void AX12::SerialBegin(long baud, unsigned char rtx){
+	Dynamixel.begin(baud, rtx);
+}
+
+void AX12::SerialBegin(long baud){
+	Dynamixel.begin(baud);
 }
 
 void AX12::end(){
@@ -34,7 +38,7 @@ int AX12::move(float Position){
 	if(m_endlessMode){
 		setEndlessMode(OFF);
 	}
-	int pos = min((float)1023,Position/300*1023);
+	int pos = min((float) 1023,Position/300*1023);
 	return Dynamixel.move(m_id, pos);
 }
 
@@ -42,7 +46,7 @@ int AX12::moveSpeed(float Position, float speed){
 	if(m_endlessMode){
 		setEndlessMode(OFF);
 	}
-	int pos = min((float)1023,Position/300*1023);
+	int pos = min((float) 1023,Position/300*1023);
 	return Dynamixel.moveSpeed(m_id, pos, speed);
 }
 
@@ -63,7 +67,7 @@ int AX12::turn(int Speed){
 }
 
 int AX12::Nextmove(float Position){
-	int pos = min((float)1023,Position/300*1023);
+	int pos = min((float) 1023,Position/300*1023);
 	return Dynamixel.moveRW(m_id, pos);
 }
 	
@@ -82,8 +86,8 @@ int AX12::setTempLimit(unsigned char Temperature){
 }
 	
 int AX12::setAngleLimit(float CW, float CCW){
-	int CWLimit = min((float)1023, CW/300*1023);
-	int CCWLimit = min((float)1023, CCW/300 *1023);
+	int CWLimit = min((float) 1023, CW/300*1023);
+	int CCWLimit = min((float) 1023, CCW/300 *1023);
 	return Dynamixel.setAngleLimit(m_id, CWLimit, CCWLimit);
 }
 

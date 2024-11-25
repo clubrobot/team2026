@@ -119,9 +119,7 @@
 class DynamixelClass {
 private:
 	unsigned char DTx;              //		Default Serial Port 0 -> Rx  &  1 -> Tx
-	unsigned char DRx;
-	unsigned char Checksum; 
-	unsigned char Direction_Pin;
+	unsigned char Checksum;
 	unsigned char Time_Counter;
 	unsigned char Incoming_Byte;               
 	unsigned char Position_High_Byte;
@@ -144,8 +142,8 @@ private:
 	
 public:
 	
-	void begin(long baud, unsigned char Rx, unsigned char Tx);
-	void begin(long baud, unsigned char Rx, unsigned char Tx, unsigned char D_Pin);
+	void begin(long baud, unsigned char RxTx);
+	void begin(long baud);
 	void end(void);
 	
 	int reset(unsigned char ID);
