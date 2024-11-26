@@ -3,7 +3,7 @@
 
 #include "Decisions.h"
 #include <iostream>
-
+#include <chrono>
 
 void Decisions::init(int team){
     color=team;
@@ -17,7 +17,7 @@ void Decisions::init(int team){
 void Decisions::play_match(){
     auto start_time = std::chrono::high_resolution_clock::now();
     point_marque=0;
-    while (0< taches::size()) {
+    while (0< taches.size()) {
         auto current = std::chrono::high_resolution_clock::now();
         auto delta_t = std::chrono::duration<double, std::milli>(current-start_time).count();
         if(delta_t>100000)break;//on est deja a la fin du match faut s'arrêter la
@@ -30,8 +30,8 @@ void Decisions::play_match(){
         }
         //execute les tâches dans l'ordre tant qu'on a assez de temps.
         //execute la tâche.
-        taches[tache_id]::execute();
-        point_marque+=taches[tache_id]::get_max_score();
+        taches[tache_id].execute();
+        point_marque+=taches[tache_id].get_max_score();
     }
 }
 
@@ -59,7 +59,7 @@ int Decisions::get_optimal_tache(double remaining_time){
 
     //on va tester toute les tâches une à une.
     for (int index = 0; index < taches.size(); ++index) {
-        Tache current = taches_temps[index];
+        Tache current = taches_temp[index];
         taches_temp.erase(taches_temp.begin() + index);
         //temps nécéssaire à réaliser la tâche.
         double time=current.get_necessary_time()+this->estimation_temps_deplacement(TODO_pos(),TODO_pos(),current.get_begin_x(),current.get_begin_y());
@@ -90,7 +90,7 @@ double Decisions::max_cost(double remaining_time, int pos_x,int pos_y){
      */
     double best_score=0;
     for (int index = 0; index < taches_temp.size(); ++index) {
-        Tache current = taches_temps[index];
+        Tache current = taches_temp[index];
         taches_temp.erase(taches_temp.begin() + index);
         //temps nécéssaire à réaliser la tâche.
         double time=current.get_necessary_time()+this->estimation_temps_deplacement(pos_x, pos_y, current.get_begin_x(),current.get_begin_y());

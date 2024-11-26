@@ -12,7 +12,7 @@ private:
 public:
     const int get_necessary_time();
     const int get_max_score();
-    virtual void execute()=0;//code de la tâche
+    virtual void execute();//code de la tâche
     const int get_begin_x();
     const int get_begin_y();
     const int get_end_x();
