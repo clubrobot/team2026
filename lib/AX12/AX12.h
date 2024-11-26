@@ -30,7 +30,8 @@ class AX12 {
 
 	public:
 
-		static void SerialBegin(long baud, unsigned char rx, unsigned char tx, unsigned char control);
+		static void SerialBegin(long baud, unsigned char rtx);
+		static void SerialBegin(long baud);
 		static void end();
 
 		void attach(unsigned char id);
