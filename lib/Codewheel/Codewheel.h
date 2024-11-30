@@ -87,6 +87,8 @@ public:
 	 */
 	void save(int address);
 
+	TIM_HandleTypeDef *m_htim;
+	TIM_TypeDef *m_tim;
 protected:
 
 	/**
@@ -100,9 +102,6 @@ protected:
 
 	float m_wheelRadius; //!< Rayon de la roue codeuse en  mm
 	long m_countsPerRev;   //!<  Nombre de tics par tour de roue.
-
-	TIM_HandleTypeDef *m_htim;
-	TIM_TypeDef *m_tim;
 };
 
 #endif // __ROTARYENCODER_H__

@@ -176,6 +176,11 @@ void codewheels_setup(){
     }
 
     HAL_TIM_Encoder_Start_IT(&htim24, TIM_CHANNEL_ALL);
+
+    rightCodewheel.m_htim = &htim23;
+    rightCodewheel.m_tim = TIM23;
+    leftCodewheel.m_htim = &htim24;
+    leftCodewheel.m_tim = TIM24;
 }
 
 // Setup
@@ -234,7 +239,7 @@ void wb_setup(){
 }
 
 void wb_loop(){
-for(;;) {
+//for(;;) {
     // Update odometry
     if (odometry.update()){
         positionControl.setPosInput(odometry.getPosition());
@@ -256,5 +261,5 @@ for(;;) {
 #else
         velocityControl.update();
 #endif // ENABLE_VELOCITYCONTROLLER_LOGS
-}
+//}
 }

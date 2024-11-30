@@ -3,7 +3,9 @@
 
 bool PeriodicProcess::update()
 {
-	if (m_enabled && m_clock.getElapsedTime() > m_timestep)
+
+	float a = m_clock.getElapsedTime();
+	if (m_enabled &&  a > m_timestep)
 	{
 		float timestep = m_clock.restart();
 		process(timestep);

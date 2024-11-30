@@ -10,6 +10,24 @@
  * Cette objet vous permettera de mesurer le temps écoulé depuis le dernier appel de la méthode Clock::restart .
  * 
  */
+
+__STATIC_INLINE void DWT_Init(void)
+{
+	CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; // разрешаем использовать счётчик
+	DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk;   // запускаем счётчик
+}
+
+__STATIC_INLINE void DWT_delay_us(uint32_t us)
+{
+	uint32_t us_count_tic =  us * (SystemCoreClock / 1000000U);
+	DWT->CYCCNT = 0U;
+	while(DWT->CYCCNT < us_count_tic);
+}
+
+__STATIC_INLINE uint32_t DWT_micros(void){
+	return  DWT->CYCCNT / (SystemCoreClock / 1000000U);
+}
+
 class Clock{
 private:
 	unsigned long m_startTime; //!< temps en microsecondes du microcontroleur utilisé comme repère.
@@ -18,7 +36,7 @@ public:
 	/*!
 	* Le constructeur de Clock en plus de construire l'objet fait un premier marqueur qui vous permettra d'utiliser Clock::getElapsedTime pour avoir le temps écoulé depuis la création de l'objet.
 	*/
-	Clock():m_startTime(HAL_GetTick()){}
+	Clock():m_startTime(DWT_micros()){}
 
 	//! Récupère le temps depuis le dernier reset.
 	/*!
@@ -26,7 +44,7 @@ public:
 	* \return Temps écoulé en secondes.
 	*/
 	float getElapsedTime(){
-		unsigned long currentTime = HAL_GetTick();
+		unsigned long currentTime = DWT_micros();
 		float elapsedTimeInSeconds = (currentTime - m_startTime) / float(1e6);
 		return elapsedTimeInSeconds;
 	}
@@ -37,7 +55,7 @@ public:
 	* \return Temps écoulé en secondes depuis le dernier reset.
 	*/
 	float restart(){
-		unsigned long currentTime = HAL_GetTick();
+		unsigned long currentTime = DWT_micros();
 		float elapsedTimeInSeconds = (currentTime - m_startTime) / float(1e6);
 		m_startTime = currentTime;
 		return elapsedTimeInSeconds;
@@ -45,5 +63,6 @@ public:
 
 
 };
+
 
 #endif // __CLOCK_H__
