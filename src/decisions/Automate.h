@@ -11,7 +11,7 @@ class Automate {
 private:
     std::vector<Tache> taches;//endroit de stockage des taches
     int color;//couleur de l'équipe
-    int points://points réalises pour l'instant
+    int points;//points réalises pour l'instant
 public:
     void init(int team);//fonction d'init
     void play_match();//fonction a appeller au début du match

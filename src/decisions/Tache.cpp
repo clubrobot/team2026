@@ -10,7 +10,7 @@ const int Tache::get_begin_x() {
     return pos_begin_x;
 }
 const int Tache::get_begin_y() {
-    return  pos_begin_y
+    return  pos_begin_y;
 }
 const int Tache::get_end_x() {
     return pos_end_x;
