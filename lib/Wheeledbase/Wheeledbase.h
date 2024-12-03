@@ -101,9 +101,9 @@ namespace  Wheeledbase {
 
     void GET_VELOCITIES_WANTED(float *linOutput, float *angOutput, bool spin=true);
 
-    void SET_POSITION(float x, float y, float theta);
+    void SET_POSITION(Position* pos);
 
-    void GET_POSITION(float *x, float *y, float *theta);
+    Position* GET_POSITION();
 
     void GET_VELOCITIES(float *linVel, float *angVel);
 

@@ -162,16 +162,13 @@ void Wheeledbase::GET_VELOCITIES_WANTED(float* linOutput, float* angOutput, bool
 }
 
 
-void Wheeledbase::SET_POSITION(float x, float y, float theta) {
-    odometry.setPosition(x, y, theta);
+void Wheeledbase::SET_POSITION(Position* pos) {
+    odometry.setPosition(pos->x, pos->y, pos->theta);
 }
 
-void Wheeledbase::GET_POSITION(float* x, float* y, float* theta) {
+Position* Wheeledbase::GET_POSITION() {
     const Position& pos = odometry.getPosition();
-
-    *x = pos.x;
-    *y = pos.y;
-    *theta = pos.theta;
+    return pos;
 }
 
 void Wheeledbase::GET_VELOCITIES(float* linVel, float* angVel) {
@@ -411,6 +408,7 @@ float Wheeledbase::GET_PARAMETER_VALUE(byte paramID) {
     else if (paramID == PUREPURSUIT_LOOKAHEADBIS_ID) {
         return purePursuit.getLookAheadBis();
     }
+    return 0;
 }
 
 
