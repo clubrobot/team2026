@@ -14,7 +14,7 @@ private:
     int points;//points réalises pour l'instant
 public:
     void init(int team);//fonction d'init
-    void play_match();//fonction a appeller au début du match
+    void play_match();//fonction a appeler au début du match
 
 };
 

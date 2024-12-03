@@ -4,14 +4,17 @@
 
 #include "Automate.h"
 #include <chrono>
+#include "Geogebra.h"
 extern int TEAM_BLEU;
 extern int TEAM_JAUNE;
 void Automate::init(int team) {
     color=team;
     if(team==TEAM_JAUNE){
         //import geogebra.h jaune
+        positions_match=positions_jaune;
     }else{
         //import geogebra.h bleu
+        positions_match=positions_bleu;
     }
     //mettre les tâches a éxécuter ici.
 

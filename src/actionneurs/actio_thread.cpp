@@ -21,8 +21,6 @@ void actio_loop() {
     xQueueReceive(actio_queue, &current_actio, portMAX_DELAY);
 
     switch (current_actio.type_actio) {
-        case AX12:
-            break;
         case SERVO:
             break;
         case MOTEUR:
@@ -30,5 +28,26 @@ void actio_loop() {
         default:
             //Nothing to do
             break;
+    }
+}
+//permet d'envoyer une commande pour faire tourner le moteur id jusqu'à l'angle angle_final
+void tourner_moteur(uint16_t id,float angle_final){
+    //test que la queue existe
+    if( actio_queue != 0 ) {
+        actio_type msg;
+        msg.type_actio=MOTEUR;
+        msg.angle=angle_final;
+        msg.id_actionneur=id;
+        xQueueSend( actio_queue,( void * ) &msg,( TickType_t ) 10 );
+    }
+}
+//permet d'envoyer une commande pour faire tourner le servo-moteur id jusqu'à l'angle angle_final
+void tourner_servo(int id,float angle_final){
+    if( actio_queue != 0 ) {
+        actio_type msg;
+        msg.type_actio=SERVO;
+        msg.angle=angle_final;
+        msg.id_actionneur=id;
+        xQueueSend( actio_queue,( void * ) &msg,( TickType_t ) 10 );
     }
 }

@@ -4,13 +4,15 @@
 #include "Decisions.h"
 #include <iostream>
 #include <chrono>
-
+#include "Geogebra.h"
 void Decisions::init(int team){
     color=team;
     if(team==TEAM_JAUNE){
         //import geogebra.h jaune
+        positions_match=positions_jaune;
     }else{
         //import geogebra.h bleu
+        positions_match=positions_bleu;
     }
     //mettre les tâches a éxécuter ici.
 }
@@ -47,6 +49,17 @@ int Decisions::get_optimal_tache(double remaining_time){
      * Input: remaining_time: temps restant en secondes
      * Output: l'identifiant (dans le vector tâche) de la prochaine tâche a réaliser ou -1 si il n'y a plus
      *         assez de temps pr réaliser une tâche.
+     *
+     * Amelioration:
+     * - Pour que cette fonction soit intelligente il faut que le nomrbe de points soit adapté dynamiquement
+     *  (par exemple si l'autre équipe réalise l'action alors, alors elle ne rapporte plus de points et on ne l'executera pas)
+     *  Cela nécéssite un code supplémentaire et de la communication avec la caméra pas encore réalise (fin 2024).
+     * - Il serait aussi possible de changer l'estimation du temps de trajet en prenant en compte le vrai trajet à la place de la ligne droit actuelle
+     * - Il serait possible de diviser les tâches en sous-tâches. Par exemple au lieu d'avoir une seule tâche pr recup
+     *      un objet et aller le déposer à un autre endroit il y aurait deux tâches une pour récupérer et l'autre pour déposer.
+     *      Seulement la seconde donnerait des points mais elle requiererait la prmeière pour pouvoir être effectuée.
+     *      Ont pourrait donc réduire le temps d'execution des tâches en les subdivisants.
+     *      Cela necessiterait d'ajouter des conditions de réalisations dependant des tâches précédentes deja réalisée.
      */
 
     taches_temp.clear();
@@ -107,9 +120,14 @@ double Decisions::max_cost(double remaining_time, int pos_x,int pos_y){
 }
 
 double Decisions::estimation_temps_deplacement(int depart_x, int depart_y, int arrive_x, int arrive_y){
+    /* Cette méthode utilise une loi trapèze pour estimer le temps de trajet du robot.
+     * Elle considère que le trajet est réalise en ligne droite.
+     *
+     */
+
     double half_distance=sqrt((depart_x-arrive_x)*(depart_x-arrive_x)+(depart_y-arrive_y)*(depart_y-arrive_y))/2;
-    double max_acc=0.5;
-    double max_vit=0.5;
+    double max_acc=0.5;//a modifier
+    double max_vit=0.5;//a modifier 
     //utilise une loi trapeze (symmetrique par rapport au milieu) pr approximer le temps de trajet.
     //d_acc=0.5*max_acc*t^2
     double t_acc=sqrt(2*half_distance/max_acc);

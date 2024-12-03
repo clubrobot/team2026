@@ -1,9 +1,12 @@
 #include <Arduino.h>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
+<<<<<<< Updated upstream
 #include <Actionneurs.h>
 #include <Clock.h>
 
+=======
+>>>>>>> Stashed changes
 #include "wheeledbase/wb_thread.h"
 #include "actionneurs/actio_thread.h"
 
@@ -36,6 +39,7 @@ void loop() {
     c = leftCodewheel.getTraveledDistance();
     d = rightCodewheel.getTraveledDistance();
 
+<<<<<<< Updated upstream
     AX12::ATTACH();
     pos = Wheeledbase::GET_POSITION();
     Serial.print(pos->x);
@@ -44,6 +48,11 @@ void loop() {
     Serial.print(" ");
     Serial.println(pos->theta);
     /*Serial.print(a);
+=======
+
+    Serial.print("LEFT: ");
+    Serial.print(a);
+>>>>>>> Stashed changes
     Serial.print(" ");
     Serial.print(c);
     Serial.print(" ");

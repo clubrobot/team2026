@@ -33,10 +33,8 @@
 */
 typedef struct {
     uint16_t type_actio;        //Soit AX12, SERVO, MOTEUR
-    TaskFunction_t func_actio;
-    void* ret_func_actio;
-    uint16_t nb_param;
-    void* param_tab;
+    uint16_t id_actionneur; //id de l'actionneur (utile quand on a plusierus moteru connecté)
+    float angle; //angle à viser
 }actio_type;
 
 QueueHandle_t actio_queue;
@@ -45,6 +43,7 @@ actio_type current_actio;
 
 void actio_setup();
 void actio_loop();
-
+void tourner_moteur(int id,float angle_final);
+void tourner_servo(int id,float angle_final);
 
 #endif //ACTIO_THREAD_H
