@@ -19,7 +19,7 @@ void Decisions::init(int team){
 void Decisions::play_match(){
     auto start_time = std::chrono::high_resolution_clock::now();
     point_marque=0;
-    while (0< taches.size()) {
+    while (taches.size()>0) {
         auto current = std::chrono::high_resolution_clock::now();
         auto delta_t = std::chrono::duration<double, std::milli>(current-start_time).count();
         if(delta_t>100000)break;//on est deja a la fin du match faut s'arrêter la

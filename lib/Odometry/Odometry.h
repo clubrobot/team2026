@@ -8,7 +8,7 @@
  * \author Ulysse Darmet
  * Position est une structure de Odometry.h qui permet en une variable d'obtenir la totalité des informations à propos du positionnement du robot.
  * 
- * @return struct Position  {
+ * @return struct Position  {-
  */
 struct Position
 {

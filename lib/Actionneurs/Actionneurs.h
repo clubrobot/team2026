@@ -7,19 +7,8 @@
 
 #include <AX12.h>
 
-namespace AX12 {
-    void ATTACH(unsigned char id);
-    void DETACH();
-
-};
-
-namespace SERVO {
-
-
-};
-
-namespace MOTEUR {
-
+namespace Actionneur2025 {
+    void monte_elevateur(void *params);
 
 };
 

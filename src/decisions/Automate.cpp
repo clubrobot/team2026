@@ -3,10 +3,12 @@
 //
 
 #include "Automate.h"
+#include "Clock.h"
 #include <chrono>
 #include "Geogebra.h"
 extern int TEAM_BLEU;
 extern int TEAM_JAUNE;
+
 void Automate::init(int team) {
     color=team;
     if(team==TEAM_JAUNE){
@@ -20,7 +22,8 @@ void Automate::init(int team) {
 
 }
 
-void Automate::play_match(){
+void Automate::play_match(void *pvParameters){
+    //TODO: wait for event
     auto start_time = std::chrono::high_resolution_clock::now();
     points=0;
     for (int tache_id = 0; tache_id < taches.size(); ++tache_id) {
@@ -32,5 +35,4 @@ void Automate::play_match(){
         taches[tache_id].execute();
         points+=taches[tache_id].get_max_score();
     }
-
 }

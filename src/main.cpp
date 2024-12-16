@@ -1,17 +1,18 @@
 #include <Arduino.h>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
-<<<<<<< Updated upstream
+
 #include <Actionneurs.h>
 #include <Clock.h>
+#include <variables_globales.h>
 
-=======
->>>>>>> Stashed changes
 #include "wheeledbase/wb_thread.h"
 #include "actionneurs/actio_thread.h"
-
+#include "decisions/Automate.h"
 
 #define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
+
+Automate robeur;
 
 void setup(){
     DWT_Init(); //Très important
@@ -19,10 +20,46 @@ void setup(){
     Serial.begin(9600);
 
     wb_setup();
+    actio_setup();
+    robeur.init(TEAM_JAUNE);//TODO: team
+
     if(TEST_NO_FREERTOS) {
         return;
     }
     //Setup FreeRTOS
+
+    TaskHandle_t  hl_wb = NULL;
+    BaseType_t ret_wb = xTaskCreate(
+                wb_loop,       /* Function that implements the task. */
+                "Wheeledbase loop",          /* Text name for the task. */
+                10000,      /* Stack size in words, not bytes. */
+                NULL,    /* Parameter passed into the task. */
+                6,//Prio max
+                &hl_wb );      /* Used to pass out the created task's handle. */
+
+    if(ret_wb!=pdPASS) {Error_Handler()}
+
+    TaskHandle_t  hl_actio = NULL;
+    BaseType_t ret_actio = xTaskCreate(
+                actio_loop,       /* Function that implements the task. */
+                "Actionneur loop",          /* Text name for the task. */
+                10000,      /* Stack size in words, not bytes. */
+                NULL,    /* Parameter passed into the task. */
+                2,//Prio nulle à chier
+                &hl_actio );      /* Used to pass out the created task's handle. */
+
+    if(ret_actio!=pdPASS) {Error_Handler()}
+
+    TaskHandle_t  hl_robot = NULL;
+    BaseType_t ret_robot = xTaskCreate(
+                robeur.play_match,       /* Function that implements the task. */
+                "Actionneur loop",          /* Text name for the task. */
+                10000,      /* Stack size in words, not bytes. */
+                NULL,    /* Parameter passed into the task. */
+                4,//Prio un peu mieux
+                &hl_robot );      /* Used to pass out the created task's handle. */
+
+    if(ret_robot!=pdPASS) {Error_Handler()}
 
     vTaskStartScheduler();//On commence FreeRTOS
     //On devrait pas être là; Uh oh
@@ -39,25 +76,4 @@ void loop() {
     c = leftCodewheel.getTraveledDistance();
     d = rightCodewheel.getTraveledDistance();
 
-<<<<<<< Updated upstream
-    AX12::ATTACH();
-    pos = Wheeledbase::GET_POSITION();
-    Serial.print(pos->x);
-    Serial.print(" ");
-    Serial.print(pos->y);
-    Serial.print(" ");
-    Serial.println(pos->theta);
-    /*Serial.print(a);
-=======
-
-    Serial.print("LEFT: ");
-    Serial.print(a);
->>>>>>> Stashed changes
-    Serial.print(" ");
-    Serial.print(c);
-    Serial.print(" ");
-    Serial.print(b);
-    Serial.print(" ");
-    Serial.println(d);*/
-    wb_loop();
 }

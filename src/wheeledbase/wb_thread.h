@@ -42,6 +42,6 @@ extern PurePursuit purePursuit;
 extern TurnOnTheSpot turnOnTheSpot;
 
 void wb_setup();
-void wb_loop();
+void wb_loop(void *pvParameters);
 
 #endif //WB_THREAD_H

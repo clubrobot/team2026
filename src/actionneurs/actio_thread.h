@@ -6,35 +6,28 @@
 #define ACTIO_THREAD_H
 
 #include <STM32FreeRTOS.h>
-
+#include <Actionneurs.h>
 
 /**
 * Actionneur  queue:
-1- Type actionneur
-2- Fonction de l'actionneur à déclencher
+1- OPCODE
+2- Tableau de param
 3- pointeur val retour
-4- nb param
-5- tab pointeurs param
-
 */
 
 /**
- * Exemple AX12:
- * AX12 monAX12; (ptet extern à voir)
- *
+ * Exemple:
+ * int params[] = {500};
  * actio_type exAX12 = {
- *  AX12,
- *  attach,
- *  NULL,
- *  2,
- *  monAX12,
- *  3
+ *  PIMP_MON_ROBOT,
+ *  (void*) params,
+ *  NULL
  * }
 */
 typedef struct {
-    uint16_t type_actio;        //Soit AX12, SERVO, MOTEUR
-    uint16_t id_actionneur; //id de l'actionneur (utile quand on a plusierus moteru connecté)
-    float angle; //angle à viser
+    uint16_t opcode;        //Opcode de l'action
+    void* ret_func_actio;
+    void* param_tab;
 }actio_type;
 
 QueueHandle_t actio_queue;
@@ -42,8 +35,7 @@ actio_type current_actio;
 
 
 void actio_setup();
-void actio_loop();
-void tourner_moteur(int id,float angle_final);
-void tourner_servo(int id,float angle_final);
+void actio_loop(void *pvParameters);
+
 
 #endif //ACTIO_THREAD_H

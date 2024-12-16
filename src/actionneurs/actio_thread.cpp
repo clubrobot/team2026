@@ -16,38 +16,18 @@ void actio_setup() {
 
 }
 
-void actio_loop() {
-    current_actio.type_actio = NULL;
+void actio_loop(void *pvParameters) {
+    //On attend de recevoir qqchose
+    current_actio.opcode = NULL;
     xQueueReceive(actio_queue, &current_actio, portMAX_DELAY);
 
-    switch (current_actio.type_actio) {
-        case SERVO:
-            break;
-        case MOTEUR:
+    //On traite la demande
+    switch (current_actio.opcode) {
+    case MONTE_ESCALATOR:
+            Actionneur2025::monte_elevateur(current_actio.param_tab);
             break;
         default:
             //Nothing to do
             break;
-    }
-}
-//permet d'envoyer une commande pour faire tourner le moteur id jusqu'à l'angle angle_final
-void tourner_moteur(uint16_t id,float angle_final){
-    //test que la queue existe
-    if( actio_queue != 0 ) {
-        actio_type msg;
-        msg.type_actio=MOTEUR;
-        msg.angle=angle_final;
-        msg.id_actionneur=id;
-        xQueueSend( actio_queue,( void * ) &msg,( TickType_t ) 10 );
-    }
-}
-//permet d'envoyer une commande pour faire tourner le servo-moteur id jusqu'à l'angle angle_final
-void tourner_servo(int id,float angle_final){
-    if( actio_queue != 0 ) {
-        actio_type msg;
-        msg.type_actio=SERVO;
-        msg.angle=angle_final;
-        msg.id_actionneur=id;
-        xQueueSend( actio_queue,( void * ) &msg,( TickType_t ) 10 );
     }
 }

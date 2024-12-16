@@ -7,8 +7,9 @@
 
 #define ACTIO_QUEUE_SIZE 10
 
-#define AX12 0
-#define SERVO 1
-#define MOTEUR 2
+
+//////2025 actio
+#define MONTE_ESCALATOR 0
+
 
 #endif //ACTIO_CONST_H

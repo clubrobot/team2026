@@ -1,0 +1,2 @@
+Variable globale team: NOT_DEFINED, BLUE, YELLLOW
+Variable global bouttons etc

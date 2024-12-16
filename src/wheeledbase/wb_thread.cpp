@@ -238,7 +238,7 @@ void wb_setup(){
     purePursuit.load(PUREPURSUIT_ADDRESS);
 }
 
-void wb_loop(){
+void wb_loop(void *pvParameters){
 //for(;;) {
     // Update odometry
     if (odometry.update()){
