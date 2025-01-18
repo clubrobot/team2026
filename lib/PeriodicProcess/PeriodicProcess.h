@@ -1,7 +1,7 @@
 #ifndef __PERIODICPROCESS_H__
 #define __PERIODICPROCESS_H__
 
-#include "Clock.h"
+#include "My_Clock.h"
 
 /** class PeriodicProcess
  *  \brief Classe à implémenter pour gérer les appels dans la loop.

@@ -78,15 +78,14 @@
 #define POSITIONCONTROL_TIMESTEP  50e-3 // s
 
 // DC motors driver
-//TODO: Redo pinout
-#define LEFT_MOTOR_EN    6
-#define LEFT_MOTOR_PWM   3
-#define LEFT_MOTOR_DIR   5
-#define RIGHT_MOTOR_EN   9
-#define RIGHT_MOTOR_PWM 11
-#define RIGHT_MOTOR_DIR 10
-#define DRIVER_RESET    12
-#define DRIVER_FAULT    A7
+#define LEFT_MOTOR_EN    PB13
+#define LEFT_MOTOR_PWM  PE11
+#define LEFT_MOTOR_DIR   PF4
+#define RIGHT_MOTOR_EN   PB15
+#define RIGHT_MOTOR_PWM PE9
+#define RIGHT_MOTOR_DIR PF5
+#define DRIVER_RESET    PA15
+#define DRIVER_FAULT    PB12
 
 // Codewheel
 //Voir le setup des encoedeurs pour les constantes

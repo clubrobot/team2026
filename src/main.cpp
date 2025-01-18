@@ -3,7 +3,7 @@
 #include <Wheeledbase.h>
 
 #include <Actionneurs.h>
-#include <Clock.h>
+#include <My_Clock.h>
 #include <variables_globales.h>
 
 #include "wheeledbase/wb_thread.h"
@@ -12,8 +12,6 @@
 
 #define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
 
-Automate robeur;
-
 void setup(){
     DWT_Init(); //Très important
     //Setup de base
@@ -21,7 +19,7 @@ void setup(){
 
     wb_setup();
     actio_setup();
-    robeur.init(TEAM_JAUNE);//TODO: team
+    Automate::init(TEAM_JAUNE);//TODO: team
 
     if(TEST_NO_FREERTOS) {
         return;
@@ -52,7 +50,7 @@ void setup(){
 
     TaskHandle_t  hl_robot = NULL;
     BaseType_t ret_robot = xTaskCreate(
-                robeur.play_match,       /* Function that implements the task. */
+                Automate::play_match,       /* Function that implements the task. */
                 "Actionneur loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
                 NULL,    /* Parameter passed into the task. */
@@ -65,15 +63,18 @@ void setup(){
     //On devrait pas être là; Uh oh
     Error_Handler(); //TODO: logger l'error handler
 }
+
+
+
 long a,b;
 float c,d, e;
 Position *pos;
 void loop() {
     //loop seuleuement accesssible quand TEST_NO_FREERTOS est à true
-
     a = leftCodewheel.getCounter();
     b = rightCodewheel.getCounter();
     c = leftCodewheel.getTraveledDistance();
     d = rightCodewheel.getTraveledDistance();
-
+    leftWheel.setVelocity(100);
+    rightWheel.setVelocity(100);
 }

@@ -18,7 +18,7 @@ void Wheeledbase::GOTO_DELTA(float dx, float dy) {
     purePursuit.reset();
     positionControl.disable();
 
-    Position initial_pos = odometry.getPosition();
+    Position initial_pos = *odometry.getPosition();
 
     Position target_pos;
     target_pos.x = initial_pos.x + dx * cos(initial_pos.theta) + dy * -1 * sin(initial_pos.theta);
@@ -101,7 +101,7 @@ void Wheeledbase::ADD_PUREPURSUIT_WAYPOINT(float x, float y) {
 }
 
 void Wheeledbase::START_TURNONTHESPOT(bool dir, float theta) {
-    Position posSetpoint = odometry.getPosition();
+    Position posSetpoint = *odometry.getPosition();
     float initTheta = posSetpoint.theta;
     posSetpoint.theta = theta;
     float angPosSetpoint = inrange((posSetpoint.theta - initTheta), -M_PI, M_PI);
@@ -120,7 +120,7 @@ void Wheeledbase::START_TURNONTHESPOT(bool dir, float theta) {
 }
 
 void Wheeledbase::START_TURNONTHESPOT_DIR(bool dir, float theta) {
-    Position posSetpoint = odometry.getPosition();
+    Position posSetpoint = *odometry.getPosition();
     posSetpoint.theta = theta;
     velocityControl.enable();
     positionControl.setPosSetpoint(posSetpoint);
@@ -166,8 +166,8 @@ void Wheeledbase::SET_POSITION(Position* pos) {
     odometry.setPosition(pos->x, pos->y, pos->theta);
 }
 
-Position* Wheeledbase::GET_POSITION() {
-    const Position& pos = odometry.getPosition();
+const Position* Wheeledbase::GET_POSITION() {
+    const Position* pos = odometry.getPosition();
     return pos;
 }
 

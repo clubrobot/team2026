@@ -30,8 +30,8 @@ typedef struct {
     void* param_tab;
 }actio_type;
 
-QueueHandle_t actio_queue;
-actio_type current_actio;
+extern QueueHandle_t actio_queue;
+extern actio_type current_actio;
 
 
 void actio_setup();

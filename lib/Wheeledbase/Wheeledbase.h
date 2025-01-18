@@ -103,7 +103,7 @@ namespace  Wheeledbase {
 
     void SET_POSITION(Position* pos);
 
-    Position* GET_POSITION();
+    const Position* GET_POSITION();
 
     void GET_VELOCITIES(float *linVel, float *angVel);
 

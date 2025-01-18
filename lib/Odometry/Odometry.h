@@ -112,7 +112,7 @@ public:
 	 * 
 	 * @return La structure Position.
 	 */
-	const Position&	getPosition() const {return m_pos;}
+	const Position*	getPosition() const {return &m_pos;}
 	/**
 	 * @brief Retourne la vitesse linéaire.
 	 * 

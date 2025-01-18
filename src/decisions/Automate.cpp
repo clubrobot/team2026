@@ -6,8 +6,13 @@
 #include "Clock.h"
 #include <chrono>
 #include "Geogebra.h"
-extern int TEAM_BLEU;
-extern int TEAM_JAUNE;
+#include "variables_globales.h"
+
+namespace Automate {
+    std::vector<Tache> taches;//endroit de stockage des taches
+    int color;//couleur de l'équipe
+    int points;//points réalises pour l'instant
+}
 
 void Automate::init(int team) {
     color=team;

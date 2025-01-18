@@ -242,7 +242,7 @@ void wb_loop(void *pvParameters){
 //for(;;) {
     // Update odometry
     if (odometry.update()){
-        positionControl.setPosInput(odometry.getPosition());
+        positionControl.setPosInput(*odometry.getPosition());
         velocityControl.setInputs(odometry.getLinVel(), odometry.getAngVel());
     }
 

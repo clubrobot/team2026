@@ -6,15 +6,15 @@
 #define TEAM2025_AUTOMATE_H
 #include <vector>
 #include "Tache.h"
-class Automate {
-    //cette classe réalise les tâches les unes après les autres dans l'ordre ou elles ont été données.
-private:
-    std::vector<Tache> taches;//endroit de stockage des taches
-    int color;//couleur de l'équipe
-    int points;//points réalises pour l'instant
-public:
-    void init(int team);//fonction d'init
-    void play_match(void *pvParameters);//fonction a appeler au début du match
+
+namespace Automate{
+        //cette classe réalise les tâches les unes après les autres dans l'ordre ou elles ont été données.
+        extern std::vector<Tache> taches;//endroit de stockage des taches
+        extern int color;//couleur de l'équipe
+        extern int points;//points réalises pour l'instant
+
+        void init(int team);//fonction d'init
+        void play_match(void *pvParameters);//fonction a appeler au début du match
 
 };
 
