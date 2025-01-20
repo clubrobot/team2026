@@ -76,6 +76,7 @@ void reset_params() {
 }
 
 void save_params() {
+    return;
     leftWheel.save(LEFTWHEEL_ADDRESS);
     rightWheel.save(RIGHTWHEEL_ADDRESS);
     leftCodewheel.save(LEFTCODEWHEEL_ADDRESS);
@@ -194,33 +195,33 @@ void wb_setup(){
 
     leftWheel.attach(LEFT_MOTOR_EN, LEFT_MOTOR_PWM, LEFT_MOTOR_DIR);
     rightWheel.attach(RIGHT_MOTOR_EN, RIGHT_MOTOR_PWM, RIGHT_MOTOR_DIR);
-    leftWheel.load(LEFTWHEEL_ADDRESS);
-    rightWheel.load(RIGHTWHEEL_ADDRESS);
+    //leftWheel.load(LEFTWHEEL_ADDRESS);
+    //rightWheel.load(RIGHTWHEEL_ADDRESS);
 
     // Codewheels
     codewheels_setup();
 
-    leftCodewheel.load(LEFTCODEWHEEL_ADDRESS);
-    rightCodewheel.load(RIGHTCODEWHEEL_ADDRESS);
+    //leftCodewheel.load(LEFTCODEWHEEL_ADDRESS);
+    //rightCodewheel.load(RIGHTCODEWHEEL_ADDRESS);
     leftCodewheel.reset();
     rightCodewheel.reset();
 
     // Odometry
-    odometry.load(ODOMETRY_ADDRESS);
+    //odometry.load(ODOMETRY_ADDRESS);
     odometry.setCodewheels(leftCodewheel, rightCodewheel);
     odometry.setTimestep(ODOMETRY_TIMESTEP);
     odometry.enable();
 
     // Engineering control
-    velocityControl.load(VELOCITYCONTROL_ADDRESS);
+    //velocityControl.load(VELOCITYCONTROL_ADDRESS);
     velocityControl.setWheels(leftWheel, rightWheel);
     velocityControl.setPID(linVelPID, angVelPID);
     velocityControl.disable();
 
     //const float maxLinVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity());
     //const float maxAngVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity()) * 2 / WHEELS_AXLE_TRACK;
-    linVelPID.load(LINVELPID_ADDRESS);
-    angVelPID.load(ANGVELPID_ADDRESS);
+    //linVelPID.load(LINVELPID_ADDRESS);
+    //angVelPID.load(ANGVELPID_ADDRESS);
     //linVelPID.setOutputLimits(-maxLinVel, maxLinVel);
     //angVelPID.setOutputLimits(-maxAngVel, maxAngVel);
 
@@ -231,11 +232,11 @@ void wb_setup(){
 #endif // VELOCITYENABLE_CONTROLLER_LOGS
 
     // Position control
-    positionControl.load(POSITIONCONTROL_ADDRESS);
+    //positionControl.load(POSITIONCONTROL_ADDRESS);
     positionControl.setTimestep(POSITIONCONTROL_TIMESTEP);
     positionControl.disable();
 
-    purePursuit.load(PUREPURSUIT_ADDRESS);
+    //purePursuit.load(PUREPURSUIT_ADDRESS);
 }
 
 void wb_loop(void *pvParameters){

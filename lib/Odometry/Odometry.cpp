@@ -5,7 +5,6 @@
 
 #include <math.h>
 
-
 void Odometry::process(float timestep)
 {
 	const float dL = m_leftCodewheel ->restart();

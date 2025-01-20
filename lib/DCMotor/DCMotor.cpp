@@ -7,15 +7,16 @@
 #define FORWARD  0
 #define BACKWARD 1
 
-
 void DCMotor::attach(int EN, int PWM, int DIR)
 {
+
 	m_EN  = EN;
 	m_PWM = PWM;
 	m_DIR = DIR;
 	pinMode(m_EN, OUTPUT);
 	pinMode(m_PWM, OUTPUT);
 	pinMode(m_DIR, OUTPUT);
+	analogWriteFrequency(20000);
 }
 
 void DCMotor::update()

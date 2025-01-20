@@ -15,12 +15,13 @@
 void setup(){
     DWT_Init(); //Très important
     //Setup de base
-    Serial.begin(9600);
+    Serial.begin(115200);
 
     wb_setup();
     actio_setup();
     Automate::init(TEAM_JAUNE);//TODO: team
 
+    Wheeledbase::PRINT_PARAMS();
     if(TEST_NO_FREERTOS) {
         return;
     }
@@ -68,13 +69,26 @@ void setup(){
 
 long a,b;
 float c,d, e;
-Position *pos;
+int aa = 0;
+const Position *pos;
 void loop() {
     //loop seuleuement accesssible quand TEST_NO_FREERTOS est à true
     a = leftCodewheel.getCounter();
     b = rightCodewheel.getCounter();
-    c = leftCodewheel.getTraveledDistance();
-    d = rightCodewheel.getTraveledDistance();
-    leftWheel.setVelocity(100);
-    rightWheel.setVelocity(100);
+    pos = Wheeledbase::GET_POSITION();
+    Wheeledbase::GET_VELOCITIES(&c, &d);
+    /*Serial.print(a);
+    Serial.print(" ");
+    Serial.print(b);
+    Serial.print(" ");
+    Serial.print(c);
+    Serial.print(" ");
+    Serial.print(d);
+    Serial.print(" ");
+    Serial.print(pos->x);
+    Serial.print(" ");
+    Serial.println(pos->y);*/
+    wb_loop(nullptr);
+    Wheeledbase::SET_VELOCITIES(0,0.5);
+    //Wheeledbase::SET_OPENLOOP_VELOCITIES(100,0);
 }
