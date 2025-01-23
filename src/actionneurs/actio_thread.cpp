@@ -9,6 +9,8 @@ QueueHandle_t actio_queue;
 actio_type current_actio;
 
 void actio_setup() {
+    AX12::SerialBegin(AX12_BAUDRATE);
+
     actio_queue =  xQueueCreate(ACTIO_QUEUE_SIZE, sizeof(actio_type));
 
     if(actio_queue == NULL) {
@@ -20,6 +22,7 @@ void actio_setup() {
 }
 
 void actio_loop(void *pvParameters) {
+    return;
     //On attend de recevoir qqchose
     current_actio.opcode = NULL;
     xQueueReceive(actio_queue, &current_actio, portMAX_DELAY);

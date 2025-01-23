@@ -4,6 +4,8 @@
 #include "Dynamixel.h"	
 #include <Arduino.h>
 
+#define AX12_BAUDRATE 1000000
+
 // mask error bit
 #define INSTRUCTION_ERROR_MASK  	0x20
 #define OVERLOAD_ERROR_MASK 		0x10

@@ -2,7 +2,8 @@
 #include <Arduino.h>
 
 // Macro for the selection of the Serial Port
-#define AX12_SERIAL Serial4 //Default is PA0
+
+#define AX12_SERIAL Serial6 //Default is PA0
 
 #define sendData(args)  (AX12_SERIAL.write(args))    // Write Over Serial
 #define availableData() (AX12_SERIAL.available())    // Check Serial Data Available

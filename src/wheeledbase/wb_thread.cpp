@@ -240,7 +240,7 @@ void wb_setup(){
 }
 
 void wb_loop(void *pvParameters){
-//for(;;) {
+for(;;) {
     // Update odometry
     if (odometry.update()){
         positionControl.setPosInput(*odometry.getPosition());
@@ -262,5 +262,5 @@ void wb_loop(void *pvParameters){
 #else
         velocityControl.update();
 #endif // ENABLE_VELOCITYCONTROLLER_LOGS
-//}
+}
 }

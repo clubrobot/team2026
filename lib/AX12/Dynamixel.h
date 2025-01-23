@@ -4,6 +4,7 @@
 #include <inttypes.h>
 #include <Arduino.h>
 
+
 	/// EEPROM AREA  ///
 #define AX_MODEL_NUMBER_L           0
 #define AX_MODEL_NUMBER_H           1
