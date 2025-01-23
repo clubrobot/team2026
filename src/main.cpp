@@ -4,6 +4,7 @@
 
 #include <Actionneurs.h>
 #include <My_Clock.h>
+#include <PrintfSupport.h>
 #include <variables_globales.h>
 
 #include "wheeledbase/wb_thread.h"
@@ -17,7 +18,11 @@ AX12 test;
 void setup(){
     DWT_Init(); //Très important
     //Setup de base
-    Serial.begin(115200);
+    PrintfSupport::begin(PRINTF_BAUD);
+
+    for(;;) {
+        printf("TESTS %d \n", 10);
+    }
 
     wb_setup();
     actio_setup();
