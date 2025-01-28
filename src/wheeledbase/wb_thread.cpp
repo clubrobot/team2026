@@ -218,8 +218,8 @@ void wb_setup(){
     velocityControl.setPID(linVelPID, angVelPID);
     velocityControl.disable();
 
-    //const float maxLinVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity());
-    //const float maxAngVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity()) * 2 / WHEELS_AXLE_TRACK;
+    // const float maxLinVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity());
+    //const float maxAngVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity()) * 2 / VELOCITYCONTROL_AXLETRACK_VALUE;
     //linVelPID.load(LINVELPID_ADDRESS);
     //angVelPID.load(ANGVELPID_ADDRESS);
     //linVelPID.setOutputLimits(-maxLinVel, maxLinVel);

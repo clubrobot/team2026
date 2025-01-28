@@ -157,6 +157,7 @@ protected:
 	 * @brief Reset les accumulateurs des asserv.
 	 */
 	virtual void onProcessEnabling();
+	virtual void onProcessDisabling();
 
 	float m_linInput; /*!< Vitesse linéaire actuel du robot.  */
 	float m_angInput; /*!< Vitesse angulaire actuel du robot. */

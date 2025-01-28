@@ -34,8 +34,10 @@ public:
 	/** enum Direction
 	 *  \brief Sens de déplacement pour le robot.
 	 */
-	enum Direction {FORWARD=1 ///< Le robot avance en marche avant.
+	enum Direction {
+		FORWARD=1 ///< Le robot avance en marche avant.
 	, BACKWARD=-1 ///< Le robot avance en marche arrière.
+	, NONE=0	  ///Il n'y a pas de direction définie
 	};
 
 	PurePursuit() : m_numWaypoints(0), m_direction(FORWARD){}

@@ -11,17 +11,25 @@
 #include "actionneurs/actio_thread.h"
 #include "decisions/Automate.h"
 
+
+#define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
+
+#undef Error_Handler
+#define Error_Handler() \
+while (1) {\
+    printf("ERREUR dans %s:%d \n", __FILE__, __LINE__);\
+}//TODO: visual or beeper
+
 void test_loop( void* paraam);
-//HardwareSerial Serial6(PC7, PC6);
-AX12 test;
+
+//Setup de base
 void setup(){
     DWT_Init(); //Très important
-    //Setup de base
-    PrintfSupport::begin(PRINTF_BAUD);
 
-    for(;;) {
-        printf("TESTS %d \n", 10);
+    if(DEBUG) {
+        PrintfSupport::begin(PRINTF_BAUD);
+        printf("[INIT] Debug enabled at %d baud\n", PRINTF_BAUD);
     }
 
     wb_setup();
@@ -34,8 +42,10 @@ void setup(){
     digitalWrite(LED_BUILTIN, HIGH);
 
     if(TEST_NO_FREERTOS) {
+        printf("[INIT] Not using FreeRTOS\n");
         return;
     }
+    printf("[INIT] Using FreeRTOS\n");
     //Setup FreeRTOS
 
     TaskHandle_t  hl_wb = NULL;
@@ -44,7 +54,7 @@ void setup(){
                 "Wheeledbase loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
                 NULL,    /* Parameter passed into the task. */
-                4,//Prio max
+                5,//Prio max
                 &hl_wb );      /* Used to pass out the created task's handle. */
 
     if(ret_wb!=pdPASS) {Error_Handler()}
@@ -63,10 +73,10 @@ void setup(){
     TaskHandle_t  hl_robot = NULL;
     BaseType_t ret_robot = xTaskCreate(
                 test_loop,       /* Function that implements the task. */
-                "Actionneur loop",          /* Text name for the task. */
+                "Robot loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
                 NULL,    /* Parameter passed into the task. */
-                4,//Prio un peu mieux
+                5,//Prio un peu mieux
                 &hl_robot );      /* Used to pass out the created task's handle. */
 
     if(ret_robot!=pdPASS) {Error_Handler()}
@@ -87,15 +97,18 @@ void test_loop( void* paraam) {
     //Serial.begin(115200);
     digitalWrite(PE1, HIGH);
 
-    test = AX12();
-    test.attach(254);
-    test.setID(1);
-    test.attach(1);
-    test.turn(200);
-    //Wheeledbase::ADD_PUREPURSUIT_WAYPOINT(100,0);
     for(;;) {
-        //Wheeledbase::START_PUREPURSUIT(0, 0);
-        Serial.println(test.readPosition());
+        //purePursuit.reset();
+        //positionControl.disable();
+        //Wheeledbase::SET_VELOCITIES(100,0);
+        Position pos=Position(0,300,0);
+        Wheeledbase::GOTO(&pos, purePursuit.FORWARD, 0);
+        printf("Goto finished\n");
+        pos.x = 300;
+        Wheeledbase::GOTO(&pos, purePursuit.FORWARD, 0);
+        vTaskDelay(pdMS_TO_TICKS(10000));
+        printf("Back to it again\n");
+
         /*a = leftCodewheel.getCounter();
         b = rightCodewheel.getCounter();
         pos = Wheeledbase::GET_POSITION();

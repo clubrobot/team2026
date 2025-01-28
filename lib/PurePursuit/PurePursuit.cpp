@@ -233,7 +233,6 @@ void PurePursuit::computeVelSetpoints(float timestep)
 	
 	// This could be computed elsewhere but here is convenient. 
 	m_goalReached = fabs(chord + getDistAfterGoal()) < getLinPosThreshold();
-
 	setVelSetpoints(linVelSetpoint, angVelSetpoint);
 }
 

@@ -73,14 +73,14 @@ void Wheeledbase::RESET_PUREPURSUIT() {
     positionControl.disable();
 }
 
-void Wheeledbase::START_PUREPURSUIT(uint8_t direction, float finalAngle) {
+void Wheeledbase::START_PUREPURSUIT(int8_t direction, float finalAngle) {
     // Setup PurePursuit
     purePursuit.setFinalAngle(finalAngle);
 
     switch (direction) {
-    case 0: purePursuit.setDirection(PurePursuit::FORWARD);
+    case PurePursuit::FORWARD: purePursuit.setDirection(PurePursuit::FORWARD);
         break;
-    case 1: purePursuit.setDirection(PurePursuit::BACKWARD);
+    case PurePursuit::BACKWARD: purePursuit.setDirection(PurePursuit::BACKWARD);
         break;
     }
 
@@ -88,7 +88,6 @@ void Wheeledbase::START_PUREPURSUIT(uint8_t direction, float finalAngle) {
     const PurePursuit::Waypoint wp0 = purePursuit.getWaypoint(purePursuit.getNumWaypoints() - 2);
     const PurePursuit::Waypoint wp1 = purePursuit.getWaypoint(purePursuit.getNumWaypoints() - 1);
     positionControl.setPosSetpoint(Position(wp1.x, wp1.y, atan2(wp1.y - wp0.y, wp1.x - wp0.x) + direction * M_PI));
-    Serial.println("A");
     // Enable PurePursuit controller
     velocityControl.enable();
     positionControl.setMoveStrategy(purePursuit);
@@ -148,6 +147,43 @@ uint8_t Wheeledbase::POSITION_REACHED() {
     ret = ret | positionReached;
     ret = ret | (spinUrgency << 1);
     return ret;
+}
+
+void Wheeledbase::PUREPURSUIT(const Position** waypoints, uint16_t nb_waypoints, char dir, float finalAngle) {
+    if(nb_waypoints<2) {
+        printf("[Purepursuit] not enough waypoints\n");
+        return;
+    }
+    Wheeledbase::RESET_PUREPURSUIT();
+    for(int i = 0; i < nb_waypoints; i++) {
+        Wheeledbase::ADD_PUREPURSUIT_WAYPOINT(waypoints[i]->x, waypoints[i]->y);
+    }
+    Wheeledbase::START_PUREPURSUIT(dir, finalAngle);
+}
+
+void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
+
+    const Position *myPos = Wheeledbase::GET_POSITION();
+    if (dir==PurePursuit::NONE) {
+        if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x))-myPos->theta) {
+            dir=PurePursuit::FORWARD;
+        }else {
+            dir=PurePursuit::BACKWARD;
+        }
+    }
+    const Position *posTab[2]={myPos, pos};
+    Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
+
+    while(Wheeledbase::POSITION_REACHED()!=0b01) {
+        //Do nothing
+    }
+
+    if(pos->theta!=MAXFLOAT) {
+        Wheeledbase::START_TURNONTHESPOT(0, pos->theta);
+        while(Wheeledbase::POSITION_REACHED()!=0b01) {
+            //Todo: TimeOUT
+        }
+    }
 }
 
 void Wheeledbase::GET_VELOCITIES_WANTED(float* linOutput, float* angOutput, bool spin) {
@@ -410,8 +446,6 @@ float Wheeledbase::GET_PARAMETER_VALUE(byte paramID) {
     }
     return 0;
 }
-
-
 
 void Wheeledbase::PRINT_PARAMS() {
     Serial.print(F(" LEFTWHEEL_RADIUS_ID:")); Serial.println(leftWheel.getWheelRadius());
