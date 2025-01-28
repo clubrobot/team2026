@@ -234,6 +234,7 @@ void wb_setup(){
     // Position control
     //positionControl.load(POSITIONCONTROL_ADDRESS);
     positionControl.setTimestep(POSITIONCONTROL_TIMESTEP);
+    //velocityControl.setTimestep(POSITIONCONTROL_TIMESTEP);
     positionControl.disable();
 
     //purePursuit.load(PUREPURSUIT_ADDRESS);

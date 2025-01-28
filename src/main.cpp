@@ -96,18 +96,15 @@ const Position *pos;
 void test_loop( void* paraam) {
     //Serial.begin(115200);
     digitalWrite(PE1, HIGH);
-
+    Wheeledbase::START_TURNONTHESPOT(0, 3.14);
+    vTaskDelay(pdMS_TO_TICKS(10000));
+    printf("Back to it again\n");
     for(;;) {
+
         //purePursuit.reset();
         //positionControl.disable();
-        //Wheeledbase::SET_VELOCITIES(100,0);
-        Position pos=Position(0,300,0);
-        Wheeledbase::GOTO(&pos, purePursuit.FORWARD, 0);
-        printf("Goto finished\n");
-        pos.x = 300;
-        Wheeledbase::GOTO(&pos, purePursuit.FORWARD, 0);
-        vTaskDelay(pdMS_TO_TICKS(10000));
-        printf("Back to it again\n");
+        //Wheeledbase::SET_VELOCITIES(10,0);
+        //printf("%lu\n", DWT->CYCCNT);
 
         /*a = leftCodewheel.getCounter();
         b = rightCodewheel.getCounter();

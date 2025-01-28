@@ -2,7 +2,7 @@
 #define __CLOCK_H__
 
 #include <Arduino.h>
-#include  <stm32h7xx_hal.h>
+
 /** class Clock
  *  \brief Utilitaire pour gérer le temps dans vos programmes Arduino.
  *	\author Ulysse Darmet
@@ -26,6 +26,10 @@ __STATIC_INLINE uint32_t DWT_micros(void) {
     return DWT->CYCCNT / (SystemCoreClock / 1000000U);
 }
 
+__STATIC_INLINE uint32_t DWT_value(void) {
+    return DWT->CYCCNT ;
+}
+
 class Clock {
 private:
     unsigned long m_startTime; //!< temps en microsecondes du microcontroleur utilisé comme repère.
@@ -47,8 +51,13 @@ public:
     */
     float getElapsedTime()
     {
-        unsigned long currentTime = DWT_micros();
-        float elapsedTimeInSeconds = (currentTime - m_startTime) / float(1e6);
+        unsigned long currentTime = DWT_value();
+        float elapsedTimeInSeconds = (currentTime - m_startTime)/ (SystemCoreClock / 1000000U) / float(1e6);
+        if(currentTime<m_startTime) {
+            unsigned long dp=-m_startTime;
+            //printf("%lu \n",dp);
+            elapsedTimeInSeconds=(currentTime + dp)/ (SystemCoreClock / 1000000U) / float(1e6);
+        }
         return elapsedTimeInSeconds;
     }
 
@@ -59,8 +68,13 @@ public:
     */
     float restart()
     {
-        unsigned long currentTime = DWT_micros();
-        float elapsedTimeInSeconds = (currentTime - m_startTime) / float(1e6);
+        unsigned long currentTime = DWT_value();
+        float elapsedTimeInSeconds = (currentTime - m_startTime)/ (SystemCoreClock / 1000000U) / float(1e6);
+        if(currentTime<m_startTime) {
+            unsigned long dp=-m_startTime;
+            //printf("%lu %lu %lu \n",dp,-m_startTime,m_startTime);
+            elapsedTimeInSeconds=(currentTime + dp)/ (SystemCoreClock / 1000000U) / float(1e6);
+        }
         m_startTime = currentTime;
         return elapsedTimeInSeconds;
     }
