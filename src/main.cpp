@@ -6,6 +6,7 @@
 #include <My_Clock.h>
 #include <PrintfSupport.h>
 #include <variables_globales.h>
+#include <ihm/Musique.h>
 
 #include "wheeledbase/wb_thread.h"
 #include "actionneurs/actio_thread.h"
@@ -31,6 +32,9 @@ void setup(){
         PrintfSupport::begin(PRINTF_BAUD);
         printf("[INIT] Debug enabled at %d baud\n", PRINTF_BAUD);
     }
+
+    Musique myBeeper = Musique(PA6, 4);
+    myBeeper.playSheetMusic(nokia);
 
     wb_setup();
     actio_setup();
@@ -94,7 +98,6 @@ int aa = 0;
 const Position *pos;
 
 void test_loop( void* paraam) {
-    //Serial.begin(115200);
     digitalWrite(PE1, HIGH);
     Wheeledbase::START_TURNONTHESPOT(0, 3.14);
     vTaskDelay(pdMS_TO_TICKS(10000));
@@ -130,7 +133,6 @@ void test_loop( void* paraam) {
 void loop() {
     //loop seuleuement accesssible quand TEST_NO_FREERTOS est à true
 
-    //wb_loop(nullptr);
 
 
     //Wheeledbase::SET_OPENLOOP_VELOCITIES(100,0);
