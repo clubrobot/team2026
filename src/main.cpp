@@ -6,7 +6,7 @@
 #include <My_Clock.h>
 #include <PrintfSupport.h>
 #include <variables_globales.h>
-#include <ihm/Musique.h>
+#include <Musique.h>
 
 #include "wheeledbase/wb_thread.h"
 #include "actionneurs/actio_thread.h"

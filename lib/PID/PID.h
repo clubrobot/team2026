@@ -86,7 +86,7 @@ public:
 	 */
 	 void save(int address) const;
 
-//private:
+private:
 
 	float m_errorIntegral; /*!< Accumulateur integral. */
 	float m_previousError; /*!< Erreur précédent. */

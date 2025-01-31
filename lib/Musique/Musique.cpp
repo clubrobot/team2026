@@ -34,7 +34,7 @@ void Musique::playSheetMusic(const int16_t* ToneTab) {
     uint16_t tempo = ToneTab[1];
     uint16_t wholenote = (60000 * ToneTab[2]) / tempo;
 
-    for (int thisNote = 3; thisNote <= nbNotes * 2; thisNote = thisNote + 2) {
+    for (int thisNote = 3; thisNote <= (nbNotes * 2)+3; thisNote = thisNote + 2) {
         uint16_t noteDuration = 0;
         // calculates the duration of each note
         int16_t divider = ToneTab[thisNote + 1];
