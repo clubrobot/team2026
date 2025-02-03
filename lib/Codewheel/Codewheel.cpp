@@ -3,6 +3,11 @@
 
 #include "Codewheel.h"
 
+/**
+ * @brief Constructeur pour une roue codeuse
+ * @param htim Timer utilisé par la roue codeuse
+ * @warning Que pour STM32
+ */
 Codewheel::Codewheel(TIM_HandleTypeDef *htim){
 	//Initialisation des valeurs avant le load
 	m_currentCounter = 0;
@@ -12,26 +17,41 @@ Codewheel::Codewheel(TIM_HandleTypeDef *htim){
 	m_htim = htim;
 }
 
+/**
+ * @brief Remet à zero le counter de départ
+ */
 void Codewheel::reset(){
 	m_startCounter = 0;
-
 }
 
+/**
+ * @brief Met à jour le compteur
+ * @warning Que pour STM32
+ */
 void Codewheel::update(){
 	m_currentCounter = __HAL_TIM_GetCounter(m_htim);
 }
 
+/**
+ * @brief Renvoie la distance parcourue par la roue codeuse
+ * @return distance parcourue en mm
+ */
 float Codewheel::getTraveledDistance()
 {
 	return (float)(getCounter() - m_startCounter) / m_countsPerRev * (2.0 * M_PI * m_wheelRadius);
 }
 
+/**
+ * @brief Renvoie la distance parcourue entre le dernier appel de restart
+ * @return distance relative au dernier appel de restart
+ */
 float Codewheel::restart()
 {
 	float distance = getTraveledDistance();
 	m_startCounter = m_currentCounter;
 	return distance;
 }
+
 
 void Codewheel::load(int address)
 {
@@ -47,11 +67,19 @@ void Codewheel::save(int address)
 	address += sizeof(m_countsPerRev);
 }
 
+/**
+ * @brief Modifie la variable des points par révolution de la roue codeuse
+ * @param countsPerRev point par révolution
+ */
 void Codewheel::setCountsPerRev(long countsPerRev)
 {
 	m_countsPerRev = countsPerRev;
 }
 
+/**
+ * @brief Modifie le rayon de la roue codeuse
+ * @param wheelRadius rayon de la roue codeuse en mm
+ */
 void Codewheel::setWheelRadius (float wheelRadius)
 {
 	m_wheelRadius = wheelRadius;

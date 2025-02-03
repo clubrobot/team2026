@@ -33,7 +33,7 @@ void setup(){
         printf("[INIT] Debug enabled at %d baud\n", PRINTF_BAUD);
     }
 
-    Musique myBeeper = Musique(PA6, 4);
+    Musique myBeeper = Musique(PA6, 10);
     myBeeper.playSheetMusic(nokia);
 
     wb_setup();
@@ -52,12 +52,12 @@ void setup(){
     printf("[INIT] Using FreeRTOS\n");
     //Setup FreeRTOS
 
-    TaskHandle_t  hl_wb = NULL;
+    TaskHandle_t  hl_wb = nullptr;
     BaseType_t ret_wb = xTaskCreate(
                 wb_loop,       /* Function that implements the task. */
                 "Wheeledbase loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
-                NULL,    /* Parameter passed into the task. */
+                nullptr,    /* Parameter passed into the task. */
                 5,//Prio max
                 &hl_wb );      /* Used to pass out the created task's handle. */
 
@@ -74,12 +74,12 @@ void setup(){
     //
     // if(ret_actio!=pdPASS) {Error_Handler()}
 
-    TaskHandle_t  hl_robot = NULL;
+    TaskHandle_t  hl_robot = nullptr;
     BaseType_t ret_robot = xTaskCreate(
                 test_loop,       /* Function that implements the task. */
                 "Robot loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
-                NULL,    /* Parameter passed into the task. */
+                nullptr,    /* Parameter passed into the task. */
                 5,//Prio un peu mieux
                 &hl_robot );      /* Used to pass out the created task's handle. */
 
@@ -92,39 +92,36 @@ void setup(){
     Error_Handler(); //TODO: logger l'error handler
 }
 
-long a,b;
-float c,d, e;
-int aa = 0;
-const Position *pos;
+Position pos1 = Position(400,0,0);
+Position pos2 = Position(0,0,0);
+Position pos3 = Position(0,0,0);
 
 void test_loop( void* paraam) {
     digitalWrite(PE1, HIGH);
-    Wheeledbase::START_TURNONTHESPOT(0, 3.14);
-    vTaskDelay(pdMS_TO_TICKS(10000));
+    //Wheeledbase::START_TURNONTHESPOT(false, 3.14);
+    //vTaskDelay(pdMS_TO_TICKS(10000));
     printf("Back to it again\n");
     for(;;) {
+        Wheeledbase::GOTO_DELTA(400,0);
+        while(Wheeledbase::POSITION_REACHED()!=0b01) {  }
+        vTaskDelay(pdMS_TO_TICKS(2000));
+        Wheeledbase::START_TURNONTHESPOT(0,-1.57);
+        while(Wheeledbase::POSITION_REACHED()!=0b01) { }
+        vTaskDelay(pdMS_TO_TICKS(2000));
+        Wheeledbase::START_TURNONTHESPOT(0,0);
+        while(Wheeledbase::POSITION_REACHED()!=0b01) { }
+        vTaskDelay(pdMS_TO_TICKS(2000));
+        Wheeledbase::GOTO_DELTA(-400,0);
+        while(Wheeledbase::POSITION_REACHED()!=0b01) { }
+        vTaskDelay(pdMS_TO_TICKS(2000));
+      /* printf("debut 1\n");
+        Wheeledbase::GOTO(&pos1, 0, 0);
 
-        //purePursuit.reset();
-        //positionControl.disable();
-        //Wheeledbase::SET_VELOCITIES(10,0);
-        //printf("%lu\n", DWT->CYCCNT);
+        vTaskDelay(pdMS_TO_TICKS(1000));
 
-        /*a = leftCodewheel.getCounter();
-        b = rightCodewheel.getCounter();
-        pos = Wheeledbase::GET_POSITION();
-        Wheeledbase::GET_VELOCITIES(&c, &d);
-        Serial.print(a);
-        Serial.print(" ");
-        Serial.print(b);
-        Serial.print(" ");
-        Serial.print(c);
-        Serial.print(" ");
-        Serial.print(d);
-        Serial.print(" ");
-        Serial.print(pos->x);
-        Serial.print(" ");
-        Serial.println(pos->y);
-        Serial.flush();*/
+        Wheeledbase::GOTO(&pos2, 0, 0);*/
+
+        vTaskDelay(pdMS_TO_TICKS(1000));
     }
 
 }

@@ -78,9 +78,12 @@ void Wheeledbase::START_PUREPURSUIT(int8_t direction, float finalAngle) {
     purePursuit.setFinalAngle(finalAngle);
 
     switch (direction) {
-    case PurePursuit::FORWARD: purePursuit.setDirection(PurePursuit::FORWARD);
+    case PurePursuit::FORWARD:
+        purePursuit.setDirection(PurePursuit::FORWARD);
         break;
-    case PurePursuit::BACKWARD: purePursuit.setDirection(PurePursuit::BACKWARD);
+    case PurePursuit::BACKWARD:
+        purePursuit.setDirection(PurePursuit::BACKWARD);
+        direction = direction - M_PI;
         break;
     }
 
@@ -88,6 +91,7 @@ void Wheeledbase::START_PUREPURSUIT(int8_t direction, float finalAngle) {
     const PurePursuit::Waypoint wp0 = purePursuit.getWaypoint(purePursuit.getNumWaypoints() - 2);
     const PurePursuit::Waypoint wp1 = purePursuit.getWaypoint(purePursuit.getNumWaypoints() - 1);
     positionControl.setPosSetpoint(Position(wp1.x, wp1.y, atan2(wp1.y - wp0.y, wp1.x - wp0.x) + direction * M_PI));
+
     // Enable PurePursuit controller
     velocityControl.enable();
     positionControl.setMoveStrategy(purePursuit);
@@ -175,10 +179,13 @@ void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
     Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
 
     while(Wheeledbase::POSITION_REACHED()!=0b01) {
+        const Position *pos = Wheeledbase::GET_POSITION();
+        //printf("%f, %f, %f\n", pos->x, pos->y, pos->theta);
         //Do nothing
     }
 
     if(pos->theta!=MAXFLOAT) {
+
         Wheeledbase::START_TURNONTHESPOT(0, pos->theta);
         while(Wheeledbase::POSITION_REACHED()!=0b01) {
             //Todo: TimeOUT

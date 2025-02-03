@@ -19,6 +19,10 @@ public:
 
 	Codewheel(TIM_HandleTypeDef *htim);
 
+	/**
+	* @brief renvoie le compteur de la roue codeuse
+	* @return m_currentCounter
+	*/
 	long getCounter(){update(); return m_currentCounter;}
 
 	/**
