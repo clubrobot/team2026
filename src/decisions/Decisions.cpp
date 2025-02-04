@@ -5,6 +5,8 @@
 #include <iostream>
 #include <chrono>
 #include "Geogebra.h"
+//cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans un ordre choisi de facon a maximiser le nombre de points.
+//Toutes les fonctions doivent être implémentées
 void Decisions::init(int team){
     color=team;
     if(team==TEAM_JAUNE){

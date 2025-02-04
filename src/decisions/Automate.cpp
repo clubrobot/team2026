@@ -27,8 +27,14 @@ void Automate::init(int team) {
 
 }
 
+<<<<<<< Updated upstream
 void Automate::play_match(void *pvParameters){
     //TODO: wait for event
+=======
+//cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
+//Seulement la fonction execute  et get_necessary_time doivent être implémentée.
+void Automate::play_match(){
+>>>>>>> Stashed changes
     auto start_time = std::chrono::high_resolution_clock::now();
     points=0;
     for (int tache_id = 0; tache_id < taches.size(); ++tache_id) {

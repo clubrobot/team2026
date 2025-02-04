@@ -19,6 +19,8 @@ private:
 public:
     double estimation_temps_deplacement(int depart_x, int depart_y, int arrive_x, int arrive_y);//cette fonction estime le temps de déplacement entre deux points
     void init(int team);//fonction d'init
+    //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans un ordre choisi de facon a maximiser le nombre de points.
+    //Toutes les fonctions doivent être implémentées
     void play_match();//fonction a appeller au début du match
     int get_optimal_tache(double remaining_time);
     double max_cost(double remaining_time, int pos_x,int pos_y);
