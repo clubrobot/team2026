@@ -3,6 +3,9 @@
 const int Tache::get_max_score() {
     return max_score;
 }
+int Tache::set_max_score(int score) {
+    max_score=score;
+}
 const int Tache::get_necessary_time(){
     return necessary_time;
 }

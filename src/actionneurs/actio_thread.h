@@ -6,7 +6,7 @@
 #define ACTIO_THREAD_H
 
 #include <STM32FreeRTOS.h>
-#include <Actionneurs.h>
+#include "AX12.h"
 
 /**
 * Actionneur  queue:

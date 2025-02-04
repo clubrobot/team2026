@@ -8,10 +8,14 @@
 #include "Geogebra.h"
 #include "variables_globales.h"
 
+#include "team2025/TacheBipbip.h"
+#include "team2025/TacheEmpiler.h"
+
 namespace Automate {
-    std::vector<Tache> taches;//endroit de stockage des taches
+    Tache* taches[100];//endroit de stockage des taches
     int color;//couleur de l'équipe
     int points;//points réalises pour l'instant
+    int numberTaches;
 }
 
 void Automate::init(int team) {
@@ -19,6 +23,9 @@ void Automate::init(int team) {
     if(team==TEAM_JAUNE){
         //import geogebra.h jaune
         positions_match=positions_jaune;
+        numberTaches=2;
+        taches[0]=new TacheBipbip();
+        taches[1]=new TacheEmpiler();
     }else{
         //import geogebra.h bleu
         positions_match=positions_bleu;
@@ -27,23 +34,18 @@ void Automate::init(int team) {
 
 }
 
-<<<<<<< Updated upstream
 void Automate::play_match(void *pvParameters){
-    //TODO: wait for event
-=======
 //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
 //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
-void Automate::play_match(){
->>>>>>> Stashed changes
     auto start_time = std::chrono::high_resolution_clock::now();
     points=0;
-    for (int tache_id = 0; tache_id < taches.size(); ++tache_id) {
+    for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {
         //execute les tâches dans l'ordre tant qu'on a assez de temps.
         auto current = std::chrono::high_resolution_clock::now();
         auto delta_t = std::chrono::duration<double, std::milli>(current-start_time).count();
-        if(delta_t>100000-taches[tache_id].get_necessary_time())break;//on est deja a la fin du match faut s'arrêter la
+        if(delta_t>100000-taches[tache_id]->get_necessary_time())break;//on est deja a la fin du match faut s'arrêter la
         //execute la tâche.
-        taches[tache_id].execute();
-        points+=taches[tache_id].get_max_score();
+        taches[tache_id]->execute();
+        points+=taches[tache_id]->get_max_score();
     }
 }

@@ -30,7 +30,7 @@ void actio_loop(void *pvParameters) {
     //On traite la demande
     switch (current_actio.opcode) {
         case MONTE_ESCALATOR:
-            Actionneur2025::monte_elevateur(current_actio.param_tab);
+
             break;
         default:
             //Nothing to do

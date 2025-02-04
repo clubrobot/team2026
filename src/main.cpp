@@ -2,7 +2,6 @@
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
 
-#include <Actionneurs.h>
 #include <My_Clock.h>
 #include <PrintfSupport.h>
 #include <variables_globales.h>
@@ -33,8 +32,8 @@ void setup(){
         printf("[INIT] Debug enabled at %d baud\n", PRINTF_BAUD);
     }
 
-    Musique myBeeper = Musique(PA6, 10);
-    myBeeper.playSheetMusic(nokia);
+    //Musique myBeeper = Musique(PA6, 10);
+    //myBeeper.playSheetMusic(nokia);
 
     wb_setup();
     actio_setup();
@@ -53,6 +52,8 @@ void setup(){
     //Setup FreeRTOS
 
     TaskHandle_t  hl_wb = nullptr;
+
+
     BaseType_t ret_wb = xTaskCreate(
                 wb_loop,       /* Function that implements the task. */
                 "Wheeledbase loop",          /* Text name for the task. */
@@ -75,8 +76,9 @@ void setup(){
     // if(ret_actio!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_robot = nullptr;
+    printf("Entre loop\n");
     BaseType_t ret_robot = xTaskCreate(
-                test_loop,       /* Function that implements the task. */
+                Automate::play_match,       /* Function that implements the task. */
                 "Robot loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
                 nullptr,    /* Parameter passed into the task. */

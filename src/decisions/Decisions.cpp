@@ -29,7 +29,6 @@ void Decisions::play_match(){
         int tache_id = get_optimal_tache((100000.0-delta_t)/1000.0);
         if(tache_id==-1){
             std::cout << "Fin des tâches à réaliser. IMPLEMENTER RETOUR A LA BASE DE FIN."  << std::endl;
-
             break;
         }
         //execute les tâches dans l'ordre tant qu'on a assez de temps.
