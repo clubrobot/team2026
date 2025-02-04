@@ -1,0 +1,50 @@
+
+# FreeRTOS Cheat Sheet
+
+DOC en anglas mais très bien: https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/00-Developer-docs
+
+1. Créations de tâches:
+   - Créer une tâche avec
+        xTaskCreate(TaskFunction_t ptr_fonction, //Pointeur vers la fonction
+                    const char * const nom_tache, //Nom de la tâche (en guillemet)
+                    const configSTACK_DEPTH_TYPE taille_de_la_stack, //Taille de la pile (par défault mettez 128; faudra augmenter en voyant avec le debugger)
+                    void *pvParameters,//Paramètre donné à la fonction (souvent NULL, utilisez des queues plutot)
+                     UBaseType_t uxPriority,//Priorité de la tache allant de 6 (configMAX_PRIORITIES - 1) pour le + prioritaire et 0 le moins
+                     TaskHandle_t *pxCreatedTask//Handler de la tâche, utile pour le debugger, mettez à NULL si vous vous en servez pas
+                   );
+   - Les paramètres sont importants !
+   - vTaskStartScheduler(); pour lancer les tâches !
+2. Syncronisations des tâches:
+    Un sémaphore est un baton de parole pour les variables communes. Si deux tâches veulent accéder à Serial par exemple il y aura problème
+    Un sémaphore controle ça et permet à une tache de prendre (take), si libre le baton, ou sinon de donner le baton (give)
+   - `SemaphoreHandle_t xSemaphoreCreateBinary()` pour créer un sémaphore.
+   - `xSemaphoreTake(SemaphoreHandle_t semaphore, TickType_t TicksToWait)` pour prendre le sémaphore (s'il n'est pas libre, attendre TicksToWait ticks).
+   - `xSemaphoreGive(SemaphoreHandle_t semaphore)` pour relacher un sémaphore.
+
+3. delay dans les tâches:
+    Et non désolé, delay ne va plus exister!
+   - `vTaskDelay(x)` pour bloquer le code pendant x ticks.
+   - Exemple: `vTaskDelay(pdMS_TO_TICKS(1000));` pdMS_TO_TICKS convertis des ms en ticks !
+
+4. Création d'une queue:
+   - Créez une queue avec `xQueueCreate()`.
+   - Il faut préciser sa taille et son type!
+   - Exemple: `xQueueCreate(10, sizeof(int));`
+
+5. Queue Send/Receive:
+   - `xQueueSend()` pour envoyer un item à la queue.
+   - `xQueueReceive()` pour recevoir un item à la queue.
+   - Exemple: `xQueueSend(queueHandle, &data, portMAX_DELAY);`
+
+6. Timer:
+   - `xTimerCreate()` pour créer un timer, une alamre si vous voulez.
+   - En paramètre, donnez le nom, le temps, si le timer reboucle, l'identifiant et la fonction appellée en fin de timer.
+   - Exemple: `xTimerCreate("Timer", pdMS_TO_TICKS(1000), pdTRUE, NULL, timerCallback);`
+   - timer callback doit avoir un signature comme ci: void vCallbackFunction( TimerHandle_t xTimer );
+   - ATTENTION: Pas de fonciton bloquante dans la fonction du timer !
+
+7. Tick Conversion:
+   - Use `pdMS_TO_TICKS()` to convert milliseconds to ticks.
+   - Use `pdMS_TO_TICKS()` to convert ticks to milliseconds.
+   - Example: `vTaskDelay(pdMS_TO_TICKS(1000));`
+

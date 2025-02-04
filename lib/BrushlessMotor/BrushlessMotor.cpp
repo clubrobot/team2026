@@ -1,6 +1,5 @@
 #include "BrushlessMotor.h"
 
-
 void BrushlessMotor::attach(int pin)
 {
     m_esc.attach(pin, MIN_PULSEWIDTH, MAX_PULSEWIDTH);
