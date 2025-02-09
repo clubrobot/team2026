@@ -9,14 +9,14 @@ import os
 #Pour chaque variable avec Bleu il en faut une autre avec Jaune à la place.
 
 #charge le fichier geogebra
-geo=Geogebra("map_2024.ggb")
+geo=Geogebra("./maps/map_2025.ggb")
 
 all=geo.getall("")
 
 elements = geo.root.findall("./construction/element")
-
 # Extraire les valeurs des attributs 'label'
 element_names = [elem.get("label") for elem in elements if elem.get("label") is not None]
+
 liste_bleu=[]
 liste_jaune=[]
 for e in element_names:
@@ -57,7 +57,7 @@ for e in liste_bleu:
     id+=1
 
 #on crée le fichier 
-f = open("raspberrypi/Geogebra.h", "w")
+f = open("./include/Geogebra.h", "w+")
 f.write("#ifndef TEAM2025_GEOGEBRA_H\n#define TEAM2025_GEOGEBRA_H\n#include \"Odometry.h\" \n")
 f.write(noms)
 f.write("\n")

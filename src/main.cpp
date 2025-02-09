@@ -5,6 +5,7 @@
 #include <My_Clock.h>
 #include <PrintfSupport.h>
 #include <variables_globales.h>
+#include <Logger.h>
 #include <Musique.h>
 
 #include "wheeledbase/wb_thread.h"
@@ -15,13 +16,7 @@
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
 
-#undef Error_Handler
-#define Error_Handler() \
-while (1) {\
-    printf("ERREUR dans %s:%d \n", __FILE__, __LINE__);\
-}//TODO: visual or beeper
-
-void test_loop( void* paraam);
+Logger main_logs = Logger("MAIN");
 
 //Setup de base
 void setup(){
@@ -29,30 +24,26 @@ void setup(){
 
     if(DEBUG) {
         PrintfSupport::begin(PRINTF_BAUD);
-        printf("[INIT] Debug enabled at %d baud\n", PRINTF_BAUD);
+        main_logs.log(INFO_LEVEL, "Debug enabled at %d baud\n", PRINTF_BAUD);
+        main_logs.log(INFO_LEVEL, "Printing WheeledBase Params\n");
+        Wheeledbase::PRINT_PARAMS();
     }
 
     //Musique myBeeper = Musique(PA6, 10);
-    //myBeeper.playSheetMusic(nokia);
+    //myBeeper.playSheetMusic(neverGonneGiveYouUp);
 
     wb_setup();
     actio_setup();
     Automate::init(TEAM_JAUNE);//TODO: team
 
-    Wheeledbase::PRINT_PARAMS();
-    pinMode(LED_BUILTIN, OUTPUT);
-    pinMode(PE1, OUTPUT);
-    digitalWrite(LED_BUILTIN, HIGH);
-
     if(TEST_NO_FREERTOS) {
-        printf("[INIT] Not using FreeRTOS\n");
+        main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
         return;
     }
-    printf("[INIT] Using FreeRTOS\n");
+    main_logs.log(GOOD_LEVEL,"Using FreeRTOS\n");
     //Setup FreeRTOS
 
     TaskHandle_t  hl_wb = nullptr;
-
 
     BaseType_t ret_wb = xTaskCreate(
                 wb_loop,       /* Function that implements the task. */
@@ -66,8 +57,8 @@ void setup(){
 
     // TaskHandle_t  hl_actio = NULL;
     // BaseType_t ret_actio = xTaskCreate(
-    //             actio_loop,       /* Function that implements the task. */
-    //             "Actionneur loop",          /* Text name for the task. */
+    //             sensors,       /* Function that implements the task. */
+    //             "Sensors loop",          /* Text name for the task. */
     //             10000,      /* Stack size in words, not bytes. */
     //             NULL,    /* Parameter passed into the task. */
     //             2,//Prio nulle à chier
@@ -76,7 +67,7 @@ void setup(){
     // if(ret_actio!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_robot = nullptr;
-    printf("Entre loop\n");
+
     BaseType_t ret_robot = xTaskCreate(
                 Automate::play_match,       /* Function that implements the task. */
                 "Robot loop",          /* Text name for the task. */
@@ -87,52 +78,15 @@ void setup(){
 
     if(ret_robot!=pdPASS) {Error_Handler()}
 
-    Serial.println("Start");
+    main_logs.log(GOOD_LEVEL,"Starting tasks");
     vTaskStartScheduler();//On commence FreeRTOS
-    Serial.println("Not good");
     //On devrait pas être là; Uh oh
-    Error_Handler(); //TODO: logger l'error handler
+    main_logs.log(ERROR_LEVEL,"Not good");
+    Error_Handler();
 }
-
-Position pos1 = Position(400,0,0);
-Position pos2 = Position(0,0,0);
-Position pos3 = Position(0,0,0);
-
-void test_loop( void* paraam) {
-    digitalWrite(PE1, HIGH);
-    //Wheeledbase::START_TURNONTHESPOT(false, 3.14);
-    //vTaskDelay(pdMS_TO_TICKS(10000));
-    printf("Back to it again\n");
-    for(;;) {
-        Wheeledbase::GOTO_DELTA(400,0);
-        while(Wheeledbase::POSITION_REACHED()!=0b01) {  }
-        vTaskDelay(pdMS_TO_TICKS(2000));
-        Wheeledbase::START_TURNONTHESPOT(0,-1.57);
-        while(Wheeledbase::POSITION_REACHED()!=0b01) { }
-        vTaskDelay(pdMS_TO_TICKS(2000));
-        Wheeledbase::START_TURNONTHESPOT(0,0);
-        while(Wheeledbase::POSITION_REACHED()!=0b01) { }
-        vTaskDelay(pdMS_TO_TICKS(2000));
-        Wheeledbase::GOTO_DELTA(-400,0);
-        while(Wheeledbase::POSITION_REACHED()!=0b01) { }
-        vTaskDelay(pdMS_TO_TICKS(2000));
-      /* printf("debut 1\n");
-        Wheeledbase::GOTO(&pos1, 0, 0);
-
-        vTaskDelay(pdMS_TO_TICKS(1000));
-
-        Wheeledbase::GOTO(&pos2, 0, 0);*/
-
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-
-}
-
 
 void loop() {
     //loop seuleuement accesssible quand TEST_NO_FREERTOS est à true
-
-
 
     //Wheeledbase::SET_OPENLOOP_VELOCITIES(100,0);
 }

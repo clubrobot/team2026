@@ -1055,8 +1055,7 @@ RECURSIVE              = YES
 # Note that relative paths are relative to the directory from which doxygen is
 # run.
 
-EXCLUDE                = ../platformIO/LIBS/ESP32_LIBS \
-                         ../.vscode \
+EXCLUDE                = ../.vscode \
                          ../.git \
                          html \
                          Doxyfile

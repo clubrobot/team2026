@@ -107,6 +107,11 @@
  *fur elise
 */
 
+const inline int16_t warn_user[] = {
+  6/2, 200, 4,
+  NOTE_E5, 4, NOTE_D5, 4, NOTE_E5, 4, NOTE_D5, 4, NOTE_E5, 4, NOTE_D5, 4,
+};
+
 const inline int16_t nokia[] = {
     //NbNotes, Tempo, time signature
     26/2, 200, 4,
