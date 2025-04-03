@@ -12,6 +12,7 @@
 #include "actionneurs/actio_thread.h"
 #include "decisions/Automate.h"
 
+#include "ServosPCA9685.h"
 
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
@@ -29,8 +30,8 @@ void setup(){
         Wheeledbase::PRINT_PARAMS();
     }
 
-    //Musique myBeeper = Musique(PA6, 10);
-    //myBeeper.playSheetMusic(neverGonneGiveYouUp);
+    Musique myBeeper = Musique(PA6, 2);
+    //myBeeper.playSheetMusic(nokia);
 
     wb_setup();
     actio_setup();
@@ -84,9 +85,7 @@ void setup(){
     main_logs.log(ERROR_LEVEL,"Not good");
     Error_Handler();
 }
-
+uint8_t servonum = 0;
 void loop() {
-    //loop seuleuement accesssible quand TEST_NO_FREERTOS est à true
 
-    //Wheeledbase::SET_OPENLOOP_VELOCITIES(100,0);
 }
