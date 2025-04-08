@@ -22,7 +22,6 @@
 namespace ServosPCA9685 {
     void Init();
     void Write(uint8_t servo, uint16_t value);
-
 };
 
 

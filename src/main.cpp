@@ -9,10 +9,9 @@
 #include <Musique.h>
 
 #include "wheeledbase/wb_thread.h"
-#include "actionneurs/actio_thread.h"
 #include "decisions/Automate.h"
 
-#include "ServosPCA9685.h"
+#include "team2025/ListeActionneurs.h"
 
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
@@ -34,7 +33,7 @@ void setup(){
     //myBeeper.playSheetMusic(nokia);
 
     wb_setup();
-    actio_setup();
+    listeActionneur::Init();
     Automate::init(TEAM_JAUNE);//TODO: team
 
     if(TEST_NO_FREERTOS) {
@@ -79,13 +78,13 @@ void setup(){
 
     if(ret_robot!=pdPASS) {Error_Handler()}
 
-    main_logs.log(GOOD_LEVEL,"Starting tasks");
+    main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS
     //On devrait pas être là; Uh oh
-    main_logs.log(ERROR_LEVEL,"Not good");
+    main_logs.log(ERROR_LEVEL,"Not good\n");
     Error_Handler();
 }
-uint8_t servonum = 0;
+
 void loop() {
 
 }

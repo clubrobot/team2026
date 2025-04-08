@@ -4,6 +4,7 @@
 
 #ifndef TEAM2025_AUTOMATE_H
 #define TEAM2025_AUTOMATE_H
+#include <Logger.h>
 #include <vector>
 #include "Tache.h"
 
