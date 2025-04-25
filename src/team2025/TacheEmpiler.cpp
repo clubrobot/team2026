@@ -7,4 +7,6 @@
 
 void TacheEmpiler::execute() {
     listeActionneur::ascenseur.turn(200);
+
+    listeActionneur::pince_droite.move(limite_pince_droite.limite_basse);
 }
