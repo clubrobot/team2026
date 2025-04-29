@@ -13,7 +13,7 @@ int Logger::log(uint8_t level, const char* format, ...) {
     va_list args;
     int nbcharprinted;
     va_start(args, format);
-    log_static(level, _name, format, args);
+    nbcharprinted = log_static(level, _name, format, args);
     va_end(args);
     return nbcharprinted;
 }
