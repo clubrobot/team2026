@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <sstream>
 #include <map>
-#include <chrono>
 #include <utility>
 
 // Enable/Disable implementation optimisations:
@@ -212,7 +211,7 @@ public:
 #ifdef TELEPLOT_DISABLE
         return ;
 #endif
-        int64_t nowUs = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowUs = micros();
         double nowMs = static_cast<double>(nowUs)/1000;
         updateData(key, nowMs, value, 0, flags, maxFrequencyHz, unit);
     }
@@ -222,7 +221,7 @@ public:
 #ifdef TELEPLOT_DISABLE
         return ;
 #endif
-        int64_t nowUs = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowUs = micros();
         double nowMs = static_cast<double>(nowUs)/1000;
         updateData(key, valueX, valueY, nowMs, flags, maxFrequencyHz);
     }
@@ -231,13 +230,13 @@ public:
 #ifdef TELEPLOT_DISABLE
         return ;
 #endif
-        int64_t nowUs = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowUs = micros();
         double nowMs = static_cast<double>(nowUs)/1000.0;
         updateData(mshape.getName(), nowMs, NULL, NULL, flags, maxFrequencyHz, "", mshape);
     }
 
     static void log(std::string const& log){
-        int64_t nowMs = std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowMs = millis();
         emit(">"+std::to_string(nowMs)+":"+log);
     }
 
@@ -245,7 +244,7 @@ public:
     {
 #ifdef TELEPLOT_USE_FREQUENCY
         if(frequency<=0) return true;
-        int64_t nowUs = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowUs = micros();
         if(updateTimestampsUs_.find(key) == updateTimestampsUs_.end()) {
             return true;
         }
@@ -262,7 +261,7 @@ public:
 private:
 #ifdef TELEPLOT_USE_FREQUENCY
     void saveUpdateDataTime(std::string const& key) {
-        int64_t nowUs = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowUs = micros();
         updateTimestampsUs_[key] = nowUs;
     }
 #endif
@@ -343,7 +342,7 @@ private:
 
     void flushBuffer(std::string const& key, std::string const& flags, const std::string& unit, bool force, bool is3D = false) {
         // Flush the buffer if the frequency is reached
-        int64_t nowUs = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now()).time_since_epoch().count();
+        int64_t nowUs = micros();
         int64_t elasped = nowUs - bufferingFlushTimestampsUs_[key];
         if(force || elasped >= static_cast<int64_t>(1e6/bufferingFrequencyHz_)) {
             emit(formatPacket(key, bufferingMap_[key], flags, unit, is3D));
