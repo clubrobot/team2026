@@ -69,7 +69,7 @@ void Tache::set_end(float x, float y, float theta) {
 void TacheGoto::execute() {
     int old_speed = Wheeledbase::GET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID);
     Wheeledbase::SET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID, old_speed*0.5);
-    Wheeledbase::GOTO(pos_approach, PurePursuit::FORWARD, pos_approach.theta);
+    Wheeledbase::GOTO(&pos_approach, PurePursuit::FORWARD, pos_approach.theta);
     Wheeledbase::SET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID, old_speed);
-    Wheeledbase::GOTO(pos_end, PurePursuit::FORWARD, pos_end.theta);
+    Wheeledbase::GOTO(&pos_end, PurePursuit::FORWARD, pos_end.theta);
 }

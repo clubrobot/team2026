@@ -8,8 +8,8 @@
 #include "AX12.h"
 #include "ServosPCA9685.h"
 
-#define AX12_ASCENSEUR_ID 1
-#define AX12_PINCE_DROITE_ID 2
+#define AX12_ASCENSEUR_ID 2 //OK
+#define AX12_PINCE_DROITE_ID 1 //OK
 #define AX12_PINCE_GAUCHE_ID 3
 
 #define SERVO_PINCE_DROITE_ID 1
@@ -25,12 +25,12 @@ typedef struct{
 }limites_actionneurs;
 
 
-limites_actionneurs limite_pince_droite;
-limites_actionneurs limite_pince_gauche;
-limites_actionneurs limite_servo_pince_droite;
-limites_actionneurs limite_servo_pince_gauche;
-limites_actionneurs limite_servo_pince_milieu_droit;
-limites_actionneurs limite_servo_pince_milieu_gauche;
+inline limites_actionneurs limite_pince_droite;
+inline limites_actionneurs limite_pince_gauche;
+inline limites_actionneurs limite_servo_pince_droite;
+inline limites_actionneurs limite_servo_pince_gauche;
+inline limites_actionneurs limite_servo_pince_milieu_droit;
+inline limites_actionneurs limite_servo_pince_milieu_gauche;
 
 namespace listeActionneur {
     void Init();

@@ -14,6 +14,8 @@ namespace listeActionneur {
     uint8_t servo_pince_milieu_gauche=SERVO_PINCE_MILIEU_GAUCHE_ID;
 }
 
+
+
 void listeActionneur::Init(){
     AX12::SerialBegin(AX12_BAUDRATE);
 
@@ -21,8 +23,8 @@ void listeActionneur::Init(){
     pince_droite.attach(AX12_PINCE_DROITE_ID);
     pince_gauche.attach(AX12_PINCE_GAUCHE_ID);
 
-    limite_pince_droite.limite_basse = 0;
-    limite_pince_droite.limite_haute = 100;
+    limite_pince_droite.limite_basse = 70; //OK
+    limite_pince_droite.limite_haute = 140; //OK
 
     //TODO find limit
 

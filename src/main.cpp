@@ -14,7 +14,7 @@
 #include "team2025/ListeActionneurs.h"
 
 #define DEBUG 1
-#define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
+#define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
 
@@ -35,7 +35,7 @@ void setup(){
     wb_setup();
     listeActionneur::Init();
     Automate::init(TEAM_JAUNE);//TODO: team
-
+    listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
         main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
         return;
@@ -86,5 +86,5 @@ void setup(){
 }
 
 void loop() {
-
+ listeActionneur::ascenseur.turn(1023);
 }

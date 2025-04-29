@@ -46,16 +46,17 @@ def main(baud : int, ip : str, port : int) -> None:
     """
     socket = get_socket()
     ser = get_serial(baud)
+    print("Everything OK!")
     while(1):
         line = get_line(ser)
         if re.compile(r".+:.+").search(line):
             send_data(socket, line)
 
 if __name__ == "__main__":
-    baud = 9600
+    baud = 115200
     ip = "127.0.0.1"
     port = 47269
-    temp = input("Quelle baudrate ? (9600 par défaut): ")
+    temp = input("Quelle baudrate ? (115200 par défaut): ")
     if temp != "":
         baud = int(temp)
     temp = input("Quelle IP ? (127.0.0.1 par défaut): ")
