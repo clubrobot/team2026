@@ -17,17 +17,17 @@ Buttons::Buttons(uint32_t pin, uint32_t inMode, callback_function_t onPress, uin
     this->isIT = true;
 }
 
-Buttons::~Buttons() {
-    if(this->isIT) {
-        detachInterrupt(digitalPinToInterrupt(this->_pin));
-    }
-}
-
 bool Buttons::getState() {
     return digitalRead(this->_pin);
 }
 
 LedButton::LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin): Buttons(Btnpin, inMode) {
+    pinMode(Ledpin, OUTPUT);
+    this->_ledPin = Ledpin;
+    this->_ledState = false;
+}
+
+LedButton::LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin, callback_function_t onPress, uint32_t mode): Buttons(Btnpin, inMode, onPress, mode) {
     pinMode(Ledpin, OUTPUT);
     this->_ledPin = Ledpin;
     this->_ledState = false;
