@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Buttons.h>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
 
@@ -7,6 +8,7 @@
 #include <variables_globales.h>
 #include <Logger.h>
 #include <Musique.h>
+#include <Teleplot.h>
 
 #include "wheeledbase/wb_thread.h"
 #include "decisions/Automate.h"
@@ -31,7 +33,18 @@ void setup(){
 
     Musique myBeeper = Musique(PA6, 2);
     //myBeeper.playSheetMusic(nokia);
-
+    test.setLedState(HIGH);
+    delay(500);
+    test.setLedState(LOW);
+    delay(500);
+    test.setLedState(HIGH);
+    delay(500);
+    test.setLedState(LOW);
+    delay(500);
+    test.setLedState(HIGH);
+    delay(500);
+    test.setLedState(LOW);
+    delay(500);
     wb_setup();
     listeActionneur::Init();
     Automate::init(TEAM_JAUNE);//TODO: team
@@ -85,6 +98,8 @@ void setup(){
     Error_Handler();
 }
 
+
 void loop() {
- listeActionneur::ascenseur.turn(1023);
+ //listeActionneur::ascenseur.turn(1023);
+    printf("%d\n", test.getState());
 }

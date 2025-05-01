@@ -11,7 +11,6 @@ class Buttons {
     public:
         Buttons(uint32_t pin, uint32_t inMode);
         Buttons(uint32_t pin, uint32_t inMode, callback_function_t onPress, uint32_t mode=RISING);
-        ~Buttons();
 
         bool getState();
     private:
@@ -24,7 +23,6 @@ class LedButton: public Buttons {
     public:
         LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin);
         LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin, callback_function_t onPress, uint32_t mode=RISING);
-        ~LedButton();
 
         void setLedState(bool state);
         bool getLedState();

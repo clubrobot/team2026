@@ -44,6 +44,14 @@ void Automate::init(int team) {
 }
 
 void Automate::play_match(void *pvParameters){
+
+    for(;;) {
+        Wheeledbase::GOTO(&pos_appr, 0, 0);
+        delay(500);
+        Wheeledbase::GOTO(&pos_beg, 0, 0);
+        delay(500);
+
+    }
 //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
 //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
     auto start_time = std::chrono::high_resolution_clock::now();
