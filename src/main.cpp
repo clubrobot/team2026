@@ -49,7 +49,7 @@ void procedure_demarrage(){
     ihm::led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
-AX12 test = AX12();
+
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -66,11 +66,10 @@ void setup(){
 
     wb_setup();
     listeActionneur::Init();
+    //Sensors::Init();
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs initied\n");
-    //procedure_demarrage();
+    procedure_demarrage();
 
-    test.attach(3);
-    //test.setID(3);
     //listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
         main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
@@ -121,25 +120,7 @@ void setup(){
     Error_Handler();
 }
 
-
 void loop() {
-/*
-    listeActionneur::pince_droite.move(limite_pince_droite.limite_haute);
-    listeActionneur::pince_gauche.move(limite_pince_gauche.limite_haute);
-    delay(5000);
-    listeActionneur::pince_droite.move(limite_pince_droite.limite_basse);
-    listeActionneur::pince_gauche.move(limite_pince_gauche.limite_basse);
-    delay(5000);
-    */
-    listeActionneur::ascenseur.turn(1023);
-    delay(limite_ascenseur.limite_haute*1000);
-    listeActionneur::ascenseur.turn(0);
-    delay(1000);
-
-    listeActionneur::ascenseur.turn(-1023);
-    delay(limite_ascenseur.limite_basse*1000);
-    listeActionneur::ascenseur.turn(0);
-    delay(1000);
  //listeActionneur::ascenseur.turn(1023);
 
 }
