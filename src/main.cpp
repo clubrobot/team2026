@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <Buttons.h>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
 
@@ -8,8 +7,8 @@
 #include <variables_globales.h>
 #include <Logger.h>
 #include <Musique.h>
-#include <Teleplot.h>
 
+#include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
 #include "decisions/Automate.h"
 
@@ -19,6 +18,37 @@
 #define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
+
+void procedure_demarrage(){
+    main_logs.log(INFO_LEVEL, "Sélectionez une équipe\n");
+    ihm::led_jaune(HIGH);
+    ihm::led_bleu(HIGH);
+    while (1){
+        if (!ihm::etat_jaune()){
+            main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
+            ihm::led_bleu(LOW);
+            Automate::init(TEAM_JAUNE);
+            break;
+        }
+        if (!ihm::etat_bleu()){
+            main_logs.log(GOOD_LEVEL,"Equipe Bleu!\n");
+            ihm::led_jaune(LOW);
+            Automate::init(TEAM_BLEU);
+            break;
+        }
+    }
+
+    main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert\n");
+    while (ihm::etat_vert()){
+        int prev = millis();
+        if (millis() - prev > 100){
+            prev = millis();
+            ihm::led_vert();
+        }
+    };
+    ihm::led_vert(LOW);
+    main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
+}
 
 //Setup de base
 void setup(){
@@ -33,22 +63,13 @@ void setup(){
 
     Musique myBeeper = Musique(PA6, 2);
     //myBeeper.playSheetMusic(nokia);
-    test.setLedState(HIGH);
-    delay(500);
-    test.setLedState(LOW);
-    delay(500);
-    test.setLedState(HIGH);
-    delay(500);
-    test.setLedState(LOW);
-    delay(500);
-    test.setLedState(HIGH);
-    delay(500);
-    test.setLedState(LOW);
-    delay(500);
+
     wb_setup();
     listeActionneur::Init();
-    Automate::init(TEAM_JAUNE);//TODO: team
-    listeActionneur::ascenseur.setEndlessMode(true);
+    main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs initied\n");
+    procedure_demarrage();
+
+    //listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
         main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
         return;
@@ -98,8 +119,7 @@ void setup(){
     Error_Handler();
 }
 
-
 void loop() {
  //listeActionneur::ascenseur.turn(1023);
-    printf("%d\n", test.getState());
+
 }

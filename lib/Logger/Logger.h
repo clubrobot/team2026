@@ -8,14 +8,6 @@
 #include <Arduino.h>
 #include "coloring.h"
 
-/**
-* TODO:
-* Different type of loggers:
-* 1: Print all to screen directly
-* 2: Save prints to buffer then print to screen
-* 3: file system ?
-*/
-
 #define MAX_NAME 50
 #define ERROR_LEVEL 3
 #define WARNING_LEVEL 2
