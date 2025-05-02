@@ -23,10 +23,13 @@ void listeActionneur::Init(){
     pince_droite.attach(AX12_PINCE_DROITE_ID);
     pince_gauche.attach(AX12_PINCE_GAUCHE_ID);
 
-    limite_pince_droite.limite_basse = 70; //OK
-    limite_pince_droite.limite_haute = 140; //OK
+    limite_pince_droite.limite_basse = 140; //ouvert
+    limite_pince_droite.limite_haute = 80; //fermé
 
-    //TODO find limit
+    limite_pince_gauche.limite_basse = 150; // ouvert
+    limite_pince_gauche.limite_haute = 193; // fermé
 
+    limite_ascenseur.limite_haute = 6;//6sec montée
+    limite_ascenseur.limite_basse = 5.3;//
 }
 

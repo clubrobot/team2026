@@ -18,15 +18,16 @@
 #define SERVO_PINCE_MILIEU_GAUCHE_ID 4
 
 typedef struct{
-    uint8_t limite_basse;
-    uint8_t action_1;
-    uint8_t action_2;
-    uint8_t limite_haute;
+    float limite_basse;
+    float action_1;
+    float action_2;
+    float limite_haute;
 }limites_actionneurs;
 
 
 inline limites_actionneurs limite_pince_droite;
 inline limites_actionneurs limite_pince_gauche;
+inline limites_actionneurs limite_ascenseur;
 inline limites_actionneurs limite_servo_pince_droite;
 inline limites_actionneurs limite_servo_pince_gauche;
 inline limites_actionneurs limite_servo_pince_milieu_droit;

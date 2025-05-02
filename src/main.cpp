@@ -123,8 +123,23 @@ void setup(){
 
 
 void loop() {
-    printf("%f\n", test.readPosition());
-    delay(50);
+/*
+    listeActionneur::pince_droite.move(limite_pince_droite.limite_haute);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.limite_haute);
+    delay(5000);
+    listeActionneur::pince_droite.move(limite_pince_droite.limite_basse);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.limite_basse);
+    delay(5000);
+    */
+    listeActionneur::ascenseur.turn(1023);
+    delay(limite_ascenseur.limite_haute*1000);
+    listeActionneur::ascenseur.turn(0);
+    delay(1000);
+
+    listeActionneur::ascenseur.turn(-1023);
+    delay(limite_ascenseur.limite_basse*1000);
+    listeActionneur::ascenseur.turn(0);
+    delay(1000);
  //listeActionneur::ascenseur.turn(1023);
 
 }
