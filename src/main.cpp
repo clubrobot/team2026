@@ -10,6 +10,7 @@
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
+#include "sensors/sensors_thread.h"
 #include "decisions/Automate.h"
 
 #include "team2025/ListeActionneurs.h"
@@ -66,9 +67,10 @@ void setup(){
 
     wb_setup();
     listeActionneur::Init();
-    //Sensors::Init();
-    main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs initied\n");
-    procedure_demarrage();
+    Sensors::Init();
+    pinMode(END_STOP_BAS_PIN, INPUT_PULLUP);
+    main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
+    //procedure_demarrage();
 
     //listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
@@ -90,16 +92,16 @@ void setup(){
 
     if(ret_wb!=pdPASS) {Error_Handler()}
 
-    // TaskHandle_t  hl_actio = NULL;
-    // BaseType_t ret_actio = xTaskCreate(
-    //             sensors,       /* Function that implements the task. */
-    //             "Sensors loop",          /* Text name for the task. */
-    //             10000,      /* Stack size in words, not bytes. */
-    //             NULL,    /* Parameter passed into the task. */
-    //             2,//Prio nulle à chier
-    //             &hl_actio );      /* Used to pass out the created task's handle. */
-    //
-    // if(ret_actio!=pdPASS) {Error_Handler()}
+    TaskHandle_t  hl_sens = NULL;
+    BaseType_t ret_sens= xTaskCreate(
+                sensorThread,       /* Function that implements the task. */
+                "Sensors loop",          /* Text name for thedi task. */
+                10000,      /* Stack size in words, not bytes. */
+                NULL,    /* Parameter passed into the task. */
+                5,//Prio nulle à chier
+                &hl_sens );      /* Used to pass out the created task's handle. */
+
+    if(ret_sens!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_robot = nullptr;
 
@@ -122,5 +124,8 @@ void setup(){
 
 void loop() {
  //listeActionneur::ascenseur.turn(1023);
-
+    listeActionneur::papillion_ferme();
+    delay(5000);
+    listeActionneur::papillion_ouvert();
+    delay(5000);
 }

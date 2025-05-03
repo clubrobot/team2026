@@ -18,6 +18,7 @@ namespace listeActionneur {
 
 void listeActionneur::Init(){
     AX12::SerialBegin(AX12_BAUDRATE);
+    ServosPCA9685::Init();
 
     ascenseur.attach(AX12_ASCENSEUR_ID);
     pince_droite.attach(AX12_PINCE_DROITE_ID);
@@ -31,5 +32,68 @@ void listeActionneur::Init(){
 
     limite_ascenseur.limite_haute = 6;//6sec montée
     limite_ascenseur.limite_basse = 5.3;//
+
+    limite_servo_pince_droite.action_1 = 80; ///FERME
+    limite_servo_pince_droite.action_2 = 150; //OUVERT
+    limite_servo_pince_gauche.action_1 = 167; ///FERME
+    limite_servo_pince_gauche.action_2 = 100; ///FERME
+    limite_servo_pince_milieu_droit.action_1 = 70; ///FERME
+    limite_servo_pince_milieu_droit.action_2 = 150; ///OUVERT
+    limite_servo_pince_milieu_gauche.action_1 = 165; ///FERME
+    limite_servo_pince_milieu_gauche.action_2 = 100; ///FERME
+}
+
+void listeActionneur::ouvre_centre(){
+    ServosPCA9685::Write(servo_pince_milieu_droit, limite_servo_pince_milieu_droit.action_2);
+    ServosPCA9685::Write(servo_pince_milieu_gauche, limite_servo_pince_milieu_gauche.action_2);
+}
+
+void listeActionneur::ferme_centre(){
+    ServosPCA9685::Write(servo_pince_milieu_droit, limite_servo_pince_milieu_droit.action_1);
+    ServosPCA9685::Write(servo_pince_milieu_gauche, limite_servo_pince_milieu_gauche.action_1);
+}
+
+void listeActionneur::ouvre_milieu(){
+    ServosPCA9685::Write(servo_pince_droite, limite_servo_pince_droite.action_2);
+    ServosPCA9685::Write(servo_pince_gauche, limite_servo_pince_gauche.action_2);
+}
+
+void listeActionneur::ferme_milieu(){
+    ServosPCA9685::Write(servo_pince_droite, limite_servo_pince_droite.action_1);
+    ServosPCA9685::Write(servo_pince_gauche, limite_servo_pince_gauche.action_1);
+}
+
+void listeActionneur::ouvre_tout(){
+    ouvre_milieu();
+    ouvre_centre();
+}
+
+
+void listeActionneur::ferme_tout(){
+    ferme_centre();
+    ferme_milieu();
+}
+
+void listeActionneur::monte(){
+    listeActionneur::ascenseur.turn(1023);
+    delay(limite_ascenseur.limite_haute);
+}
+
+void listeActionneur::descend(){
+    listeActionneur::ascenseur.turn(-1023);
+    while (ihm::etat_lim_bas()){
+
+    }
+    listeActionneur::ascenseur.turn(0);
+}
+
+void listeActionneur::papillion_ferme(){
+    listeActionneur::pince_droite.move(limite_pince_droite.limite_haute);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.limite_haute);
+}
+
+void listeActionneur::papillion_ouvert(){
+    listeActionneur::pince_droite.move(limite_pince_droite.limite_basse);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.limite_basse);
 }
 

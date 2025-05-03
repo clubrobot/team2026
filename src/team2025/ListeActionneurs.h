@@ -7,15 +7,16 @@
 
 #include "AX12.h"
 #include "ServosPCA9685.h"
+#include "ihm/ihm.h"
 
 #define AX12_ASCENSEUR_ID 2 //OK
 #define AX12_PINCE_DROITE_ID 1 //OK
 #define AX12_PINCE_GAUCHE_ID 3 //OK
 
-#define SERVO_PINCE_DROITE_ID 1
+#define SERVO_PINCE_DROITE_ID 15
 #define SERVO_PINCE_GAUCHE_ID 2
-#define SERVO_PINCE_MILIEU_DROIT_ID 3
-#define SERVO_PINCE_MILIEU_GAUCHE_ID 4
+#define SERVO_PINCE_MILIEU_DROIT_ID 1
+#define SERVO_PINCE_MILIEU_GAUCHE_ID 0
 
 typedef struct{
     float limite_basse;
@@ -35,6 +36,18 @@ inline limites_actionneurs limite_servo_pince_milieu_gauche;
 
 namespace listeActionneur {
     void Init();
+    void ferme_milieu();
+    void ouvre_milieu();
+    void ferme_centre();
+    void ouvre_centre();
+    void ferme_tout();
+    void ouvre_tout();
+
+    void monte();
+    void descend();
+
+    void papillion_ouvert();
+    void papillion_ferme();
 
     extern AX12 ascenseur;
     extern AX12 pince_droite;

@@ -101,6 +101,8 @@ namespace  Wheeledbase {
 
     void GOTO(Position* pos, char dir, float finalAngle);
 
+    void GOTO_LIDAR(Position* pos, char dir, float finalAngle, const float* avant, const float* arrière);
+
     uint8_t POSITION_REACHED();
 
     void GET_VELOCITIES_WANTED(float *linOutput, float *angOutput, bool spin=true);

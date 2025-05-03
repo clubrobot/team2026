@@ -192,6 +192,39 @@ void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
         }
     }
 }
+int tester = 0;
+void Wheeledbase::GOTO_LIDAR(Position* pos, char dir, float finalAngle, const float* avant, const float* arrière) {
+
+    const Position *myPos = Wheeledbase::GET_POSITION();
+    if (dir==PurePursuit::NONE) {
+        if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x))-myPos->theta) {
+            dir=PurePursuit::FORWARD;
+        }else {
+            dir=PurePursuit::BACKWARD;
+        }
+    }
+    const Position *posTab[2]={myPos, pos};
+    Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
+
+    while(Wheeledbase::POSITION_REACHED()!=0b01) {
+        const Position *pos = Wheeledbase::GET_POSITION();
+        //printf("%f, %f, %f\n", pos->x, pos->y, pos->theta);
+       if (*avant<20 || *arrière<20){
+           if (tester>5)SET_VELOCITIES(0,0);
+           else tester++;
+       }else{
+           tester=0;
+       }
+    }
+
+    if(pos->theta!=MAXFLOAT) {
+
+        Wheeledbase::START_TURNONTHESPOT(0, pos->theta);
+        while(Wheeledbase::POSITION_REACHED()!=0b01) {
+            //Todo: TimeOUT
+        }
+    }
+}
 
 void Wheeledbase::GET_VELOCITIES_WANTED(float* linOutput, float* angOutput, bool spin) {
     if (spin) {

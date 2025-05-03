@@ -18,12 +18,21 @@
 #define VERT_LED_PIN PD5
 #define ROUGE_LED_PIN PC9
 
+#define END_STOP_BAS_PIN PA5
+#define TIRETTE_PIN PD2 //TEMP!
+
+#define POMPE_PIN PF9
 namespace ihm {
+    void init();
 
     bool etat_bleu();
     bool etat_jaune();
     bool etat_vert();
     bool etat_rouge();
+    bool etat_lim_bas();
+    bool etat_tirette();
+
+    void set_pompe(bool state);
 
     void led_bleu(bool etat);
     void led_jaune(bool etat);
