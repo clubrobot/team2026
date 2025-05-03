@@ -24,14 +24,17 @@ void listeActionneur::Init(){
     pince_droite.attach(AX12_PINCE_DROITE_ID);
     pince_gauche.attach(AX12_PINCE_GAUCHE_ID);
 
-    limite_pince_droite.limite_basse = 140; //ouvert
-    limite_pince_droite.limite_haute = 80; //fermé
+    limite_pince_droite.limite_basse = 210; //ouvert
+    limite_pince_droite.limite_haute = 140; //fermé
+    limite_pince_droite.action_1 = 130; //fermé
 
-    limite_pince_gauche.limite_basse = 150; // ouvert
-    limite_pince_gauche.limite_haute = 193; // fermé
+    limite_pince_gauche.limite_basse = 50; // ouvert
+    limite_pince_gauche.limite_haute = 150; // fermé
+    limite_pince_gauche.action_1 = 160; // fermé
 
-    limite_ascenseur.limite_haute = 6;//6sec montée
-    limite_ascenseur.limite_basse = 5.3;//
+    limite_ascenseur.limite_haute = 6.5;//6sec montée
+    limite_ascenseur.limite_basse = 1;//
+    limite_ascenseur.action_1 = 1.5;//
 
     limite_servo_pince_droite.action_1 = 80; ///FERME
     limite_servo_pince_droite.action_2 = 150; //OUVERT
@@ -76,10 +79,31 @@ void listeActionneur::ferme_tout(){
 
 void listeActionneur::monte(){
     listeActionneur::ascenseur.turn(1023);
-    delay(limite_ascenseur.limite_haute);
+    while (!ihm::etat_lim_bas()){
+
+    }
+    delay(limite_ascenseur.limite_haute*1000);
+    listeActionneur::ascenseur.turn(0);
+    return;
 }
 
+void listeActionneur::monte_un_peu(){
+        listeActionneur::ascenseur.turn(1023);
+        delay(limite_ascenseur.limite_basse*1000);
+        listeActionneur::ascenseur.turn(0);
+        return;
+}
+
+void listeActionneur::monte_un_peu_plus(){
+    listeActionneur::ascenseur.turn(1023);
+    delay(limite_ascenseur.action_1*1000);
+    listeActionneur::ascenseur.turn(0);
+    return;
+}
+
+
 void listeActionneur::descend(){
+
     listeActionneur::ascenseur.turn(-1023);
     while (ihm::etat_lim_bas()){
 

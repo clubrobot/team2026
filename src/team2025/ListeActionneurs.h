@@ -44,6 +44,8 @@ namespace listeActionneur {
     void ouvre_tout();
 
     void monte();
+    void monte_un_peu();
+    void monte_un_peu_plus();
     void descend();
 
     void papillion_ouvert();

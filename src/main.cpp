@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <list>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
 
@@ -16,7 +17,7 @@
 #include "team2025/ListeActionneurs.h"
 
 #define DEBUG 1
-#define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
+#define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
 
@@ -40,7 +41,7 @@ void procedure_demarrage(){
     }
 
     main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert\n");
-    while (ihm::etat_vert()){
+    while (!ihm::etat_vert()){
         int prev = millis();
         if (millis() - prev > 100){
             prev = millis();
@@ -62,15 +63,19 @@ void setup(){
         Wheeledbase::PRINT_PARAMS();
     }
 
-    Musique myBeeper = Musique(PA6, 2);
-    //myBeeper.playSheetMusic(nokia);
+    Musique myBeeper = Musique(PA6, 10);
+    //myBeeper.playSheetMusic(cantina);
 
     wb_setup();
     listeActionneur::Init();
+    listeActionneur::ferme_tout();
+    listeActionneur::papillion_ferme();
+    listeActionneur::descend();
+    listeActionneur::monte_un_peu();
+    //listeActionneur::papillion_ouvert();
     Sensors::Init();
-    pinMode(END_STOP_BAS_PIN, INPUT_PULLUP);
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
-    //procedure_demarrage();
+    procedure_demarrage();
 
     //listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
@@ -123,9 +128,25 @@ void setup(){
 }
 
 void loop() {
- //listeActionneur::ascenseur.turn(1023);
-    listeActionneur::papillion_ferme();
-    delay(5000);
     listeActionneur::papillion_ouvert();
-    delay(5000);
+    poly_delay(1000);
+    ihm::set_pompe(HIGH);
+    listeActionneur::descend();
+    poly_delay(1000);
+    listeActionneur::papillion_ferme();
+    poly_delay(1000);
+    listeActionneur::papillion_ouvert();
+
+    poly_delay(1000);
+    listeActionneur::monte();
+    poly_delay(1000);
+    listeActionneur::papillion_ferme();
+    ihm::set_pompe(LOW);
+    poly_delay(1000);
+    listeActionneur::ouvre_tout();
+    poly_delay(1000);
+    listeActionneur::papillion_ouvert();
+
+    poly_delay(100000);
+
 }

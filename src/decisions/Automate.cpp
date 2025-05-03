@@ -5,7 +5,10 @@
 #include "Automate.h"
 #include "My_Clock.h"
 #include <chrono>
+#include <FreeRTOS.h>
+#include <FreeRTOSConfig_Default.h>
 #include <Wheeledbase.h>
+#include <FreeRTOS/Source/include/task.h>
 
 #include "Geogebra.h"
 #include "variables_globales.h"
@@ -22,7 +25,7 @@ namespace Automate {
 }
 
 Position pos_beg = Position(0,0,0);
-Position pos_appr = Position(100,0,0);
+Position pos_appr = Position(1425,190,-1.57);
 Position pos_end = Position(200,0,0);
 
 void Automate::init(int team) {
@@ -30,28 +33,46 @@ void Automate::init(int team) {
     if(team==TEAM_JAUNE){
         auto_logs.log(WARNING_LEVEL, "Automate init avec Jaune\n");
         //import geogebra.h jaune
-        positions_match=positions_jaune;
-        numberTaches=1;
 
-        taches[0]=new TacheGoto(&pos_beg,&pos_appr, &pos_end);
+        positions_match=positions_jaune;
+        Wheeledbase::SET_POSITION(&positions_match[chgsta]);
+
+        numberTaches=3;
+        taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
+        taches[1]=new TacheEmpiler();
+        taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
+        //taches[3]=new TacheSTOP();
+        //taches[0]=new TacheMoveDelta(-100,100);
+        //taches[2]=new TacheGoto(nullptr, &positions_match[start2], &positions_match[start2]);
+
     }else{
         auto_logs.log(INFO_LEVEL, "Automate init avec Bleu\n");
         //import geogebra.h bleu
         positions_match=positions_bleu;
+
+        Wheeledbase::SET_POSITION(&positions_match[chgsta]);
+
+        numberTaches=3;
+        taches[0]=new TacheGoto(nullptr,&positions_match[garage91all], &positions_match[depot2]);
+        taches[1]=new TacheEmpiler();
+        taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
+        //taches[3]=new TacheSTOP();
+        //taches[3]=new TacheSTOP();
     }
     //mettre les tâches a éxécuter ici.
 
 }
 
 void Automate::play_match(void *pvParameters){
+    /*for(;;) {
+        for (;;){
+            const Position *pos = Wheeledbase::GET_POSITION();
+            printf("%f %f %f\n", pos->x, pos->y, pos->theta);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
+        Wheeledbase::GOTO(&positions_match[garage41all], 0, 1.57);
 
-    for(;;) {
-        Wheeledbase::GOTO(&pos_appr, 0, 0);
-        delay(500);
-        Wheeledbase::GOTO(&pos_beg, 0, 0);
-        delay(500);
-
-    }
+    }*/
 //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
 //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
     auto start_time = std::chrono::high_resolution_clock::now();

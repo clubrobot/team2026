@@ -2,6 +2,8 @@
 #define __CLOCK_H__
 
 #include <Arduino.h>
+#include <FreeRTOS.h>
+#include <FreeRTOS/Source/include/task.h>
 
 /** class Clock
  *  \brief Utilitaire pour gérer le temps dans vos programmes Arduino.
@@ -39,6 +41,14 @@ __STATIC_INLINE uint32_t DWT_micros(void) {
  */
 __STATIC_INLINE uint32_t DWT_value(void) {
     return DWT->CYCCNT ;
+}
+
+static void poly_delay(uint32_t ms) {
+    if (xTaskGetSchedulerState() == taskSCHEDULER_NOT_STARTED) {
+        delay(ms);
+    } else {
+        vTaskDelay(pdMS_TO_TICKS(ms));
+    }
 }
 
 class Clock {

@@ -146,7 +146,7 @@ void Wheeledbase::START_TURNONTHESPOT_DIR(bool dir, float theta) {
 */
 uint8_t Wheeledbase::POSITION_REACHED() {
     bool positionReached = positionControl.getPositionReached() && positionControl.isEnabled();
-    bool spinUrgency = !velocityControl.isEnabled();
+    bool spinUrgency = false;//!velocityControl.isEnabled();
     uint8_t ret = 0;
     ret = ret | positionReached;
     ret = ret | (spinUrgency << 1);
@@ -169,18 +169,20 @@ void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
 
     const Position *myPos = Wheeledbase::GET_POSITION();
     if (dir==PurePursuit::NONE) {
-        if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x))-myPos->theta) {
+        if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x)-myPos->theta)) {
             dir=PurePursuit::FORWARD;
+            printf("forward\n");
         }else {
             dir=PurePursuit::BACKWARD;
+            printf("back\n");
         }
     }
     const Position *posTab[2]={myPos, pos};
     Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
 
     while(Wheeledbase::POSITION_REACHED()!=0b01) {
-        const Position *pos = Wheeledbase::GET_POSITION();
-        //printf("%f, %f, %f\n", pos->x, pos->y, pos->theta);
+        const Position *posi = Wheeledbase::GET_POSITION();
+        //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
         //Do nothing
     }
 
@@ -206,13 +208,29 @@ void Wheeledbase::GOTO_LIDAR(Position* pos, char dir, float finalAngle, const fl
     const Position *posTab[2]={myPos, pos};
     Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
 
+
     while(Wheeledbase::POSITION_REACHED()!=0b01) {
         const Position *pos = Wheeledbase::GET_POSITION();
         //printf("%f, %f, %f\n", pos->x, pos->y, pos->theta);
-       if (*avant<20 || *arrière<20){
-           if (tester>5)SET_VELOCITIES(0,0);
+       if (*avant<20){
+           if (tester>5){
+               SET_VELOCITIES(0,0);
+               //printf("STOPPPP\n");
+           }
            else tester++;
        }else{
+           if (tester>5){
+               const Position *myPos = Wheeledbase::GET_POSITION();
+               if (dir==PurePursuit::NONE) {
+                   if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x))-myPos->theta) {
+                       dir=PurePursuit::FORWARD;
+                   }else {
+                       dir=PurePursuit::BACKWARD;
+                   }
+               }
+               const Position *posTab[2]={myPos, pos};
+               Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
+           }
            tester=0;
        }
     }

@@ -2,6 +2,7 @@
 #ifndef TEAM2025_TACHE_H
 #define TEAM2025_TACHE_H
 #include <Odometry.h>
+#include <PurePursuit.h>
 
 
 class Tache {
@@ -32,18 +33,43 @@ public:
     void set_end(Position* _pos_end);
     void set_end(float x, float y, float theta);
 };
-//Todo: function move for each tache
 class TacheGoto: public Tache{
     void execute() override;
 public:
-    TacheGoto(Position* _pos_begin, Position* _pos_approach, Position* _pos_end){
+    float radius =220;
+    int arriere =PurePursuit::NONE;
+    TacheGoto(Position* _pos_begin, Position* _pos_approach, Position* _pos_end, int marche_arriere=PurePursuit::NONE){
         set_max_score(0);
         set_necessary_time(0);
         set_begin(_pos_begin);
         set_approach(_pos_approach);
         set_end(_pos_end);
+        arriere=marche_arriere;
     }
 };
+
+class TacheMoveDelta: public Tache{
+    void execute() override;
+    void setDelta(float vel, uint32_t temps);
+    float _vel, _temps;
+public:
+    TacheMoveDelta(float vel, uint32_t temps){
+        set_max_score(0);
+        set_necessary_time(0);
+        setDelta(vel, temps);
+    }
+};
+
+class TacheSTOP: public Tache{
+    void execute() override;
+
+public:
+    TacheSTOP(){
+        set_max_score(0);
+        set_necessary_time(0);
+    }
+};
+
 
 
 #endif

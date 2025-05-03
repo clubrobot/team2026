@@ -9,7 +9,7 @@ import os
 #Pour chaque variable avec Bleu il en faut une autre avec Jaune à la place.
 
 #charge le fichier geogebra
-geo=Geogebra("./maps/map_2025.ggb")
+geo=Geogebra("../maps/map_2025.ggb")
 
 all=geo.getall("")
 
@@ -43,7 +43,7 @@ for e in liste_bleu:
             name=e.lower().replace("bleu","")
             noms+="#define "+name+" "+str(id)+"\n"
             point=geo.get(e_j)
-            var_jaunes+="   Position("+str(point[0])+"f, "+str(point[1])+"f,0), //"+name+"\n"
+            var_jaunes+="   Position("+str(point[0])+"f, "+str(point[1])+"f, -1.570796327), //"+name+"\n"
             found=True
             break
 
@@ -53,11 +53,11 @@ for e in liste_bleu:
         print("Le point",e," n'a pas de point de la team jaune associé.")
     #o najoute le point bleu.
     point=geo.get(e)
-    var_bleu+="   Position("+str(point[0])+"f, "+str(point[1])+"f,0), //"+name+"\n"
+    var_bleu+="   Position("+str(point[0])+"f, "+str(point[1])+"f, -1.570796327), //"+name+"\n"
     id+=1
 
 #on crée le fichier 
-f = open("./include/Geogebra.h", "w+")
+f = open("../include/Geogebra.h", "w+")
 f.write("#ifndef TEAM2025_GEOGEBRA_H\n#define TEAM2025_GEOGEBRA_H\n#include \"Odometry.h\" \n")
 f.write(noms)
 f.write("\n")

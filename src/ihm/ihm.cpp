@@ -4,6 +4,10 @@
 
 #include "ihm.h"
 
+#include <FreeRTOS.h>
+#include <My_Clock.h>
+#include <FreeRTOS/Source/include/task.h>
+
 static LedButton bleu = LedButton(BLEU_BTN_PIN, INPUT_PULLUP, BLEU_LED_PIN);
 static LedButton jaune = LedButton(JAUNE_BTN_PIN, INPUT_PULLUP, JAUNE_LED_PIN);
 static LedButton vert = LedButton(VERT_BTN_PIN, INPUT_PULLUP, VERT_LED_PIN);
@@ -25,10 +29,12 @@ bool ihm::etat_tirette(){return tirette.getState();}
 
 void ihm::set_pompe(bool state){
     if (state==HIGH){
+        portENTER_CRITICAL();
         for (int i=0; i<1023; i++){
             analogWrite(POMPE_PIN, i);
-            delay(1);
+            poly_delay(1);
         }
+        portEXIT_CRITICAL();
     }else{
         analogWrite(POMPE_PIN, 0);
     }

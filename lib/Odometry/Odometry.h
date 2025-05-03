@@ -27,7 +27,7 @@ struct Position
 	 * @param theta angle initial.
 	 */
 	Position(float x, float y, float theta) : x(x), y(y), theta(theta){}
-
+	static bool compare(const Position *one , const Position *two){return one->x==two->x && one->y==two->y && one->theta==two->theta;}
 	float x;/*!< Coordonnée en x.*/
 	float y;/*!< Coordonnée en y.*/
 	float theta;/*!< Angle.*/
