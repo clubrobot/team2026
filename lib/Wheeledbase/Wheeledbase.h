@@ -55,6 +55,8 @@
 #define PUREPURSUIT_LOOKAHED_ID         0xE0
 #define PUREPURSUIT_LOOKAHEADBIS_ID     0xE2
 
+#define SLOWDOWN_DISTANCE               50
+
 // Global variables
 extern DCMotorsDriver driver;
 extern DCMotor leftWheel;
