@@ -182,13 +182,13 @@ void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
     const Position *posTab[2]={myPos, pos};
     Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
 
-    float maxSpeed = defaultMaxSpeed;
+    double maxSpeed = defaultMaxSpeed;
 
     while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
         const Position *posi = Wheeledbase::GET_POSITION();
         int distance = sqrt(pow(posi->x-pos->x, 2)+pow(posi->y-pos->y, 2));
         if (distance<SLOWDOWN_DISTANCE){
-            maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed*0.02 : maxSpeed;
+            maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed * SLOWDOWN_FACTOR : maxSpeed;
             Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, maxSpeed);
         }
         //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
