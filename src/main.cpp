@@ -75,7 +75,7 @@ void setup(){
     //listeActionneur::papillion_ouvert();
     Sensors::Init();
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
-    procedure_demarrage();
+    //procedure_demarrage();
 
     //listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
@@ -97,12 +97,12 @@ void setup(){
 
     if(ret_wb!=pdPASS) {Error_Handler()}
 
-    TaskHandle_t  hl_sens = NULL;
+    TaskHandle_t  hl_sens = nullptr;
     BaseType_t ret_sens= xTaskCreate(
                 sensorThread,       /* Function that implements the task. */
                 "Sensors loop",          /* Text name for thedi task. */
                 10000,      /* Stack size in words, not bytes. */
-                NULL,    /* Parameter passed into the task. */
+                nullptr,    /* Parameter passed into the task. */
                 5,//Prio nulle à chier
                 &hl_sens );      /* Used to pass out the created task's handle. */
 
@@ -114,7 +114,7 @@ void setup(){
                 Automate::play_match,       /* Function that implements the task. */
                 "Robot loop",          /* Text name for the task. */
                 10000,      /* Stack size in words, not bytes. */
-                nullptr,    /* Parameter passed into the task. */
+                (void *) procedure_demarrage,    /* Parameter passed into the task. */
                 5,//Prio un peu mieux
                 &hl_robot );      /* Used to pass out the created task's handle. */
 
@@ -123,7 +123,7 @@ void setup(){
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS
     //On devrait pas être là; Uh oh
-    main_logs.log(ERROR_LEVEL,"Not good\n");
+    main_logs.log(ERROR_LEVEL,"FreeRTOS crashed\n");
     Error_Handler();
 }
 

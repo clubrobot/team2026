@@ -64,6 +64,8 @@ void Automate::init(int team) {
 }
 
 void Automate::play_match(void *pvParameters){
+    auto *procedure_demarrage = (void (*)()) pvParameters;
+    procedure_demarrage();
     /*for(;;) {
         for (;;){
             const Position *pos = Wheeledbase::GET_POSITION();
