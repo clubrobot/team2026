@@ -21,34 +21,36 @@
 
 Logger main_logs = Logger("MAIN");
 
+
+using namespace ihm;
 void procedure_demarrage(){
     main_logs.log(INFO_LEVEL, "Sélectionez une équipe\n");
-    ihm::led_jaune(HIGH);
-    ihm::led_bleu(HIGH);
+    led_jaune(HIGH);
+    led_bleu(HIGH);
     while (1){
-        if (!ihm::etat_jaune()){
+        if (!etat_jaune()){
             main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
-            ihm::led_bleu(LOW);
+            led_bleu(LOW);
             Automate::init(TEAM_JAUNE);
             break;
         }
-        if (!ihm::etat_bleu()){
+        if (!etat_bleu()){
             main_logs.log(GOOD_LEVEL,"Equipe Bleu!\n");
-            ihm::led_jaune(LOW);
+            led_jaune(LOW);
             Automate::init(TEAM_BLEU);
             break;
         }
     }
 
     main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert\n");
-    while (!ihm::etat_vert()){
+    while (!etat_vert()){
         int prev = millis();
         if (millis() - prev > 100){
             prev = millis();
-            ihm::led_vert();
+            led_vert();
         }
     };
-    ihm::led_vert(LOW);
+    led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
 
@@ -130,7 +132,7 @@ void setup(){
 void loop() {
     listeActionneur::papillion_ouvert();
     poly_delay(1000);
-    ihm::set_pompe(HIGH);
+    listeActionneur::set_pompe(HIGH);
     listeActionneur::descend();
     poly_delay(1000);
     listeActionneur::papillion_ferme();
@@ -141,7 +143,7 @@ void loop() {
     listeActionneur::monte();
     poly_delay(1000);
     listeActionneur::papillion_ferme();
-    ihm::set_pompe(LOW);
+    listeActionneur::set_pompe(LOW);
     poly_delay(1000);
     listeActionneur::ouvre_tout();
     poly_delay(1000);

@@ -3,33 +3,35 @@
 //
 
 #include "TacheEmpiler.h"
+#include "ListeActionneurs.h"
 
+using namespace listeActionneur;
 
 void TacheEmpiler::execute() {
-    listeActionneur::ouvre_milieu();
+    ouvre_milieu();
     poly_delay(500);
-    listeActionneur::papillion_ouvert();
-    listeActionneur::ouvre_centre();
+    papillion_ouvert();
+    ouvre_centre();
     poly_delay(500);
-    listeActionneur::ferme_centre();
-    ihm::set_pompe(HIGH);
-    listeActionneur::descend();
+    ferme_centre();
+    set_pompe(HIGH);
+    descend();
     poly_delay(500);
-    listeActionneur::pince_droite.move(limite_pince_droite.action_1);
-    listeActionneur::pince_gauche.move(limite_pince_gauche.action_1);
+    pince_droite.move(limite_pince_droite.action_1);
+    pince_gauche.move(limite_pince_gauche.action_1);
 
-    listeActionneur::ferme_milieu();
+    ferme_milieu();
     poly_delay(1000);
-    listeActionneur::monte_un_peu_plus();
+    monte_un_peu_plus();
     poly_delay(500);
-    listeActionneur::papillion_ouvert();
+    papillion_ouvert();
     poly_delay(500);
-    listeActionneur::monte();
+    monte();
     poly_delay(50);
-    listeActionneur::papillion_ferme();
-    ihm::set_pompe(LOW);
+    papillion_ferme();
+    set_pompe(LOW);
     poly_delay(500);
-    listeActionneur::ouvre_tout();
+    ouvre_tout();
     poly_delay(500);
-    listeActionneur::papillion_ouvert();
+    papillion_ouvert();
 }

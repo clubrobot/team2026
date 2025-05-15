@@ -90,12 +90,7 @@ void TacheGoto::execute() {
             float ang = acos(diff.x/length);
             if (diff.y<0) ang *=-1;
         }*/
-        int old_speed = Wheeledbase::GET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID);
-        Wheeledbase::SET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID, old_speed);
-        Wheeledbase::GOTO(&pos_approach, arriere, pos_approach.theta);
-        Wheeledbase::SET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID, old_speed*0.5);
         Wheeledbase::GOTO(&pos_end, arriere, pos_end.theta);
-        Wheeledbase::SET_PARAMETER_VALUE(LINVELPID_MAXOUTPUT_ID, old_speed*0.5);
 
     }else{
         Wheeledbase::GOTO(&pos_end, arriere, pos_end.theta);

@@ -18,6 +18,8 @@
 #define SERVO_PINCE_MILIEU_DROIT_ID 1
 #define SERVO_PINCE_MILIEU_GAUCHE_ID 0
 
+#define POMPE_PIN PF9
+
 typedef struct{
     float limite_basse;
     float action_1;
@@ -50,6 +52,8 @@ namespace listeActionneur {
 
     void papillion_ouvert();
     void papillion_ferme();
+
+    void set_pompe(bool state);
 
     extern AX12 ascenseur;
     extern AX12 pince_droite;

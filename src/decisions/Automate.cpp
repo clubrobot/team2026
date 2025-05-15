@@ -13,7 +13,6 @@
 #include "Geogebra.h"
 #include "variables_globales.h"
 
-#include "team2025/TacheBipbip.h"
 #include "team2025/TacheEmpiler.h"
 
 namespace Automate {
@@ -65,30 +64,21 @@ void Automate::init(int team) {
 
 void Automate::play_match(void *pvParameters){
     auto *procedure_demarrage = (void (*)()) pvParameters;
+    //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
+    //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
+    //auto start_time = std::chrono::high_resolution_clock::now();
     procedure_demarrage();
-    /*for(;;) {
-        for (;;){
-            const Position *pos = Wheeledbase::GET_POSITION();
-            printf("%f %f %f\n", pos->x, pos->y, pos->theta);
-            vTaskDelay(pdMS_TO_TICKS(20));
-        }
-        Wheeledbase::GOTO(&positions_match[garage41all], 0, 1.57);
-
-    }*/
-//cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
-//Seulement la fonction execute  et get_necessary_time doivent être implémentée.
-    auto start_time = std::chrono::high_resolution_clock::now();
     points=0;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {
         auto_logs.log(INFO_LEVEL, "Tache n.%d\n", tache_id);
         //execute les tâches dans l'ordre tant qu'on a assez de temps.
-        auto current = std::chrono::high_resolution_clock::now();
-        auto delta_t = std::chrono::duration<double, std::milli>(current-start_time).count();
-        auto_logs.log(INFO_LEVEL, "delta_t %f  et %f\n", delta_t, 100000-taches[tache_id]->get_necessary_time());
+        //auto current = std::chrono::high_resolution_clock::now();
+        //auto delta_t = std::chrono::duration<double, std::milli>(current-start_time).count();
+        //auto_logs.log(INFO_LEVEL, "delta_t %f  et %f\n", delta_t, 100000-taches[tache_id]->get_necessary_time());
         //if(delta_t>100000-taches[tache_id]->get_necessary_time())break;//on est deja a la fin du match faut s'arrêter la
         //execute la tâche.
         taches[tache_id]->execute();
-        points+=taches[tache_id]->get_max_score();
+        //points+=taches[tache_id]->get_max_score();
     }
 
 }

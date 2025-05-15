@@ -4,6 +4,8 @@
 
 #include "ListeActionneurs.h"
 
+#include <My_Clock.h>
+
 namespace listeActionneur {
     AX12 ascenseur;
     AX12 pince_droite;
@@ -44,6 +46,8 @@ void listeActionneur::Init(){
     limite_servo_pince_milieu_droit.action_2 = 150; ///OUVERT
     limite_servo_pince_milieu_gauche.action_1 = 165; ///FERME
     limite_servo_pince_milieu_gauche.action_2 = 100; ///FERME
+
+    pinMode(POMPE_PIN, OUTPUT);
 }
 
 void listeActionneur::ouvre_centre(){
@@ -121,3 +125,15 @@ void listeActionneur::papillion_ouvert(){
     listeActionneur::pince_gauche.move(limite_pince_gauche.limite_basse);
 }
 
+void listeActionneur::set_pompe(bool state){
+    if (state==HIGH){
+        portENTER_CRITICAL();
+        for (int i=0; i<1023; i++){
+            analogWrite(POMPE_PIN, i);
+            poly_delay(1);
+        }
+        portEXIT_CRITICAL();
+    }else{
+        analogWrite(POMPE_PIN, 0);
+    }
+}

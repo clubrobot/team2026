@@ -165,13 +165,13 @@ void Wheeledbase::PUREPURSUIT(const Position** waypoints, uint16_t nb_waypoints,
     Wheeledbase::START_PUREPURSUIT(dir, finalAngle);
 }
 
-void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
+void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle, bool alignFirst) {
 
     float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
 
     const Position *myPos = Wheeledbase::GET_POSITION();
     if (dir==PurePursuit::NONE) {
-        if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x)-myPos->theta)) {
+        if(cos(atan2(pos->y-myPos->y, pos->x-myPos->x)-myPos->theta)<0) {
             dir=PurePursuit::FORWARD;
             printf("forward\n");
         }else {
@@ -180,22 +180,31 @@ void Wheeledbase::GOTO(Position* pos, char dir, float finalAngle) {
         }
     }
     const Position *posTab[2]={myPos, pos};
-    Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);//TODO
 
-    double maxSpeed = defaultMaxSpeed;
 
-    while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
-        const Position *posi = Wheeledbase::GET_POSITION();
-        int distance = sqrt(pow(posi->x-pos->x, 2)+pow(posi->y-pos->y, 2));
-        if (distance<SLOWDOWN_DISTANCE){
-            maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed * SLOWDOWN_FACTOR : maxSpeed;
-            Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, maxSpeed);
+    if (alignFirst){
+        //On avance vers un point avant le point d'arrivé pour s'aligner et après on avance tout droit
+
+    }else{
+        //On avance dans une ligne droite et on ralenti à la fin
+        Wheeledbase::PUREPURSUIT(posTab, 2, dir, finalAngle);
+
+        double maxSpeed = defaultMaxSpeed;
+
+        while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+            const Position *posi = Wheeledbase::GET_POSITION();
+            int distance = sqrt(pow(posi->x-pos->x, 2)+pow(posi->y-pos->y, 2));
+            if (distance<SLOWDOWN_DISTANCE){
+                maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed * SLOWDOWN_FACTOR : maxSpeed;
+                Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, maxSpeed);
+            }
+            //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
+            //Do nothing
         }
-        //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
-        //Do nothing
+
+        Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
     }
 
-    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
 
     if(pos->theta!=MAXFLOAT) {
 
