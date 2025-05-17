@@ -11,7 +11,7 @@ class ShiftRegister
 		void SetLow (int pos);
 		void write(int pos, int state);
 
-	//protected:
+	protected:
 		void shift();
 
 		uint8_t m_LATCH;

@@ -58,6 +58,7 @@
 //define the distance and the deceleration at the end of goto
 #define SLOWDOWN_FACTOR                 0.02
 #define SLOWDOWN_DISTANCE               50
+#define ALIGN_DISTANCE                  300
 
 // Global variables
 extern DCMotorsDriver driver;
@@ -103,9 +104,7 @@ namespace  Wheeledbase {
 
     void PUREPURSUIT(const Position** waypoints, uint16_t nb_waypoints, char dir, float finalAngle);
 
-    void GOTO(Position* pos, char dir, float finalAngle, bool alignFirst=false);
-
-    void GOTO_LIDAR(Position* pos, char dir, float finalAngle, const float* avant, const float* arrière);
+    void GOTO(Position* pos, bool alignFirst=false, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
 
     uint8_t POSITION_REACHED();
 

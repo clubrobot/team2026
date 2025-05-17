@@ -9,6 +9,7 @@
 #include <FreeRTOSConfig_Default.h>
 #include <Wheeledbase.h>
 #include <FreeRTOS/Source/include/task.h>
+#include <team2025/ListeActionneurs.h>
 
 #include "Geogebra.h"
 #include "variables_globales.h"

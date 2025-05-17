@@ -116,6 +116,9 @@ void Sensors::Init(){
 float dist1, dist2;
 void sensorThread(void *pvParameters){
     for (;;){
+
+    }
+    for (;;){
         vTaskSuspendAll();
         digitalWrite(TRIG1, LOW);
         delayMicroseconds(2);

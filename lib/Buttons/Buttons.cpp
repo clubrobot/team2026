@@ -4,6 +4,8 @@
 
 #include "Buttons.h"
 
+#include <utility>
+
 Buttons::Buttons(uint32_t pin, uint32_t inMode) {
     pinMode(pin, inMode);
     this->_pin = pin;
@@ -13,7 +15,7 @@ Buttons::Buttons(uint32_t pin, uint32_t inMode) {
 Buttons::Buttons(uint32_t pin, uint32_t inMode, callback_function_t onPress, uint32_t mode) {
     pinMode(pin, inMode);
     this->_pin = pin;
-    attachInterrupt(digitalPinToInterrupt(this->_pin), onPress, mode);
+    attachInterrupt(digitalPinToInterrupt(this->_pin), std::move(onPress), mode);
     this->isIT = true;
 }
 
@@ -27,7 +29,7 @@ LedButton::LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin): Buttons
     this->_ledState = false;
 }
 
-LedButton::LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin, callback_function_t onPress, uint32_t mode): Buttons(Btnpin, inMode, onPress, mode) {
+LedButton::LedButton(uint32_t Btnpin, uint32_t inMode, uint32_t Ledpin, callback_function_t onPress, uint32_t mode): Buttons(Btnpin, inMode, std::move(onPress), mode) {
     pinMode(Ledpin, OUTPUT);
     this->_ledPin = Ledpin;
     this->_ledState = false;

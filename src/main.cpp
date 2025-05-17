@@ -24,6 +24,9 @@ Logger main_logs = Logger("MAIN");
 
 using namespace ihm;
 void procedure_demarrage(){
+    main_logs.log(INFO_LEVEL, "Mise à zero des actionneurs\n");
+    //TODO
+
     main_logs.log(INFO_LEVEL, "Sélectionez une équipe\n");
     led_jaune(HIGH);
     led_bleu(HIGH);
@@ -60,25 +63,19 @@ void setup(){
 
     if(DEBUG) {
         PrintfSupport::begin(PRINTF_BAUD);
-        main_logs.log(INFO_LEVEL, "Debug enabled at %d baud\n", PRINTF_BAUD);
-        main_logs.log(INFO_LEVEL, "Printing WheeledBase Params\n");
-        Wheeledbase::PRINT_PARAMS();
+        main_logs.log(WARNING_LEVEL, "Debug enabled at %d baud\n", PRINTF_BAUD);
+        //main_logs.log(INFO_LEVEL, "Printing WheeledBase Params\n");
+        //Wheeledbase::PRINT_PARAMS();
     }
 
-    Musique myBeeper = Musique(PA6, 10);
+    //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
     wb_setup();
     listeActionneur::Init();
-    listeActionneur::ferme_tout();
-    listeActionneur::papillion_ferme();
-    listeActionneur::descend();
-    listeActionneur::monte_un_peu();
-    //listeActionneur::papillion_ouvert();
     Sensors::Init();
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
-
     //listeActionneur::ascenseur.setEndlessMode(true);
     if(TEST_NO_FREERTOS) {
         main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
@@ -130,25 +127,5 @@ void setup(){
 }
 
 void loop() {
-    listeActionneur::papillion_ouvert();
-    poly_delay(1000);
-    listeActionneur::set_pompe(HIGH);
-    listeActionneur::descend();
-    poly_delay(1000);
-    listeActionneur::papillion_ferme();
-    poly_delay(1000);
-    listeActionneur::papillion_ouvert();
-
-    poly_delay(1000);
-    listeActionneur::monte();
-    poly_delay(1000);
-    listeActionneur::papillion_ferme();
-    listeActionneur::set_pompe(LOW);
-    poly_delay(1000);
-    listeActionneur::ouvre_tout();
-    poly_delay(1000);
-    listeActionneur::papillion_ouvert();
-
-    poly_delay(100000);
 
 }

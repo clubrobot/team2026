@@ -1,6 +1,6 @@
 from geogebra import Geogebra
 import os
-
+import re
 #Exporte les points du fichier geogbra sous forme d'un .h.
 #les points d'interet du geogbra doivent contenir un des trois mots-clés
 #   Bleu: pour les points d'intérêt de l'équipe bleu
@@ -8,15 +8,35 @@ import os
 #   All: pour les points d'intéret commun aux deux équipes.
 #Pour chaque variable avec Bleu il en faut une autre avec Jaune à la place.
 
+CHEMIN_POINT_H="raspberrypi/Geogebra.h"
+CHEMIN_GEOGEBRA="raspberrypi/robots/team2024/map_2024.ggb"
+#on lit les angles pour pouvoir les sauvegarder et ne pas les ecraser
+f = open(CHEMIN_POINT_H, "r")
+thetas_bleu={}
+thetas_jaune={}
+lines=f.readlines()
+pattern = r"Position\([^,]+,\s*[^,]+,\s*([^)]+)\),\s*//\s*(\w+)_\s*(\w+)"
+for l in lines:
+    match = re.search(pattern, l)
+    if(match):
+        a = match.group(1)  # "A"
+        b = match.group(2)  # "B"
+        color = match.group(3)  # "C"
+        if(color=="jaune"):
+            thetas_jaune[b]=a
+        else:
+            thetas_bleu[b]=a
+f.close()
+
 #charge le fichier geogebra
-geo=Geogebra("../maps/map_2025.ggb")
+geo=Geogebra(CHEMIN_GEOGEBRA)
 
 all=geo.getall("")
 
 elements = geo.root.findall("./construction/element")
+
 # Extraire les valeurs des attributs 'label'
 element_names = [elem.get("label") for elem in elements if elem.get("label") is not None]
-
 liste_bleu=[]
 liste_jaune=[]
 for e in element_names:
@@ -43,7 +63,10 @@ for e in liste_bleu:
             name=e.lower().replace("bleu","")
             noms+="#define "+name+" "+str(id)+"\n"
             point=geo.get(e_j)
-            var_jaunes+="   Position("+str(point[0])+"f, "+str(point[1])+"f, -1.570796327), //"+name+"\n"
+            theta="-1.570796327"
+            if(thetas_jaune.__contains__(name)):
+                theta=thetas_jaune[name]
+            var_jaunes+="   Position("+str(point[0])+"f, "+str(point[1])+"f,"+theta+"), //"+name+"_jaune"+"\n"
             found=True
             break
 
@@ -53,11 +76,14 @@ for e in liste_bleu:
         print("Le point",e," n'a pas de point de la team jaune associé.")
     #o najoute le point bleu.
     point=geo.get(e)
-    var_bleu+="   Position("+str(point[0])+"f, "+str(point[1])+"f, -1.570796327), //"+name+"\n"
+    theta="-1.570796327"
+    if(thetas_bleu.__contains__(name)):
+        theta=thetas_bleu[name]
+    var_bleu+="   Position("+str(point[0])+"f, "+str(point[1])+"f,"+theta+"), //"+name+"_bleu"+"\n"
     id+=1
 
-#on crée le fichier 
-f = open("../include/Geogebra.h", "w+")
+#on crée le fichier
+f = open(CHEMIN_POINT_H, "w")
 f.write("#ifndef TEAM2025_GEOGEBRA_H\n#define TEAM2025_GEOGEBRA_H\n#include \"Odometry.h\" \n")
 f.write(noms)
 f.write("\n")
