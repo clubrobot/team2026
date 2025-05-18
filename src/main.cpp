@@ -2,6 +2,7 @@
 #include <list>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
+#include <Wire.h>
 
 #include <My_Clock.h>
 #include <PrintfSupport.h>
@@ -11,8 +12,8 @@
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
-#include "sensors/sensors_thread.h"
 #include "decisions/Automate.h"
+#include "include/SensorArray.h"
 
 #include "team2025/ListeActionneurs.h"
 
@@ -73,7 +74,19 @@ void setup(){
 
     wb_setup();
     listeActionneur::Init();
-    Sensors::Init();
+
+    TwoWire i2c2 = TwoWire(PF0,PF1);
+    i2c2.begin();
+
+    SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
+    sensors.addSensor({.addr = 0x20, 4});
+    sensors.addSensor({.addr = 0x25, 5});
+    sensors.addSensor({.addr = 0x30, 2});
+    sensors.addSensor({.addr = 0x35, 7});
+    sensors.Init();
+
+    sensors.Stop();
+
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
@@ -97,15 +110,15 @@ void setup(){
     if(ret_wb!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_sens = nullptr;
-    BaseType_t ret_sens= xTaskCreate(
-                sensorThread,       /* Function that implements the task. */
-                "Sensors loop",          /* Text name for thedi task. */
-                10000,      /* Stack size in words, not bytes. */
-                nullptr,    /* Parameter passed into the task. */
-                5,//Prio nulle à chier
-                &hl_sens );      /* Used to pass out the created task's handle. */
+    // BaseType_t ret_sens= xTaskCreate(
+    //             sensorThread,       /* Function that implements the task. */
+    //             "Sensors loop",          /* Text name for thedi task. */
+    //             10000,      /* Stack size in words, not bytes. */
+    //             nullptr,    /* Parameter passed into the task. */
+    //             5,//Prio nulle à chier
+    //             &hl_sens );      /* Used to pass out the created task's handle. */
 
-    if(ret_sens!=pdPASS) {Error_Handler()}
+    // if(ret_sens!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_robot = nullptr;
 

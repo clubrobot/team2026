@@ -9,16 +9,6 @@
 TwoWire i2c_bus;
 Logger sensors_logs = Logger("SENSORS");
 
-VL53L5CX sensors[] = {
-    (VL53L5CX(&i2c_bus,PD1)),
-    (VL53L5CX(&i2c_bus,PE2)),
-    (VL53L5CX(&i2c_bus,PE3)),
-    (VL53L5CX(&i2c_bus,PE4)),
-    (VL53L5CX(&i2c_bus,PE5)),
-    (VL53L5CX(&i2c_bus,PG0)),
-    (VL53L5CX(&i2c_bus,PG1)),
-    (VL53L5CX(&i2c_bus,PD3)),
-  };
 
 uint16_t sensors_addr[] = {0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52, 0x52};
 #define TRIG1 PD1
