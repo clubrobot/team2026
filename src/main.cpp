@@ -2,7 +2,6 @@
 #include <list>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
-#include <Wire.h>
 
 #include <My_Clock.h>
 #include <PrintfSupport.h>
@@ -12,6 +11,7 @@
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
+#include "sensors/sensors_thread.h"
 #include "decisions/Automate.h"
 #include "include/SensorArray.h"
 
@@ -57,7 +57,8 @@ void procedure_demarrage(){
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
-
+#define YEUX_TX PG1
+HardwareSerial yeux(YEUX_TX);
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -73,6 +74,10 @@ void setup(){
     //myBeeper.playSheetMusic(cantina);
 
     wb_setup();
+    //yeux_setup();
+    yeux.setTx(YEUX_TX);
+    yeux.setHalfDuplex();
+    yeux.begin(115200);
     listeActionneur::Init();
 
     TwoWire i2c2 = TwoWire(PF0,PF1);
@@ -132,6 +137,18 @@ void setup(){
 
     if(ret_robot!=pdPASS) {Error_Handler()}
 
+    TaskHandle_t  hl_yeux= nullptr;
+
+    BaseType_t ret_yeux = xTaskCreate(
+            wb_loop,       /* Function that implements the task. */
+            "UwU",          /* Text name for the task. */
+            10000,      /* Stack size in words, not bytes. */
+            NULL,    /* Parameter passed into the task. */
+            5,//Prio un peu mieux
+            &hl_yeux );      /* Used to pass out the created task's handle. */
+
+    if(ret_yeux!=pdPASS) {Error_Handler()}
+
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS
     //On devrait pas être là; Uh oh
@@ -140,5 +157,10 @@ void setup(){
 }
 
 void loop() {
-
+    yeux.write('~');
+    yeux.write('M');
+    yeux.write(1);
+    yeux.write(11);
+    yeux.print("INSA RENNES\0");
+    delay(5000);
 }
