@@ -7,7 +7,7 @@
 
 using namespace listeActionneur;
 
-void TacheEmpiler::execute() {
+bool TacheEmpiler::execute(bool previous_success) {
     ouvre_milieu();
     poly_delay(500);
     papillion_ouvert();
@@ -34,4 +34,5 @@ void TacheEmpiler::execute() {
     ouvre_tout();
     poly_delay(500);
     papillion_ouvert();
+    return true;
 }

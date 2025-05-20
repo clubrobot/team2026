@@ -7,6 +7,7 @@
 
 using namespace listeActionneur;
 
-void TacheBanderole::execute() {
+bool TacheBanderole::execute(bool success) {
     printf("oui\n");
+    return true;
 }

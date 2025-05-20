@@ -70,6 +70,7 @@ void Automate::play_match(void *pvParameters){
     //auto start_time = std::chrono::high_resolution_clock::now();
     procedure_demarrage();
     points=0;
+    bool state=true;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {
         auto_logs.log(INFO_LEVEL, "Tache n.%d\n", tache_id);
         //execute les tâches dans l'ordre tant qu'on a assez de temps.
@@ -78,7 +79,7 @@ void Automate::play_match(void *pvParameters){
         //auto_logs.log(INFO_LEVEL, "delta_t %f  et %f\n", delta_t, 100000-taches[tache_id]->get_necessary_time());
         //if(delta_t>100000-taches[tache_id]->get_necessary_time())break;//on est deja a la fin du match faut s'arrêter la
         //execute la tâche.
-        taches[tache_id]->execute();
+        state=taches[tache_id]->execute(state);
         //points+=taches[tache_id]->get_max_score();
     }
 

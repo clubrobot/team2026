@@ -17,7 +17,7 @@ protected:
 public:
     const int get_necessary_time();
     const int get_max_score();
-    virtual void execute() = 0;//code de la tâche
+    virtual bool execute(bool previous_success);//code de la tâche
     virtual ~Tache() {}
     const Position* get_begin();
     const Position* get_approach();
@@ -34,7 +34,7 @@ public:
     void set_end(float x, float y, float theta);
 };
 class TacheGoto: public Tache{
-    void execute() override;
+    bool execute(bool previous_success) override;
 public:
     float radius =220;
     int arriere =PurePursuit::NONE;
@@ -49,7 +49,7 @@ public:
 };
 
 class TacheMoveDelta: public Tache{
-    void execute() override;
+    bool execute(bool previous_success) override;
     void setDelta(float vel, uint32_t temps);
     float _vel, _temps;
 public:
@@ -60,8 +60,18 @@ public:
     }
 };
 
+class TacheSwitch: public Tache{
+    bool execute(bool previous_success) override;
+    Tache succ_tache,fail_tache;
+public:
+    TacheSwitch(Tache success,Tache fail): succ_tache(success), fail_tache(fail){
+        set_max_score(0);
+        set_necessary_time(0);
+    }
+};
+
 class TacheSTOP: public Tache{
-    void execute() override;
+    bool execute(bool previous_success) override;
 
 public:
     TacheSTOP(){
