@@ -10,6 +10,7 @@
 #include "ihm/ihm.h"
 
 #define AX12_ASCENSEUR_ID 2 //OK
+#define AX12_BANDEROLE_ID 4 //OK
 #define AX12_PINCE_DROITE_ID 1 //OK
 #define AX12_PINCE_GAUCHE_ID 3 //OK
 
@@ -17,20 +18,25 @@
 #define SERVO_PINCE_GAUCHE_ID 2
 #define SERVO_PINCE_MILIEU_DROIT_ID 1
 #define SERVO_PINCE_MILIEU_GAUCHE_ID 0
+#define SERVO_BANDEROLE_ID 3
 
 #define POMPE_PIN PF9
 
 typedef struct{
-    float limite_basse;
-    float action_1;
-    float action_2;
-    float limite_haute;
+    float non_deploye;
+    float mi_non_deploye;
+    float mi_deploye;
+    float deploye;
 }limites_actionneurs;
 
 
+inline limites_actionneurs limite_ascenseur;
+
+inline limites_actionneurs limite_banderole;
+
 inline limites_actionneurs limite_pince_droite;
 inline limites_actionneurs limite_pince_gauche;
-inline limites_actionneurs limite_ascenseur;
+
 inline limites_actionneurs limite_servo_pince_droite;
 inline limites_actionneurs limite_servo_pince_gauche;
 inline limites_actionneurs limite_servo_pince_milieu_droit;
@@ -38,26 +44,15 @@ inline limites_actionneurs limite_servo_pince_milieu_gauche;
 
 namespace listeActionneur {
     void Init();
-    void ferme_milieu();
-    void ouvre_milieu();
-    void ferme_centre();
-    void ouvre_centre();
-    void ferme_tout();
-    void ouvre_tout();
-
-    void monte();
-    void monte_un_peu();
-    void monte_un_peu_plus();
-    void descend();
-
-    void papillion_ouvert();
-    void papillion_ferme();
 
     void set_pompe(bool state);
 
     extern AX12 ascenseur;
     extern AX12 pince_droite;
     extern AX12 pince_gauche;
+    extern AX12 banderole;
+
+    extern uint8_t servo_banderole;
     extern uint8_t servo_pince_droite;
     extern uint8_t servo_pince_gauche;
     extern uint8_t servo_pince_milieu_droit;

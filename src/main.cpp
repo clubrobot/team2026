@@ -18,10 +18,9 @@
 #include "team2025/ListeActionneurs.h"
 
 #define DEBUG 1
-#define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
+#define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
-
 
 using namespace ihm;
 void procedure_demarrage(){
@@ -57,8 +56,16 @@ void procedure_demarrage(){
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
-#define YEUX_TX PG1
-HardwareSerial yeux(YEUX_TX);
+
+
+/**
+TODO:
+Valeurs servo limites
+Régler PID/Accel => Logger
+Procédure démarrage
+Tache empiler
+Tache banderole
+*/
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -74,12 +81,9 @@ void setup(){
     //myBeeper.playSheetMusic(cantina);
 
     wb_setup();
-    //yeux_setup();
-    yeux.setTx(YEUX_TX);
-    yeux.setHalfDuplex();
-    yeux.begin(115200);
     listeActionneur::Init();
 
+/*
     TwoWire i2c2 = TwoWire(PF0,PF1);
     i2c2.begin();
 
@@ -91,7 +95,7 @@ void setup(){
     sensors.Init();
 
     sensors.Stop();
-
+*/
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
@@ -156,11 +160,6 @@ void setup(){
     Error_Handler();
 }
 
-void loop() {
-    yeux.write('~');
-    yeux.write('M');
-    yeux.write(1);
-    yeux.write(11);
-    yeux.print("INSA RENNES\0");
-    delay(5000);
+void loop(){
+    printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

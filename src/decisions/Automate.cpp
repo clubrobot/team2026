@@ -24,10 +24,6 @@ namespace Automate {
     int numberTaches;
 }
 
-Position pos_beg = Position(0,0,0);
-Position pos_appr = Position(1425,190,-1.57);
-Position pos_end = Position(200,0,0);
-
 void Automate::init(int team) {
     color=team;
     if(team==TEAM_JAUNE){
@@ -41,9 +37,7 @@ void Automate::init(int team) {
         taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
         taches[1]=new TacheEmpiler();
         taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
-        //taches[3]=new TacheSTOP();
-        //taches[0]=new TacheMoveDelta(-100,100);
-        //taches[2]=new TacheGoto(nullptr, &positions_match[start2], &positions_match[start2]);
+
 
     }else{
         auto_logs.log(INFO_LEVEL, "Automate init avec Bleu\n");
@@ -56,8 +50,7 @@ void Automate::init(int team) {
         taches[0]=new TacheGoto(nullptr,&positions_match[garage91all], &positions_match[depot2]);
         taches[1]=new TacheEmpiler();
         taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
-        //taches[3]=new TacheSTOP();
-        //taches[3]=new TacheSTOP();
+
     }
     //mettre les tâches a éxécuter ici.
 
