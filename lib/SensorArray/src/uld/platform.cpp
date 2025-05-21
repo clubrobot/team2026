@@ -16,6 +16,14 @@
 
 #include "include/VL53L5CX.h"
 
+#define I2C_MASTER_WRITE 0x00
+#define I2C_MASTER_READ 0X00
+
+#define I2C_TXRX_BUFFER_SIZE 256
+
+//A buffer used to add index for the vl53l8cx data format
+uint8_t i2c_buffer[I2C_TXRX_BUFFER_SIZE + 2];
+
 uint8_t VL53L5CX::RdByte(
   VL53L5CX_Platform *p_platform,
   uint16_t RegisterAddress,
@@ -25,108 +33,72 @@ uint8_t VL53L5CX::RdByte(
   return status;
 }
 
-uint8_t VL53L5CX::WrByte(
-  VL53L5CX_Platform *p_platform,
-  uint16_t RegisterAddress,
-  uint8_t value)
+uint8_t VL53L5CX::WrByte(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t value)
 {
   // Just use WrMulti but 1 byte
   uint8_t status = WrMulti(p_platform, RegisterAddress, &value, 1);
   return status;
 }
 
-uint8_t VL53L5CX::WrMulti(
-  VL53L5CX_Platform *p_platform,
-  uint16_t RegisterAddress,
-  uint8_t *p_values,
-  uint32_t size)
+
+
+uint8_t VL53L5CX::WrMulti(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t *p_values, uint32_t size)
 {
-  uint32_t i = 0;
-  uint8_t buffer[2];
+  int i = 0;
+  uint8_t status = 0;
 
-  while (i < size) {
-    // If still more than DEFAULT_I2C_BUFFER_LEN bytes to go, DEFAULT_I2C_BUFFER_LEN,
-    // else the remaining number of bytes
-    size_t current_write_size = (size - i > BUFFER_LENGTH ? BUFFER_LENGTH : size - i);
+  while (i + I2C_TXRX_BUFFER_SIZE < size)
+  {
+    //Add index to the data
+    i2c_buffer[0] = (RegisterAddress + i) >> 8;
+    i2c_buffer[1] = (RegisterAddress + i) & 0xFF;
 
-    p_platform->dev_i2c->beginTransmission((uint8_t)((p_platform->address >> 1) & 0x7F));
+    p_platform->dev_i2c->handle.XferOptions = I2C_OTHER_AND_LAST_FRAME;
 
-    // Target register address for transfer
-    buffer[0] = (uint8_t)((RegisterAddress + i) >> 8);
-    buffer[1] = (uint8_t)((RegisterAddress + i) & 0xFF);
-    p_platform->dev_i2c->write(buffer, 2);
-    if (p_platform->dev_i2c->write(p_values + i, current_write_size) == 0) {
-      return 1;
-    } else {
-      i += current_write_size;
-      if (size - i) {
-        // Flush buffer and send stop bit so we have compatibility also with ESP32 platforms
-        p_platform->dev_i2c->endTransmission(true);
-      }
-    }
-  }
+    //Add the data
+    memcpy(&i2c_buffer[2], p_values + i, I2C_TXRX_BUFFER_SIZE);
 
-  return p_platform->dev_i2c->endTransmission(true);
-}
+    status = i2c_master_write(p_platform->dev_i2c, (p_platform->address & 0xFE) | I2C_MASTER_WRITE, i2c_buffer,I2C_TXRX_BUFFER_SIZE + 2);
 
-uint8_t VL53L5CX::RdMulti(
-  VL53L5CX_Platform *p_platform,
-  uint16_t RegisterAddress,
-  uint8_t *p_values,
-  uint32_t size)
-{
-  int status = 0;
-  uint8_t buffer[2];
-
-  // Loop until the port is transmitted correctly
-
-    p_platform->dev_i2c->beginTransmission((uint8_t)((p_platform->address >> 1) & 0x7F));
-
-    // Target register address for transfer
-    buffer[0] = (uint8_t)(RegisterAddress >> 8);
-    buffer[1] = (uint8_t)(RegisterAddress & 0xFF);
-    p_platform->dev_i2c->write(buffer, 2);
-
-    status = p_platform->dev_i2c->endTransmission(false);
-
-    // Fix for some STM32 boards
-    // Reinitialize the i2c bus with the default parameters
-#ifdef ARDUINO_ARCH_STM32
-    if (status) {
-      p_platform->dev_i2c->end();
-      p_platform->dev_i2c->begin();
-    }
-#endif
-    // End of fix
-
-    if (status != 0)
+    if (status != I2C_OK)
     {
       return status;
     }
 
-
-  uint32_t i = 0;
-  if (size > BUFFER_LENGTH) {
-    while (i < size) {
-      // If still more than DEFAULT_I2C_BUFFER_LEN bytes to go, DEFAULT_I2C_BUFFER_LEN,
-      // else the remaining number of bytes
-      uint8_t current_read_size = (size - i > BUFFER_LENGTH ? BUFFER_LENGTH : size - i);
-      p_platform->dev_i2c->requestFrom(((uint8_t)((p_platform->address >> 1) & 0x7F)),
-                                       current_read_size);
-      while (p_platform->dev_i2c->available()) {
-        p_values[i] = p_platform->dev_i2c->read();
-        i++;
-      }
-    }
-  } else {
-    p_platform->dev_i2c->requestFrom(((uint8_t)((p_platform->address >> 1) & 0x7F)), size);
-    while (p_platform->dev_i2c->available()) {
-      p_values[i] = p_platform->dev_i2c->read();
-      i++;
-    }
+    i+= I2C_TXRX_BUFFER_SIZE;
   }
 
-  return i != size;
+  //Add index to the data
+  i2c_buffer[0] = (RegisterAddress + i) >> 8;
+  i2c_buffer[1] = (RegisterAddress + i) & 0xFF;
+
+  p_platform->dev_i2c->handle.XferOptions = I2C_OTHER_AND_LAST_FRAME;
+
+  //Add the data
+  memcpy(&i2c_buffer[2], p_values + i, size - i);
+
+  return i2c_master_write(p_platform->dev_i2c, (p_platform->address & 0xFE) | I2C_MASTER_WRITE, i2c_buffer,size + 2 - i);
+}
+
+uint8_t VL53L5CX::RdMulti(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t *p_values, uint32_t size)
+{
+  i2c_status_e status = I2C_OK;
+  //Add index to the data
+  i2c_buffer[0] = RegisterAddress >> 8;
+  i2c_buffer[1] = RegisterAddress & 0xFF;
+
+  p_platform->dev_i2c->handle.XferOptions = I2C_OTHER_FRAME;
+
+  status = i2c_master_write(p_platform->dev_i2c, (p_platform->address & 0xFE) | I2C_MASTER_WRITE, i2c_buffer, 2);
+
+  p_platform->dev_i2c->handle.XferOptions = I2C_OTHER_AND_LAST_FRAME;
+
+  if (status != I2C_OK)
+  {
+    return status;
+  }
+
+  return i2c_master_read(p_platform->dev_i2c, (p_platform->address & 0xFE) | I2C_MASTER_READ, p_values, size);
 }
 
 void VL53L5CX::SwapBuffer(

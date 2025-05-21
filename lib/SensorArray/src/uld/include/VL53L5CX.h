@@ -19,7 +19,7 @@ class VL53L5CX {
      * @param[in] lpn_pin pin to be used as component LPn
      * @param[in] i2c_rst_pin pin to be used as component I2C_RST
      */
-    VL53L5CX(TwoWire *i2c)
+    VL53L5CX(i2c_t *i2c)
     {
       memset((void *)&_dev, 0x0, sizeof(VL53L5CX_Configuration));
       _dev.platform.address = VL53L5CX_DEFAULT_I2C_ADDRESS;
@@ -364,6 +364,11 @@ rt__data_size : New data size.
       return _dev.streamcount;
     };
 
+  /* VL53L5CX Device */
+  VL53L5CX_Configuration _dev;
+  VL53L5CX_Configuration *p_dev;
+
+
   protected:
 
     /**
@@ -491,13 +496,6 @@ rt__data_size : New data size.
   uint8_t vl53l5cx_disable_internal_cp();
 
   uint8_t vl53l5cx_enable_internal_cp();
-
-protected:
-
-  /* VL53L5CX Device */
-  VL53L5CX_Configuration _dev;
-  VL53L5CX_Configuration *p_dev;
-
 };
 
 

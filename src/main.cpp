@@ -58,6 +58,8 @@ void procedure_demarrage(){
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
 
+#define MASTER_ADDRESS 0x01
+
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -75,14 +77,21 @@ void setup(){
     wb_setup();
     listeActionneur::Init();
 
-    TwoWire i2c2 = TwoWire(PF0,PF1);
-    i2c2.begin();
+    i2c_t i2c2 = {.sda = PF_0, .scl = PF_1, .isMaster = 1, .generalCall = false, .NoStretchMode = false};
+    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
+
+    poly_delay(1000);
+
 
     SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
-    sensors.addSensor({.addr = 0x20, 4});
-    sensors.addSensor({.addr = 0x25, 5});
-    sensors.addSensor({.addr = 0x30, 2});
-    sensors.addSensor({.addr = 0x35, 7});
+    sensors.addSensor({.addr = 0x20, 1});
+    sensors.addSensor({.addr = 0x25, 2});
+    sensors.addSensor({.addr = 0x30, 3});
+    sensors.addSensor({.addr = 0x35, 4});
+    //sensors.addSensor({.addr = 0x40, 5});
+    //sensors.addSensor({.addr = 0x45, 6});
+    //sensors.addSensor({.addr = 0x50, 7});
+    //sensors.addSensor({.addr = 0x55, 8});
     sensors.Init();
 
     sensors.Stop();

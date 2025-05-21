@@ -7,7 +7,7 @@
 #include "../../Include/My_Clock.h"
 #include "uld/include/VL53L5CX.h"
 
-SensorArray::SensorArray(TwoWire *i2c, uint32_t latch, uint32_t data, uint32_t clock)
+SensorArray::SensorArray(i2c_t *i2c, uint32_t latch, uint32_t data, uint32_t clock)
 {
     this->power_config = 0b00000000;
 
@@ -19,6 +19,8 @@ SensorArray::SensorArray(TwoWire *i2c, uint32_t latch, uint32_t data, uint32_t c
     this->i2c_bus = i2c;
 
     this->nb_sensors = 0;
+
+    memset(this->raw_data, 0 , sizeof this->raw_data);
 }
 
 uint8_t SensorArray::addSensor(const SensorConfig sensor_cfg)
@@ -44,6 +46,7 @@ uint8_t SensorArray::addSensor(const SensorConfig sensor_cfg)
 
 /*
  * Waring : The sensors must be shut down before initialization with a new address
+ * A misfunctioning sensor can cause others to fail / not respond
  */
 
 uint8_t SensorArray::Init()
@@ -60,37 +63,62 @@ uint8_t SensorArray::Init()
 
     for (int i = 0; i < this->nb_sensors; ++i)
     {
-        SensorHandle handle = sensors[i];
-        logs.log(INFO_LEVEL, "Starting VL53L5CX %d for address : 0x%02x \n", handle.cfg.pin, handle.cfg.addr);
+        SensorHandle *handle = &sensors[i];
+        logs.log(INFO_LEVEL, "Starting VL53L5CX %d for address : 0x%02x \n", handle->cfg.pin, handle->cfg.addr);
 
         //Power this sensor to change its address
-        this->power_config += 1 << handle.cfg.pin - 1;
+        this->power_config += 1 << handle->cfg.pin - 1;
         this->ApplyPowerConfig();
 
-        this->i2c_bus->begin();
+        poly_delay(1200);
 
-        poly_delay(1000);
+        //Check if the sensor is alive
+        uint8_t status = handle->sensor->vl53l5cx_is_alive(&handle->is_alive);
 
-        //Ne fonctionne pas avec handle.sensor->init_sensor
-        uint8_t status = handle.sensor->init_sensor(handle.cfg.addr);
-
-        uint8_t alive = 0;
-        handle.sensor->vl53l5cx_is_alive(&alive);
-
-        if (alive)
+        if (status != VL53L5CX_STATUS_OK || handle->is_alive != 1)
         {
-            logs.log(GOOD_LEVEL, "VL53L5CX %d has already been initialized !\n", handle.cfg.pin);
-            ++started_sensors;
+            logs.log(WARNING_LEVEL, "VL53L5CX not detected at default address 0x%X, status : %d\n", handle->sensor->_dev.platform.address, status);
+
+            //Try at the "futur" address if already initilised
+            handle->sensor->p_dev->platform.address = handle->cfg.addr;
+
+            //Check if the sensor is alive
+            status = handle->sensor->vl53l5cx_is_alive(&handle->is_alive);
+
+            if (status != VL53L5CX_STATUS_OK || handle->is_alive != 1)
+            {
+                this->power_config = this->power_config & ~(1 << (handle->cfg.pin - 1));
+                logs.log(ERROR_LEVEL, "VL53L5CX not detected at 0x%X, status : %d\n", handle->sensor->_dev.platform.address, status);
+                continue;
+            }
+        }
+
+        //Flash the firmware and init the sensor
+        status = handle->sensor->vl53l5cx_init();
+
+        if (status != VL53L5CX_STATUS_OK)
+        {
+            handle->is_alive = 0;
+            this->power_config = this->power_config & ~(1 << (handle->cfg.pin - 1));
+            logs.log(ERROR_LEVEL, "Failed to initialize VL53L5CX %d, status : %d\n", handle->cfg.pin, status);
             continue;
         }
 
-        if (status != VL53L5CX_STATUS_OK) {
-            this->power_config = this->power_config & ~(1 << (handle.cfg.pin - 1));
-            logs.log(ERROR_LEVEL, "Failed to initialize VL53L5CX %d, status : %d\n", handle.cfg.pin, status);
-        }else{
-            logs.log(GOOD_LEVEL, "VL53L5CX %d initialized successfully !\n", handle.cfg.pin);
-            ++started_sensors;
+        ++started_sensors;
+        handle->is_alive = 1;
+
+        if (status == VL53L5CX_STATUS_OK)
+        {
+            logs.log(GOOD_LEVEL, "VL53L5CX %d initialized successfully !\n", handle->cfg.pin);
         }
+
+        //Apply the sensor configuration
+        handle->sensor->vl53l5cx_set_resolution(VL53L5CX_RESOLUTION_8X8);
+        handle->sensor->vl53l5cx_set_ranging_mode(VL53L5CX_RANGING_MODE_CONTINUOUS);
+        handle->sensor->vl53l5cx_set_ranging_frequency_hz(15);
+        handle->sensor->vl53l5cx_set_i2c_address(handle->cfg.addr);
+        handle->sensor->vl53l5cx_start_ranging();
+
     }
 
     this->ApplyPowerConfig();
@@ -127,22 +155,82 @@ void SensorArray::ApplyPowerConfig() const
     digitalWrite(stcp_pin, 1);
 }
 
-uint8_t SensorArray::getData(Output* out)
+uint8_t SensorArray::Start()
 {
-    return 0;
+    uint8_t status = 0;
+
+    for (int i = 0; i < this->nb_sensors; ++i)
+    {
+        SensorHandle *handle = &sensors[i];
+
+        if (handle->is_alive != 1)
+        {
+            continue;
+        }
+
+        status |= handle->sensor->vl53l5cx_start_ranging();
+    }
+
+    return status;
 }
 
 
-void SensorArray::task()
+uint8_t SensorArray::AquireRawData()
 {
+    uint8_t status = 0;
+    for (int i = 0; i < this->nb_sensors; ++i)
+    {
+        SensorHandle *handle = &sensors[i];
 
+        if (handle->is_alive != 1)
+        {
+            continue;
+        }
+
+        //handle->sensor->vl53l5cx_start_ranging();
+
+        //Wait until the data is ready, TODO under the timeout
+        uint8_t ready = 0;
+        while (!ready)
+        {
+            handle->sensor->vl53l5cx_check_data_ready(&ready);
+            poly_delay(5);
+        }
+
+        VL53L5CX_ResultsData data;
+        uint8_t r_status = handle->sensor->vl53l5cx_get_ranging_data(&data);
+        status |= r_status;
+
+        //Don't copy the data if the sensor has returned an error
+        if (r_status != 0)
+            continue;
+
+
+        for (int j = 0; j < 64; ++j)
+        {
+            //According to uld's guide, um2884 5, 9 and 10 status code doesn't impact mesurments
+            if (data.target_status[j] == 5 || data.target_status[j] == 9 || data.target_status[j] == 10)
+            {
+                this->raw_data[i][j] = data.distance_mm[j];
+                continue;
+            }
+
+            //When the mesure is not valid
+            this->raw_data[i][j] = -1;
+        }
+
+        memcpy(this->raw_data[i], data.distance_mm, sizeof data.distance_mm);
+    }
+    return status;
 }
+
 
 
 void SensorArray::Stop()
 {
     for (int i = 0; i < this->nb_sensors; ++i)
     {
+        sensors[i].sensor->vl53l5cx_stop_ranging();
         delete sensors[i].sensor;
     }
 }
