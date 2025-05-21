@@ -8,7 +8,7 @@
 #include "decisions/Tache.h"
 
 class TacheEmpiler: public Tache{
-    void execute() override;
+    bool execute(bool previous_success) override;
 public:
     TacheEmpiler(){
         set_max_score(911);

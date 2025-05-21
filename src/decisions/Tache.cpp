@@ -49,7 +49,9 @@ void Tache::set_begin(float x, float y, float theta) {
     pos_begin.y = y;
     pos_begin.theta = theta;
 }
-
+bool Tache::execute(bool succ){
+    return false;
+}
 void Tache::set_approach(Position* _pos_approach) {
     if (_pos_approach==nullptr){
         pos_begin.x =0;
@@ -77,7 +79,7 @@ void Tache::set_end(float x, float y, float theta) {
     pos_end.theta = theta;
 }
 
-void TacheGoto::execute() {
+bool TacheGoto::execute(bool previous_success) {
     if (pos_approach.x != 0){
         //Calculation approche
         /*if (Position::compare(&pos_approach,&pos_end)){
@@ -95,7 +97,7 @@ void TacheGoto::execute() {
     }else{
         Wheeledbase::GOTO(&pos_end, arriere, pos_end.theta);
     }
-
+    return true;
 }
 
 void TacheMoveDelta::setDelta(float vel, uint32_t temps){
@@ -103,7 +105,7 @@ void TacheMoveDelta::setDelta(float vel, uint32_t temps){
     _temps =temps;
 }
 
-void TacheMoveDelta::execute(){
+bool TacheMoveDelta::execute(bool previous_success){
     portENTER_CRITICAL();
 
         Wheeledbase::SET_VELOCITIES(_vel, 0);
@@ -111,13 +113,23 @@ void TacheMoveDelta::execute(){
     for (int i=0; i<255; i++)    Wheeledbase::SET_VELOCITIES(0, 0);
     portEXIT_CRITICAL();
 
-
+    return true;
 }
 
-void TacheSTOP::execute(){
+bool TacheSTOP::execute(bool previous_success){
     for (;;){
         Wheeledbase::SET_VELOCITIES(0,0);
     }
 
+    return true;
+}
 
+bool TacheSwitch::execute(bool previous_success){
+   if(previous_success){
+       return succ_tache.execute(previous_success);
+   }else{
+       return fail_tache.execute(previous_success);
+   }
+
+    return true;
 }

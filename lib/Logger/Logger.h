@@ -17,7 +17,7 @@
 #undef Error_Handler
 #define Error_Handler() \
 while (1) {\
-printf("ERREUR MAJEURE dans %s:%d \n", __FILE__, __LINE__);\
+printf("ERREUR MAJEURE dans %s:%d:%s \n", __FILE__, __LINE__,__FUNCTION__);\
 digitalWrite(LED_RED, HIGH);\
 delay(500);\
 digitalWrite(LED_RED, LOW);\

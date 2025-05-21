@@ -2,27 +2,26 @@
 #include <list>
 #include <STM32FreeRTOS.h>
 #include <Wheeledbase.h>
-#include <Wire.h>
 
 #include <My_Clock.h>
 #include <PrintfSupport.h>
 #include <variables_globales.h>
 #include <Logger.h>
 #include <Musique.h>
+#include <Teleplot.h>
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
+#include "sensors/sensors_thread.h"
 #include "decisions/Automate.h"
 #include "include/SensorArray.h"
 
 #include "team2025/ListeActionneurs.h"
 
 #define DEBUG 1
-#define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
+#define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
-
-
 using namespace ihm;
 void procedure_demarrage(){
     main_logs.log(INFO_LEVEL, "Mise à zero des actionneurs\n");
@@ -57,6 +56,16 @@ void procedure_demarrage(){
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
+
+
+/**
+TODO:
+Valeurs servo limites
+Régler PID/Accel => Logger
+Procédure démarrage
+Tache empiler
+Tache banderole
+*/
 
 #define MASTER_ADDRESS 0x01
 
@@ -95,7 +104,7 @@ void setup(){
     sensors.Init();
 
     sensors.Stop();
-
+*/
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
@@ -141,6 +150,18 @@ void setup(){
 
     if(ret_robot!=pdPASS) {Error_Handler()}
 
+    TaskHandle_t  hl_yeux= nullptr;
+
+    BaseType_t ret_yeux = xTaskCreate(
+            wb_loop,       /* Function that implements the task. */
+            "UwU",          /* Text name for the task. */
+            10000,      /* Stack size in words, not bytes. */
+            NULL,    /* Parameter passed into the task. */
+            5,//Prio un peu mieux
+            &hl_yeux );      /* Used to pass out the created task's handle. */
+
+    if(ret_yeux!=pdPASS) {Error_Handler()}
+
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS
     //On devrait pas être là; Uh oh
@@ -148,6 +169,7 @@ void setup(){
     Error_Handler();
 }
 
-void loop() {
+void loop(){
 
+    //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

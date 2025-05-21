@@ -12,16 +12,20 @@ static LedButton bleu = LedButton(BLEU_BTN_PIN, INPUT_PULLUP, BLEU_LED_PIN);
 static LedButton jaune = LedButton(JAUNE_BTN_PIN, INPUT_PULLUP, JAUNE_LED_PIN);
 static LedButton vert = LedButton(VERT_BTN_PIN, INPUT_PULLUP, VERT_LED_PIN);
 static LedButton rouge = LedButton(ROUGE_BTN_PIN, INPUT_PULLUP, ROUGE_LED_PIN);
+
+static Buttons endstop_haut = Buttons(END_STOP_HAUT_PIN, INPUT_PULLDOWN);
 static Buttons endstop_bas = Buttons(END_STOP_BAS_PIN, INPUT_PULLUP);
 static Buttons tirette = Buttons(TIRETTE_PIN, INPUT_PULLUP);
 
 
-bool ihm::etat_bleu(){return bleu.getState();}
-bool ihm::etat_jaune(){return jaune.getState();}
-bool ihm::etat_vert(){return vert.getState();}
-bool ihm::etat_rouge(){return rouge.getState();}
-bool ihm::etat_lim_bas(){return endstop_bas.getState();}
-bool ihm::etat_tirette(){return tirette.getState();}
+bool ihm::etat_bleu(){return !bleu.getState();}
+bool ihm::etat_jaune(){return !jaune.getState();}
+bool ihm::etat_vert(){return !vert.getState();}
+bool ihm::etat_rouge(){return !rouge.getState();}
+
+bool ihm::etat_lim_bas(){return !endstop_bas.getState();}
+bool ihm::etat_lim_haut(){return endstop_haut.getState();}
+bool ihm::etat_tirette(){return !tirette.getState();}
 
 void ihm::led_bleu(bool etat){bleu.setLedState(etat);}
 void ihm::led_jaune(bool etat){jaune.setLedState(etat);}
