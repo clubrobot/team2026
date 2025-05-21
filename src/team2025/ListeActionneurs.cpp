@@ -14,8 +14,8 @@ namespace listeActionneur {
     uint8_t servo_banderole=SERVO_BANDEROLE_ID;
     uint8_t servo_pince_droite=SERVO_PINCE_DROITE_ID;
     uint8_t servo_pince_gauche=SERVO_PINCE_GAUCHE_ID;
-    uint8_t servo_pince_milieu_droit=SERVO_PINCE_MILIEU_DROIT_ID;
-    uint8_t servo_pince_milieu_gauche=SERVO_PINCE_MILIEU_GAUCHE_ID;
+    uint8_t servo_pince_aimant_droit=SERVO_PINCE_MILIEU_DROIT_ID;
+    uint8_t servo_pince_aimant_gauche=SERVO_PINCE_MILIEU_GAUCHE_ID;
 }
 
 
@@ -44,19 +44,34 @@ void listeActionneur::Init(){
     limite_servo_pince_droite.non_deploye = 80; ///FERME
     limite_servo_pince_droite.deploye = 150; //OUVERT
 
-    limite_servo_pince_gauche.non_deploye = 167; ///FERME
-    limite_servo_pince_gauche.deploye = 100; ///OUVERT
+    limite_servo_pince_gauche.non_deploye = 205; ///FERME OK
+    limite_servo_pince_gauche.deploye = 180; ///OUVERT OK
 
-    limite_servo_pince_milieu_droit.non_deploye = 70; ///FERME
-    limite_servo_pince_milieu_droit.deploye = 150; ///OUVERT
+    //ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, 0);
+    limite_servo_pince_aimant_droit.non_deploye = 60; ///FERME
+    limite_servo_pince_aimant_droit.deploye = 150; ///OUVERT
 
-    limite_servo_pince_milieu_gauche.non_deploye = 165; ///FERME
-    limite_servo_pince_milieu_gauche.deploye = 100; ///OUVERT
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, 180);
+    limite_servo_pince_aimant_gauche.non_deploye = 180; ///FERME
+    limite_servo_pince_aimant_gauche.deploye = 190; ///OUVERT
 
     pinMode(POMPE_PIN, OUTPUT);
 
 }
 
+void listeActionneur::asc_down(){
+    while (!ihm::etat_lim_bas()){
+        ascenseur.turn(-1023);
+    }
+    ascenseur.turn(0);
+}
+
+void listeActionneur::asc_up(){
+    while (!ihm::etat_lim_haut()){
+        ascenseur.turn(1023);
+    }
+    ascenseur.turn(0);
+}
 
 void listeActionneur::set_pompe(bool state){
     if (state==HIGH){

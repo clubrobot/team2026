@@ -8,6 +8,7 @@
 #include <variables_globales.h>
 #include <Logger.h>
 #include <Musique.h>
+#include <Teleplot.h>
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
@@ -21,7 +22,6 @@
 #define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
-
 using namespace ihm;
 void procedure_demarrage(){
     main_logs.log(INFO_LEVEL, "Mise à zero des actionneurs\n");
@@ -66,6 +66,7 @@ Procédure démarrage
 Tache empiler
 Tache banderole
 */
+
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -82,7 +83,6 @@ void setup(){
 
     wb_setup();
     listeActionneur::Init();
-
 /*
     TwoWire i2c2 = TwoWire(PF0,PF1);
     i2c2.begin();
@@ -161,5 +161,6 @@ void setup(){
 }
 
 void loop(){
-    printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
+
+    //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

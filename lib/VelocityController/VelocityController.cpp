@@ -3,6 +3,7 @@
 
 #include "VelocityController.h"
 #include "mathutils.h"
+#include "../Teleplot/Teleplot.h"
 
 
 float VelocityController::genRampSetpoint(float stepSetpoint, float input, float rampSetpoint, float maxAcc, float maxDec, float timestep)
@@ -123,21 +124,13 @@ void VelocityController::setSpinShutdown   (bool spinShutdown)   {
 
 
 #if ENABLE_VELOCITYCONTROLLER_LOGS
-void VelocityControllerLogs::process(float timestep)
-{
-	Serial.print(millis());
-	Serial.print("\t");
-	Serial.print(m_controller->m_rampLinVelSetpoint);
-	Serial.print("\t");
-	Serial.print(m_controller->m_linInput);
-	Serial.print("\t");
-	Serial.print(m_controller->m_linVelOutput);
-	Serial.print("\t");
-	Serial.print(m_controller->m_rampAngVelSetpoint);
-	Serial.print("\t");
-	Serial.print(m_controller->m_angInput);
-	Serial.print("\t");
-	Serial.print(m_controller->m_angVelOutput);
-	Serial.print("\n");
+void VelocityControllerLogs::process(float timestep){
+	Teleplot_add_variable_float_2decimal("m_rampLinVelSetpoint", m_controller->m_rampLinVelSetpoint);
+	Teleplot_add_variable_float_2decimal("m_linInput", m_controller->m_linInput);
+	Teleplot_add_variable_float_2decimal("m_linVelOutput", m_controller->m_linVelOutput);
+
+	Teleplot_add_variable_float_2decimal("m_rampAngVelSetpoint", m_controller->m_rampAngVelSetpoint);
+	Teleplot_add_variable_float_2decimal("m_angInput", m_controller->m_angInput);
+	Teleplot_add_variable_float_2decimal("m_angVelOutput", m_controller->m_angVelOutput);
 };
 #endif // ENABLE_VELOCITYCONTROLLER_LOGS
