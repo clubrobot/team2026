@@ -26,8 +26,10 @@ void listeActionneur::Init(){
 
     ascenseur.attach(AX12_ASCENSEUR_ID);
     banderole.attach(AX12_BANDEROLE_ID);
+    banderole.setEndlessMode(false);
     pince_droite.attach(AX12_PINCE_DROITE_ID);
     pince_gauche.attach(AX12_PINCE_GAUCHE_ID);
+
 
     limite_pince_droite.deploye = 219;  //ouvert
     limite_pince_droite.mi_non_deploye = 130; //fermé
@@ -37,24 +39,38 @@ void listeActionneur::Init(){
     limite_pince_gauche.mi_non_deploye = 238; // fermé
     limite_pince_gauche.non_deploye = 298; // complétement fermé
 
-    limite_ascenseur.deploye = 6.5;//6sec montée
-    limite_ascenseur.non_deploye = 1;//
-    limite_ascenseur.mi_non_deploye = 1.5;//
-
-    limite_servo_pince_droite.non_deploye = 80; ///FERME
+    ////////////PINCE
+    limite_servo_pince_droite.non_deploye = 75; ///FERME
     limite_servo_pince_droite.deploye = 150; //OUVERT
 
-    limite_servo_pince_gauche.non_deploye = 205; ///FERME OK
-    limite_servo_pince_gauche.deploye = 180; ///OUVERT OK
+    limite_servo_pince_gauche.non_deploye = 155; ///FERME
+    limite_servo_pince_gauche.deploye = 110; ///OUVERT
 
-    //ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, 0);
-    limite_servo_pince_aimant_droit.non_deploye = 60; ///FERME
-    limite_servo_pince_aimant_droit.deploye = 150; ///OUVERT
+    ////////////AIMANTs
+    limite_servo_pince_aimant_droit.non_deploye = 90; ///FERME OK
+    limite_servo_pince_aimant_droit.deploye = 75; ///OUVERT OK
 
-    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, 180);
     limite_servo_pince_aimant_gauche.non_deploye = 180; ///FERME
-    limite_servo_pince_aimant_gauche.deploye = 190; ///OUVERT
+    limite_servo_pince_aimant_gauche.deploye = 200; ///OUVERT
 
+
+    /////BANDEROLE
+    limite_banderole.non_deploye = 218; //En haut
+    limite_banderole.deploye = 159; // En bas
+
+    limite_servo_banderole.non_deploye = 39; //SERRRE
+    limite_servo_banderole.deploye = 180; //OUVERT
+
+
+    //INIT
+    mise_banderole();
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.non_deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.non_deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
+    pince_gauche.move(limite_pince_gauche.deploye);
+    pince_droite.move(limite_pince_droite.deploye);
+    asc_up();
     pinMode(POMPE_PIN, OUTPUT);
 
 }
@@ -72,6 +88,21 @@ void listeActionneur::asc_up(){
     }
     ascenseur.turn(0);
 }
+
+void listeActionneur::deploie_banderole(){
+    banderole.move(limite_banderole.deploye);
+    ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
+}
+void listeActionneur::haut_banderole(){
+    banderole.move(limite_banderole.non_deploye);
+    ServosPCA9685::Write(servo_banderole, limite_servo_banderole.non_deploye);
+}
+void listeActionneur::mise_banderole(){
+    banderole.move(limite_banderole.non_deploye);
+    ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
+}
+
+
 
 void listeActionneur::set_pompe(bool state){
     if (state==HIGH){

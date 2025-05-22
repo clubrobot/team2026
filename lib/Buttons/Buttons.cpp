@@ -15,7 +15,7 @@ Buttons::Buttons(uint32_t pin, uint32_t inMode) {
 Buttons::Buttons(uint32_t pin, uint32_t inMode, callback_function_t onPress, uint32_t mode) {
     pinMode(pin, inMode);
     this->_pin = pin;
-    attachInterrupt(digitalPinToInterrupt(this->_pin), std::move(onPress), mode);
+    attachInterrupt(digitalPinToInterrupt(this->_pin), onPress, mode);
     this->isIT = true;
 }
 

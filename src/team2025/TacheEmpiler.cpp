@@ -6,3 +6,8 @@
 #include "ListeActionneurs.h"
 
 using namespace listeActionneur;
+
+
+bool TacheEmpiler::execute(bool previous_success){
+    return true;
+}

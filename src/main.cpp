@@ -9,6 +9,7 @@
 #include <Logger.h>
 #include <Musique.h>
 #include <Teleplot.h>
+#include <team2025/TacheBanderole.h>
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
@@ -19,7 +20,7 @@
 #include "team2025/ListeActionneurs.h"
 
 #define DEBUG 1
-#define TEST_NO_FREERTOS true //Ignore le FreeRTOS et se comporte comme un arduino classique
+#define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
 
 Logger main_logs = Logger("MAIN");
 using namespace ihm;
@@ -65,6 +66,7 @@ Régler PID/Accel => Logger
 Procédure démarrage
 Tache empiler
 Tache banderole
+check reset if vl53 are flshed !!!!!!!!!!!!!!
 */
 
 #define MASTER_ADDRESS 0x01

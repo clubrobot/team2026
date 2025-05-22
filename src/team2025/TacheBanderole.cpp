@@ -8,6 +8,6 @@
 using namespace listeActionneur;
 
 bool TacheBanderole::execute(bool success) {
-    printf("oui\n");
+    deploie_banderole();
     return true;
 }

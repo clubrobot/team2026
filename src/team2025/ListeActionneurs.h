@@ -14,11 +14,11 @@
 #define AX12_PINCE_DROITE_ID 1 //OK
 #define AX12_PINCE_GAUCHE_ID 3 //OK
 
-#define SERVO_PINCE_DROITE_ID 11
-#define SERVO_PINCE_GAUCHE_ID 12
-#define SERVO_PINCE_MILIEU_DROIT_ID 3
-#define SERVO_PINCE_MILIEU_GAUCHE_ID 7
-#define SERVO_BANDEROLE_ID 15
+#define SERVO_PINCE_DROITE_ID 11 //OK
+#define SERVO_PINCE_GAUCHE_ID 12 //OK
+#define SERVO_PINCE_MILIEU_DROIT_ID 3 //OK
+#define SERVO_PINCE_MILIEU_GAUCHE_ID 7 //OK
+#define SERVO_BANDEROLE_ID 15 //OK
 
 #define POMPE_PIN PF9
 
@@ -37,6 +37,7 @@ inline limites_actionneurs limite_banderole;
 inline limites_actionneurs limite_pince_droite;
 inline limites_actionneurs limite_pince_gauche;
 
+inline limites_actionneurs limite_servo_banderole;
 inline limites_actionneurs limite_servo_pince_droite;
 inline limites_actionneurs limite_servo_pince_gauche;
 inline limites_actionneurs limite_servo_pince_aimant_droit;
@@ -47,6 +48,9 @@ namespace listeActionneur {
 
     void asc_down();
     void asc_up();
+    void deploie_banderole();
+    void haut_banderole();
+    void mise_banderole();
     void set_pompe(bool state);
 
     extern AX12 ascenseur;

@@ -35,7 +35,7 @@ void Automate::init(int team) {
 
         numberTaches=3;
         taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
-        taches[1]=new TacheEmpiler();
+        //taches[1]=new TacheEmpiler();
         taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
 
 
@@ -48,15 +48,58 @@ void Automate::init(int team) {
 
         numberTaches=3;
         taches[0]=new TacheGoto(nullptr,&positions_match[garage91all], &positions_match[depot2]);
-        taches[1]=new TacheEmpiler();
+       // taches[1]=new TacheEmpiler();
         taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
 
     }
     //mettre les tâches a éxécuter ici.
 
 }
+Position* begin =new Position(0,0,0);
+Position* temp =new Position(100,0,0);
 
 void Automate::play_match(void *pvParameters){
+    Wheeledbase::SET_POSITION(begin);
+    const Position* pos =Wheeledbase::GET_POSITION();
+
+    for (;;){
+        Wheeledbase::SET_VELOCITIES(1000,0);
+        //printf("%f %f %f\n", pos->x, pos->y, pos->theta);
+
+    }
+
+    for (;;){}
+    listeActionneur::asc_down();
+    listeActionneur::pince_gauche.move(limite_pince_gauche.mi_non_deploye);
+    poly_delay(100);
+    listeActionneur::pince_droite.move(limite_pince_droite.mi_non_deploye);
+    poly_delay(500);
+    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.non_deploye);
+    poly_delay(100);
+    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.non_deploye);
+    poly_delay(500);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.deploye);
+    poly_delay(100);
+    listeActionneur::pince_droite.move(limite_pince_droite.deploye);
+    poly_delay(500);
+    listeActionneur::set_pompe(HIGH);
+    poly_delay(100);
+    listeActionneur::asc_up();
+    poly_delay(500);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.mi_non_deploye);
+    poly_delay(100);
+    listeActionneur::pince_droite.move(limite_pince_droite.mi_non_deploye);
+    poly_delay(500);
+    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
+    poly_delay(100);
+    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
+    listeActionneur::set_pompe(LOW);
+    poly_delay(100);
+    listeActionneur::pince_gauche.move(limite_pince_gauche.deploye);
+    poly_delay(100);
+    listeActionneur::pince_droite.move(limite_pince_droite.deploye);
+    delay(500);
+    for (;;){}
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
