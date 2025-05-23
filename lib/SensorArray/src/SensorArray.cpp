@@ -70,7 +70,7 @@ uint8_t SensorArray::Init()
         this->power_config += 1 << handle->cfg.pin - 1;
         this->ApplyPowerConfig();
 
-        poly_delay(1200);
+        poly_delay(200);
 
         //Check if the sensor is alive
         uint8_t status = handle->sensor->vl53l5cx_is_alive(&handle->is_alive);
