@@ -25,6 +25,7 @@ void listeActionneur::Init(){
     ServosPCA9685::Init();
 
     ascenseur.attach(AX12_ASCENSEUR_ID);
+    ascenseur.setEndlessMode(true);
     banderole.attach(AX12_BANDEROLE_ID);
     banderole.setEndlessMode(false);
     pince_droite.attach(AX12_PINCE_DROITE_ID);
@@ -41,7 +42,7 @@ void listeActionneur::Init(){
 
     ////////////PINCE
     limite_servo_pince_droite.non_deploye = 75; ///FERME
-    limite_servo_pince_droite.deploye = 150; //OUVERT
+    limite_servo_pince_droite.deploye = 120; //OUVERT
 
     limite_servo_pince_gauche.non_deploye = 155; ///FERME
     limite_servo_pince_gauche.deploye = 110; ///OUVERT
@@ -63,15 +64,43 @@ void listeActionneur::Init(){
 
 
     //INIT
-    mise_banderole();
+    haut_banderole();
+    poly_delay(20);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.non_deploye);
+    poly_delay(20);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.non_deploye);
-    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
-    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
-    pince_gauche.move(limite_pince_gauche.deploye);
-    pince_droite.move(limite_pince_droite.deploye);
-    asc_up();
+    poly_delay(20);
+    pince_compact();
+    poly_delay(1000);
+    asc_down();
     pinMode(POMPE_PIN, OUTPUT);
+    poly_delay(1000);
+
+    //asc_mid();
+    /*poly_delay(1000);
+    papOuvert();
+    pinceOuvert();
+    while (!ihm::etat_vert()){}
+    asc_down();
+    poly_delay(100);
+    papFerme();
+    poly_delay(100);
+    pinceFerme();
+    poly_delay(500);
+    papOuvert();
+    poly_delay(100);
+    set_pompe(HIGH);
+    poly_delay(100);
+    asc_up();
+    poly_delay(100);
+    papFerme();
+    poly_delay(500);
+    pinceOuvert();
+    poly_delay(1000);
+    papOuvert();
+    poly_delay(100);
+    set_pompe(LOW);
+*/
 
 }
 
@@ -82,6 +111,13 @@ void listeActionneur::asc_down(){
     ascenseur.turn(0);
 }
 
+void listeActionneur::asc_mid(){
+    if (ihm::etat_lim_haut() || !ihm::etat_lim_bas())return;
+    ascenseur.turn(1023);
+    poly_delay(600);
+    ascenseur.turn(0);
+}
+
 void listeActionneur::asc_up(){
     while (!ihm::etat_lim_haut()){
         ascenseur.turn(1023);
@@ -89,8 +125,21 @@ void listeActionneur::asc_up(){
     ascenseur.turn(0);
 }
 
+void listeActionneur::aimante_conserve(){
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.non_deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.non_deploye);
+}
+
+void listeActionneur::stop_aimant_conserve(){
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.deploye);
+}
+
+
+
 void listeActionneur::deploie_banderole(){
     banderole.move(limite_banderole.deploye);
+    poly_delay(300);
     ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
 }
 void listeActionneur::haut_banderole(){
@@ -102,7 +151,36 @@ void listeActionneur::mise_banderole(){
     ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
 }
 
+void listeActionneur::pince_compact(){
+    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
+    poly_delay(100);
+    pince_gauche.move(limite_pince_gauche.non_deploye, true);
+    pince_droite.move(limite_pince_droite.non_deploye, true);
+}
 
+void listeActionneur::papOuvert(){
+    pince_gauche.move(limite_pince_gauche.deploye);
+    pince_droite.move(limite_pince_droite.deploye, true);
+}
+
+void listeActionneur::papFerme(){
+    pince_gauche.move(limite_pince_gauche.mi_non_deploye);
+    pince_droite.move(limite_pince_droite.mi_non_deploye, true);
+}
+
+void listeActionneur::pinceOuvert(){
+    poly_delay(5);
+    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
+    poly_delay(5);
+    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
+}
+void listeActionneur::pinceFerme(){
+    poly_delay(5);
+    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.non_deploye);
+    poly_delay(5);
+    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.non_deploye);
+}
 
 void listeActionneur::set_pompe(bool state){
     if (state==HIGH){

@@ -16,6 +16,10 @@
 #include "sensors/SensorsThread.h"
 
 #include "team2025/TacheEmpiler.h"
+#include "team2025/TacheBanderole.h"
+
+
+#include <Teleplot.h>
 
 namespace Automate {
     Logger auto_logs = Logger("AUTOMATE");
@@ -32,44 +36,31 @@ void Automate::init(int team) {
         //import geogebra.h jaune
 
         positions_match=positions_jaune;
-        Wheeledbase::SET_POSITION(&positions_match[chgsta]);
+        Wheeledbase::SET_POSITION(&positions_match[start2]);
 
-        numberTaches=3;
-        taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
-        //taches[1]=new TacheEmpiler();
-        taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
-
+        numberTaches=2;
+        taches[0] = new TacheBanderole();
+        taches[1] = new TacheGoto((Position*)nullptr, &positions_match[garage4all], PurePursuit::FORWARD);
+        //taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
 
     }else{
         auto_logs.log(INFO_LEVEL, "Automate init avec Bleu\n");
         //import geogebra.h bleu
         positions_match=positions_bleu;
 
-        Wheeledbase::SET_POSITION(&positions_match[chgsta]);
+        Wheeledbase::SET_POSITION(&positions_match[start2]);
 
-        numberTaches=3;
-        taches[0]=new TacheGoto(nullptr,&positions_match[garage91all], &positions_match[depot2]);
-       // taches[1]=new TacheEmpiler();
-        taches[2]=new TacheGoto(nullptr, &positions_match[chgsta1], &positions_match[chgsta1], PurePursuit::BACKWARD);
+        numberTaches=1;
+        taches[0] = new TacheBanderole();
+        //taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
 
     }
     //mettre les tâches a éxécuter ici.
 
 }
-Position* begin =new Position(0,0,0);
-Position* temp =new Position(100,0,0);
 
 void Automate::play_match(void *pvParameters){
-    Wheeledbase::SET_POSITION(begin);
-    const Position* pos =Wheeledbase::GET_POSITION();
-
-    for (;;){
-        Wheeledbase::SET_VELOCITIES(1000,0);
-        //printf("%f %f %f\n", pos->x, pos->y, pos->theta);
-
-    }
-
-    for (;;){}
+    /*
     listeActionneur::asc_down();
     listeActionneur::pince_gauche.move(limite_pince_gauche.mi_non_deploye);
     poly_delay(100);
@@ -100,7 +91,8 @@ void Automate::play_match(void *pvParameters){
     poly_delay(100);
     listeActionneur::pince_droite.move(limite_pince_droite.deploye);
     delay(500);
-    for (;;){}
+    */
+
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.

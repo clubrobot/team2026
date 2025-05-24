@@ -5,8 +5,6 @@
 #ifndef TACHEBANDEROLE_H
 #define TACHEBANDEROLE_H
 
-
-
 #include "decisions/Tache.h"
 
 class TacheBanderole: public Tache{

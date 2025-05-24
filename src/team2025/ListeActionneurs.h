@@ -47,11 +47,22 @@ namespace listeActionneur {
     void Init();
 
     void asc_down();
+    void asc_mid();
     void asc_up();
+
+    void aimante_conserve();
+    void stop_aimant_conserve();
+
     void deploie_banderole();
     void haut_banderole();
     void mise_banderole();
     void set_pompe(bool state);
+
+    void pince_compact();
+    void papOuvert();
+    void papFerme();
+    void pinceOuvert();
+    void pinceFerme();
 
     extern AX12 ascenseur;
     extern AX12 pince_droite;

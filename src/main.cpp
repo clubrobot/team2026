@@ -8,6 +8,7 @@
 #include <variables_globales.h>
 #include <Logger.h>
 #include <Musique.h>
+#include <Teleplot.h>
 #include <team2025/TacheBanderole.h>
 
 #include "ihm/ihm.h"
@@ -33,13 +34,13 @@ void procedure_demarrage(){
     led_jaune(HIGH);
     led_bleu(HIGH);
     while (1){
-        if (!etat_jaune()){
+        if (etat_jaune()){
             main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
             led_bleu(LOW);
             Automate::init(TEAM_JAUNE);
             break;
         }
-        if (!etat_bleu()){
+        if (etat_bleu()){
             main_logs.log(GOOD_LEVEL,"Equipe Bleu!\n");
             led_jaune(LOW);
             Automate::init(TEAM_BLEU);
@@ -47,14 +48,28 @@ void procedure_demarrage(){
         }
     }
 
-    main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert\n");
+    main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert; rouge pour mettre la banderole!\n");
+
+    int prev_vert = millis();
+    int prev_rouge = millis();
+
     while (!etat_vert()){
-        int prev = millis();
-        if (millis() - prev > 100){
-            prev = millis();
+        int curr_time = millis();
+        if (curr_time-prev_vert > 500){
+            prev_vert = curr_time;
             led_vert();
         }
-    };
+        if(curr_time-prev_rouge>100){
+            prev_rouge = curr_time;
+            led_rouge();
+        }
+
+        if(etat_rouge()){
+            listeActionneur::mise_banderole();
+        }else{
+            listeActionneur::haut_banderole();
+        }
+    }
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
@@ -62,13 +77,16 @@ void procedure_demarrage(){
 
 /**
 TODO:
-Valeurs servo limites
-Régler PID/Accel => Logger
-Procédure démarrage
+Valeurs servo limites  OK
+Régler PID/Accel => Logger OK
+Procédure démarrage Preque OK
 Tache empiler
-Tache banderole
+Tache banderole OK
 check reset if vl53 are flshed !!!!!!!!!!!!!!
 */
+
+#define YEUX_TX PG1
+HardwareSerial yeux(YEUX_TX);
 
 //Setup de base
 void setup(){
@@ -84,10 +102,33 @@ void setup(){
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
-    //wb_setup();
     //listeActionneur::Init();
     SensorsThread::Init();
 
+    wb_setup();
+    listeActionneur::Init();
+    yeux.setTx(YEUX_TX);
+    yeux.setHalfDuplex();
+    yeux.begin(115200);
+
+
+/*
+    i2c_t i2c2 = {.sda = PF_0, .scl = PF_1, .isMaster = 1, .generalCall = false, .NoStretchMode = false};
+    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
+    poly_delay(1000);
+    SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
+    sensors.addSensor({.addr = 0x20, 1});
+    sensors.addSensor({.addr = 0x25, 2});
+    sensors.addSensor({.addrset = 0x30, 3});
+    sensors.addSensor({.addr = 0x35, 4});
+    //sensors.addSensor({.addr = 0x40, 5});
+    //sensors.addSensor({.addr = 0x45, 6});
+    //sensors.addSensor({.addr = 0x50, 7});
+    //sensors.addSensor({.addr = 0x55, 8});
+    sensors.Init();
+
+    sensors.Stop();
+*/
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
@@ -153,6 +194,7 @@ void setup(){
 }
 
 void loop(){
-
+    yeux.print("Hello There\n");
+    delay(500);
     //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

@@ -8,8 +8,8 @@ import re
 #   All: pour les points d'intéret commun aux deux équipes.
 #Pour chaque variable avec Bleu il en faut une autre avec Jaune à la place.
 
-CHEMIN_POINT_H="raspberrypi/Geogebra.h"
-CHEMIN_GEOGEBRA="raspberrypi/robots/team2024/map_2024.ggb"
+CHEMIN_POINT_H="../include/Geogebra.h"
+CHEMIN_GEOGEBRA="../maps/map_2025.ggb"
 #on lit les angles pour pouvoir les sauvegarder et ne pas les ecraser
 f = open(CHEMIN_POINT_H, "r")
 thetas_bleu={}
@@ -63,7 +63,7 @@ for e in liste_bleu:
             name=e.lower().replace("bleu","")
             noms+="#define "+name+" "+str(id)+"\n"
             point=geo.get(e_j)
-            theta="-1.570796327"
+            theta="1.570796327"
             if(thetas_jaune.__contains__(name)):
                 theta=thetas_jaune[name]
             var_jaunes+="   Position("+str(point[0])+"f, "+str(point[1])+"f,"+theta+"), //"+name+"_jaune"+"\n"
@@ -76,7 +76,7 @@ for e in liste_bleu:
         print("Le point",e," n'a pas de point de la team jaune associé.")
     #o najoute le point bleu.
     point=geo.get(e)
-    theta="-1.570796327"
+    theta="1.570796327"
     if(thetas_bleu.__contains__(name)):
         theta=thetas_bleu[name]
     var_bleu+="   Position("+str(point[0])+"f, "+str(point[1])+"f,"+theta+"), //"+name+"_bleu"+"\n"
