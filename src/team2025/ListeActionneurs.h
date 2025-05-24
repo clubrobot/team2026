@@ -47,7 +47,12 @@ namespace listeActionneur {
     void Init();
 
     void asc_down();
+    void asc_mid();
     void asc_up();
+
+    void aimante_conserve();
+    void stop_aimant_conserve();
+
     void deploie_banderole();
     void haut_banderole();
     void mise_banderole();

@@ -116,7 +116,7 @@ void setup(){
     SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
     sensors.addSensor({.addr = 0x20, 1});
     sensors.addSensor({.addr = 0x25, 2});
-    sensors.addSensor({.addr = 0x30, 3});
+    sensors.addSensor({.addrset = 0x30, 3});
     sensors.addSensor({.addr = 0x35, 4});
     //sensors.addSensor({.addr = 0x40, 5});
     //sensors.addSensor({.addr = 0x45, 6});

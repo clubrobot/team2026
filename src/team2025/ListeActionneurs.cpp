@@ -25,6 +25,7 @@ void listeActionneur::Init(){
     ServosPCA9685::Init();
 
     ascenseur.attach(AX12_ASCENSEUR_ID);
+    ascenseur.setEndlessMode(true);
     banderole.attach(AX12_BANDEROLE_ID);
     banderole.setEndlessMode(false);
     pince_droite.attach(AX12_PINCE_DROITE_ID);
@@ -73,8 +74,10 @@ void listeActionneur::Init(){
     poly_delay(1000);
     asc_down();
     pinMode(POMPE_PIN, OUTPUT);
-    return;
     poly_delay(1000);
+
+    //asc_mid();
+    /*poly_delay(1000);
     papOuvert();
     pinceOuvert();
     while (!ihm::etat_vert()){}
@@ -91,13 +94,13 @@ void listeActionneur::Init(){
     asc_up();
     poly_delay(100);
     papFerme();
-    poly_delay(100);
-    pinceOuvert();
     poly_delay(500);
+    pinceOuvert();
+    poly_delay(1000);
     papOuvert();
     poly_delay(100);
     set_pompe(LOW);
-
+*/
 
 }
 
@@ -108,12 +111,31 @@ void listeActionneur::asc_down(){
     ascenseur.turn(0);
 }
 
+void listeActionneur::asc_mid(){
+    if (ihm::etat_lim_haut() || !ihm::etat_lim_bas())return;
+    ascenseur.turn(1023);
+    poly_delay(600);
+    ascenseur.turn(0);
+}
+
 void listeActionneur::asc_up(){
     while (!ihm::etat_lim_haut()){
         ascenseur.turn(1023);
     }
     ascenseur.turn(0);
 }
+
+void listeActionneur::aimante_conserve(){
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.non_deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.non_deploye);
+}
+
+void listeActionneur::stop_aimant_conserve(){
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.deploye);
+    ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.deploye);
+}
+
+
 
 void listeActionneur::deploie_banderole(){
     banderole.move(limite_banderole.deploye);

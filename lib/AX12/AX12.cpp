@@ -80,8 +80,10 @@ int AX12::move(float Position, bool waitForFinish){
 	int pos = min((float) 1023,Position/300*1023);
 	Dynamixel.move(m_id, pos);
 	if(waitForFinish){
-		float pos =  readPosition();
-		while ((int) pos != (int)Position){ pos = readPosition();}
+		float pos =360;
+		while ((int) pos != ((int)(readPosition()/10))*10){
+			pos = ((int)(readPosition()/10))*10;
+		}
 		printf("Finished moving\n");
 	}
 	return 0;
