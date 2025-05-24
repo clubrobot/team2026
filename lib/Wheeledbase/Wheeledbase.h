@@ -15,7 +15,6 @@
 #include "TurnOnTheSpot.h"
 #include "mathutils.h"
 #include <math.h>
-
 // Parameters identifiers
 
 #define LEFTWHEEL_RADIUS_ID             0x10
@@ -56,9 +55,9 @@
 #define PUREPURSUIT_LOOKAHEADBIS_ID     0xE2
 
 //define the distance and the deceleration at the end of goto
-#define SLOWDOWN_FACTOR                 0.02
-#define SLOWDOWN_DISTANCE               50
-#define ALIGN_DISTANCE                  300
+#define SLOWDOWN_FACTOR                 0.1
+#define SLOWDOWN_DISTANCE               0
+#define ALIGN_DISTANCE                  100
 
 // Global variables
 extern DCMotorsDriver driver;
@@ -104,7 +103,9 @@ namespace  Wheeledbase {
 
     void PUREPURSUIT(const Position** waypoints, uint16_t nb_waypoints, char dir, float finalAngle);
 
-    void GOTO(Position* pos, bool alignFirst=false, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
+    void GOTO(Position* pos, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
+
+    void GOTO_FUNCT(Position* pos, void* duringMovingFunct, void* approachFunct, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
 
     uint8_t POSITION_REACHED();
 

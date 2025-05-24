@@ -4,7 +4,7 @@
 
 #include "Teleplot.h"
 
-#define BEACON_MSG_LEN_MAX 500
+#define BEACON_MSG_LEN_MAX 50
 
 char teleplot_tampon[BEACON_MSG_LEN_MAX]="";
 
@@ -56,12 +56,18 @@ void Teleplot_ajout_ou_envoie_tampon(char * message){
 
 void Teleplot_add_variable_float_2decimal(const char * nom_variable, float valeur){
     char tampon[100];
-    sprintf(tampon, "%s:%.2f\n", nom_variable, valeur);
+    sprintf(tampon, ">%s:%lu:%.2f\n", nom_variable, Teleplot_get_temps(), valeur);
     Teleplot_ajout_ou_envoie_tampon(tampon);
 }
 
 void Teleplot_add_variable_int(char * nom_variable, int valeur){
     char tampon[100];
-    sprintf(tampon, "%s:%lu:%d\n", nom_variable, Teleplot_get_temps(), valeur);
+    sprintf(tampon, ">%s:%lu:%d\n", nom_variable, Teleplot_get_temps(), valeur);
+    Teleplot_ajout_ou_envoie_tampon(tampon);
+}
+
+void Teleplot_add_variable_2d(char * nom_variable, float x, float y){
+    char tampon[100];
+    sprintf(tampon, ">%s:%.2f:%.2f:%lu|xy\n", nom_variable, x, y, Teleplot_get_temps());
     Teleplot_ajout_ou_envoie_tampon(tampon);
 }

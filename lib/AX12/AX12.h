@@ -44,7 +44,7 @@ class AX12 {
 		int setID(unsigned char newID);
 		int setBD(long baud);
 
-		int move(float Position);
+		int move(float Position, bool waitForFinish=false);
 		int moveSpeed(float Position, float Speed);
 
 		int setEndlessMode(bool Status);

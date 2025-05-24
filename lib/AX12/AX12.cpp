@@ -73,12 +73,17 @@ int AX12::setBD(long baud){
  * @param Position Pos en ° à atteindre
  * @return Code d'erreur
  */
-int AX12::move(float Position){
+int AX12::move(float Position, bool waitForFinish){
 	if(m_endlessMode){
 		setEndlessMode(OFF);
 	}
 	int pos = min((float) 1023,Position/300*1023);
-	return Dynamixel.move(m_id, pos);
+	Dynamixel.move(m_id, pos);
+	if(waitForFinish){
+		while (Dynamixel.readPosition(m_id) != Position){}
+		printf("Finished moving\n");
+	}
+	return 0;
 }
 
 /**

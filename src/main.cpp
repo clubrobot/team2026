@@ -32,13 +32,13 @@ void procedure_demarrage(){
     led_jaune(HIGH);
     led_bleu(HIGH);
     while (1){
-        if (!etat_jaune()){
+        if (etat_jaune()){
             main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
             led_bleu(LOW);
             Automate::init(TEAM_JAUNE);
             break;
         }
-        if (!etat_bleu()){
+        if (etat_bleu()){
             main_logs.log(GOOD_LEVEL,"Equipe Bleu!\n");
             led_jaune(LOW);
             Automate::init(TEAM_BLEU);
@@ -46,14 +46,28 @@ void procedure_demarrage(){
         }
     }
 
-    main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert\n");
+    main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert; rouge pour mettre la banderole!\n");
+
+    int prev_vert = millis();
+    int prev_rouge = millis();
+
     while (!etat_vert()){
-        int prev = millis();
-        if (millis() - prev > 100){
-            prev = millis();
+        int curr_time = millis();
+        if (curr_time-prev_vert > 500){
+            prev_vert = curr_time;
             led_vert();
         }
-    };
+        if(curr_time-prev_rouge>100){
+            prev_rouge = curr_time;
+            led_rouge();
+        }
+
+        if(etat_rouge()){
+            listeActionneur::mise_banderole();
+        }else{
+            listeActionneur::haut_banderole();
+        }
+    }
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 }
@@ -61,10 +75,10 @@ void procedure_demarrage(){
 
 /**
 TODO:
-Valeurs servo limites
-Régler PID/Accel => Logger
+Valeurs servo limites  OK
+Régler PID/Accel => Logger OK
 Procédure démarrage
-Tache empiler
+Tache empiler 
 Tache banderole
 check reset if vl53 are flshed !!!!!!!!!!!!!!
 */
@@ -87,13 +101,10 @@ void setup(){
 
     wb_setup();
     listeActionneur::Init();
-
+/*
     i2c_t i2c2 = {.sda = PF_0, .scl = PF_1, .isMaster = 1, .generalCall = false, .NoStretchMode = false};
     i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
-
     poly_delay(1000);
-
-
     SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
     sensors.addSensor({.addr = 0x20, 1});
     sensors.addSensor({.addr = 0x25, 2});
@@ -153,16 +164,16 @@ void setup(){
     if(ret_robot!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_yeux= nullptr;
+        
+    // BaseType_t ret_yeux = xTaskCreate(
+    //         a,       /* Function that implements the task. */
+    //         "UwU",          /* Text name for the task. */
+    //         10000,      /* Stack size in words, not bytes. */
+    //         NULL,    /* Parameter passed into the task. */
+    //         5,//Prio un peu mieux
+    //         &hl_yeux );      /* Used to pass out the created task's handle. */
 
-    BaseType_t ret_yeux = xTaskCreate(
-            wb_loop,       /* Function that implements the task. */
-            "UwU",          /* Text name for the task. */
-            10000,      /* Stack size in words, not bytes. */
-            NULL,    /* Parameter passed into the task. */
-            5,//Prio un peu mieux
-            &hl_yeux );      /* Used to pass out the created task's handle. */
-
-    if(ret_yeux!=pdPASS) {Error_Handler()}
+    // if(ret_yeux!=pdPASS) {Error_Handler()}
 
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS

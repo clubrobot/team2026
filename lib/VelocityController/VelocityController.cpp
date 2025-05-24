@@ -26,8 +26,7 @@ float VelocityController::genRampSetpoint(float stepSetpoint, float input, float
 	return rampSetpoint;
 }
 
-void VelocityController::process(float timestep)
-{
+void VelocityController::process(float timestep){
 	// Save setpoints
 	const float stepLinVelSetpoint = m_linSetpoint;
 	const float stepAngVelSetpoint = m_angSetpoint;
@@ -128,7 +127,6 @@ void VelocityControllerLogs::process(float timestep){
 	Teleplot_add_variable_float_2decimal("m_rampLinVelSetpoint", m_controller->m_rampLinVelSetpoint);
 	Teleplot_add_variable_float_2decimal("m_linInput", m_controller->m_linInput);
 	Teleplot_add_variable_float_2decimal("m_linVelOutput", m_controller->m_linVelOutput);
-
 	Teleplot_add_variable_float_2decimal("m_rampAngVelSetpoint", m_controller->m_rampAngVelSetpoint);
 	Teleplot_add_variable_float_2decimal("m_angInput", m_controller->m_angInput);
 	Teleplot_add_variable_float_2decimal("m_angVelOutput", m_controller->m_angVelOutput);

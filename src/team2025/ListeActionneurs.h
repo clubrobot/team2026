@@ -53,6 +53,12 @@ namespace listeActionneur {
     void mise_banderole();
     void set_pompe(bool state);
 
+    void pince_compact();
+    void papOuvert();
+    void papFerme();
+    void pinceOuvert();
+    void pinceFerme();
+
     extern AX12 ascenseur;
     extern AX12 pince_droite;
     extern AX12 pince_gauche;

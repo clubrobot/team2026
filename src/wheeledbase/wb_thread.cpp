@@ -62,32 +62,6 @@ void write_default_params() {
     purePursuit.setLookAheadBis(PUREPURSUIT_LOOKAHEADBIS_VALUE);
 }
 
-void reset_params() {
-    leftWheel.load(LEFTWHEEL_ADDRESS);
-    rightWheel.load(RIGHTWHEEL_ADDRESS);
-    leftCodewheel.load(LEFTCODEWHEEL_ADDRESS);
-    rightCodewheel.load(RIGHTCODEWHEEL_ADDRESS);
-    odometry.load(ODOMETRY_ADDRESS);
-    velocityControl.load(VELOCITYCONTROL_ADDRESS);
-    linVelPID.load(LINVELPID_ADDRESS);
-    angVelPID.load(ANGVELPID_ADDRESS);
-    positionControl.load(POSITIONCONTROL_ADDRESS);
-    purePursuit.load(PUREPURSUIT_ADDRESS);
-}
-
-void save_params() {
-    return;
-    leftWheel.save(LEFTWHEEL_ADDRESS);
-    rightWheel.save(RIGHTWHEEL_ADDRESS);
-    leftCodewheel.save(LEFTCODEWHEEL_ADDRESS);
-    rightCodewheel.save(RIGHTCODEWHEEL_ADDRESS);
-    odometry.save(ODOMETRY_ADDRESS);
-    velocityControl.save(VELOCITYCONTROL_ADDRESS);
-    linVelPID.save(LINVELPID_ADDRESS);
-    angVelPID.save(ANGVELPID_ADDRESS);
-    positionControl.save(POSITIONCONTROL_ADDRESS);
-    purePursuit.save(PUREPURSUIT_ADDRESS);
-}
 
 void codewheels_setup(){
     //--------TIM23
@@ -188,40 +162,32 @@ void codewheels_setup(){
 void wb_setup(){
     //TODO once
     write_default_params();
-    save_params();
     // DC motors wheels
     driver.attach(DRIVER_RESET, DRIVER_FAULT);
     driver.reset();
 
     leftWheel.attach(LEFT_MOTOR_EN, LEFT_MOTOR_PWM, LEFT_MOTOR_DIR);
     rightWheel.attach(RIGHT_MOTOR_EN, RIGHT_MOTOR_PWM, RIGHT_MOTOR_DIR);
-    //leftWheel.load(LEFTWHEEL_ADDRESS);
-    //rightWheel.load(RIGHTWHEEL_ADDRESS);
 
     // Codewheels
     codewheels_setup();
 
-    //leftCodewheel.load(LEFTCODEWHEEL_ADDRESS);
-    //rightCodewheel.load(RIGHTCODEWHEEL_ADDRESS);
     leftCodewheel.reset();
     rightCodewheel.reset();
 
     // Odometry
-    //odometry.load(ODOMETRY_ADDRESS);
     odometry.setCodewheels(leftCodewheel, rightCodewheel);
     odometry.setTimestep(ODOMETRY_TIMESTEP);
     odometry.enable();
 
     // Engineering control
-    //velocityControl.load(VELOCITYCONTROL_ADDRESS);
     velocityControl.setWheels(leftWheel, rightWheel);
     velocityControl.setPID(linVelPID, angVelPID);
     velocityControl.disable();
 
     // const float maxLinVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity());
     //const float maxAngVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity()) * 2 / VELOCITYCONTROL_AXLETRACK_VALUE;
-    //linVelPID.load(LINVELPID_ADDRESS);
-    //angVelPID.load(ANGVELPID_ADDRESS);
+
     //linVelPID.setOutputLimits(-maxLinVel, maxLinVel);
     //angVelPID.setOutputLimits(-maxAngVel, maxAngVel);
 
@@ -232,9 +198,7 @@ void wb_setup(){
 #endif // VELOCITYENABLE_CONTROLLER_LOGS
 
     // Position control
-    //positionControl.load(POSITIONCONTROL_ADDRESS);
     positionControl.setTimestep(POSITIONCONTROL_TIMESTEP);
-    //velocityControl.setTimestep(POSITIONCONTROL_TIMESTEP);
     positionControl.disable();
 
     //purePursuit.load(PUREPURSUIT_ADDRESS);
