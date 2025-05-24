@@ -188,7 +188,7 @@ uint8_t SensorArray::AquireRawData()
 
         if (handle->is_alive != 1)
         {
-            memset(&this->raw_data[i][0], -1, SENSORARRAY_RESOLUTION);
+            memset(&this->raw_data[handle->cfg.pin][0], -1, SENSORARRAY_RESOLUTION);
             continue;
         }
 
@@ -216,15 +216,15 @@ uint8_t SensorArray::AquireRawData()
             //According to uld's guide, um2884 5, 9 and 10 status code doesn't impact mesurments
             if (data.target_status[j] == 5 || data.target_status[j] == 9 || data.target_status[j] == 10)
             {
-                *(this->raw_data[i][0] + j) = data.distance_mm[j];
+                *(this->raw_data[handle->cfg.pin - 1][0] + j) = data.distance_mm[j];
                 continue;
             }
 
             //When the mesure is not valid
-            *(this->raw_data[i][0] + j) = -1;
+            *(this->raw_data[handle->cfg.pin - 1][0] + j) = -1;
         }
 
-        memcpy(this->raw_data[i], data.distance_mm, sizeof data.distance_mm);
+        //memcpy(this->raw_data[handle->cfg.pin - 1], data.distance_mm, sizeof data.distance_mm);
     }
     return status;
 }
@@ -289,6 +289,29 @@ uint8_t SensorArray::getNormalisedData()
     }
 
     return 0;
+}
+
+//The data must be acquired
+bool SensorArray::isThereAnObstacle(float velocity)
+{
+    uint8_t pin = velocity >= 0 ? 0 : 4;
+
+    for (int i = 0; i < 8; ++i)
+    {
+
+        printf("%d,",this->raw_data[pin][3][i]);
+    }
+
+    printf("\n");
+
+    for (int i = 0; i < 8; ++i)
+    {
+        if (this->raw_data[pin][3][i] < SENSORARRAY_STOP_DISTANCE && this->raw_data[pin][3][i] > 0)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 void SensorArray::Stop()

@@ -1,7 +1,7 @@
 #include "Tache.h"
 
 #include <Wheeledbase.h>
-#include "sensors/sensors_thread.h"
+#include "sensors/SensorsThread.h"
 const int Tache::get_max_score() {
     return max_score;
 }

@@ -13,6 +13,7 @@
 
 #include "Geogebra.h"
 #include "variables_globales.h"
+#include "sensors/SensorsThread.h"
 
 #include "team2025/TacheEmpiler.h"
 

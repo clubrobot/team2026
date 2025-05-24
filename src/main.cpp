@@ -8,12 +8,11 @@
 #include <variables_globales.h>
 #include <Logger.h>
 #include <Musique.h>
-#include <Teleplot.h>
 #include <team2025/TacheBanderole.h>
 
 #include "ihm/ihm.h"
 #include "wheeledbase/wb_thread.h"
-#include "sensors/sensors_thread.h"
+#include "sensors/SensorsThread.h"
 #include "decisions/Automate.h"
 #include "include/SensorArray.h"
 
@@ -21,6 +20,8 @@
 
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
+
+#define SENSORARRAY_STOP_DISTANCE 250
 
 Logger main_logs = Logger("MAIN");
 using namespace ihm;
@@ -69,8 +70,6 @@ Tache banderole
 check reset if vl53 are flshed !!!!!!!!!!!!!!
 */
 
-#define MASTER_ADDRESS 0x01
-
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -85,28 +84,10 @@ void setup(){
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
-    wb_setup();
-    listeActionneur::Init();
+    //wb_setup();
+    //listeActionneur::Init();
+    SensorsThread::Init();
 
-    i2c_t i2c2 = {.sda = PF_0, .scl = PF_1, .isMaster = 1, .generalCall = false, .NoStretchMode = false};
-    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
-
-    poly_delay(1000);
-
-
-    SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
-    sensors.addSensor({.addr = 0x20, 1});
-    sensors.addSensor({.addr = 0x25, 2});
-    sensors.addSensor({.addr = 0x30, 3});
-    sensors.addSensor({.addr = 0x35, 4});
-    //sensors.addSensor({.addr = 0x40, 5});
-    //sensors.addSensor({.addr = 0x45, 6});
-    //sensors.addSensor({.addr = 0x50, 7});
-    //sensors.addSensor({.addr = 0x55, 8});
-    sensors.Init();
-
-    sensors.Stop();
-*/
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
@@ -130,13 +111,13 @@ void setup(){
     if(ret_wb!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_sens = nullptr;
-    // BaseType_t ret_sens= xTaskCreate(
-    //             sensorThread,       /* Function that implements the task. */
-    //             "Sensors loop",          /* Text name for thedi task. */
-    //             10000,      /* Stack size in words, not bytes. */
-    //             nullptr,    /* Parameter passed into the task. */
-    //             5,//Prio nulle à chier
-    //             &hl_sens );      /* Used to pass out the created task's handle. */
+    BaseType_t ret_sens= xTaskCreate(
+                SensorsThread::Thread,       /* Function that implements the task. */
+                "Sensors loop",          /* Text name for thedi task. */
+                10000,      /* Stack size in words, not bytes. */
+                nullptr,    /* Parameter passed into the task. */
+                5,//Prio nulle à chier
+                &hl_sens );      /* Used to pass out the created task's handle. */
 
     // if(ret_sens!=pdPASS) {Error_Handler()}
 
@@ -154,15 +135,15 @@ void setup(){
 
     TaskHandle_t  hl_yeux= nullptr;
 
-    BaseType_t ret_yeux = xTaskCreate(
-            wb_loop,       /* Function that implements the task. */
-            "UwU",          /* Text name for the task. */
-            10000,      /* Stack size in words, not bytes. */
-            NULL,    /* Parameter passed into the task. */
-            5,//Prio un peu mieux
-            &hl_yeux );      /* Used to pass out the created task's handle. */
+    //BaseType_t ret_yeux = xTaskCreate(
+    //        wb_loop,       /* Function that implements the task. */
+    //        "UwU",          /* Text name for the task. */
+    //        10000,      /* Stack size in words, not bytes. */
+    //        NULL,    /* Parameter passed into the task. */
+    //        5,//Prio un peu mieux
+    //        &hl_yeux );      /* Used to pass out the created task's handle. */
 
-    if(ret_yeux!=pdPASS) {Error_Handler()}
+    //if(ret_yeux!=pdPASS) {Error_Handler()}
 
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS

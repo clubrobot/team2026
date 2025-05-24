@@ -12,6 +12,8 @@
 #include "Types.h"
 #include "uld/include/VL53L5CX.h"
 
+#define MASTER_ADDRESS 0x01
+
 #define SENSORARRAY_MAX 8
 //Number of millis between two frames at 10Hz
 #define SENSORARRAY_SENSOR_TIMEOUT (1/10*1000)c
@@ -23,10 +25,14 @@
 #define SENSORARRAY_FRAME_RADIUS 38.2
 #define SENSORARRAY_FRAME_Z 70.8
 
+#ifndef SENSORARRAY_STOP_DISTANCE
+#define SENSORARRAY_STOP_DISTANCE 250
+#endif
+
+
 class SensorArray
 {
 public:
-
     struct SensorArrayOrigin
     {
         //Angle from 1 to front
@@ -53,14 +59,15 @@ public:
     uint8_t Start();
     void Stop();
 
+    //Get new data
     uint8_t getNormalisedData();
-
+    bool isThereAnObstacle(float velocity);
 
 private:
     SensorArrayOrigin config;
     uint8_t nb_sensors;
     std::array<SensorHandle, 8> sensors;
-    int16_t raw_data[8][8][8] =  {};
+    int16_t raw_data[8][8][8] = {};
 
     uint8_t power_config;
 
