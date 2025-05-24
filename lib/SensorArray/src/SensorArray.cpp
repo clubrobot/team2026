@@ -264,13 +264,13 @@ uint8_t SensorArray::getNormalisedData()
         for (X_Y_FOR_LOOP)
         {
 
-            if (this->raw_data[i][x][y] == -1)
+            if (this->raw_data[handle->cfg.pin - 1][x][y] == -1)
             {
                 continue;
             }
 
             Point tmp_p{}, p{};
-            Mesurement_to_Point(this->raw_data[i][x][y],x,y,&tmp_p);
+            Mesurement_to_Point(this->raw_data[handle->cfg.pin - 1][x][y],x,y,&tmp_p);
 
             //Origin
             tmp_p.x += - SENSORARRAY_FRAME_RADIUS + this->config.origin.x;
