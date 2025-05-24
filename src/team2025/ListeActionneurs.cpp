@@ -70,15 +70,34 @@ void listeActionneur::Init(){
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.non_deploye);
     poly_delay(20);
     pince_compact();
-    asc_up();
+    poly_delay(1000);
+    asc_down();
     pinMode(POMPE_PIN, OUTPUT);
-/*
+    return;
+    poly_delay(1000);
     papOuvert();
     pinceOuvert();
-    poly_delay(1000);
+    while (!ihm::etat_vert()){}
+    asc_down();
+    poly_delay(100);
     papFerme();
+    poly_delay(100);
+    pinceFerme();
     poly_delay(500);
-    pinceFerme();*/
+    papOuvert();
+    poly_delay(100);
+    set_pompe(HIGH);
+    poly_delay(100);
+    asc_up();
+    poly_delay(100);
+    papFerme();
+    poly_delay(100);
+    pinceOuvert();
+    poly_delay(500);
+    papOuvert();
+    poly_delay(100);
+    set_pompe(LOW);
+
 
 }
 
@@ -111,28 +130,21 @@ void listeActionneur::mise_banderole(){
 }
 
 void listeActionneur::pince_compact(){
-    poly_delay(5);
     ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
-    poly_delay(5);
     ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
-    poly_delay(5);
-    pince_gauche.move(limite_pince_gauche.non_deploye);
-    poly_delay(5);
-    pince_droite.move(limite_pince_droite.non_deploye);
+    poly_delay(100);
+    pince_gauche.move(limite_pince_gauche.non_deploye, true);
+    pince_droite.move(limite_pince_droite.non_deploye, true);
 }
 
 void listeActionneur::papOuvert(){
-    poly_delay(10);
     pince_gauche.move(limite_pince_gauche.deploye);
-    poly_delay(10);
-    pince_droite.move(limite_pince_droite.deploye);
+    pince_droite.move(limite_pince_droite.deploye, true);
 }
 
 void listeActionneur::papFerme(){
-    poly_delay(10);
     pince_gauche.move(limite_pince_gauche.mi_non_deploye);
-    poly_delay(10);
-    pince_droite.move(limite_pince_droite.mi_non_deploye);
+    pince_droite.move(limite_pince_droite.mi_non_deploye, true);
 }
 
 void listeActionneur::pinceOuvert(){

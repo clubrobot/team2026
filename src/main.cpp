@@ -19,6 +19,7 @@
 
 #include "team2025/ListeActionneurs.h"
 
+
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
 
@@ -77,13 +78,15 @@ void procedure_demarrage(){
 TODO:
 Valeurs servo limites  OK
 Régler PID/Accel => Logger OK
-Procédure démarrage
+Procédure démarrage Preque OK
 Tache empiler 
-Tache banderole
+Tache banderole OK
 check reset if vl53 are flshed !!!!!!!!!!!!!!
 */
 
 #define MASTER_ADDRESS 0x01
+#define YEUX_TX PG1
+HardwareSerial yeux(YEUX_TX);
 
 //Setup de base
 void setup(){
@@ -101,6 +104,11 @@ void setup(){
 
     wb_setup();
     listeActionneur::Init();
+    yeux.setTx(YEUX_TX);
+    yeux.setHalfDuplex();
+    yeux.begin(115200);
+
+
 /*
     i2c_t i2c2 = {.sda = PF_0, .scl = PF_1, .isMaster = 1, .generalCall = false, .NoStretchMode = false};
     i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
@@ -183,6 +191,7 @@ void setup(){
 }
 
 void loop(){
-
+    yeux.print("Hello There\n");
+    delay(500);
     //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }
