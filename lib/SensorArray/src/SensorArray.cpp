@@ -5,6 +5,7 @@
 #include "include/SensorArray.h"
 
 #include "../../Include/My_Clock.h"
+#include "include/Types.h"
 #include "uld/include/VL53L5CX.h"
 
 SensorArray::SensorArray(i2c_t *i2c, uint32_t latch, uint32_t data, uint32_t clock)
@@ -21,6 +22,9 @@ SensorArray::SensorArray(i2c_t *i2c, uint32_t latch, uint32_t data, uint32_t clo
     this->nb_sensors = 0;
 
     memset(this->raw_data, 0 , sizeof this->raw_data);
+
+    this->config.angle = 0;
+    this->config.origin = {.x = 0, .y = 0, .z = 0};
 }
 
 uint8_t SensorArray::addSensor(const SensorConfig sensor_cfg)
@@ -184,6 +188,7 @@ uint8_t SensorArray::AquireRawData()
 
         if (handle->is_alive != 1)
         {
+            memset(&this->raw_data[i][0], -1, SENSORARRAY_RESOLUTION);
             continue;
         }
 
@@ -206,17 +211,17 @@ uint8_t SensorArray::AquireRawData()
             continue;
 
 
-        for (int j = 0; j < 64; ++j)
+        for (int j = 0; j < SENSORARRAY_RESOLUTION; ++j)
         {
             //According to uld's guide, um2884 5, 9 and 10 status code doesn't impact mesurments
             if (data.target_status[j] == 5 || data.target_status[j] == 9 || data.target_status[j] == 10)
             {
-                this->raw_data[i][j] = data.distance_mm[j];
+                *(this->raw_data[i][0] + j) = data.distance_mm[j];
                 continue;
             }
 
             //When the mesure is not valid
-            this->raw_data[i][j] = -1;
+            *(this->raw_data[i][0] + j) = -1;
         }
 
         memcpy(this->raw_data[i], data.distance_mm, sizeof data.distance_mm);
@@ -224,7 +229,67 @@ uint8_t SensorArray::AquireRawData()
     return status;
 }
 
+void SensorArray::Mesurement_to_Point(uint16_t measure, uint8_t x, uint8_t y, Point *point)
+{
+    //Calculate the angle of the "ray" used for the measurement with a (0;0) at the center
+    double z_angle = (3.5 - x) * (VL53L5CX_SENSOR_FOV / 7);
 
+    double y_angle = (3.5 - y) * (VL53L5CX_SENSOR_FOV / 7);
+
+    point->x = -measure;
+    point->z = measure * sin(z_angle * PI / 180);
+    point->y = measure * sin(y_angle * PI / 180);
+}
+
+uint8_t SensorArray::getNormalisedData()
+{
+    uint8_t status = AquireRawData();
+
+    if (status != VL53L5CX_STATUS_OK)
+    {
+        return status;
+    }
+
+    std::vector<Point> points;
+
+    for (int i = 0; i < this->nb_sensors; ++i)
+    {
+        SensorHandle *handle = &sensors[i];
+
+        if (handle->is_alive != 1)
+        {
+            continue;
+        }
+
+        for (X_Y_FOR_LOOP)
+        {
+
+            if (this->raw_data[i][x][y] == -1)
+            {
+                continue;
+            }
+
+            Point tmp_p{}, p{};
+            Mesurement_to_Point(this->raw_data[i][x][y],x,y,&tmp_p);
+
+            //Origin
+            tmp_p.x += - SENSORARRAY_FRAME_RADIUS + this->config.origin.x;
+            tmp_p.y += this->config.origin.y;
+            tmp_p.z += - this->config.origin.z - SENSORARRAY_FRAME_Z;
+
+            double angle = this->config.angle - (PI / 4) * handle->cfg.pin;
+
+            //Rotate according to sensor number
+            p.x = tmp_p.x * cos(angle) - tmp_p.y * sin(angle);
+            p.y = tmp_p.x * sin(angle) + tmp_p.y * cos(angle);
+            p.z = tmp_p.z;
+
+            points.push_back(p);
+        }
+    }
+
+    return 0;
+}
 
 void SensorArray::Stop()
 {

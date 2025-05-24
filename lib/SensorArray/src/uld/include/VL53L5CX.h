@@ -11,6 +11,7 @@
 #include "platform.h"
 #include "vl53l5cx_api.h"
 
+#define VL53L5CX_SENSOR_FOV 45.0F
 
 class VL53L5CX {
   public:
