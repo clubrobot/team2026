@@ -57,7 +57,7 @@
 //define the distance and the deceleration at the end of goto
 #define SLOWDOWN_FACTOR                 0.1
 #define SLOWDOWN_DISTANCE               0
-#define ALIGN_DISTANCE                  100
+#define ALIGN_DISTANCE                  150
 
 // Global variables
 extern DCMotorsDriver driver;

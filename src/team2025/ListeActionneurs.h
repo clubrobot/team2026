@@ -27,6 +27,11 @@ typedef struct{
     float mi_non_deploye;
     float mi_deploye;
     float deploye;
+    float ouvert;
+    float ferme;
+    float entre_deux;
+    float compact;
+    float grand_ouvert;
 }limites_actionneurs;
 
 
@@ -46,21 +51,27 @@ inline limites_actionneurs limite_servo_pince_aimant_gauche;
 namespace listeActionneur {
     void Init();
 
-    void asc_down();
-    void asc_mid();
-    void asc_up();
+    void asc_down();///Ascensceur en bas
+    void asc_mid();///Ascenseur qui monte 1sec depuis le bas
+    void asc_up();///Ascenseur en haut
 
-    void aimante_conserve();
-    void stop_aimant_conserve();
+    void aimante_conserve();///Les 2 servos avant aimantes les conserves
+    void stop_aimant_conserve();///Les 2 servos avant aimantes plus les conserves
+
+    void pince_pour_deplacer();
 
     void deploie_banderole();
     void haut_banderole();
     void mise_banderole();
     void set_pompe(bool state);
 
+    void grab_conserve();
+    void drop_conserve();
+
     void pince_compact();
     void papOuvert();
     void papFerme();
+    void pinceGrandOuvert();
     void pinceOuvert();
     void pinceFerme();
 

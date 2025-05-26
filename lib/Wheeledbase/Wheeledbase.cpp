@@ -48,6 +48,10 @@ void Wheeledbase::GOTO_DELTA(float dx, float dy) {
     velocityControl.enable();
     positionControl.setMoveStrategy(purePursuit);
     positionControl.enable();
+
+    while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+        //Wait I guess
+    }
 }
 
 void Wheeledbase::SET_OPENLOOP_VELOCITIES(float leftWheelVel, float rightWheelVel) {
@@ -186,7 +190,7 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
         float theta = PI-pos->theta;
         float radius = ALIGN_DISTANCE;
 
-        float x = pos->x - radius*cos(theta);
+        float x = pos->x + radius*cos(theta);
         float y = pos->y - radius*sin(theta);
         Position appr_pos = Position(x,y,pos->theta);
         const Position *posApprTab[2]={myPos, &appr_pos};
@@ -194,8 +198,8 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
         Wheeledbase::PUREPURSUIT(posApprTab, 2, dir, pos->theta);
 
         while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
-            /*const Position *posi = Wheeledbase::GET_POSITION();
-            printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);*/
+            const Position *posi = Wheeledbase::GET_POSITION();
+            printf("%f %f %f %f, %f, %f\n", appr_pos.x, appr_pos.y, appr_pos.theta, posi->x, posi->y, posi->theta);
         }
 
         maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed * SLOWDOWN_FACTOR : maxSpeed;
@@ -203,8 +207,8 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
 
         Wheeledbase::PUREPURSUIT(posTab, 2, dir, pos->theta);
         while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
-            /*const Position *posi = Wheeledbase::GET_POSITION();
-            printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);*/
+            const Position *posi = Wheeledbase::GET_POSITION();
+            printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
         }
 
         Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);

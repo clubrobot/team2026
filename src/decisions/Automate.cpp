@@ -20,6 +20,7 @@
 
 
 #include <Teleplot.h>
+#include <team2025/TacheTransport.h>
 
 namespace Automate {
     Logger auto_logs = Logger("AUTOMATE");
@@ -29,6 +30,11 @@ namespace Automate {
     int numberTaches;
 }
 
+
+Position start = Position(1500,400,1.57);
+Position test = Position(1600,1000,1.57);
+Position test2 = Position(2500,1500,PI/4);
+
 void Automate::init(int team) {
     color=team;
     if(team==TEAM_JAUNE){
@@ -36,11 +42,17 @@ void Automate::init(int team) {
         //import geogebra.h jaune
 
         positions_match=positions_jaune;
-        Wheeledbase::SET_POSITION(&positions_match[start2]);
+        Wheeledbase::SET_POSITION(&start);//&positions_match[start2]);
 
-        numberTaches=2;
-        taches[0] = new TacheBanderole();
-        taches[1] = new TacheGoto((Position*)nullptr, &positions_match[garage4all], PurePursuit::FORWARD);
+        numberTaches=4;
+        //taches[0] = new TacheBanderole();
+        taches[0] = new TacheGoto((Position*)nullptr, &test, PurePursuit::FORWARD);
+        taches[1] = new TacheTransport();
+        taches[2] = new TacheGoto((Position*)nullptr, &test2, PurePursuit::FORWARD);
+        taches[3] = new TacheTurnOnTheSpot(TurnOnTheSpot::TRIG, PI/2);
+
+
+
         //taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
 
     }else{
@@ -111,5 +123,7 @@ void Automate::play_match(void *pvParameters){
         state=taches[tache_id]->execute(state);
         //points+=taches[tache_id]->get_max_score();
     }
-
+    for (;;){
+        Wheeledbase::SET_VELOCITIES(0,0); //All is done, stop the robot
+    }
 }

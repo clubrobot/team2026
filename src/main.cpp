@@ -103,7 +103,7 @@ void setup(){
     //myBeeper.playSheetMusic(cantina);
 
     //listeActionneur::Init();
-    SensorsThread::Init();
+    //SensorsThread::Init();
 
     wb_setup();
     listeActionneur::Init();
@@ -111,24 +111,6 @@ void setup(){
     yeux.setHalfDuplex();
     yeux.begin(115200);
 
-
-/*
-    i2c_t i2c2 = {.sda = PF_0, .scl = PF_1, .isMaster = 1, .generalCall = false, .NoStretchMode = false};
-    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
-    poly_delay(1000);
-    SensorArray sensors = SensorArray(&i2c2, PE2, PD1, PE3);
-    sensors.addSensor({.addr = 0x20, 1});
-    sensors.addSensor({.addr = 0x25, 2});
-    sensors.addSensor({.addrset = 0x30, 3});
-    sensors.addSensor({.addr = 0x35, 4});
-    //sensors.addSensor({.addr = 0x40, 5});
-    //sensors.addSensor({.addr = 0x45, 6});
-    //sensors.addSensor({.addr = 0x50, 7});
-    //sensors.addSensor({.addr = 0x55, 8});
-    sensors.Init();
-
-    sensors.Stop();
-*/
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
@@ -151,14 +133,14 @@ void setup(){
 
     if(ret_wb!=pdPASS) {Error_Handler()}
 
-    TaskHandle_t  hl_sens = nullptr;
-    BaseType_t ret_sens= xTaskCreate(
-                SensorsThread::Thread,       /* Function that implements the task. */
-                "Sensors loop",          /* Text name for thedi task. */
-                10000,      /* Stack size in words, not bytes. */
-                nullptr,    /* Parameter passed into the task. */
-                5,//Prio nulle à chier
-                &hl_sens );      /* Used to pass out the created task's handle. */
+    // TaskHandle_t  hl_sens = nullptr;
+    // BaseType_t ret_sens= xTaskCreate(
+    //             SensorsThread::Thread,       /* Function that implements the task. */
+    //             "Sensors loop",          /* Text name for thedi task. */
+    //             10000,      /* Stack size in words, not bytes. */
+    //             nullptr,    /* Parameter passed into the task. */
+    //             5,//Prio nulle à chier
+    //             &hl_sens );      /* Used to pass out the created task's handle. */
 
     // if(ret_sens!=pdPASS) {Error_Handler()}
 
@@ -194,7 +176,7 @@ void setup(){
 }
 
 void loop(){
-    yeux.print("Hello There\n");
-    delay(500);
+    yeux.print("test\n");
+    delay(6000);
     //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

@@ -61,6 +61,18 @@ public:
     }
 };
 
+class TacheTurnOnTheSpot: public Tache{
+    bool execute(bool previous_success) override;
+    float _theta;
+    int _dir;
+    public:
+    TacheTurnOnTheSpot(float theta, int dir){
+        set_max_score(0);
+        _theta=theta;
+        _dir= dir;
+    }
+};
+
 class TacheSwitch: public Tache{
     bool execute(bool previous_success) override;
     Tache succ_tache,fail_tache;

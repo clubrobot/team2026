@@ -26,6 +26,11 @@ bool TacheGoto::execute(bool previous_success) {
     return true;
 }
 
+bool TacheTurnOnTheSpot::execute(bool previous_success){
+    Wheeledbase::START_TURNONTHESPOT(_dir, _theta);
+}
+
+
 bool TacheGotoWithFunct::execute(bool previous_success) {
     Wheeledbase::GOTO_FUNCT(_pos_end, _duringFunct, _approachFunct,true, arriere, _pos_end->theta);
     return true;

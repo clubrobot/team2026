@@ -80,9 +80,10 @@ int AX12::move(float Position, bool waitForFinish){
 	int pos = min((float) 1023,Position/300*1023);
 	Dynamixel.move(m_id, pos);
 	if(waitForFinish){
-		float pos =360;
-		while ((int) pos != ((int)(readPosition()/10))*10){
-			pos = ((int)(readPosition()/10))*10;
+		float curr_pos =360;
+		while ((int) curr_pos != ((int)(Position/10))*10){
+			Dynamixel.move(m_id, pos);
+			curr_pos = ((int)(readPosition()/10))*10;
 		}
 		printf("Finished moving\n");
 	}
@@ -96,12 +97,22 @@ int AX12::move(float Position, bool waitForFinish){
  * @param speed Vitesse de l'AX12
  * @return Code d'erreur
  */
-int AX12::moveSpeed(float Position, float speed){
+int AX12::moveSpeed(float Position, float speed, bool waitForFinish){
 	if(m_endlessMode){
 		setEndlessMode(OFF);
 	}
 	int pos = min((float) 1023,Position/300*1023);
-	return Dynamixel.moveSpeed(m_id, pos, speed);
+	Dynamixel.moveSpeed(m_id, pos, speed);
+	if(waitForFinish){
+		float curr_pos =360;
+		while ((int) curr_pos != ((int)(Position/10))*10){
+			Dynamixel.moveSpeed(m_id, pos, speed);
+			curr_pos = ((int)(readPosition()/10))*10;
+		}
+		printf("Finished moving\n");
+	}
+
+	return 0;
 }
 
 /**
