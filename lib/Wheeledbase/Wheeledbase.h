@@ -55,9 +55,9 @@
 #define PUREPURSUIT_LOOKAHEADBIS_ID     0xE2
 
 //define the distance and the deceleration at the end of goto
-#define SLOWDOWN_FACTOR                 0.1
+#define SLOWDOWN_FACTOR                 0.3
 #define SLOWDOWN_DISTANCE               0
-#define ALIGN_DISTANCE                  150
+#define ALIGN_DISTANCE                  130
 
 // Global variables
 extern DCMotorsDriver driver;

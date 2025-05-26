@@ -31,9 +31,9 @@ namespace Automate {
 }
 
 
-Position start = Position(1500,400,1.57);
-Position test = Position(1600,1000,1.57);
-Position test2 = Position(2500,1500,PI/4);
+Position start = Position(1700,300,1.57);
+Position test = Position(1800,1250,1.57);
+Position test2 = Position(1700,300,-1.57);
 
 void Automate::init(int team) {
     color=team;
@@ -44,13 +44,12 @@ void Automate::init(int team) {
         positions_match=positions_jaune;
         Wheeledbase::SET_POSITION(&start);//&positions_match[start2]);
 
-        numberTaches=4;
-        //taches[0] = new TacheBanderole();
-        taches[0] = new TacheGoto((Position*)nullptr, &test, PurePursuit::FORWARD);
-        taches[1] = new TacheTransport();
-        taches[2] = new TacheGoto((Position*)nullptr, &test2, PurePursuit::FORWARD);
-        taches[3] = new TacheTurnOnTheSpot(TurnOnTheSpot::TRIG, PI/2);
-
+        numberTaches=5;
+        taches[0] = new TacheBanderole();
+        taches[1] = new TacheGoto((Position*)nullptr, &test, PurePursuit::FORWARD);
+        taches[2] = new TacheTransport();
+        taches[3] = new TacheGoto((Position*)nullptr, &test2, PurePursuit::FORWARD);
+        taches[4] = new TacheEmpiler();
 
 
         //taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
@@ -72,44 +71,15 @@ void Automate::init(int team) {
 }
 
 void Automate::play_match(void *pvParameters){
-    /*
-    listeActionneur::asc_down();
-    listeActionneur::pince_gauche.move(limite_pince_gauche.mi_non_deploye);
-    poly_delay(100);
-    listeActionneur::pince_droite.move(limite_pince_droite.mi_non_deploye);
-    poly_delay(500);
-    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.non_deploye);
-    poly_delay(100);
-    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.non_deploye);
-    poly_delay(500);
-    listeActionneur::pince_gauche.move(limite_pince_gauche.deploye);
-    poly_delay(100);
-    listeActionneur::pince_droite.move(limite_pince_droite.deploye);
-    poly_delay(500);
-    listeActionneur::set_pompe(HIGH);
-    poly_delay(100);
-    listeActionneur::asc_up();
-    poly_delay(500);
-    listeActionneur::pince_gauche.move(limite_pince_gauche.mi_non_deploye);
-    poly_delay(100);
-    listeActionneur::pince_droite.move(limite_pince_droite.mi_non_deploye);
-    poly_delay(500);
-    ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.deploye);
-    poly_delay(100);
-    ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.deploye);
-    listeActionneur::set_pompe(LOW);
-    poly_delay(100);
-    listeActionneur::pince_gauche.move(limite_pince_gauche.deploye);
-    poly_delay(100);
-    listeActionneur::pince_droite.move(limite_pince_droite.deploye);
-    delay(500);
-    */
 
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
     //auto start_time = std::chrono::high_resolution_clock::now();
     procedure_demarrage();
+    poly_delay(100);
+    listeActionneur::pince_pour_deplacer();
+    poly_delay(100);
     points=0;
     bool state=true;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {
@@ -123,7 +93,9 @@ void Automate::play_match(void *pvParameters){
         state=taches[tache_id]->execute(state);
         //points+=taches[tache_id]->get_max_score();
     }
+    Wheeledbase::SET_PARAMETER_VALUE(RIGHTWHEEL_MAXPWM_ID, 0);
+    Wheeledbase::SET_PARAMETER_VALUE(LEFTWHEEL_MAXPWM_ID, 0);
     for (;;){
-        Wheeledbase::SET_VELOCITIES(0,0); //All is done, stop the robot
+
     }
 }

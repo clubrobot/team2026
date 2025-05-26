@@ -109,7 +109,6 @@ int AX12::moveSpeed(float Position, float speed, bool waitForFinish){
 			Dynamixel.moveSpeed(m_id, pos, speed);
 			curr_pos = ((int)(readPosition()/10))*10;
 		}
-		printf("Finished moving\n");
 	}
 
 	return 0;

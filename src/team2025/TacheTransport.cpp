@@ -12,5 +12,6 @@ bool TacheTransport::execute(bool previous_success){
     asc_down();
     grab_conserve();
     aimante_conserve();
+    asc_mid();
     return true;
 }

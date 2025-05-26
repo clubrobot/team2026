@@ -21,6 +21,7 @@ void PositionController::onProcessEnabling()
 	//m_posSetpoint = m_posInput;
 }
 
+
 bool PositionController::getPositionReached()
 {
 	if (m_moveStrategy != 0)

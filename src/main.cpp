@@ -72,6 +72,13 @@ void procedure_demarrage(){
     }
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
+
+    //Detect tirette
+    while(etat_tirette()==1){}
+    main_logs.log(WARNING_LEVEL,"tirette mise (dans le trou de Boris) !\n");
+    while (etat_tirette()==0){}
+    main_logs.log(WARNING_LEVEL,"tirette enlevée (du trou de Boris) !\n");
+
 }
 
 
@@ -101,11 +108,10 @@ void setup(){
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
-    //listeActionneur::Init();
-    //SensorsThread::Init();
-
-    wb_setup();
     listeActionneur::Init();
+    //SensorsThread::Init();
+    wb_setup();
+
     yeux.setTx(YEUX_TX);
     yeux.setHalfDuplex();
     yeux.begin(115200);
@@ -175,7 +181,6 @@ void setup(){
 }
 
 void loop(){
-    yeux.print("test\n");
-    delay(6000);
+
     //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

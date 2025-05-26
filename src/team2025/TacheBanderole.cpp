@@ -9,7 +9,7 @@ using namespace listeActionneur;
 
 bool TacheBanderole::execute(bool success) {
     deploie_banderole();
-    poly_delay(100);
+    poly_delay(500);
     haut_banderole();
     return true;
 }

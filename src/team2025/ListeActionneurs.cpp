@@ -41,25 +41,25 @@ void listeActionneur::Init(){
     limite_pince_gauche.compact = 298; // complétement fermé
 
     ////////////PINCE
-    limite_servo_pince_droite.ferme = 75; ///FERME
+    limite_servo_pince_droite.ferme = 73; ///FERME
     limite_servo_pince_droite.ouvert = 120; //OUVERT
     limite_servo_pince_droite.grand_ouvert = 180; //GRAND OUVERT
 
-    limite_servo_pince_gauche.ferme = 155; ///FERME
+    limite_servo_pince_gauche.ferme = 157; ///FERME
     limite_servo_pince_gauche.ouvert = 110; ///OUVERT
     limite_servo_pince_gauche.grand_ouvert = 50; ///GRAND OUVERT
 
     ////////////AIMANTs
-    limite_servo_pince_aimant_droit.ferme= 90; ///FERME OK
+    limite_servo_pince_aimant_droit.ferme= 91; ///FERME OK
     limite_servo_pince_aimant_droit.ouvert= 75; ///OUVERT OK
 
-    limite_servo_pince_aimant_gauche.ferme = 180; ///FERME
+    limite_servo_pince_aimant_gauche.ferme = 177; ///FERME
     limite_servo_pince_aimant_gauche.ouvert = 200; ///OUVERT
 
 
     /////BANDEROLE
-    limite_banderole.non_deploye = 218; //En haut
-    limite_banderole.deploye = 159; // En bas
+    limite_banderole.non_deploye = 126; //En haut
+    limite_banderole.deploye = 53; // En bas
 
     limite_servo_banderole.non_deploye = 39; //SERRRE
     limite_servo_banderole.deploye = 180; //OUVERT
@@ -72,7 +72,7 @@ void listeActionneur::Init(){
     poly_delay(20);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.ferme);
     poly_delay(20);
-    //pince_compact();
+    pince_compact();
     poly_delay(1000);
     asc_down();
     asc_mid();
@@ -172,7 +172,7 @@ void listeActionneur::drop_conserve(){
 
 void listeActionneur::deploie_banderole(){
     banderole.move(limite_banderole.deploye);
-    poly_delay(300);
+    poly_delay(500);
     ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
 }
 void listeActionneur::haut_banderole(){
