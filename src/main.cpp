@@ -33,7 +33,7 @@ void procedure_demarrage(){
     main_logs.log(INFO_LEVEL, "Sélectionez une équipe\n");
     led_jaune(HIGH);
     led_bleu(HIGH);
-    while (1){
+    while (true){
         if (etat_jaune()){
             main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
             led_bleu(LOW);
@@ -50,11 +50,11 @@ void procedure_demarrage(){
 
     main_logs.log(INFO_LEVEL,"Veuillez mettre le robot en place et appuyer sur vert; rouge pour mettre la banderole!\n");
 
-    int prev_vert = millis();
-    int prev_rouge = millis();
+    unsigned int prev_vert = millis();
+    unsigned int prev_rouge = millis();
 
     while (!etat_vert()){
-        int curr_time = millis();
+        unsigned int curr_time = millis();
         if (curr_time-prev_vert > 500){
             prev_vert = curr_time;
             led_vert();
@@ -92,13 +92,12 @@ HardwareSerial yeux(YEUX_TX);
 void setup(){
     DWT_Init(); //Très important
 
-    if(DEBUG) {
-        PrintfSupport::begin(PRINTF_BAUD);
-        main_logs.log(WARNING_LEVEL, "Debug enabled at %d baud\n", PRINTF_BAUD);
-        //main_logs.log(INFO_LEVEL, "Printing WheeledBase Params\n");
-        //Wheeledbase::PRINT_PARAMS();
-    }
-
+#if DEBUG
+    PrintfSupport::begin(PRINTF_BAUD);
+    main_logs.log(WARNING_LEVEL, "Debug enabled at %d baud\n", PRINTF_BAUD);
+    //main_logs.log(INFO_LEVEL, "Printing WheeledBase Params\n");
+    //Wheeledbase::PRINT_PARAMS();
+#endif
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
@@ -114,10 +113,10 @@ void setup(){
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
-    if(TEST_NO_FREERTOS) {
-        main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
-        return;
-    }
+#if TEST_NO_FREERTOS
+    main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
+    return;
+#endif
     main_logs.log(GOOD_LEVEL,"Using FreeRTOS\n");
     //Setup FreeRTOS
 
