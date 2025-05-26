@@ -7,6 +7,8 @@
 
 
 /// @brief Envoie le contenu du tampon de téléplot
+/// Cette fonction ne devrait pas être appelée directement,
+/// préférez l'usage de la fonction `ajout_ou_envoie_tampon`
 void Teleplot::send_string(){
     printf("%s", this->tampon);
 }

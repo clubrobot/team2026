@@ -14,7 +14,7 @@ class Teleplot {
 private:
     char tampon[BEACON_MSG_LEN_MAX]="";
 
-    long temps_ms = 0;
+    unsigned long temps_ms = 0;
     bool temps_fige = false;
 public:
     void send_string();
