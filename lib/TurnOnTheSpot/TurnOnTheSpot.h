@@ -4,7 +4,7 @@
 #include "PositionController.h"
 #include "Odometry.h"
 
-#include <math.h>
+#include <cmath>
 
 /** Class TurOnTheSpot
  *  
@@ -18,8 +18,8 @@ public:
 	void setDirection(Direction direction);
 protected:
 
-	virtual void computeVelSetpoints(float timestep);
-	virtual bool getPositionReached();
+	void computeVelSetpoints(float timestep) override;
+	bool getPositionReached() override;
 
 private:
 	Direction m_direction;
