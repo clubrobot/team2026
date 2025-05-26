@@ -17,22 +17,34 @@ static Buttons endstop_haut = Buttons(END_STOP_HAUT_PIN, INPUT_PULLDOWN);
 static Buttons endstop_bas = Buttons(END_STOP_BAS_PIN, INPUT_PULLUP);
 static Buttons tirette = Buttons(TIRETTE_PIN, INPUT_PULLUP);
 
+namespace ihm {
+    bool etat_bleu() { return !bleu.getState(); }
 
-bool ihm::etat_bleu(){return !bleu.getState();}
-bool ihm::etat_jaune(){return !jaune.getState();}
-bool ihm::etat_vert(){return !vert.getState();}
-bool ihm::etat_rouge(){return !rouge.getState();}
+    bool etat_jaune() { return !jaune.getState(); }
 
-bool ihm::etat_lim_bas(){return !endstop_bas.getState();}
-bool ihm::etat_lim_haut(){return endstop_haut.getState();}
-bool ihm::etat_tirette(){return !tirette.getState();}
+    bool etat_vert() { return !vert.getState(); }
 
-void ihm::led_bleu(bool etat){bleu.setLedState(etat);}
-void ihm::led_jaune(bool etat){jaune.setLedState(etat);}
-void ihm::led_vert(bool etat){vert.setLedState(etat);}
-void ihm::led_rouge(bool etat){rouge.setLedState(etat);}
+    bool etat_rouge() { return !rouge.getState(); }
 
-void ihm::led_bleu(){bleu.toggleLedState();}
-void ihm::led_jaune(){jaune.toggleLedState();}
-void ihm::led_vert(){vert.toggleLedState();}
-void ihm::led_rouge(){rouge.toggleLedState();}
+    bool etat_lim_bas() { return !endstop_bas.getState(); }
+
+    bool etat_lim_haut() { return endstop_haut.getState(); }
+
+    bool etat_tirette() { return !tirette.getState(); }
+
+    void led_bleu(bool etat) { bleu.setLedState(etat); }
+
+    void led_jaune(bool etat) { jaune.setLedState(etat); }
+
+    void led_vert(bool etat) { vert.setLedState(etat); }
+
+    void led_rouge(bool etat) { rouge.setLedState(etat); }
+
+    void led_bleu() { bleu.toggleLedState(); }
+
+    void led_jaune() { jaune.toggleLedState(); }
+
+    void led_vert() { vert.toggleLedState(); }
+
+    void led_rouge() { rouge.toggleLedState(); }
+}

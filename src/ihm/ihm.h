@@ -26,24 +26,47 @@
 namespace ihm {
     void init();
 
+    /** @brief blue button state
+     * @return true if blue button is pressed, false otherwise
+     */
     bool etat_bleu();
+    /** @brief yellow button state
+     * @return true if yellow button is pressed, false otherwise
+     */
     bool etat_jaune();
+    /** @brief green button state
+     * @return true if green button is pressed, false otherwise
+     */
     bool etat_vert();
+    /** @brief red button state
+     * @return true if red button is pressed, false otherwise
+     */
     bool etat_rouge();
 
     bool etat_lim_haut();
     bool etat_lim_bas();
+    /** @brief tirette state
+     * @return true if tirette is pulled, false otherwise
+     */
     bool etat_tirette();
 
+    /// @brief set blue led state
     void led_bleu(bool etat);
+    /// @brief set yellow led state
     void led_jaune(bool etat);
+    /// @brief set green led state
     void led_vert(bool etat);
+    /// @brief set blue led state
     void led_rouge(bool etat);
 
-    void led_bleu();///Toggles
-    void led_jaune();///Toggles
-    void led_vert();///Toggles
-    void led_rouge();///Toggles
+    /// @brief toggle blue led
+    void led_bleu();
+    /// @brief toggle yellow led
+    void led_jaune();
+    /// @brief toggle green led
+    void led_vert();
+    /// @brief toggle red led
+    void led_rouge();
 
 } // ihm
 
