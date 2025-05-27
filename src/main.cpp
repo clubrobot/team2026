@@ -119,6 +119,7 @@ void setup(){
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);
+
 #if TEST_NO_FREERTOS
     main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
     return;
@@ -179,8 +180,11 @@ void setup(){
     main_logs.log(ERROR_LEVEL,"FreeRTOS crashed\n");
     Error_Handler();
 }
-
+float i=0;
 void loop(){
-
+    return;
+    i=i+0.01;
+    teleplot.add_variable_float_2decimal("sin", sin(i));
+    if (i>=2*PI) i=0;
     //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }

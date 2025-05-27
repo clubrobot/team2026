@@ -7,8 +7,9 @@
 #include <Arduino.h>
 #include <Logger.h>
 
-#define BEACON_MSG_LEN_MAX 256
+#define BEACON_MSG_LEN_MAX 2556
 #define INTERNAL_BUFFER_SIZE 200
+
 
 class Teleplot {
 private:
@@ -39,5 +40,8 @@ public:
 
     void add_log(const char *message);
 };
+
+
+extern Teleplot teleplot;
 
 #endif

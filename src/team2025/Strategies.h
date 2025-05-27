@@ -11,8 +11,12 @@
 #include "TacheTransport.h"
 
 namespace Strategies{
-    void test_strat();
-    Tache* strat_test_jaune[100];
+    extern int nb_taches;
+    extern Position* start;
+    extern Tache* strat[100];
+
+    void strat1(int team);
+
 }
 
 

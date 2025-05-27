@@ -23,37 +23,37 @@ Cube::Cube(char* nom_forme, float pos_x, float pos_y, float pos_z,
     this->transparency = transparency;
     char voidBuf[INTERNAL_BUFFER_SIZE] = "";
     char buf[INTERNAL_BUFFER_SIZE] = "";
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", pos_x);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", pos_x);
     strcpy(this->r_pos_x, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", pos_y);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", pos_y);
     strcpy(this->r_pos_y, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", pos_z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", pos_z);
     strcpy(this->r_pos_z, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", width);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", width);
     strcpy(this->r_width, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", height);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", height);
     strcpy(this->r_height, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", depth);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", depth);
     strcpy(this->r_depth, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", quat_x);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", quat_x);
     strcpy(this->r_quat_x, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", quat_y);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", quat_y);
     strcpy(this->r_quat_y, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", quat_z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f.1", quat_z);
     strcpy(this->r_quat_z, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", quat_w);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", quat_w);
     strcpy(this->r_quat_w, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", transparency);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", transparency);
     strcpy(this->r_transparency, buf);
     this->modified_mask |= (MASK_NAME | MASK_POS_X | MASK_POS_Y | MASK_POS_Z |
                             MASK_WIDTH | MASK_HEIGHT | MASK_DEPTH |
@@ -65,36 +65,36 @@ void Cube::setPosition(float x, float y, float z) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     char voidBuf[INTERNAL_BUFFER_SIZE] = "";
     this->pos_x = x;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", x);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", x);
     strcpy(this->r_pos_x, buf);
     strcpy(buf, voidBuf);
     this->pos_y = y;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", y);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", y);
     strcpy(this->r_pos_y, buf);
     strcpy(buf, voidBuf);
     this->pos_z = z;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", z);
     strcpy(this->r_pos_z, buf);
     this->modified_mask |= (MASK_POS_X | MASK_POS_Y | MASK_POS_Z);
 }
 void Cube::setXPosition(float x) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->pos_x = x;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", x);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", x);
     strcpy(this->r_pos_x, buf);
     this->modified_mask |= MASK_POS_X;
 }
 void Cube::setYPosition(float y) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->pos_y = y;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", y);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", y);
     strcpy(this->r_pos_y, buf);
     this->modified_mask |= MASK_POS_Y;
 }
 void Cube::setZPosition(float z) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->pos_z = z;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", z);
     strcpy(this->r_pos_z, buf);
     this->modified_mask |= MASK_POS_Z;
 }
@@ -102,36 +102,36 @@ void Cube::setSize(float w, float h, float d) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     char voidBuf[INTERNAL_BUFFER_SIZE] = "";
     this->width = w;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", w);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", w);
     strcpy(this->r_width, buf);
     strcpy(buf, voidBuf);
     this->height = h;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", h);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", h);
     strcpy(this->r_height, buf);
     strcpy(buf, voidBuf);
     this->depth = d;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", d);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", d);
     strcpy(this->r_depth, buf);
     this->modified_mask |= (MASK_WIDTH | MASK_HEIGHT | MASK_DEPTH);
 }
 void Cube::setWidth(float w) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->width = w;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", w);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", w);
     strcpy(this->r_width, buf);
     this->modified_mask |= MASK_WIDTH;
 }
 void Cube::setHeight(float h) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->height = h;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", h);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", h);
     strcpy(this->r_height, buf);
     this->modified_mask |= MASK_HEIGHT;
 }
 void Cube::setDepth(float d) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->depth = d;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", d);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", d);
     strcpy(this->r_depth, buf);
     this->modified_mask |= MASK_DEPTH;
 }
@@ -139,47 +139,47 @@ void Cube::setRotation(float x, float y, float z, float w) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     char voidBuf[INTERNAL_BUFFER_SIZE] = "";
     this->quat_x = x;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", x);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", x);
     strcpy(this->r_quat_x, buf);
     strcpy(buf, voidBuf);
     this->quat_y = y;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", y);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", y);
     strcpy(this->r_quat_y, buf);
     strcpy(buf, voidBuf);
     this->quat_z = z;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", z);
     strcpy(this->r_quat_z, buf);
     strcpy(buf, voidBuf);
     this->quat_w = w;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", w);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", w);
     strcpy(this->r_quat_w, buf);
     this->modified_mask |= (MASK_QUAT_X | MASK_QUAT_Y | MASK_QUAT_Z | MASK_QUAT_W);
 }
 void Cube::setQuatX(float x) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->quat_x = x;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", x);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", x);
     strcpy(this->r_quat_x, buf);
     this->modified_mask |= MASK_QUAT_X;
 }
 void Cube::setQuatY(float y) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->quat_y = y;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", y);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", y);
     strcpy(this->r_quat_y, buf);
     this->modified_mask |= MASK_QUAT_Y;
 }
 void Cube::setQuatZ(float z) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->quat_z = z;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", z);
     strcpy(this->r_quat_z, buf);
     this->modified_mask |= MASK_QUAT_Z;
 }
 void Cube::setQuatW(float w) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->quat_w = w;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", w);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", w);
     strcpy(this->r_quat_w, buf);
     this->modified_mask |= MASK_QUAT_W;
 }
@@ -190,7 +190,7 @@ void Cube::setColor(char* c) {
 void Cube::setTransparency(float t) {
     char buf[INTERNAL_BUFFER_SIZE] = "";
     this->transparency = t;
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f", t);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", t);
     strcpy(this->r_transparency, buf);
     this->modified_mask |= MASK_TRANSPARENCY;
 }
@@ -201,7 +201,7 @@ void Cube::sendCubeToTeleplot(Teleplot &teleplot) {
 
 const char* Cube::generateTeleplotMessage(unsigned long temps) {
     static char buf[INTERNAL_BUFFER_SIZE];
-    snprintf(buf, INTERNAL_BUFFER_SIZE, ">3d|%s:%lu:S:cube:P:%s:%s:%s:Q:%s:%s:%s:%s:W:%s:H:%s:D:%s:C:%s:O:%s\n",
+    snprintf(buf, INTERNAL_BUFFER_SIZE, ">3D|%s:%lu:S:cube:P:%s:%s:%s:Q:%s:%s:%s:%s:W:%s:H:%s:D:%s:C:%s:O:%s\n",
              this->nom_forme,
              temps,
              (this->modified_mask & MASK_POS_X) ? this->r_pos_x : "",

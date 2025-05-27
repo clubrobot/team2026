@@ -10,7 +10,7 @@
 
 namespace Automate{
         //cette classe réalise les tâches les unes après les autres dans l'ordre ou elles ont été données.
-        extern Tache* taches[100];//endroit de stockage des taches
+        extern Tache** taches;//endroit de stockage des taches
         extern int color;//couleur de l'équipe
         extern int points;//points réalises pour l'instant
         extern int numberTaches;

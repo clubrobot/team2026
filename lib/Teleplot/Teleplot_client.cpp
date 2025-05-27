@@ -4,7 +4,7 @@
 
 #include "Teleplot_client.h"
 
-
+Teleplot teleplot;
 
 /// @brief Envoie le contenu du tampon de téléplot
 /// Cette fonction ne devrait pas être appelée directement,

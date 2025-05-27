@@ -11,7 +11,6 @@
 #include <FreeRTOS/Source/include/task.h>
 #include <team2025/ListeActionneurs.h>
 
-#include "Geogebra.h"
 #include "variables_globales.h"
 #include "sensors/SensorsThread.h"
 
@@ -20,11 +19,12 @@
 
 
 #include <Teleplot.h>
+#include <team2025/Strategies.h>
 #include <team2025/TacheTransport.h>
 
 namespace Automate {
     Logger auto_logs = Logger("AUTOMATE");
-    Tache* taches[100];//endroit de stockage des taches
+    Tache** taches;//endroit de stockage des taches
     int color;//couleur de l'équipe
     int points;//points réalises pour l'instant
     int numberTaches;
@@ -39,34 +39,16 @@ void Automate::init(int team) {
     color=team;
     if(team==TEAM_JAUNE){
         auto_logs.log(WARNING_LEVEL, "Automate init avec Jaune\n");
-        //import geogebra.h jaune
-
-        positions_match=positions_jaune;
-        Wheeledbase::SET_POSITION(&start);//&positions_match[start2]);
-
-        numberTaches=5;
-        taches[0] = new TacheBanderole();
-        taches[1] = new TacheGoto((Position*)nullptr, &test, PurePursuit::FORWARD);
-        taches[2] = new TacheTransport();
-        taches[3] = new TacheGoto((Position*)nullptr, &test2, PurePursuit::FORWARD);
-        taches[4] = new TacheEmpiler();
-
-
-        //taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
-
     }else{
-        auto_logs.log(INFO_LEVEL, "Automate init avec Bleu\n");
-        //import geogebra.h bleu
-        positions_match=positions_bleu;
-
-        Wheeledbase::SET_POSITION(&positions_match[start2]);
-
-        numberTaches=1;
-        taches[0] = new TacheBanderole();
-        //taches[0]=new TacheGoto(nullptr,&positions_match[garage81all], &positions_match[depot2]);
-
+        auto_logs.log(WARNING_LEVEL, "Automate init avec Bleu\n");
     }
-    //mettre les tâches a éxécuter ici.
+    //Load strat
+    Strategies::strat1(team);
+
+    //Load taches
+    Wheeledbase::SET_POSITION(Strategies::start);//&positions_match[start2]);
+    numberTaches=Strategies::nb_taches;
+    taches = Strategies::strat;
 
 }
 
