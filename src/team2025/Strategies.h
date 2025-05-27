@@ -17,7 +17,7 @@ namespace Strategies{
 
     void strat1(int team);
     void stratDeBase(int team);
-
+    void stratHomo(int team);
 }
 
 

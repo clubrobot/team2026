@@ -50,7 +50,7 @@ inline limites_actionneurs limite_servo_pince_aimant_gauche;
 
 namespace listeActionneur {
     void Init();
-
+    void doNothing();
     void asc_down();///Ascensceur en bas
     void asc_mid();///Ascenseur qui monte 1sec depuis le bas
     void asc_up();///Ascenseur en haut

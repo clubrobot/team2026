@@ -38,7 +38,7 @@ void Automate::init(int team) {
         auto_logs.log(WARNING_LEVEL, "Automate init avec Bleu\n");
     }
     //Load strat
-    Strategies::strat1(team);
+    Strategies::stratDeBase(team);
 
     //Load taches
     Wheeledbase::SET_POSITION(Strategies::start);//&positions_match[start2]);
@@ -73,9 +73,9 @@ void Automate::play_match(void *pvParameters){
     //auto start_time = std::chrono::high_resolution_clock::now();
     procedure_demarrage();
     start_millis=millis();
-    poly_delay(100);
+    /*poly_delay(100);
     listeActionneur::pince_pour_deplacer();
-    poly_delay(100);
+    poly_delay(100);*/
     points=0;
     bool state=true;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {

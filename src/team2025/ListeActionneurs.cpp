@@ -115,6 +115,11 @@ void listeActionneur::Init(){
 
 }
 
+void listeActionneur::doNothing(){
+    return;
+}
+
+
 void listeActionneur::asc_down(){
     while (!ihm::etat_lim_bas()){
         ascenseur.turn(-1023);

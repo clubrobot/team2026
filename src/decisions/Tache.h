@@ -40,6 +40,31 @@ public:
     }
 };
 
+class TacheGotoWaypoints: public Tache{
+    bool execute(bool previous_success) override;
+protected:
+    bool _appr=true;
+    int _nb_waypoints;
+    Position* _posistions[100];
+
+public:
+    int arriere =PurePursuit::NONE;
+    TacheGotoWaypoints( int marche_arriere=PurePursuit::NONE, bool align_first=true, int nb_waypoints=1, ...){
+        set_max_score(0);
+        set_necessary_time(0);
+        _nb_waypoints=nb_waypoints;
+        arriere=marche_arriere;
+        _appr=align_first;
+
+        va_list _args;
+        va_start(_args, nb_waypoints);
+        for (int i = 0; i < nb_waypoints; ++i){
+            _posistions[i]=va_arg(_args, Position*);
+        }
+        va_end(_args);
+    }
+};
+
 class TacheGotoWithFunct: public TacheGoto{
     bool execute(bool previous_succes) override;
     void* _duringFunct;
@@ -74,6 +99,16 @@ class TacheTurnOnTheSpot: public Tache{
         set_max_score(0);
         _theta=theta;
         _dir= dir;
+    }
+};
+
+class TacheExe: public Tache{
+    bool execute(bool previous_success) override;
+    void (* _funct)();
+public:
+    TacheExe(void* funct){
+        set_max_score(0);
+        _funct=(void (*)()) funct;
     }
 };
 

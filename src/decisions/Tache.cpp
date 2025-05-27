@@ -40,13 +40,24 @@ bool TacheGotoWithFunct::execute(bool previous_success) {
     return true;
 }
 
+bool TacheGotoWaypoints::execute(bool previous_success){
+    Wheeledbase::GOTO_WAYPOINTS_ARRAY(_posistions, _appr, arriere, _nb_waypoints);
+    return true;
+}
+
 bool TacheMoveDelta::execute(bool previous_success){
     Wheeledbase::GOTO_DELTA(_dx, _dy);
     return true;
 }
 
+bool TacheExe::execute(bool previous_success){
+    _funct();
+    return true;
+}
+
+
 bool TacheWait::execute(bool previous_success){
-    while (millis()-start_millis<=_waitTime){
+    while (millis()-*_start_val<=_waitTime){
 
     }
     return true;
