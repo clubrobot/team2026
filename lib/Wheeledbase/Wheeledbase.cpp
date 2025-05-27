@@ -242,6 +242,75 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
     }
 }
 
+void Wheeledbase::GOTO_WAYPOINTS(bool alignFirst, char dir, int nb_waypoints, ...){
+    /////INIT VALEURS
+    const Position **posTab = (const Position**) malloc(sizeof(Position*) * nb_waypoints);
+    const Position* myPos = Wheeledbase::GET_POSITION();
+
+    int way_index = 0;
+    posTab[0] = myPos;
+
+    Position* last_pos = new Position(0,0,0);
+    Position* appr_pos = new Position(0,0,0);
+
+    float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
+    double maxSpeed = defaultMaxSpeed;
+
+    va_list args;
+    va_start(args, nb_waypoints);
+
+    /////POUR TOUT LES WAYPOINTS
+    for (way_index = 1; way_index < nb_waypoints; way_index++){
+        Position* curr_position = va_arg(args, Position*);
+        /////ON REGARDE SI ON EST PAS A LA FIN
+        if (way_index==nb_waypoints-1){
+            ///ON ENREGISTRE LA DERNIERE POS
+            last_pos=curr_position;
+            //CALC APPROACH
+            if (alignFirst){
+                float theta = PI-last_pos->theta;
+                float radius = ALIGN_DISTANCE;
+
+                float x = last_pos->x + radius*cos(theta);
+                float y = last_pos->y - radius*sin(theta);
+                appr_pos = new Position(x,y,last_pos->theta);
+            }
+        }
+
+        if (way_index==nb_waypoints-1 && alignFirst){posTab[way_index] = appr_pos;}
+        else{posTab[way_index] = curr_position;}
+    }
+
+    if (alignFirst){
+        Wheeledbase::PUREPURSUIT(posTab, nb_waypoints, dir, appr_pos->theta);
+        while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+            const Position *posi = Wheeledbase::GET_POSITION();
+            //printf("%f %f %f %f, %f, %f\n", appr_pos.x, appr_pos.y, appr_pos.theta, posi->x, posi->y, posi->theta);
+        }
+
+        maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed * SLOWDOWN_FACTOR : maxSpeed;
+        Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, maxSpeed);
+
+        const Position *finalPosTab[2]={posTab[nb_waypoints-1], last_pos};
+        Wheeledbase::PUREPURSUIT(posTab, 2, dir, last_pos->theta);
+        while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+            const Position *posi = Wheeledbase::GET_POSITION();
+            //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
+        }
+
+        Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
+
+    }else{
+        Wheeledbase::PUREPURSUIT(posTab, nb_waypoints, dir, last_pos->theta);
+        while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+            const Position *posi = Wheeledbase::GET_POSITION();
+            //printf("%f %f %f %f, %f, %f\n", appr_pos.x, appr_pos.y, appr_pos.theta, posi->x, posi->y, posi->theta);
+        }
+    }
+
+    free(posTab);
+}
+
 void GOTO_FUNCT(Position* pos, void* duringMovingFunct, void* approachFunct, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT){
     auto *first_funct = (void (*)()) duringMovingFunct;
     auto *second_funct = (void (*)()) approachFunct;

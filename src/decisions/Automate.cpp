@@ -30,11 +30,6 @@ namespace Automate {
     int numberTaches;
 }
 
-
-Position start = Position(1700,300,1.57);
-Position test = Position(1800,1250,1.57);
-Position test2 = Position(1700,300,-1.57);
-
 void Automate::init(int team) {
     color=team;
     if(team==TEAM_JAUNE){
@@ -52,8 +47,15 @@ void Automate::init(int team) {
 
 }
 
-void Automate::play_match(void *pvParameters){
+Position start = Position(1700,300,1.57);
+Position test = Position(1800,1250,1.57);
+Position test2 = Position(1700,300,-1.57);
 
+void Automate::play_match(void *pvParameters){
+    Wheeledbase::SET_POSITION(&start);
+    Wheeledbase::GOTO_WAYPOINTS(true, PurePursuit::FORWARD, 2, &test, &test2);
+
+    for (;;){}
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.

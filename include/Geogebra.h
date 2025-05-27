@@ -17,6 +17,7 @@
 #define depot2 13
 #define check1 14
 #define chgsta1 15
+#define depot3 16
 
 //position geogebra de la team jaune
 struct Position positions_jaune[] = {
@@ -36,6 +37,7 @@ struct Position positions_jaune[] = {
    Position(775.0f, 150.0f,1.570796327), //depot2_jaune
    Position(996.0f, 566.0f,1.570796327), //check1_jaune
    Position(375.0f, 1750.0f,1.570796327), //chgsta1_jaune
+   Position(1225.0f, 200.0f,1.570796327), //depot3_jaune
 };
 
 //position geogebra de la team bleu
@@ -56,6 +58,7 @@ struct Position positions_bleu[] = {
    Position(2225.0f, 150.0f,1.570796327), //depot2_bleu
    Position(2004.0f, 566.0f,1.570796327), //check1_bleu
    Position(2625.0f, 1750.0f,1.570796327), //chgsta1_bleu
+   Position(1775.0f, 200.0f,1.570796327), //depot3_bleu
 };
 
 struct Position* positions_match;//ce pointeur vaut soit positions_jaunes soit positions_bleu en fonction de la couleur.

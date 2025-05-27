@@ -22,7 +22,7 @@ void Strategies::strat1(int team){
         start = &positions_match[start2];
         nb_taches=5;
         strat[0] = new TacheBanderole();
-        strat[1] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
+        strat[1] = new TacheGoto((Position*)nullptr, &positions_match[garage4all], PurePursuit::FORWARD);
         strat[2] = new TacheTransport();
         strat[3] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
         strat[4] = new TacheEmpiler();

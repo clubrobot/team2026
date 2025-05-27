@@ -105,6 +105,8 @@ namespace  Wheeledbase {
 
     void GOTO(Position* pos, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
 
+    void GOTO_WAYPOINTS(bool alignFirst=true, char dir=PurePursuit::NONE, int nb_waypoints=1, ...);
+
     void GOTO_FUNCT(Position* pos, void* duringMovingFunct, void* approachFunct, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
 
     uint8_t POSITION_REACHED();
