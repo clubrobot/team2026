@@ -47,7 +47,7 @@ Cube::Cube(char* nom_forme, float pos_x, float pos_y, float pos_z,
     snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", quat_y);
     strcpy(this->r_quat_y, buf);
     strcpy(buf, voidBuf);
-    snprintf(buf, INTERNAL_BUFFER_SIZE, "%f.1", quat_z);
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", quat_z);
     strcpy(this->r_quat_z, buf);
     strcpy(buf, voidBuf);
     snprintf(buf, INTERNAL_BUFFER_SIZE, "%.1f", quat_w);
@@ -197,11 +197,12 @@ void Cube::setTransparency(float t) {
 
 void Cube::sendCubeToTeleplot(Teleplot &teleplot) {
     teleplot.ajout_ou_envoie_tampon(this->generateTeleplotMessage(teleplot.get_temps()));
+    this->modified_mask = 0; // Reset the modified mask after sending
 }
 
 const char* Cube::generateTeleplotMessage(unsigned long temps) {
     static char buf[INTERNAL_BUFFER_SIZE];
-    snprintf(buf, INTERNAL_BUFFER_SIZE, ">3D|%s:%lu:S:cube:P:%s:%s:%s:Q:%s:%s:%s:%s:W:%s:H:%s:D:%s:C:%s:O:%s\n",
+    snprintf(buf, INTERNAL_BUFFER_SIZE, "3D|%s:%lu:S:cube:P:%s:%s:%s:Q:%s:%s:%s:%s:W:%s:H:%s:D:%s:C:%s:O:%s\n",
              this->nom_forme,
              temps,
              (this->modified_mask & MASK_POS_X) ? this->r_pos_x : "",

@@ -64,6 +64,9 @@ Sphere::Sphere(char* nom_forme, float pos_x, float pos_y, float pos_z,
     this->modified_mask |= MASK_NAME | MASK_POS_X | MASK_POS_Y | MASK_POS_Z |
                           MASK_RADIUS | MASK_PRECISION | MASK_QUAT_X | MASK_QUAT_Y |
                           MASK_QUAT_Z | MASK_QUAT_W | MASK_COLOR | MASK_TRANSPARENCY;
+    printf("Sphere created with name: %s, position: (%.1f, %.1f, %.1f), radius: %.1f, precision: %d, color: %s, transparency: %.1f\n represented by the teleplot string %s",
+           this->nom_forme, this->pos_x, this->pos_y, this->pos_z, this->radius,
+           this->precision, this->color, this->transparency, this->generateTeleplotMessage(0));
 }
 
 void Sphere::setPosition(float x, float y, float z) {
@@ -192,7 +195,7 @@ void Sphere::setTransparency(float t){
 const char* Sphere::generateTeleplotMessage(unsigned long temps) {
     static char message[INTERNAL_BUFFER_SIZE];
     snprintf(message, INTERNAL_BUFFER_SIZE,
-             ">3D|%s:%lu:S:sphere:P:%s:%s:%s:RA:%s:PR:%s:Q:%s:%s:%s:%s:C:%s:O:%s\n",
+             "3D|%s:%lu:S:sphere:P:%s:%s:%s:RA:%s:PR:%s:Q:%s:%s:%s:%s:C:%s:O:%s\n",
              this->nom_forme,
              temps,
              (this->modified_mask & MASK_POS_X) ? this->r_pos_x : "",
@@ -212,4 +215,5 @@ const char* Sphere::generateTeleplotMessage(unsigned long temps) {
 
 void Sphere::sendSphereToTeleplot(Teleplot &teleplot) {
     teleplot.ajout_ou_envoie_tampon(this->generateTeleplotMessage(teleplot.get_temps()));
+    this->modified_mask = 0;
 }
