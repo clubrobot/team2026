@@ -24,8 +24,16 @@ void Strategies::strat1(int team){
         strat[0] = new TacheBanderole();
         strat[1] = new TacheGoto((Position*)nullptr, &positions_match[garage4all], PurePursuit::FORWARD);
         strat[2] = new TacheTransport();
-        strat[3] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
+        strat[3] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD);
         strat[4] = new TacheEmpiler();
+        strat[5] = new TacheGoto(nullptr, &positions_match[check1], PurePursuit::FORWARD, false);
+        strat[6] = new TacheGoto(nullptr, &positions_match[garage8all], PurePursuit::FORWARD);
+        strat[7] = new TacheTransport();
+        strat[8] = new TacheGoto(nullptr, &positions_match[depot2], PurePursuit::FORWARD, false);
+        strat[9] = new TacheEmpiler();
+
+        //FIN MATCH
+        strat[10] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
     }else{
         ////////////////////// STRAT 1 BLEU ///////////////////
         positions_match=positions_bleu;

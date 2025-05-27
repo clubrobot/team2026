@@ -244,6 +244,7 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
 
 void Wheeledbase::GOTO_WAYPOINTS(bool alignFirst, char dir, int nb_waypoints, ...){
     /////INIT VALEURS
+
     const Position **posTab = (const Position**) malloc(sizeof(Position*) * nb_waypoints);
     const Position* myPos = Wheeledbase::GET_POSITION();
 

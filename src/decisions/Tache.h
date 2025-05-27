@@ -25,14 +25,16 @@ class TacheGoto: public Tache{
 protected:
     Position* _pos_approach;
     Position* _pos_end;
+    bool _appr=true;
 public:
     int arriere =PurePursuit::NONE;
-    TacheGoto(Position* pos_approach, Position* pos_end, int marche_arriere=PurePursuit::NONE){
+    TacheGoto(Position* pos_approach, Position* pos_end, int marche_arriere=PurePursuit::NONE, bool align_first=true){
         set_max_score(0);
         set_necessary_time(0);
         _pos_approach = pos_approach;
         _pos_end = pos_end;
         arriere=marche_arriere;
+        _appr=align_first;
     }
 };
 

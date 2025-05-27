@@ -22,7 +22,7 @@ bool Tache::execute(bool succ){
 
 
 bool TacheGoto::execute(bool previous_success) {
-    Wheeledbase::GOTO(_pos_end, true, arriere, _pos_end->theta);
+    Wheeledbase::GOTO(_pos_end, _appr, arriere, _pos_end->theta);
     return true;
 }
 
