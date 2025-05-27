@@ -52,6 +52,17 @@ Position test = Position(1500,1250,-1.57);
 Position test2 = Position(1300,300,-1.57);
 
 void Automate::play_match(void *pvParameters){
+
+    Position* startPos = new Position(0,0,0);
+    Position* endPos = new Position(800,200,0);
+
+    Wheeledbase::SET_POSITION(startPos);
+    Wheeledbase::GOTO(endPos,false, PurePursuit::FORWARD, PI/2);
+
+    for (;;){
+
+    }
+
     /*Wheeledbase::SET_POSITION(&start);
     Wheeledbase::GOTO_WAYPOINTS(true, PurePursuit::FORWARD, 2, &test, &test2);
 

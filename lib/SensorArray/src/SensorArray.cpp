@@ -315,14 +315,6 @@ bool SensorArray::isThereAnObstacle(float velocity)
 
     for (int i = 0; i < 8; ++i)
     {
-
-        printf("%d,",this->raw_data[pin][3][i]);
-    }
-
-    printf("\n");
-
-    for (int i = 0; i < 8; ++i)
-    {
         if (this->raw_data[pin][3][i] < SENSORARRAY_STOP_DISTANCE && this->raw_data[pin][3][i] > 0)
         {
             return true;

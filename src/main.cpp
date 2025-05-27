@@ -110,7 +110,7 @@ void setup(){
 
 
     listeActionneur::Init();
-    //SensorsThread::Init();
+    SensorsThread::Init();
     wb_setup();
 
     yeux.setTx(YEUX_TX);
@@ -140,16 +140,16 @@ void setup(){
 
     if(ret_wb!=pdPASS) {Error_Handler()}
 
-    // TaskHandle_t  hl_sens = nullptr;
-    // BaseType_t ret_sens= xTaskCreate(
-    //             SensorsThread::Thread,       /* Function that implements the task. */
-    //             "Sensors loop",          /* Text name for thedi task. */
-    //             10000,      /* Stack size in words, not bytes. */
-    //             nullptr,    /* Parameter passed into the task. */
-    //             5,//Prio nulle à chier
-    //             &hl_sens );      /* Used to pass out the created task's handle. */
+    TaskHandle_t  hl_sens = nullptr;
+    BaseType_t ret_sens= xTaskCreate(
+                SensorsThread::Thread,       /* Function that implements the task. */
+                "Sensors loop",          /* Text name for thedi task. */
+                10000,      /* Stack size in words, not bytes. */
+                nullptr,    /* Parameter passed into the task. */
+                5,//Prio nulle à chier
+                &hl_sens );      /* Used to pass out the created task's handle. */
 
-    // if(ret_sens!=pdPASS) {Error_Handler()}
+    if(ret_sens!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_robot = nullptr;
 

@@ -6,6 +6,7 @@
 #include <Logger.h>
 
 #include "My_Clock.h"
+#include "Wheeledbase.h"
 #include "include/SensorArray.h"
 
 Logger sensors_logs = Logger("SENSORS");
@@ -30,8 +31,30 @@ void SensorsThread::Init(){
 
 
 void SensorsThread::Thread(void *pvParameters){
+
     for (;;){
         //getNormalisedData is REQUIRED to later work with sensors
         sensors.getNormalisedData();
+
+        float lin, ang = 0;
+        Wheeledbase::GET_VELOCITIES(&lin,&ang);
+
+        if (sensors.isThereAnObstacle(lin))
+        {
+            sensors_logs.log(ERROR_LEVEL, "STOPPPP\n");
+            Wheeledbase::SET_PARAMETER_VALUE(RIGHTWHEEL_MAXPWM_ID, 0);
+            Wheeledbase::SET_PARAMETER_VALUE(LEFTWHEEL_MAXPWM_ID, 0);
+
+            //Wait until no obstacle
+            while (sensors.isThereAnObstacle(lin))
+            {
+                sensors.getNormalisedData();
+            }
+
+            Wheeledbase::SET_PARAMETER_VALUE(RIGHTWHEEL_MAXPWM_ID, 1);
+            Wheeledbase::SET_PARAMETER_VALUE(LEFTWHEEL_MAXPWM_ID, 1);
+        }
+
+
     }
 }
