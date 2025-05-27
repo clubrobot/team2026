@@ -5,6 +5,8 @@
 #include <PurePursuit.h>
 
 
+extern long start_millis;
+
 class Tache {
 protected:
     int necessary_time;
@@ -72,6 +74,18 @@ class TacheTurnOnTheSpot: public Tache{
         set_max_score(0);
         _theta=theta;
         _dir= dir;
+    }
+};
+
+class TacheWait: public Tache{
+    bool execute(bool previous_success) override;
+    long* _start_val;
+    long _waitTime;
+public:
+    TacheWait(long* start_val, long waitTime){
+        set_max_score(0);
+        _start_val=start_val;
+        _waitTime=waitTime;
     }
 };
 

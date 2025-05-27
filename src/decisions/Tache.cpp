@@ -2,6 +2,10 @@
 
 #include <Wheeledbase.h>
 #include "sensors/SensorsThread.h"
+
+
+long start_millis;
+
 const int Tache::get_max_score() {
     return max_score;
 }
@@ -40,6 +44,14 @@ bool TacheMoveDelta::execute(bool previous_success){
     Wheeledbase::GOTO_DELTA(_dx, _dy);
     return true;
 }
+
+bool TacheWait::execute(bool previous_success){
+    while (millis()-start_millis<=_waitTime){
+
+    }
+    return true;
+}
+
 
 bool TacheSTOP::execute(bool previous_success){
     Wheeledbase::SET_VELOCITIES(0,0);

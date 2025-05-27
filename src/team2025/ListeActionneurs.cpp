@@ -66,6 +66,9 @@ void listeActionneur::Init(){
 
 
     //INIT
+    asc_down();
+    asc_mid();
+
     haut_banderole();
     poly_delay(20);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.ferme);
@@ -74,8 +77,7 @@ void listeActionneur::Init(){
     poly_delay(20);
     pince_compact();
     poly_delay(1000);
-    asc_down();
-    asc_mid();
+
     pinMode(POMPE_PIN, OUTPUT);
 
     return;

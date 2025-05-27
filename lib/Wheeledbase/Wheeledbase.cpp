@@ -259,7 +259,7 @@ void Wheeledbase::GOTO_WAYPOINTS(bool alignFirst, char dir, int nb_waypoints, ..
 
     va_list args;
     va_start(args, nb_waypoints);
-
+    nb_waypoints++;
     /////POUR TOUT LES WAYPOINTS
     for (way_index = 1; way_index < nb_waypoints; way_index++){
         Position* curr_position = va_arg(args, Position*);
@@ -274,7 +274,9 @@ void Wheeledbase::GOTO_WAYPOINTS(bool alignFirst, char dir, int nb_waypoints, ..
 
                 float x = last_pos->x + radius*cos(theta);
                 float y = last_pos->y - radius*sin(theta);
-                appr_pos = new Position(x,y,last_pos->theta);
+                appr_pos->x = x;
+                appr_pos->y = y;
+                appr_pos->theta = last_pos->theta;
             }
         }
 
@@ -292,8 +294,8 @@ void Wheeledbase::GOTO_WAYPOINTS(bool alignFirst, char dir, int nb_waypoints, ..
         maxSpeed = maxSpeed > defaultMaxSpeed*0.1 ? maxSpeed * SLOWDOWN_FACTOR : maxSpeed;
         Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, maxSpeed);
 
-        const Position *finalPosTab[2]={posTab[nb_waypoints-1], last_pos};
-        Wheeledbase::PUREPURSUIT(posTab, 2, dir, last_pos->theta);
+        const Position *finalPosTab[2]={myPos, last_pos};
+        Wheeledbase::PUREPURSUIT(finalPosTab, 2, dir, last_pos->theta);
         while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
             const Position *posi = Wheeledbase::GET_POSITION();
             //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);

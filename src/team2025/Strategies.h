@@ -16,6 +16,7 @@ namespace Strategies{
     extern Tache* strat[100];
 
     void strat1(int team);
+    void stratDeBase(int team);
 
 }
 

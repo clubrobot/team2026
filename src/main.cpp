@@ -108,6 +108,7 @@ void setup(){
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
+
     listeActionneur::Init();
     //SensorsThread::Init();
     wb_setup();
