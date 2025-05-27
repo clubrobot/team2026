@@ -12,4 +12,11 @@ struct Point
     double z;
 };
 
+struct Color
+{
+    double r;
+    double g;
+    double b;
+};
+
 #endif //TYPES_H

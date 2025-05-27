@@ -19,10 +19,10 @@
 #define I2C_MASTER_WRITE 0x00
 #define I2C_MASTER_READ 0X00
 
-#define I2C_TXRX_BUFFER_SIZE 256
+#define I2C_BUFFER_SIZE 256
 
 //A buffer used to add index for the vl53l8cx data format
-uint8_t i2c_buffer[I2C_TXRX_BUFFER_SIZE + 2];
+uint8_t i2c_buffer[I2C_BUFFER_SIZE + 2];
 
 uint8_t VL53L5CX::RdByte(
   VL53L5CX_Platform *p_platform,
@@ -47,7 +47,7 @@ uint8_t VL53L5CX::WrMulti(VL53L5CX_Platform *p_platform, uint16_t RegisterAddres
   int i = 0;
   uint8_t status = 0;
 
-  while (i + I2C_TXRX_BUFFER_SIZE < size)
+  while (i + I2C_BUFFER_SIZE < size)
   {
     //Add index to the data
     i2c_buffer[0] = (RegisterAddress + i) >> 8;
@@ -56,16 +56,16 @@ uint8_t VL53L5CX::WrMulti(VL53L5CX_Platform *p_platform, uint16_t RegisterAddres
     p_platform->dev_i2c->handle.XferOptions = I2C_OTHER_AND_LAST_FRAME;
 
     //Add the data
-    memcpy(&i2c_buffer[2], p_values + i, I2C_TXRX_BUFFER_SIZE);
+    memcpy(&i2c_buffer[2], p_values + i, I2C_BUFFER_SIZE);
 
-    status = i2c_master_write(p_platform->dev_i2c, (p_platform->address & 0xFE) | I2C_MASTER_WRITE, i2c_buffer,I2C_TXRX_BUFFER_SIZE + 2);
+    status = i2c_master_write(p_platform->dev_i2c, (p_platform->address & 0xFE) | I2C_MASTER_WRITE, i2c_buffer,I2C_BUFFER_SIZE + 2);
 
     if (status != I2C_OK)
     {
       return status;
     }
 
-    i+= I2C_TXRX_BUFFER_SIZE;
+    i+= I2C_BUFFER_SIZE;
   }
 
   //Add index to the data

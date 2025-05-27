@@ -10,6 +10,7 @@
 
 #include "Logger.h"
 #include "Types.h"
+#include "../../../Odometry/Odometry.h"
 #include "uld/include/VL53L5CX.h"
 
 #define MASTER_ADDRESS 0x01
@@ -24,21 +25,18 @@
 //Sensors positions in the frame
 #define SENSORARRAY_FRAME_RADIUS 38.2
 #define SENSORARRAY_FRAME_Z 70.8
+#define SENSORARRAY_ROOF_Z 340.0
 
 #ifndef SENSORARRAY_STOP_DISTANCE
 #define SENSORARRAY_STOP_DISTANCE 250
 #endif
 
+#define SENSORARRAY_FUTURE_ORIGIN 1
+#define SENSORARRAY_CURRENT_ORIGIN 0
 
 class SensorArray
 {
 public:
-    struct SensorArrayOrigin
-    {
-        //Angle from 1 to front
-        double angle;
-        Point origin;
-    };
 
     struct SensorConfig
     {
@@ -61,13 +59,17 @@ public:
 
     //Get new data
     uint8_t getNormalisedData();
+    void Print();
     bool isThereAnObstacle(float velocity);
 
+    std::vector<Point> points;
+
 private:
-    SensorArrayOrigin config;
     uint8_t nb_sensors;
     std::array<SensorHandle, 8> sensors;
+
     int16_t raw_data[8][8][8] = {};
+    Position origin_mesure[2][8];
 
     uint8_t power_config;
 

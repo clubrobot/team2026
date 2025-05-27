@@ -5,6 +5,8 @@
 #include "include/SensorArray.h"
 
 #include "../../Include/My_Clock.h"
+#include "../../Odometry/Odometry.h"
+#include "../../Wheeledbase/Wheeledbase.h"
 #include "include/Types.h"
 #include "uld/include/VL53L5CX.h"
 
@@ -22,9 +24,9 @@ SensorArray::SensorArray(i2c_t *i2c, uint32_t latch, uint32_t data, uint32_t clo
     this->nb_sensors = 0;
 
     memset(this->raw_data, 0 , sizeof this->raw_data);
+    memset(this->origin_mesure, 0, sizeof this->origin_mesure);
 
-    this->config.angle = 0;
-    this->config.origin = {.x = 0, .y = 0, .z = 0};
+    this->points.clear();
 }
 
 uint8_t SensorArray::addSensor(const SensorConfig sensor_cfg)
@@ -181,6 +183,16 @@ uint8_t SensorArray::Start()
 
 uint8_t SensorArray::AquireRawData()
 {
+
+    const Position* position = Wheeledbase::GET_POSITION();
+
+    //Switch the origin buffers
+    for (int i = 0; i < 8; ++i)
+    {
+        //printf("sensor %d : current %f future %f\n",i,this->origin_mesure[SENSORARRAY_CURRENT_ORIGIN][i].x,this->origin_mesure[SENSORARRAY_CURRENT_ORIGIN][i].y);
+        this->origin_mesure[SENSORARRAY_CURRENT_ORIGIN][i] = this->origin_mesure[SENSORARRAY_FUTURE_ORIGIN][i];
+    }
+
     uint8_t status = 0;
     for (int i = 0; i < this->nb_sensors; ++i)
     {
@@ -188,7 +200,7 @@ uint8_t SensorArray::AquireRawData()
 
         if (handle->is_alive != 1)
         {
-            memset(&this->raw_data[handle->cfg.pin][0], -1, SENSORARRAY_RESOLUTION);
+            memset(&this->raw_data[handle->cfg.pin - 1][0], -1, SENSORARRAY_RESOLUTION);
             continue;
         }
 
@@ -205,6 +217,8 @@ uint8_t SensorArray::AquireRawData()
         VL53L5CX_ResultsData data;
         uint8_t r_status = handle->sensor->vl53l5cx_get_ranging_data(&data);
         status |= r_status;
+
+        this->origin_mesure[SENSORARRAY_FUTURE_ORIGIN][handle->cfg.pin - 1] = *position;
 
         //Don't copy the data if the sensor has returned an error
         if (r_status != 0)
@@ -234,15 +248,16 @@ void SensorArray::Mesurement_to_Point(uint16_t measure, uint8_t x, uint8_t y, Po
     //Calculate the angle of the "ray" used for the measurement with a (0;0) at the center
     double z_angle = (3.5 - x) * (VL53L5CX_SENSOR_FOV / 7);
 
-    double y_angle = (3.5 - y) * (VL53L5CX_SENSOR_FOV / 7);
+    double y_angle = (y - 3.5) * (VL53L5CX_SENSOR_FOV / 7);
 
-    point->x = -measure;
-    point->z = measure * sin(z_angle * PI / 180);
-    point->y = measure * sin(y_angle * PI / 180);
+    point->x = measure;
+    point->z = measure * tan(z_angle * PI / 180);
+    point->y = measure * tan(y_angle * PI / 180);
 }
 
 uint8_t SensorArray::getNormalisedData()
 {
+
     uint8_t status = AquireRawData();
 
     if (status != VL53L5CX_STATUS_OK)
@@ -250,7 +265,9 @@ uint8_t SensorArray::getNormalisedData()
         return status;
     }
 
-    std::vector<Point> points;
+    this->points.clear();
+
+    int n = 0;
 
     for (int i = 0; i < this->nb_sensors; ++i)
     {
@@ -273,18 +290,18 @@ uint8_t SensorArray::getNormalisedData()
             Mesurement_to_Point(this->raw_data[handle->cfg.pin - 1][x][y],x,y,&tmp_p);
 
             //Origin
-            tmp_p.x += - SENSORARRAY_FRAME_RADIUS + this->config.origin.x;
-            tmp_p.y += this->config.origin.y;
-            tmp_p.z += - this->config.origin.z - SENSORARRAY_FRAME_Z;
+            tmp_p.x += SENSORARRAY_FRAME_RADIUS;
+            tmp_p.y += 0;
+            tmp_p.z += SENSORARRAY_FRAME_Z + SENSORARRAY_ROOF_Z;
 
-            double angle = this->config.angle - (PI / 4) * handle->cfg.pin;
+            double sensor_angle = - this->origin_mesure[SENSORARRAY_CURRENT_ORIGIN][handle->cfg.pin - 1].theta - (PI / 4) * (handle->cfg.pin - 1);
 
             //Rotate according to sensor number
-            p.x = tmp_p.x * cos(angle) - tmp_p.y * sin(angle);
-            p.y = tmp_p.x * sin(angle) + tmp_p.y * cos(angle);
+            p.x = tmp_p.x * cos(sensor_angle) - tmp_p.y * sin(sensor_angle) + this->origin_mesure[SENSORARRAY_CURRENT_ORIGIN][handle->cfg.pin - 1].x;
+            p.y = tmp_p.x * sin(sensor_angle) + tmp_p.y * cos(sensor_angle) - this->origin_mesure[SENSORARRAY_CURRENT_ORIGIN][handle->cfg.pin - 1].y;
             p.z = tmp_p.z;
 
-            points.push_back(p);
+            this->points.push_back(p);
         }
     }
 
