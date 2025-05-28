@@ -108,7 +108,7 @@ void setup(){
     //myBeeper.playSheetMusic(cantina);
 
 
-    listeActionneur::Init();
+    //listeActionneur::Init();
     SensorsThread::Init();
     wb_setup();
 

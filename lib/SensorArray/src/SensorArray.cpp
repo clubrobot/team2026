@@ -309,6 +309,8 @@ uint8_t SensorArray::getNormalisedData()
 }
 uint8_t data_pin_forward[3] = {7,0,1};
 uint8_t data_pin_backward[3] = {3,4,5};
+float angles_forward[3]={0,PI/4,-PI/4};
+float angles_backward[3]={3*PI/4,PI,5*PI/4};
 
 //The data must be acquired
 bool SensorArray::isThereAnObstacle(float velocity)
@@ -321,6 +323,30 @@ bool SensorArray::isThereAnObstacle(float velocity)
             if (this->raw_data[pin_array[j]][3][i] < SENSORARRAY_STOP_DISTANCE && this->raw_data[pin_array[j]][3][i] > 0){
                 return true;
                }
+        }
+    }
+    return false;
+}
+
+//
+bool SensorArray::isThereAnObstacleTerrain(float velocity,float current_angle,float current_x,float current_y,float max_x,float max_y)
+{
+    uint8_t* pin_array = velocity >= 0 ? data_pin_forward : data_pin_backward;
+    float* angles_array = velocity >= 0 ? angles_forward : angles_backward;
+
+    for (int j = 0; j < 3; ++j){
+        for (int i = 0; i < 8; ++i){
+            float dist=this->raw_data[pin_array[j]][3][i];
+            if (dist < SENSORARRAY_STOP_DISTANCE && dist > 0){
+                //check that the point is inside the terrain
+                float angle=angles_array[j]+current_angle;
+                float x=current_x+ cos(angle)*dist;
+                float y=current_y+ sin(angle)*dist;
+
+                if(x>=-50 && y>=-50 && x<=max_x+50 && max_y+50>=y)
+                    return true;
+                //else printf("DENY %d %f %f %f %f %f\n",pin_array[j],x,y,current_x,current_y,current_angle);
+            }
         }
     }
     return false;

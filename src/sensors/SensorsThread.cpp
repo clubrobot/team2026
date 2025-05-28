@@ -8,12 +8,14 @@
 #include "My_Clock.h"
 #include "Wheeledbase.h"
 #include "include/SensorArray.h"
-
+#include "Constant.h"
+#include "Wire.h"
 Logger sensors_logs = Logger("SENSORS");
 
 void SensorsThread::Init(){
 
-    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
+    i2c_custom_init(&i2c2, 1000000, I2C_ADDRESSINGMODE_7BIT, MASTER_ADDRESS);
+    //i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
 
     poly_delay(1000);
 
@@ -39,8 +41,10 @@ void SensorsThread::Thread(void *pvParameters){
 
         float lin, ang = 0;
         Wheeledbase::GET_VELOCITIES(&lin,&ang);
+        auto position=Wheeledbase::GET_POSITION();
+        //if (sensors.isThereAnObstacle(lin))
 
-        if (sensors.isThereAnObstacle(lin))
+        if (sensors.isThereAnObstacleTerrain(lin,position->theta,position->x,position->y,TERRAIN_SIZE_X_MM,TERRAIN_SIZE_Y_MM))
         {
             sensors_logs.log(ERROR_LEVEL, "STOPPPP\n");
             velocityControl.set_stop(true);

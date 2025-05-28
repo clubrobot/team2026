@@ -62,8 +62,8 @@ void Automate::play_match(void *pvParameters){
     for (;;){
 
     }*/
-
-
+    Position* startPos = new Position(100,200,0);
+    Wheeledbase::SET_POSITION(startPos);
 
 
     Wheeledbase::GOTO_DELTA(1000,0);
