@@ -66,12 +66,15 @@ void Strategies::stratDeBase(int team){
         ////////////////////// STRAT 1 BLEU ///////////////////
         positions_match=positions_bleu;
         start = &positions_match[start2];
-        nb_taches=5;
+        nb_taches=7;
         strat[0] = new TacheBanderole();
-        strat[1] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
+        strat[1] = new TacheGotoWithFunct((Position*)nullptr, &positions_match[garage5all], (void *) listeActionneur::doNothing, (void *) listeActionneur::pince_pour_deplacer, PurePursuit::FORWARD);
         strat[2] = new TacheTransport();
-        strat[3] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
+        strat[3] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD);
         strat[4] = new TacheEmpiler();
+        //FIN MATCH
+        strat[5] = new TacheWait(&start_millis, 90*1000);
+        strat[6] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
     }
 }
 
@@ -87,11 +90,32 @@ void Strategies::stratHomo(int team){
         ////////////////////// STRAT 1 BLEU ///////////////////
         positions_match=positions_bleu;
         start = &positions_match[start2];
-        nb_taches=5;
+        nb_taches=2;
         strat[0] = new TacheBanderole();
-        strat[1] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
+        strat[1] = new TacheGotoWaypoints(PurePursuit::FORWARD, false, 2, &positions_match[check2], &positions_match[chgsta1]);
+    }
+}
+
+void Strategies::stratTestEmpilement(int team){
+    if (team==TEAM_JAUNE){
+        ////////////////////// STRAT 1 JAUNE ///////////////////
+        positions_match=positions_jaune;
+        start = &positions_match[start2];
+        nb_taches=3;
+        strat[0] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
+        //strat[1] = new TacheMoveDelta(200,0);
+        strat[1] = new TacheTransport();
+        //strat[3] = new TacheMoveDelta(-100,0);
+        strat[2] = new TacheEmpiler();
+    }else{
+        ////////////////////// STRAT 1 BLEU ///////////////////
+        positions_match=positions_bleu;
+        start = &positions_match[start2];
+        nb_taches=5;
+        strat[0] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
+        strat[1] = new TacheMoveDelta(1000,0);
         strat[2] = new TacheTransport();
-        strat[3] = new TacheGoto((Position*)nullptr, nullptr, PurePursuit::FORWARD);
+        strat[3] = new TacheMoveDelta(-100,0);
         strat[4] = new TacheEmpiler();
     }
 }

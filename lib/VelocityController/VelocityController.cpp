@@ -5,6 +5,16 @@
 #include "mathutils.h"
 #include "Teleplot.h"
 
+void VelocityController::set_stop(bool stop){
+	m_sensors_stop = stop;
+	if (stop==false){
+		m_sensors_restart=true;
+	}
+	if (stop==true){
+		m_sensors_stoped=true;
+	}
+}
+
 
 float VelocityController::genRampSetpoint(float stepSetpoint, float input, float rampSetpoint, float maxAcc, float maxDec, float timestep)
 {
@@ -36,9 +46,28 @@ void VelocityController::process(float timestep){
 	m_rampAngVelSetpoint = genRampSetpoint(m_angSetpoint, m_angInput, m_rampAngVelSetpoint, m_maxAngAcc, m_maxAngDec, timestep);
 
 	// Do the engineering control
-	m_linSetpoint = m_rampLinVelSetpoint;
-	m_angSetpoint = m_rampAngVelSetpoint;
-	DifferentialController::process(timestep);
+
+	if (m_sensors_stop){
+		if (m_sensors_stoped){
+			m_last_linSetpoint = m_rampLinVelSetpoint;
+			m_last_angSetpoint = m_rampAngVelSetpoint;
+			m_sensors_stoped=false;
+		}
+
+		m_leftWheel->setVelocity(0);
+		m_rightWheel->setVelocity(0);
+	}else{
+		if (m_sensors_restart){
+			//We restart
+			m_linSetpoint = m_last_linSetpoint;
+			m_angSetpoint = m_last_angSetpoint;
+			m_sensors_restart = false;
+		}else{
+			m_linSetpoint = m_rampLinVelSetpoint;
+			m_angSetpoint = m_rampAngVelSetpoint;
+		}
+		DifferentialController::process(timestep);
+	}
 
 	// Check for wheels abnormal spin and stop the controller accordingly
 	bool linVelSpin = (m_linVelOutput <= m_linPID->getMinOutput()) || (m_linVelOutput >= m_linPID->getMaxOutput());

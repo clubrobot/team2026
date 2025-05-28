@@ -5,7 +5,7 @@
 #include <PurePursuit.h>
 
 
-extern long start_millis;
+extern uint32_t start_millis;
 
 class Tache {
 protected:
@@ -114,10 +114,10 @@ public:
 
 class TacheWait: public Tache{
     bool execute(bool previous_success) override;
-    long* _start_val;
-    long _waitTime;
+    uint32_t* _start_val;
+    uint32_t _waitTime;
 public:
-    TacheWait(long* start_val, long waitTime){
+    TacheWait(uint32_t* start_val, uint32_t waitTime){
         set_max_score(0);
         _start_val=start_val;
         _waitTime=waitTime;

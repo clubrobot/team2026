@@ -103,6 +103,8 @@ public:
 	 */
     void save(int address) const;
 
+	void set_stop(bool stop);
+
 protected:
     /**
 	 * @brief Calcul la vitesse à atteindre.
@@ -138,6 +140,11 @@ protected:
     bool m_spinShutdown;                                                              /*!< Etat de la sécurité de patinage.*/
     float m_linSpinGoal;                                                              // Velocity wanted before the spin alarm
     float m_angSpinGoal;                                                              // Velocity wanted before the spin alarm
+	bool m_sensors_stop=false;///Stop ce truc
+	bool m_sensors_restart=false;
+	bool m_sensors_stoped=false;
+	float m_last_linSetpoint;
+	float m_last_angSetpoint;
 
 #if ENABLE_VELOCITYCONTROLLER_LOGS
     friend class VelocityControllerLogs;

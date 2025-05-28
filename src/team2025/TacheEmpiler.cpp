@@ -16,7 +16,7 @@ bool TacheEmpiler::execute(bool previous_success){
     poly_delay(100);
     set_pompe(HIGH);
     asc_up();
-    poly_delay(100);
+    poly_delay(200);
     drop_conserve();
     set_pompe(LOW);
     stop_aimant_conserve();

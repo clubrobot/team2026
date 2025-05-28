@@ -35,6 +35,9 @@ public:
 	 * @return virtual float
 	 */
 	virtual float getMaxVelocity() const = 0;
+
+
+
 };
 
 /**

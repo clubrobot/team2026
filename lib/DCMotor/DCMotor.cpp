@@ -21,19 +21,14 @@ void DCMotor::attach(int EN, int PWM, int DIR)
 
 void DCMotor::update()
 {
-	if (m_velocity != 0)
-	{
+	//if (m_velocity != 0){
 		int PWM = m_velocity / (2 * M_PI * m_wheelRadius) * m_constant * 255;
 		if (PWM <   0) PWM *= -1;
 		if (PWM > 255 * m_maxPWM) PWM = 255 * m_maxPWM;
 		digitalWrite(m_EN, HIGH);
 		analogWrite(m_PWM, PWM);
 		digitalWrite(m_DIR, (m_velocity * m_constant * m_wheelRadius > 0) ? FORWARD : BACKWARD);
-	}
-	else
-	{
-		digitalWrite(m_EN, LOW);
-	}
+	//}else{digitalWrite(m_EN, LOW);}
 }
 
 float DCMotor::getMaxVelocity() const

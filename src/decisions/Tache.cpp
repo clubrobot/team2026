@@ -4,7 +4,7 @@
 #include "sensors/SensorsThread.h"
 
 
-long start_millis;
+uint32_t start_millis;
 
 const int Tache::get_max_score() {
     return max_score;

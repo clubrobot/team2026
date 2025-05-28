@@ -85,7 +85,7 @@ int AX12::move(float Position, bool waitForFinish){
 			Dynamixel.move(m_id, pos);
 			curr_pos = ((int)(readPosition()/10))*10;
 		}
-		printf("Finished moving\n");
+		//printf("Finished moving\n");
 	}
 	return 0;
 }

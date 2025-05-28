@@ -30,6 +30,7 @@ void SensorsThread::Init(){
 }
 
 
+
 void SensorsThread::Thread(void *pvParameters){
 
     for (;;){
@@ -42,17 +43,14 @@ void SensorsThread::Thread(void *pvParameters){
         if (sensors.isThereAnObstacle(lin))
         {
             sensors_logs.log(ERROR_LEVEL, "STOPPPP\n");
-            Wheeledbase::SET_PARAMETER_VALUE(RIGHTWHEEL_MAXPWM_ID, 0);
-            Wheeledbase::SET_PARAMETER_VALUE(LEFTWHEEL_MAXPWM_ID, 0);
-
+            velocityControl.set_stop(true);
             //Wait until no obstacle
             while (sensors.isThereAnObstacle(lin))
             {
                 sensors.getNormalisedData();
             }
-
-            Wheeledbase::SET_PARAMETER_VALUE(RIGHTWHEEL_MAXPWM_ID, 1);
-            Wheeledbase::SET_PARAMETER_VALUE(LEFTWHEEL_MAXPWM_ID, 1);
+            sensors_logs.log(GOOD_LEVEL, "REPRISE\n");
+            velocityControl.set_stop(false);
         }
 
 

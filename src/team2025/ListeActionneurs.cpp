@@ -66,9 +66,6 @@ void listeActionneur::Init(){
 
 
     //INIT
-    asc_down();
-    asc_mid();
-
     haut_banderole();
     poly_delay(20);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.ferme);
@@ -78,6 +75,10 @@ void listeActionneur::Init(){
     pince_compact();
     poly_delay(1000);
 
+    /*
+    asc_down();
+    asc_mid();
+*/
     pinMode(POMPE_PIN, OUTPUT);
 
     return;
@@ -119,6 +120,11 @@ void listeActionneur::doNothing(){
     return;
 }
 
+void listeActionneur::pince_accueil(){
+    papFerme();
+    pinceGrandOuvert();
+}
+
 
 void listeActionneur::asc_down(){
     while (!ihm::etat_lim_bas()){
@@ -130,7 +136,7 @@ void listeActionneur::asc_down(){
 void listeActionneur::asc_mid(){
     if (ihm::etat_lim_haut() || !ihm::etat_lim_bas())return;
     ascenseur.turn(1023);
-    poly_delay(600);
+    poly_delay(500);
     ascenseur.turn(0);
 }
 

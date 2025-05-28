@@ -38,7 +38,7 @@ void Automate::init(int team) {
         auto_logs.log(WARNING_LEVEL, "Automate init avec Bleu\n");
     }
     //Load strat
-    Strategies::stratDeBase(team);
+    Strategies::stratTestEmpilement(team);
 
     //Load taches
     Wheeledbase::SET_POSITION(Strategies::start);//&positions_match[start2]);
@@ -53,7 +53,7 @@ Position test2 = Position(1300,300,-1.57);
 
 void Automate::play_match(void *pvParameters){
 
-    Position* startPos = new Position(0,0,0);
+/*    Position* startPos = new Position(0,0,0);
     Position* endPos = new Position(800,200,0);
 
     Wheeledbase::SET_POSITION(startPos);
@@ -61,12 +61,13 @@ void Automate::play_match(void *pvParameters){
 
     for (;;){
 
-    }
+    }*/
 
-    /*Wheeledbase::SET_POSITION(&start);
-    Wheeledbase::GOTO_WAYPOINTS(true, PurePursuit::FORWARD, 2, &test, &test2);
 
-    for (;;){}*/
+
+
+    Wheeledbase::GOTO_DELTA(1000,0);
+    for (;;){}
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.

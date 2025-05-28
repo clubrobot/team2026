@@ -59,6 +59,7 @@ namespace listeActionneur {
     void stop_aimant_conserve();///Les 2 servos avant aimantes plus les conserves
 
     void pince_pour_deplacer();
+    void pince_accueil();
 
     void deploie_banderole();
     void haut_banderole();

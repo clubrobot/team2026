@@ -307,17 +307,20 @@ uint8_t SensorArray::getNormalisedData()
 
     return 0;
 }
+uint8_t data_pin_forward[3] = {7,0,1};
+uint8_t data_pin_backward[3] = {3,4,5};
 
 //The data must be acquired
 bool SensorArray::isThereAnObstacle(float velocity)
 {
-    uint8_t pin = velocity >= 0 ? 0 : 4;
+    uint8_t* pin_array = velocity >= 0 ? data_pin_forward : data_pin_backward;
 
-    for (int i = 0; i < 8; ++i)
-    {
-        if (this->raw_data[pin][3][i] < SENSORARRAY_STOP_DISTANCE && this->raw_data[pin][3][i] > 0)
-        {
-            return true;
+    for (int j = 0; j < 3; ++j){
+        for (int i = 0; i < 8; ++i){
+
+            if (this->raw_data[pin_array[j]][3][i] < SENSORARRAY_STOP_DISTANCE && this->raw_data[pin_array[j]][3][i] > 0){
+                return true;
+               }
         }
     }
     return false;
