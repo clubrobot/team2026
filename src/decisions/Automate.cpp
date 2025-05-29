@@ -53,30 +53,13 @@ Position test2 = Position(1300,300,-1.57);
 
 void Automate::play_match(void *pvParameters){
 
-/*    Position* startPos = new Position(0,0,0);
-    Position* endPos = new Position(800,200,0);
-
-    Wheeledbase::SET_POSITION(startPos);
-    Wheeledbase::GOTO(endPos,false, PurePursuit::FORWARD, PI/2);
-
-    for (;;){
-
-    }*/
-    Position* startPos = new Position(100,200,0);
-    Wheeledbase::SET_POSITION(startPos);
-
-
-    Wheeledbase::GOTO_DELTA(1000,0);
-    for (;;){}
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.
     //auto start_time = std::chrono::high_resolution_clock::now();
     procedure_demarrage();
     start_millis=millis();
-    /*poly_delay(100);
-    listeActionneur::pince_pour_deplacer();
-    poly_delay(100);*/
+
     points=0;
     bool state=true;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {

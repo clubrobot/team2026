@@ -21,7 +21,7 @@
 
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
-
+#define DEBUG_SERIAL
 
 Logger main_logs = Logger("MAIN");
 using namespace ihm;
@@ -51,6 +51,7 @@ void procedure_demarrage(){
 
     unsigned int prev_vert = millis();
     unsigned int prev_rouge = millis();
+    bool last_state_rouge=etat_rouge();
 
     while (!etat_vert()){
         unsigned int curr_time = millis();
@@ -62,12 +63,16 @@ void procedure_demarrage(){
             prev_rouge = curr_time;
             led_rouge();
         }
-
-        if(etat_rouge()){
-            listeActionneur::mise_banderole();
-        }else{
-            listeActionneur::haut_banderole();
+        bool state_rouge = etat_rouge();
+        if (state_rouge!=last_state_rouge){
+            printf("ENTRE\n");
+            if(state_rouge){
+                listeActionneur::mise_banderole();
+            }else{
+                listeActionneur::haut_banderole();
+            }
         }
+        last_state_rouge=state_rouge;
     }
     led_vert(LOW);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
@@ -107,11 +112,11 @@ void setup(){
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
 
-
-    //listeActionneur::Init();
     SensorsThread::Init();
+    listeActionneur::Init();
     wb_setup();
 
+    ServosPCA9685::Init();
     yeux.setTx(YEUX_TX);
     yeux.setHalfDuplex();
     yeux.begin(115200);
@@ -141,14 +146,14 @@ void setup(){
 
     TaskHandle_t  hl_sens = nullptr;
     BaseType_t ret_sens= xTaskCreate(
-                SensorsThread::Thread,       /* Function that implements the task. */
+                 SensorsThread::Thread,       /* Function that implements the task. */
                 "Sensors loop",          /* Text name for thedi task. */
-                10000,      /* Stack size in words, not bytes. */
+                 10000,      /* Stack size in words, not bytes. */
                 nullptr,    /* Parameter passed into the task. */
-                5,//Prio nulle à chier
-                &hl_sens );      /* Used to pass out the created task's handle. */
+                 5,//Prio nulle à chier
+                 &hl_sens );      /* Used to pass out the created task's handle. */
 
-    if(ret_sens!=pdPASS) {Error_Handler()}
+     if(ret_sens!=pdPASS) {Error_Handler()}
 
     TaskHandle_t  hl_robot = nullptr;
 
