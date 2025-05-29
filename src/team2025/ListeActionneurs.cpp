@@ -225,12 +225,12 @@ void listeActionneur::pinceFerme(){
 
 void listeActionneur::set_pompe(bool state){
     if (state==HIGH){
-        //portENTER_CRITICAL();
+        portENTER_CRITICAL();
         for (int i=0; i<1023; i++){
             analogWrite(POMPE_PIN, i);
             poly_delay(1);
         }
-        
+        portEXIT_CRITICAL();
     }else{
         analogWrite(POMPE_PIN, 0);
     }
