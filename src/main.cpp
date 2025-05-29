@@ -97,7 +97,9 @@ check reset if vl53 are flshed !!!!!!!!!!!!!!
 
 #define YEUX_TX PG1
 HardwareSerial yeux(YEUX_TX);
-
+TaskHandle_t hl_wb = nullptr;
+TaskHandle_t hl_sens = nullptr;
+TaskHandle_t  hl_robot = nullptr;
 //Setup de base
 void setup(){
     DWT_Init(); //Très important
@@ -131,7 +133,7 @@ void setup(){
     main_logs.log(GOOD_LEVEL,"Using FreeRTOS\n");
     //Setup FreeRTOS
 
-    TaskHandle_t  hl_wb = nullptr;
+    //TaskHandle_t  hl_wb = nullptr;
 
     BaseType_t ret_wb = xTaskCreate(
                 wb_loop,       /* Function that implements the task. */
@@ -143,7 +145,7 @@ void setup(){
 
     if(ret_wb!=pdPASS) {Error_Handler()}
 
-    TaskHandle_t  hl_sens = nullptr;
+    //TaskHandle_t  hl_sens = nullptr;
     BaseType_t ret_sens= xTaskCreate(
                  SensorsThread::Thread,       /* Function that implements the task. */
                 "Sensors loop",          /* Text name for thedi task. */
@@ -154,7 +156,7 @@ void setup(){
 
      if(ret_sens!=pdPASS) {Error_Handler()}
 
-    TaskHandle_t  hl_robot = nullptr;
+    //TaskHandle_t  hl_robot = nullptr;
 
     BaseType_t ret_robot = xTaskCreate(
                 Automate::play_match,       /* Function that implements the task. */
