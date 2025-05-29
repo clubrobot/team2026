@@ -39,7 +39,8 @@ void Automate::init(int team) {
     }
     //Load strat
     //Strategies::stratDeBase(team) ;
-    Strategies::stratTestEmpilement(team);
+    Strategies::strat1(team) ;
+    //Strategies::stratTestEmpilement(team);
     //Load taches
     Wheeledbase::SET_POSITION(Strategies::start);//&positions_match[start2]);
     numberTaches=Strategies::nb_taches;

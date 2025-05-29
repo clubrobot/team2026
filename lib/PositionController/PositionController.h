@@ -263,7 +263,9 @@ protected:
 	 * 
 	 * @return Précision en mm.
 	 */
-	float getLinPosThreshold() const {return m_context->m_linPosThreshold;}
+	float getLinPosThreshold() const {
+
+        return m_context->m_linPosThreshold;}
 	/**
 	 * @brief Retourne la précision angulaire à atteindre.
 	 * 
