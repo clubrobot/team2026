@@ -211,7 +211,6 @@ for(;;) {
         positionControl.setPosInput(*odometry.getPosition());
         velocityControl.setInputs(odometry.getLinVel(), odometry.getAngVel());
     }
-
     // Compute trajectory
     if (positionControl.update())
     {
@@ -219,7 +218,6 @@ for(;;) {
         float angVelSetpoint = positionControl.getAngVelSetpoint();
         velocityControl.setSetpoints(linVelSetpoint, angVelSetpoint);
     }
-
         // Integrate engineering control
 #if ENABLE_VELOCITYCONTROLLER_LOGS
         if (velocityControl.update())

@@ -152,7 +152,7 @@ void VelocityController::setSpinShutdown   (bool spinShutdown)   {
 
 
 #if ENABLE_VELOCITYCONTROLLER_LOGS
-void VelocityControllerLogs::process(float timestep, Teleplot &teleplot){
+void VelocityControllerLogs::process(float timestep){
 	teleplot.add_variable_float_2decimal("m_rampLinVelSetpoint", m_controller->m_rampLinVelSetpoint);
 	teleplot.add_variable_float_2decimal("m_linInput", m_controller->m_linInput);
 	teleplot.add_variable_float_2decimal("m_linVelOutput", m_controller->m_linVelOutput);

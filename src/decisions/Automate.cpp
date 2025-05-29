@@ -52,7 +52,6 @@ Position test = Position(1500,1250,-1.57);
 Position test2 = Position(1300,300,-1.57);
 
 void Automate::play_match(void *pvParameters){
-
     auto *procedure_demarrage = (void (*)()) pvParameters;
     //cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans l'ordre ou elles ont été ajoutée.
     //Seulement la fonction execute  et get_necessary_time doivent être implémentée.

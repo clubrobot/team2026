@@ -42,8 +42,9 @@ void SensorsThread::Thread(void *pvParameters){
         float lin, ang = 0;
         Wheeledbase::GET_VELOCITIES(&lin,&ang);
         auto position=Wheeledbase::GET_POSITION();
+        velocityControl.set_stop(false);
         //if (sensors.isThereAnObstacle(lin))
-
+/*
         if (sensors.isThereAnObstacle(lin))
         {
             sensors_logs.log(ERROR_LEVEL, "STOPPPP\n");
@@ -57,6 +58,6 @@ void SensorsThread::Thread(void *pvParameters){
             velocityControl.set_stop(false);
         }
 
-
+*/
     }
 }

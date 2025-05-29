@@ -21,7 +21,6 @@
 
 #define DEBUG 1
 #define TEST_NO_FREERTOS false //Ignore le FreeRTOS et se comporte comme un arduino classique
-#define DEBUG_SERIAL
 
 Logger main_logs = Logger("MAIN");
 using namespace ihm;
