@@ -53,30 +53,32 @@ void Strategies::stratDeBase(int team){
         ////////////////////// STRAT 1 JAUNE ///////////////////
         positions_match=positions_jaune;
         start = &positions_match[start2];
-        nb_taches=8;
+        nb_taches=9;
         strat[0] = new TacheBanderole();
         strat[1] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
         strat[2] = new TacheGoto((Position*)nullptr, &positions_match[garage4all], PurePursuit::FORWARD);
         strat[3] = new TacheTransport();
-        strat[4] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD);
+        strat[4] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD, false);
         strat[5] = new TacheEmpiler();
         //FIN MATCH
-        strat[6] = new TacheWait(&start_millis, 90*1000);
-        strat[7] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
+        strat[6] = new TacheGoto((Position*)nullptr, &positions_match[check3], PurePursuit::FORWARD, false);
+        strat[7] = new TacheWait(&start_millis, 93*1000);
+        strat[8] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
     }else{
         ////////////////////// STRAT 1 BLEU ///////////////////
         positions_match=positions_bleu;
         start = &positions_match[start2];
-        nb_taches=8;
+        nb_taches=9;
         strat[0] = new TacheBanderole();
         strat[1] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
         strat[2] = new TacheGoto((Position*)nullptr, &positions_match[garage5all], PurePursuit::FORWARD);
         strat[3] = new TacheTransport();
-        strat[4] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD);
+        strat[4] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD, false);
         strat[5] = new TacheEmpiler();
         //FIN MATCH
-        strat[6] = new TacheWait(&start_millis, 90*1000);
-        strat[7] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
+        strat[6] = new TacheGoto((Position*)nullptr, &positions_match[check3], PurePursuit::FORWARD, false);
+        strat[7] = new TacheWait(&start_millis, 93*1000);
+        strat[8] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
     }
 }
 

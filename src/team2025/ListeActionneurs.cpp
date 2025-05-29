@@ -111,6 +111,16 @@ void listeActionneur::asc_mid(){
     ascenseur.turn(0);
 }
 
+void listeActionneur::asc_secoue(){
+    if (ihm::etat_lim_bas())return;
+    for (int i=0; i<2; i++){
+        ascenseur.turn(-1023);
+        poly_delay(10);
+        ascenseur.turn(0);
+        poly_delay(10);
+    }
+}
+
 void listeActionneur::asc_up(){
     while (!ihm::etat_lim_haut()){
         ascenseur.turn(1023);

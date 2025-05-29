@@ -19,6 +19,7 @@ bool TacheEmpiler::execute(bool previous_success){
     poly_delay(50);
     drop_conserve();
     set_pompe(LOW);
+    asc_secoue();
     stop_aimant_conserve();
     float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
     float defaltAcc = Wheeledbase::GET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID);

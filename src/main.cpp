@@ -115,6 +115,7 @@ void setup(){
     //myBeeper.playSheetMusic(cantina);
 
     yeuxThread::yeux_setup();
+    yeuxThread::yeux.println("SZigouigoui  *100$score 42");
     SensorsThread::Init();
     listeActionneur::Init();
     wb_setup();
@@ -169,15 +170,15 @@ void setup(){
 
     TaskHandle_t  hl_yeux= nullptr;
 
-    BaseType_t ret_yeux = xTaskCreate(
-            yeuxThread::yeux_loop,       /* Function that implements the task. */
-            "UwU",          /* Text name for the task. */
-            10000,      /* Stack size in words, not bytes. */
-            NULL,    /* Parameter passed into the task. */
-            5,//Prio un peu mieux
-            &hl_yeux );      /* Used to pass out the created task's handle. */
-
-    if(ret_yeux!=pdPASS) {Error_Handler()}
+    // BaseType_t ret_yeux = xTaskCreate(
+    //         yeuxThread::yeux_loop,       /* Function that implements the task. */
+    //         "UwU",          /* Text name for the task. */
+    //         10000,      /* Stack size in words, not bytes. */
+    //         NULL,    /* Parameter passed into the task. */
+    //         5,//Prio un peu mieux
+    //         &hl_yeux );      /* Used to pass out the created task's handle. */
+    //
+    // if(ret_yeux!=pdPASS) {Error_Handler()}
 
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS

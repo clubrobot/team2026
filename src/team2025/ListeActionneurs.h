@@ -53,6 +53,7 @@ namespace listeActionneur {
     void doNothing();
     void asc_down();///Ascensceur en bas
     void asc_mid();///Ascenseur qui monte 1sec depuis le bas
+    void asc_secoue();
     void asc_up();///Ascenseur en haut
 
     void aimante_conserve();///Les 2 servos avant aimantes les conserves

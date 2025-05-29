@@ -8,13 +8,13 @@
 namespace yeuxThread {
     HardwareSerial yeux(YEUX_TX);
     const char* animations[7] = {
-            "A0*500$1",
-            "A1*500$2",
-            "A2*500$3",
-            "A3*500$4",
-            "A4*500$5",
-            "A5*500$6",
-            "A6*500$7",
+            "A0*500$30 points",
+            "A1*500$30 points",
+            "A2*500$30 points",
+            "A3*500$30 points",
+            "A4*500$30 points",
+            "A5*500$30 points",
+            "A6*500$30 points",
     };
 
     short animationsLength[] = {
