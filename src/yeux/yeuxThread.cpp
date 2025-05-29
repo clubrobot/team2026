@@ -6,18 +6,18 @@
 #include <Wire.h>
 
 namespace yeuxThread {
-
+    HardwareSerial yeux(YEUX_TX);
     const char* animations[7] = {
-            "A0*500$",
-            "A1*500$",
-            "A2*500$",
-            "A3*500$",
-            "A4*500$",
-            "A5*500$",
-            "A6*500$",
+            "A0*500$1",
+            "A1*500$2",
+            "A2*500$3",
+            "A3*500$4",
+            "A4*500$5",
+            "A5*500$6",
+            "A6*500$7",
     };
 
-    int lastSwitch = 0;
+    long lastSwitch = 0;
     u_short lastAnimation = 0;
 
     void yeux_setup() {
@@ -27,11 +27,14 @@ namespace yeuxThread {
     }
 
     void yeux_loop(void *pvParameters) {
-        if (lastAnimation - millis() > TIME_BETWEEN_ANIMATIONS) {
-            lastSwitch = millis();
-            lastAnimation += 1;
-            lastAnimation %= 7;
-            yeux.println(animations[lastAnimation]);
+        lastSwitch = millis();
+        for (;;){
+            if (millis()-lastSwitch > TIME_BETWEEN_ANIMATIONS) {
+                lastSwitch = millis();
+                lastAnimation += 1;
+                lastAnimation %= 7;
+                yeux.println(animations[lastAnimation]);
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace yeuxThread {
     void yeux_setup();
     void yeux_loop(void *pvParameters);
 
-    HardwareSerial yeux(YEUX_TX);
+    extern HardwareSerial yeux;
 }
 
 
