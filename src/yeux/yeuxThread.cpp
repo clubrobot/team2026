@@ -17,7 +17,18 @@ namespace yeuxThread {
             "A6*500$7",
     };
 
-    long lastSwitch = 0;
+    short animationsLength[] = {
+            2,
+            4,
+            4,
+            9,
+            8,
+            4,
+            4,
+
+    };
+
+    unsigned long lastSwitch = 0;
     u_short lastAnimation = 0;
 
     void yeux_setup() {
@@ -29,7 +40,7 @@ namespace yeuxThread {
     void yeux_loop(void *pvParameters) {
         lastSwitch = millis();
         for (;;){
-            if (millis()-lastSwitch > TIME_BETWEEN_ANIMATIONS) {
+            if (millis()-lastSwitch > animationsLength[lastAnimation] * 500 * 2) {
                 lastSwitch = millis();
                 lastAnimation += 1;
                 lastAnimation %= 7;
