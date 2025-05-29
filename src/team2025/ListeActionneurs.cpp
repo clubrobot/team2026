@@ -47,12 +47,12 @@ void listeActionneur::Init(){
     limite_servo_pince_droite.ouvert = 120; //OUVERT
     limite_servo_pince_droite.grand_ouvert = 180; //GRAND OUVERT
 
-    limite_servo_pince_gauche.ferme = 157; ///FERME
+    limite_servo_pince_gauche.ferme = 158; ///FERME
     limite_servo_pince_gauche.ouvert = 110; ///OUVERT
     limite_servo_pince_gauche.grand_ouvert = 50; ///GRAND OUVERT
 
     ////////////AIMANTs
-    limite_servo_pince_aimant_droit.ferme= 91; ///FERME OK
+    limite_servo_pince_aimant_droit.ferme= 92; ///FERME OK
     limite_servo_pince_aimant_droit.ouvert= 75; ///OUVERT OK
 
     limite_servo_pince_aimant_gauche.ferme = 177; ///FERME

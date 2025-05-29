@@ -101,6 +101,8 @@ TaskHandle_t hl_wb = nullptr;
 TaskHandle_t hl_sens = nullptr;
 TaskHandle_t  hl_robot = nullptr;
 //Setup de base
+
+
 void setup(){
     DWT_Init(); //Très important
 
@@ -194,3 +196,4 @@ void loop(){
     if (i>=2*PI) i=0;
     //printf("Pince Droite %f\tPince Gauche %f\t Banderole %f\t\n", listeActionneur::pince_droite.readPosition(), listeActionneur::pince_gauche.readPosition(), listeActionneur::banderole.readPosition());
 }
+

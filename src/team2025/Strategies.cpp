@@ -113,7 +113,7 @@ void Strategies::stratTestEmpilement(int team){
         start = &positions_match[start2];
         nb_taches=5;
         strat[0] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
-        strat[1] = new TacheGoto(nullptr, &positions_match[depot3], PurePursuit::FORWARD, false);
+        strat[1] = new TacheMoveDelta(200,0);
         strat[2] = new TacheTransport();
         strat[3] = new TacheMoveDelta(-100,0);
         strat[4] = new TacheEmpiler();
