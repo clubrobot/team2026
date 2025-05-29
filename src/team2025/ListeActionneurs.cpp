@@ -119,14 +119,14 @@ void listeActionneur::asc_up(){
 }
 
 void listeActionneur::aimante_conserve(){
-    portENTER_CRITICAL();
+    //portENTER_CRITICAL();
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.ferme);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.ferme);
     
 }
 
 void listeActionneur::stop_aimant_conserve(){
-    portENTER_CRITICAL();
+    //portENTER_CRITICAL();
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_droit, limite_servo_pince_aimant_droit.ouvert);
     ServosPCA9685::Write(listeActionneur::servo_pince_aimant_gauche, limite_servo_pince_aimant_gauche.ouvert);
     
@@ -161,7 +161,7 @@ void listeActionneur::drop_conserve(){
 void listeActionneur::deploie_banderole(){
     banderole.move(limite_banderole.deploye);
     poly_delay(500);
-    portENTER_CRITICAL();
+    //portENTER_CRITICAL();
     ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
     
 }
@@ -201,7 +201,7 @@ void listeActionneur::papFerme(){
 }
 
 void listeActionneur::pinceGrandOuvert(){
-    portENTER_CRITICAL();
+    //portENTER_CRITICAL();
     ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.grand_ouvert);
     ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.grand_ouvert);
     
@@ -209,7 +209,7 @@ void listeActionneur::pinceGrandOuvert(){
 
 
 void listeActionneur::pinceOuvert(){
-    portENTER_CRITICAL();
+    //portENTER_CRITICAL();
     poly_delay(25);
     ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.ouvert);
     poly_delay(25);
@@ -217,7 +217,7 @@ void listeActionneur::pinceOuvert(){
     
 }
 void listeActionneur::pinceFerme(){
-    portENTER_CRITICAL();
+    //portENTER_CRITICAL();
     poly_delay(25);
     ServosPCA9685::Write(listeActionneur::servo_pince_droite, limite_servo_pince_droite.ferme);
     poly_delay(25);
@@ -227,7 +227,7 @@ void listeActionneur::pinceFerme(){
 
 void listeActionneur::set_pompe(bool state){
     if (state==HIGH){
-        portENTER_CRITICAL();
+        //portENTER_CRITICAL();
         for (int i=0; i<1023; i++){
             analogWrite(POMPE_PIN, i);
             poly_delay(1);
