@@ -346,7 +346,7 @@ bool SensorArray::isThereAnObstacleTerrain(float velocity,float current_angle,fl
 
                 if(x>=-50 && y>=-50 && x<=max_x+50 && max_y+50>=y)
                     return true;
-                //else printf("DENY %d %f %f %f %f %f\n",pin_array[j],x,y,current_x,current_y,current_angle);
+                else printf("DENY %d %f %f %f %f %f\n",pin_array[j],x,y,current_x,current_y,current_angle);
             }
         }
     }
