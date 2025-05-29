@@ -20,7 +20,13 @@ bool TacheEmpiler::execute(bool previous_success){
     drop_conserve();
     set_pompe(LOW);
     stop_aimant_conserve();
-    Wheeledbase::GOTO_DELTA(-100,0);
+    float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
+    float defaltAcc = Wheeledbase::GET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID);
+    Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc*0.2);
+    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed*0.2);
+    Wheeledbase::GOTO_DELTA(-300,0);
+    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
+    Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc);
     aimante_conserve();
     asc_down();
     asc_mid();

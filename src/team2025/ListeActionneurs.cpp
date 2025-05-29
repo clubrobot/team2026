@@ -193,7 +193,7 @@ void listeActionneur::papOuvert(){
 }
 
 void listeActionneur::papFerme(){
-    pince_gauche.moveSpeed(limite_pince_gauche.ferme, 300);
+    pince_gauche.moveSpeed(limite_pince_gauche.ferme, 300,true);
     poly_delay(10);
     pince_droite.moveSpeed(limite_pince_droite.ferme, 300,true);
 }
