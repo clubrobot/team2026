@@ -329,11 +329,15 @@ bool SensorArray::isThereAnObstacle(float velocity)
 }
 
 //
-bool SensorArray::isThereAnObstacleTerrain(float velocity,float current_angle,float current_x,float current_y,float max_x,float max_y)
+bool SensorArray::isThereAnObstacleTerrain(bool interrupt,float velocity,float current_angle,float current_x,float current_y,float max_x,float max_y)
 {
     uint8_t* pin_array = velocity >= -0.1 ? data_pin_forward : data_pin_backward;
     float* angles_array = velocity >= -0.1 ? angles_forward : angles_backward;
-    const int stop_distance = velocity >= -0.1 ? SENSORARRAY_STOP_DISTANCE_FORWARD : SENSORARRAY_STOP_DISTANCE_BACKWARD;
+    float stop_distance = velocity >= -0.1 ? SENSORARRAY_STOP_DISTANCE_FORWARD : SENSORARRAY_STOP_DISTANCE_BACKWARD;
+    //dont check for interruption when stopped (not a stop induced by an interruption)
+    if(!interrupt && fabs(velocity)<2)return false;
+
+    stop_distance=fmax(stop_distance*0.2,fmin(1.5* fabs(velocity),stop_distance));
 
     for (int j = 0; j < 3; ++j){
         for (int i = 0; i < 8; ++i){

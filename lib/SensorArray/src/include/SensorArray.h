@@ -66,8 +66,9 @@ public:
     bool isThereAnObstacle(float velocity);
 
     std::vector<Point> points;
-    bool isThereAnObstacleTerrain(float velocity, float current_angle, float current_x, float current_y, float max_x,
-                                  float max_y);
+    bool isThereAnObstacleTerrain(bool interrupt, float velocity, float current_angle, float current_x, float current_y,
+                                  float max_x, float max_y);
+
 private:
     uint8_t nb_sensors;
     std::array<SensorHandle, 8> sensors;
@@ -88,6 +89,7 @@ private:
     void ApplyPowerConfig() const;
     uint8_t AquireRawData();
     static void Mesurement_to_Point(uint16_t measure, uint8_t x, uint8_t y, Point* point);
+
 
 
 };
