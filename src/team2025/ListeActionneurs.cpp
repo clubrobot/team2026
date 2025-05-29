@@ -166,12 +166,10 @@ void listeActionneur::deploie_banderole(){
     
 }
 void listeActionneur::haut_banderole(){
-    printf("hautbanderole\n");
     banderole.move(limite_banderole.non_deploye);
     ServosPCA9685::Write(servo_banderole, limite_servo_banderole.non_deploye);
 }
 void listeActionneur::mise_banderole(){
-    printf("Mise banderole\n");
     banderole.move(limite_banderole.non_deploye);
     ServosPCA9685::Write(servo_banderole, limite_servo_banderole.deploye);
 }
