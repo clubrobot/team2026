@@ -7,8 +7,17 @@
 
 #include <Arduino.h>
 
-void yeux_setup();
-void yeux_loop(void *pvParameters);
+#define YEUX_TX PG1
+#define TIME_BETWEEN_ANIMATIONS 3000 //ms
+
+namespace yeuxThread {
+
+    void yeux_setup();
+    void yeux_loop(void *pvParameters);
+
+    HardwareSerial yeux(YEUX_TX);
+}
+
 
 
 

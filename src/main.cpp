@@ -16,6 +16,7 @@
 #include "sensors/SensorsThread.h"
 #include "decisions/Automate.h"
 #include "include/SensorArray.h"
+#include "yeux/yeuxThread.h"
 
 #include "team2025/ListeActionneurs.h"
 
@@ -95,8 +96,6 @@ Tache banderole OK
 check reset if vl53 are flshed !!!!!!!!!!!!!!
 */
 
-#define YEUX_TX PG1
-HardwareSerial yeux(YEUX_TX);
 TaskHandle_t hl_wb = nullptr;
 TaskHandle_t hl_sens = nullptr;
 TaskHandle_t  hl_robot = nullptr;
@@ -120,9 +119,6 @@ void setup(){
     wb_setup();
 
     ServosPCA9685::Init();
-    yeux.setTx(YEUX_TX);
-    yeux.setHalfDuplex();
-    yeux.begin(115200);
 
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
@@ -172,15 +168,15 @@ void setup(){
 
     TaskHandle_t  hl_yeux= nullptr;
 
-    //BaseType_t ret_yeux = xTaskCreate(
-    //        wb_loop,       /* Function that implements the task. */
-    //        "UwU",          /* Text name for the task. */
-    //        10000,      /* Stack size in words, not bytes. */
-    //        NULL,    /* Parameter passed into the task. */
-    //        5,//Prio un peu mieux
-    //        &hl_yeux );      /* Used to pass out the created task's handle. */
+    BaseType_t ret_yeux = xTaskCreate(
+            yeuxThread::yeux_loop,       /* Function that implements the task. */
+            "UwU",          /* Text name for the task. */
+            10000,      /* Stack size in words, not bytes. */
+            NULL,    /* Parameter passed into the task. */
+            5,//Prio un peu mieux
+            &hl_yeux );      /* Used to pass out the created task's handle. */
 
-    //if(ret_yeux!=pdPASS) {Error_Handler()}
+    if(ret_yeux!=pdPASS) {Error_Handler()}
 
     main_logs.log(GOOD_LEVEL,"Starting tasks\n");
     vTaskStartScheduler();//On commence FreeRTOS

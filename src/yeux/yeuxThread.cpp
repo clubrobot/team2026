@@ -4,19 +4,34 @@
 
 #include "yeuxThread.h"
 #include <Wire.h>
-/*
-TwoWire I2C_Yeux(PB7, PB6);
 
-void yeux_setup(){
-    I2C_Yeux.begin();
+namespace yeuxThread {
+
+    const char* animations[7] = {
+            "A0*500$",
+            "A1*500$",
+            "A2*500$",
+            "A3*500$",
+            "A4*500$",
+            "A5*500$",
+            "A6*500$",
+    };
+
+    int lastSwitch = 0;
+    u_short lastAnimation = 0;
+
+    void yeux_setup() {
+        yeux.setTx(YEUX_TX);
+        yeux.setHalfDuplex();
+        yeux.begin(115200);
+    }
+
+    void yeux_loop(void *pvParameters) {
+        if (lastAnimation - millis() > TIME_BETWEEN_ANIMATIONS) {
+            lastSwitch = millis();
+            lastAnimation += 1;
+            lastAnimation %= 7;
+            yeux.println(animations[lastAnimation]);
+        }
+    }
 }
-
-void yeux_loop(void *pvParameters){
-    I2C_Yeux.beginTransmission(0x71);
-    I2C_Yeux.write('~');
-    I2C_Yeux.write('=');
-    I2C_Yeux.printf("test\n");
-    I2C_Yeux.write('#');
-    I2C_Yeux.endTransmission();
-    delay(1000);
-}*/
