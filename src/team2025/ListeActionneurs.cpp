@@ -43,7 +43,7 @@ void listeActionneur::Init(){
     limite_pince_gauche.compact = 298; // complétement fermé
 
     ////////////PINCE
-    limite_servo_pince_droite.ferme = 73; ///FERME
+    limite_servo_pince_droite.ferme = 68; ///FERME
     limite_servo_pince_droite.ouvert = 120; //OUVERT
     limite_servo_pince_droite.grand_ouvert = 180; //GRAND OUVERT
 
@@ -187,8 +187,8 @@ void listeActionneur::pince_compact(){
 }
 
 void listeActionneur::papOuvert(){
-    pince_gauche.moveSpeed(limite_pince_gauche.ouvert, 1023);
-    poly_delay(10);
+    pince_gauche.moveSpeed(limite_pince_gauche.ouvert, 1023, true);
+    poly_delay(5);
     pince_droite.moveSpeed(limite_pince_droite.ouvert, 1023,true);
 }
 
