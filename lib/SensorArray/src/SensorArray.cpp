@@ -315,7 +315,7 @@ float angles_backward[3]={3*PI/4,PI,5*PI/4};
 //The data must be acquired
 bool SensorArray::isThereAnObstacle(float velocity)
 {
-    uint8_t* pin_array = velocity >= 0 ? data_pin_forward : data_pin_backward;
+    uint8_t* pin_array = velocity >= -0.1 ? data_pin_forward : data_pin_backward;
 
     for (int j = 0; j < 3; ++j){
         for (int i = 0; i < 8; ++i){
