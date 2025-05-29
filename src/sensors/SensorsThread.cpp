@@ -47,12 +47,13 @@ void SensorsThread::Thread(void *pvParameters){
 
 
         //if (sensors.isThereAnObstacle(lin))
-        if (sensors.isThereAnObstacleTerrain(lin,position->theta,position->x,position->y,TERRAIN_SIZE_X_MM,TERRAIN_SIZE_Y_MM))
+        if (sensors.isThereAnObstacleTerrain(false,lin,position->theta,position->x,position->y,TERRAIN_SIZE_X_MM,TERRAIN_SIZE_Y_MM))
         {
             sensors_logs.log(ERROR_LEVEL, "STOPPPP\n");
             velocityControl.set_stop(true);
             //Wait until no obstacle
-            while (sensors.isThereAnObstacle(lin))
+            while(sensors.isThereAnObstacleTerrain(true,lin,position->theta,position->x,position->y,TERRAIN_SIZE_X_MM,TERRAIN_SIZE_Y_MM))
+            //while (sensors.isThereAnObstacle(lin))
             {
                 sensors.getNormalisedData();
             }
