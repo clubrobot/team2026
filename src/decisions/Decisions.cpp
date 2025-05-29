@@ -5,7 +5,7 @@
 #include <iostream>
 #include <chrono>
 #include "Geogebra.h"
-//cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans un ordre choisi de facon a maximiser le nombre de points.
+//cette fonction remplit le vecteur taches avec des tâches. Elles seront executée dans un ordre choisi de facon a maximiser le nombre de current_points.
 //Toutes les fonctions doivent être implémentées
 void Decisions::init(int team){
     color=team;
@@ -43,7 +43,7 @@ void TODO_pos(){
 }
 
 int Decisions::get_optimal_tache(double remaining_time){
-    /*On ca chercher la prochaine tâche qui permet de maximiser le nombre points obtenus à la fin du match.
+    /*On ca chercher la prochaine tâche qui permet de maximiser le nombre current_points obtenus à la fin du match.
      * Pour cela on explore toutes les combinaisons de tâches possibles dans le temps imparti. (l'algo à donc une compléxitée au pire de n!).
      * Cette méthode teste appelle la fonction max_cost pour chaque tâches afin d'evaluer le score maximum si
      * la prochaine tache est celle ci et retourne l'id de celle donnant le score maximal.
@@ -52,13 +52,13 @@ int Decisions::get_optimal_tache(double remaining_time){
      *         assez de temps pr réaliser une tâche.
      *
      * Amelioration:
-     * - Pour que cette fonction soit intelligente il faut que le nomrbe de points soit adapté dynamiquement
-     *  (par exemple si l'autre équipe réalise l'action alors, alors elle ne rapporte plus de points et on ne l'executera pas)
+     * - Pour que cette fonction soit intelligente il faut que le nomrbe de current_points soit adapté dynamiquement
+     *  (par exemple si l'autre équipe réalise l'action alors, alors elle ne rapporte plus de current_points et on ne l'executera pas)
      *  Cela nécéssite un code supplémentaire et de la communication avec la caméra pas encore réalise (fin 2024).
      * - Il serait aussi possible de changer l'estimation du temps de trajet en prenant en compte le vrai trajet à la place de la ligne droit actuelle
      * - Il serait possible de diviser les tâches en sous-tâches. Par exemple au lieu d'avoir une seule tâche pr recup
      *      un objet et aller le déposer à un autre endroit il y aurait deux tâches une pour récupérer et l'autre pour déposer.
-     *      Seulement la seconde donnerait des points mais elle requiererait la prmeière pour pouvoir être effectuée.
+     *      Seulement la seconde donnerait des current_points mais elle requiererait la prmeière pour pouvoir être effectuée.
      *      Ont pourrait donc réduire le temps d'execution des tâches en les subdivisants.
      *      Cela necessiterait d'ajouter des conditions de réalisations dependant des tâches précédentes deja réalisée.
      */

@@ -69,7 +69,7 @@ bool PurePursuit::checkLookAheadGoal(const float x, const float y)
 		// that the robot projection is on its second endpoint.
 		float t = (edgedx * dx + edgedy * dy) / (edgeLength * edgeLength);
 
-		// There is two intersection points between the circle and the line but we only consider
+		// There is two intersection current_points between the circle and the line but we only consider
 		// the one ahead of the robot: if it is beyond the second endpoint (so it's not on the
 		// segment), then we go to the next.
 		float t1 = t - sqrt(m_lookAhead * m_lookAhead - h * h) / edgeLength;

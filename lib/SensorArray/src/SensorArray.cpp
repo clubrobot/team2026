@@ -337,7 +337,7 @@ bool SensorArray::isThereAnObstacleTerrain(bool interrupt,float velocity,float c
     //dont check for interruption when stopped (not a stop induced by an interruption)
     if(!interrupt && fabs(velocity)<2)return false;
 
-    stop_distance=fmax(stop_distance*0.2,fmin(1.5* fabs(velocity),stop_distance));
+    stop_distance=fmax(stop_distance*0.3,fmin(1.5* fabs(velocity),stop_distance));
 
     for (int j = 0; j < 3; ++j){
         for (int i = 0; i < 8; ++i){

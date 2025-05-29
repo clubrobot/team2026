@@ -35,6 +35,7 @@ namespace yeuxThread {
         yeux.setTx(YEUX_TX);
         yeux.setHalfDuplex();
         yeux.begin(115200);
+        //yeux_init=true;
     }
 
     void yeux_loop(void *pvParameters) {

@@ -21,12 +21,12 @@
 #include <Teleplot.h>
 #include <team2025/Strategies.h>
 #include <team2025/TacheTransport.h>
-
+#include "yeux/yeuxThread.h"
 namespace Automate {
     Logger auto_logs = Logger("AUTOMATE");
     Tache** taches;//endroit de stockage des taches
     int color;//couleur de l'équipe
-    int points;//points réalises pour l'instant
+    int current_points;//current_points réalises pour l'instant
     int numberTaches;
 }
 
@@ -38,13 +38,13 @@ void Automate::init(int team) {
         auto_logs.log(WARNING_LEVEL, "Automate init avec Bleu\n");
     }
     //Load strat
-    Strategies::stratDeBase(team) ;
-
+    //Strategies::stratDeBase(team) ;
+    Strategies::stratTestEmpilement(team);
     //Load taches
     Wheeledbase::SET_POSITION(Strategies::start);//&positions_match[start2]);
     numberTaches=Strategies::nb_taches;
     taches = Strategies::strat;
-
+    current_points=0;
 }
 
 Position start = Position(1700,300,-1.57);
@@ -59,7 +59,7 @@ void Automate::play_match(void *pvParameters){
     procedure_demarrage();
     start_millis=millis();
 
-    points=0;
+    current_points=0;
     bool state=true;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {
         auto_logs.log(INFO_LEVEL, "Tache n.%d\n", tache_id);
@@ -70,7 +70,13 @@ void Automate::play_match(void *pvParameters){
         //if(delta_t>100000-taches[tache_id]->get_necessary_time())break;//on est deja a la fin du match faut s'arrêter la
         //execute la tâche.
         state=taches[tache_id]->execute(state);
-        //points+=taches[tache_id]->get_max_score();
+        if(state){
+            current_points+=taches[tache_id]->get_max_score();
+            char* phrase;
+            sprintf(phrase,"SAisprid  *100$score %d",current_points);
+            printf("%s\n",phrase);
+            yeuxThread::yeux.println(phrase);
+        }
     }
     Wheeledbase::SET_PARAMETER_VALUE(RIGHTWHEEL_MAXPWM_ID, 0);
     Wheeledbase::SET_PARAMETER_VALUE(LEFTWHEEL_MAXPWM_ID, 0);

@@ -79,6 +79,8 @@ void Strategies::stratDeBase(int team){
         strat[6] = new TacheGoto((Position*)nullptr, &positions_match[check3], PurePursuit::FORWARD, false);
         strat[7] = new TacheWait(&start_millis, 93*1000);
         strat[8] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
+        strat[8]->set_max_score(10);
+
     }
 }
 
@@ -117,7 +119,7 @@ void Strategies::stratTestEmpilement(int team){
         start = &positions_match[start2];
         nb_taches=5;
         strat[0] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
-        strat[1] = new TacheMoveDelta(200,0);
+        strat[1] = new TacheMoveDelta(400,0);
         strat[2] = new TacheTransport();
         strat[3] = new TacheMoveDelta(-100,0);
         strat[4] = new TacheEmpiler();

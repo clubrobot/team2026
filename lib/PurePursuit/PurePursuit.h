@@ -61,7 +61,7 @@ public:
 	bool addWaypoint(const Waypoint& waypoint);
 	/**
 	 * @brief Initialise le Purpuisuit.
-	 * Supprime les points de la ligne brisée et les paramètres temporaires.
+	 * Supprime les current_points de la ligne brisée et les paramètres temporaires.
 	 */
 	void reset();
 	/**
@@ -107,7 +107,7 @@ public:
 	/**
 	 * @brief Getter du nombre de point de passage.
 	 * 
-	 * @return int Nombre de points de la ligne brisée.
+	 * @return int Nombre de current_points de la ligne brisée.
 	 */
 	int getNumWaypoints() const {return m_numWaypoints;}
 	/**
@@ -169,8 +169,8 @@ protected:
 	float getDistAfterGoal();
 
 	// Trajectory specifications
-	Waypoint m_waypoints[PUREPURSUIT_MAX_WAYPOINTS];/*!< Liste des points de la ligne brisée à suivre.*/
-	int m_numWaypoints; /*!< Nombre de points constituant la ligne brisée.*/
+	Waypoint m_waypoints[PUREPURSUIT_MAX_WAYPOINTS];/*!< Liste des current_points de la ligne brisée à suivre.*/
+	int m_numWaypoints; /*!< Nombre de current_points constituant la ligne brisée.*/
 	Direction m_direction;/*!< Sens du robot pendant la trajectoire.*/
 	float m_finalAngle;/*!< Angle à atteindre en fin de trajectoire.*/
 

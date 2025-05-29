@@ -68,7 +68,7 @@ void Codewheel::save(int address)
 }
 
 /**
- * @brief Modifie la variable des points par révolution de la roue codeuse
+ * @brief Modifie la variable des current_points par révolution de la roue codeuse
  * @param countsPerRev point par révolution
  */
 void Codewheel::setCountsPerRev(long countsPerRev)

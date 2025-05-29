@@ -13,7 +13,7 @@ class TacheTransport: public Tache{
     bool execute(bool previous_success) override;
 public:
     TacheTransport(){
-        set_max_score(1);
+        set_max_score(0);
     }
 };
 

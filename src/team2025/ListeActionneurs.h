@@ -28,6 +28,7 @@ typedef struct{
     float mi_deploye;
     float deploye;
     float ouvert;
+    float presque_ferme;
     float ferme;
     float entre_deux;
     float compact;
@@ -76,6 +77,7 @@ namespace listeActionneur {
     void pinceGrandOuvert();
     void pinceOuvert();
     void pinceFerme();
+    void pincePresqueFerme();
 
     extern AX12 ascenseur;
     extern AX12 pince_droite;

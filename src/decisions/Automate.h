@@ -12,7 +12,7 @@ namespace Automate{
         //cette classe réalise les tâches les unes après les autres dans l'ordre ou elles ont été données.
         extern Tache** taches;//endroit de stockage des taches
         extern int color;//couleur de l'équipe
-        extern int points;//points réalises pour l'instant
+        extern int current_points;//current_points réalises pour l'instant
         extern int numberTaches;
         void init(int team);//fonction d'init
         void play_match(void *pvParameters);//fonction a appeler au début du match

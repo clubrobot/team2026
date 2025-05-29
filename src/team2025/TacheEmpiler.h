@@ -11,7 +11,7 @@ class TacheEmpiler: public Tache{
     bool execute(bool previous_success) override;
 public:
     TacheEmpiler(){
-        set_max_score(911);
+        set_max_score(8);
     }
 };
 

@@ -11,7 +11,7 @@ class TacheBanderole: public Tache{
     bool execute(bool previous_success) override;
 public:
     TacheBanderole(){
-        set_max_score(6969);
+        set_max_score(20);
     }
 };
 
