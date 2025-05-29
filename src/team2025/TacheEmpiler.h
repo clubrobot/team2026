@@ -8,9 +8,10 @@
 #include "decisions/Tache.h"
 
 class TacheEmpiler: public Tache{
+    float recul;
     bool execute(bool previous_success) override;
 public:
-    TacheEmpiler(){
+    TacheEmpiler(float r):recul(r){
         set_max_score(8);
     }
 };

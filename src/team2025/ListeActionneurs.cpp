@@ -46,7 +46,7 @@ void listeActionneur::Init(){
     limite_pince_gauche.compact = 298; // complétement fermé
 
     ////////////PINCE
-    limite_servo_pince_droite.ferme = 68;
+    limite_servo_pince_droite.ferme = 67;
     limite_servo_pince_droite.presque_ferme = 90;///FERME
     limite_servo_pince_droite.ouvert = 120; //OUVERT
     limite_servo_pince_droite.grand_ouvert = 180; //GRAND OUVERT
@@ -114,9 +114,15 @@ void listeActionneur::asc_down(){
 void listeActionneur::asc_mid(){
     if (ihm::etat_lim_haut() || !ihm::etat_lim_bas())return;
     ascenseur.turn(1023);
-    poly_delay(500);
+    poly_delay(600);
     ascenseur.turn(0);
 }
+
+void listeActionneur::asc_set_mid(){
+    asc_down();
+    asc_mid();
+}
+
 
 void listeActionneur::asc_secoue(){
     if (ihm::etat_lim_bas())return;
@@ -203,19 +209,19 @@ void listeActionneur::pince_compact(){
     ServosPCA9685::Write(listeActionneur::servo_pince_gauche, limite_servo_pince_gauche.ouvert);
     
     poly_delay(50);
-    pince_gauche.move(limite_pince_gauche.compact, true);
+    pince_gauche.move(limite_pince_gauche.compact);
     poly_delay(50);
     pince_droite.move(limite_pince_droite.compact, true);
 }
 
 void listeActionneur::papOuvert(){
-    pince_gauche.moveSpeed(limite_pince_gauche.ouvert, 1023, true);
+    pince_gauche.moveSpeed(limite_pince_gauche.ouvert, 1023);
     poly_delay(5);
     pince_droite.moveSpeed(limite_pince_droite.ouvert, 1023,true);
 }
 
 void listeActionneur::papFerme(){
-    pince_gauche.moveSpeed(limite_pince_gauche.ferme, 300,true);
+    pince_gauche.moveSpeed(limite_pince_gauche.ferme, 300);
     poly_delay(10);
     pince_droite.moveSpeed(limite_pince_droite.ferme, 300,true);
 }
