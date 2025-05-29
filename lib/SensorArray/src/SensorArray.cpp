@@ -316,11 +316,11 @@ float angles_backward[3]={3*PI/4,PI,5*PI/4};
 bool SensorArray::isThereAnObstacle(float velocity)
 {
     uint8_t* pin_array = velocity >= -0.1 ? data_pin_forward : data_pin_backward;
-
+    const int stop_distance = velocity >= -0.1 ? SENSORARRAY_STOP_DISTANCE_FORWARD : SENSORARRAY_STOP_DISTANCE_BACKWARD;
     for (int j = 0; j < 3; ++j){
         for (int i = 0; i < 8; ++i){
 
-            if (this->raw_data[pin_array[j]][3][i] < SENSORARRAY_STOP_DISTANCE && this->raw_data[pin_array[j]][3][i] > 0){
+            if (this->raw_data[pin_array[j]][3][i] < stop_distance && this->raw_data[pin_array[j]][3][i] > 0){
                 return true;
                }
         }
@@ -331,13 +331,14 @@ bool SensorArray::isThereAnObstacle(float velocity)
 //
 bool SensorArray::isThereAnObstacleTerrain(float velocity,float current_angle,float current_x,float current_y,float max_x,float max_y)
 {
-    uint8_t* pin_array = velocity >= 0 ? data_pin_forward : data_pin_backward;
-    float* angles_array = velocity >= 0 ? angles_forward : angles_backward;
+    uint8_t* pin_array = velocity >= -0.1 ? data_pin_forward : data_pin_backward;
+    float* angles_array = velocity >= -0.1 ? angles_forward : angles_backward;
+    const int stop_distance = velocity >= -0.1 ? SENSORARRAY_STOP_DISTANCE_FORWARD : SENSORARRAY_STOP_DISTANCE_BACKWARD;
 
     for (int j = 0; j < 3; ++j){
         for (int i = 0; i < 8; ++i){
             float dist=this->raw_data[pin_array[j]][3][i];
-            if (dist < SENSORARRAY_STOP_DISTANCE && dist > 0){
+            if (dist < stop_distance && dist > 0){
                 //check that the point is inside the terrain
                 float angle=angles_array[j]+current_angle;
                 float x=current_x+ cos(angle)*dist;
