@@ -34,7 +34,7 @@ struct Position positions_jaune[] = {
    Position(775.0f, 250.0f,1.570796327), //garage8all_jaune
    Position(2225.0f, 250.0f,1.570796327), //garage9all_jaune
    Position(2775.0f, 875.0f,1.570796327), //start1_jaune
-   Position(1172.25f, 129.5f,1.570796327), //start2_jaune
+   Position(1157.25f, 177.5f,1.570796327), //start2_jaune
    Position(2775.0f, 75.0f,1.570796327), //depot1_jaune
    Position(775.0f, 150.0f,1.570796327), //depot2_jaune
    Position(996.0f, 566.0f,1.570796327), //check1_jaune

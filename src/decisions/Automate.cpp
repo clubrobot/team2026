@@ -38,7 +38,7 @@ void Automate::init(int team) {
         auto_logs.log(WARNING_LEVEL, "Automate init avec Bleu\n");
     }
     //Load strat
-    Strategies::stratTestEmpilement(team);
+    Strategies::stratDeBase(team) ;
 
     //Load taches
     Wheeledbase::SET_POSITION(Strategies::start);//&positions_match[start2]);
