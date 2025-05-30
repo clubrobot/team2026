@@ -83,7 +83,7 @@ namespace  Wheeledbase {
     // Instructions prototypes
     void DISABLE();
 
-    void GOTO_DELTA(float dx, float dy);
+    void GOTO_DELTA(float dx, float dy,bool bloquant=true);
 
     void SET_OPENLOOP_VELOCITIES(float leftWheelVel, float rightWheelVel);
 
@@ -103,7 +103,7 @@ namespace  Wheeledbase {
 
     void PUREPURSUIT(const Position** waypoints, uint16_t nb_waypoints, char dir, float finalAngle);
 
-    void GOTO(Position* pos, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT);
+    void GOTO(Position* pos, bool alignFirst=true, char dir=PurePursuit::NONE, float finalAngle=MAXFLOAT,bool bloquant=true);
 
     void GOTO_WAYPOINTS(bool alignFirst=true, char dir=PurePursuit::NONE, int nb_waypoints=1, ...);
 

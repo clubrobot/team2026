@@ -6,6 +6,7 @@
 #include <variables_globales.h>
 #include "Geogebra.h"
 #include "ListeActionneurs.h"
+#include "TacheDescendreReculer.h"
 
 namespace Strategies{
     int nb_taches=0;
@@ -15,7 +16,7 @@ namespace Strategies{
     void strat1(int team);
 
 }
-
+using FunctionPtr = void(*)();
 void Strategies::strat1(int team){
     if (team==TEAM_JAUNE){
         ////////////////////// STRAT 1 JAUNE ///////////////////
@@ -23,13 +24,17 @@ void Strategies::strat1(int team){
         start = &positions_match[start2];
         nb_taches=15;
         strat[0] = new TacheBanderole();
-        strat[1] = new TacheMoveDelta(200,0);
+        strat[1] = new TacheMoveDelta(250,0);
         strat[2] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
         strat[3] = new TacheGoto((Position*)nullptr, &positions_match[garage4all], PurePursuit::FORWARD);
         strat[4] = new TacheTransport();
         strat[5] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD,false);
-        strat[6] = new TacheEmpiler(500);
+        strat[6] = new TacheEmpiler(600);
         strat[7] = new TacheExe((void*)listeActionneur::asc_set_mid);
+        /*
+        strat[6] = new TacheEmpiler();
+        strat[7] = new TacheDescendreReculer(500,100);*/
+
         strat[8] = new TacheGotoWaypoints(PurePursuit::FORWARD, true, 2, &positions_match[check1], &positions_match[garage8all]);
         strat[9] = new TacheTransport();
         strat[10] = new TacheGoto(nullptr, &positions_match[depot2], PurePursuit::FORWARD, false);
@@ -43,23 +48,26 @@ void Strategies::strat1(int team){
         ////////////////////// STRAT 1 BLEU ///////////////////
         positions_match=positions_bleu;
         start = &positions_match[start2];
-        nb_taches=14;
+        nb_taches=15;
         strat[0] = new TacheBanderole();
-        strat[1] = new TacheMoveDelta(200,0);
+        strat[1] = new TacheMoveDelta(250,0);
         strat[2] = new TacheExe((void*)listeActionneur::pince_pour_deplacer);
         strat[3] = new TacheGoto((Position*)nullptr, &positions_match[garage5all], PurePursuit::FORWARD);
         strat[4] = new TacheTransport();
-        strat[5] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD);
-        strat[6] = new TacheEmpiler(500);
-        strat[7] = new TacheGotoWaypoints(PurePursuit::FORWARD, true, 2, &positions_match[check1], &positions_match[garage9all]);
-        strat[8] = new TacheTransport();
-        strat[9] = new TacheGoto(nullptr, &positions_match[depot2], PurePursuit::FORWARD, false);
-        strat[10] = new TacheEmpiler(150);
+        strat[5] = new TacheGoto((Position*)nullptr, &positions_match[depot3], PurePursuit::FORWARD,false);
+        //strat[6] = new TacheEmpiler();
+        //strat[7] = new TacheDescendreReculer(500,100);
+        strat[6] = new TacheEmpiler(600);
+        strat[7] = new TacheExe((void*)listeActionneur::asc_set_mid);
+        strat[8] = new TacheGotoWaypoints(PurePursuit::FORWARD, true, 2, &positions_match[check1], &positions_match[garage9all]);
+        strat[9] = new TacheTransport();
+        strat[10] = new TacheGoto(nullptr, &positions_match[depot2], PurePursuit::FORWARD, false);
+        strat[11] = new TacheEmpiler(150);
 
         //FIN MATCH
-        strat[11] = new TacheGoto((Position*)nullptr, &positions_match[check3], PurePursuit::FORWARD, false);
-        strat[12] = new TacheWait(&start_millis, 93*1000);
-        strat[13] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::FORWARD, false);
+        strat[12] = new TacheGoto((Position*)nullptr, &positions_match[check3], PurePursuit::BACKWARD, false);
+        strat[13] = new TacheWait(&start_millis, 93*1000);
+        strat[14] = new TacheGoto(nullptr, &positions_match[chgsta1], PurePursuit::BACKWARD, false);
 
     }
 }

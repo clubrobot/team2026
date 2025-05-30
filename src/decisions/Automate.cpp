@@ -62,6 +62,7 @@ void Automate::play_match(void *pvParameters){
 
     current_points=0;
     bool state=true;
+    match_started=true;
     for (int tache_id = 0; tache_id < numberTaches; ++tache_id) {
         auto_logs.log(INFO_LEVEL, "Tache n.%d\n", tache_id);
         //execute les tâches dans l'ordre tant qu'on a assez de temps.

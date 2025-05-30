@@ -80,6 +80,7 @@ namespace listeActionneur {
     void pinceFerme();
     void pincePresqueFerme();
 
+    void recul_ascenseur_mid(float recul, float debut_descente);
     extern AX12 ascenseur;
     extern AX12 pince_droite;
     extern AX12 pince_gauche;

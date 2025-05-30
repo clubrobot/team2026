@@ -14,6 +14,9 @@ public:
     TacheEmpiler(float r):recul(r){
         set_max_score(8);
     }
+    TacheEmpiler():recul(-1){
+        set_max_score(8);
+    }
 };
 
 

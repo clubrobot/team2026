@@ -5,7 +5,7 @@
 #include "ListeActionneurs.h"
 
 #include <My_Clock.h>
-
+#include <Wheeledbase.h>
 namespace listeActionneur {
     AX12 ascenseur;
     AX12 banderole;
@@ -18,6 +18,8 @@ namespace listeActionneur {
     uint8_t servo_pince_aimant_gauche=SERVO_PINCE_MILIEU_GAUCHE_ID;
 
     void pincePresqueOuvert();
+
+
 }
 
 
@@ -123,6 +125,48 @@ void listeActionneur::asc_set_mid(){
     asc_mid();
 }
 
+//recule et quand assez eloigen commence a descendre.
+void listeActionneur::recul_ascenseur_mid(float recul,float debut_descente){
+    //asc_down();
+    bool ascenseur_bas=false;
+    bool arrive=false;
+    bool begin=false;
+    float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
+    float defaltAcc = Wheeledbase::GET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID);
+    Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc*0.7);
+    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed*0.7);
+    Wheeledbase::GOTO_DELTA(-recul,0);
+    auto position=Wheeledbase::GET_POSITION();
+    float init_x=position->x;
+    float init_y=position->y;
+    while (!arrive || !ascenseur_bas){
+        //check si on est arrive
+        if(!arrive && (Wheeledbase::POSITION_REACHED() & 0b01)){
+            arrive=true;
+            if(!begin){
+                begin=true;
+                ascenseur.turn(-1023);
+            }
+        }
+        //check si ascneseur est en bas
+        if(begin && ihm::etat_lim_bas()){
+            ascenseur_bas=true;
+            ascenseur.turn(0);
+        }
+        //si on s'est éloigne assez on commence a descendre
+        if(!begin){
+            float dist=(position->x-init_x)*(position->x-init_x)+(position->y-init_y)*(position->y-init_y);
+            if(dist>debut_descente*debut_descente){
+                begin=true;
+                ascenseur.turn(-1023);
+            }
+        }
+    }
+    asc_mid();
+    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
+    Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc);
+    aimante_conserve();
+}
 
 void listeActionneur::asc_secoue(){
     if (ihm::etat_lim_bas())return;

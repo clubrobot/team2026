@@ -14,7 +14,7 @@ void Wheeledbase::DISABLE() {
     rightWheel.setVelocity(0);
 }
 
-void Wheeledbase::GOTO_DELTA(float dx, float dy) {
+void Wheeledbase::GOTO_DELTA(float dx, float dy,bool bloquant) {
     purePursuit.reset();
     positionControl.disable();
 
@@ -49,7 +49,7 @@ void Wheeledbase::GOTO_DELTA(float dx, float dy) {
     positionControl.setMoveStrategy(purePursuit);
     positionControl.enable();
 
-    while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+    while(!(Wheeledbase::POSITION_REACHED() & 0b01) && bloquant) {
         //Wait I guess
     }
 }
@@ -169,7 +169,7 @@ void Wheeledbase::PUREPURSUIT(const Position** waypoints, uint16_t nb_waypoints,
     Wheeledbase::START_PUREPURSUIT(dir, finalAngle);
 }
 
-void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngle) {
+void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngle,bool bloquant) {
     float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
 
     const Position *myPos = Wheeledbase::GET_POSITION();
@@ -206,7 +206,7 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
         Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, maxSpeed);
 
         Wheeledbase::PUREPURSUIT(posTab, 2, dir, pos->theta);
-        while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+        while(!(Wheeledbase::POSITION_REACHED() & 0b01) && bloquant) {
             const Position *posi = Wheeledbase::GET_POSITION();
             //printf("%f %f %f %f, %f, %f\n", pos->x, pos->y, pos->theta, posi->x, posi->y, posi->theta);
         }
@@ -216,7 +216,7 @@ void Wheeledbase::GOTO(Position* pos, bool alignFirst, char dir, float finalAngl
         //On avance dans une ligne droite et on ralenti à la fin
         Wheeledbase::PUREPURSUIT(posTab, 2, dir, pos->theta);
 
-        while(!(Wheeledbase::POSITION_REACHED() & 0b01)) {
+        while(!(Wheeledbase::POSITION_REACHED() & 0b01) && bloquant) {
             /*
              const Position *posi = Wheeledbase::GET_POSITION();
             int distance = sqrt(pow(posi->x-pos->x, 2)+pow(posi->y-pos->y, 2));

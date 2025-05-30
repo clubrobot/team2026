@@ -36,13 +36,13 @@ void procedure_demarrage(){
         if (etat_jaune()){
             main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
             led_bleu(LOW);
-            Automate::init(TEAM_JAUNE);
+            my_team = TEAM_JAUNE;
             break;
         }
         if (etat_bleu()){
             main_logs.log(GOOD_LEVEL,"Equipe Bleu!\n");
             led_jaune(LOW);
-            Automate::init(TEAM_BLEU);
+            my_team=TEAM_BLEU;
             break;
         }
     }
@@ -75,6 +75,7 @@ void procedure_demarrage(){
         last_state_rouge=state_rouge;
     }
     led_vert(LOW);
+    Automate::init(my_team);
     main_logs.log(WARNING_LEVEL,"Le robot est armé!\n");
 
     //Detect tirette
@@ -115,13 +116,13 @@ void setup(){
     //myBeeper.playSheetMusic(cantina);
 
     yeuxThread::yeux_setup();
-    yeuxThread::yeux.println("SZigouigoui  *100$score 42");
+    yeuxThread::yeux.println("SZigouigoui  *100$score 54");
     SensorsThread::Init();
     listeActionneur::Init();
     wb_setup();
 
     ServosPCA9685::Init();
-
+    match_started= false;
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();
     //listeActionneur::ascenseur.setEndlessMode(true);

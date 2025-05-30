@@ -23,13 +23,15 @@ bool TacheEmpiler::execute(bool previous_success){
     poly_delay(2000);
 
     stop_aimant_conserve();
-    float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
-    float defaltAcc = Wheeledbase::GET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID);
-    Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc*0.7);
-    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed*0.7);
-    Wheeledbase::GOTO_DELTA(-recul,0);
-    Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
-    Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc);
-    aimante_conserve();
+    if(recul>0){
+        float defaultMaxSpeed = Wheeledbase::GET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID);
+        float defaltAcc = Wheeledbase::GET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID);
+        Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc*0.7);
+        Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed*0.7);
+        Wheeledbase::GOTO_DELTA(-recul,0);
+        Wheeledbase::SET_PARAMETER_VALUE(POSITIONCONTROL_LINVELMAX_ID, defaultMaxSpeed);
+        Wheeledbase::SET_PARAMETER_VALUE(VELOCITYCONTROL_MAXLINACC_ID, defaltAcc);
+        aimante_conserve();
+    }
     return true;
 }

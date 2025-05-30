@@ -10,12 +10,15 @@
 #include "include/SensorArray.h"
 #include "Constant.h"
 #include "Wire.h"
+#include "decisions/Tache.h"
+#include "variables_globales.h"
 Logger sensors_logs = Logger("SENSORS");
+
 
 void SensorsThread::Init(){
 
-    //i2c_custom_init(&i2c2, 1000000, I2C_ADDRESSINGMODE_7BIT, MASTER_ADDRESS);
-    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
+    i2c_custom_init(&i2c2, 1000000, I2C_ADDRESSINGMODE_7BIT, MASTER_ADDRESS);
+    //i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
 
     poly_delay(1000);
 
@@ -46,6 +49,7 @@ void SensorsThread::Thread(void *pvParameters){
         //if (sensors.isThereAnObstacle(lin))
 
 
+
         //if (sensors.isThereAnObstacle(lin))
         if (sensors.isThereAnObstacleTerrain(false,lin,position->theta,position->x,position->y,TERRAIN_SIZE_X_MM,TERRAIN_SIZE_Y_MM))
         {
@@ -60,7 +64,12 @@ void SensorsThread::Thread(void *pvParameters){
             sensors_logs.log(GOOD_LEVEL, "REPRISE\n");
             velocityControl.set_stop(false);
         }
-
-
+        printf("TEmps: %d\n",millis()-start_millis);
+        if(millis()-start_millis>100*1000 && match_started){
+            printf("FINI\n");
+            for(;;){
+                velocityControl.set_stop(true);
+            }
+        }
     }
 }
