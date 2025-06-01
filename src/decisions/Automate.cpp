@@ -74,8 +74,8 @@ void Automate::play_match(void *pvParameters){
         state=taches[tache_id]->execute(state);
         if(state){
             current_points+=taches[tache_id]->get_max_score();
-            char* phrase;
-            sprintf(phrase,"A%d*100$",tache_id%8);
+            char phrase[50];
+            sprintf(phrase,"SMERCI AISPRID  *75$score 54");
             printf("%s\n",phrase);
             yeuxThread::yeux.println(phrase);
         }

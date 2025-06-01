@@ -35,6 +35,7 @@ void procedure_demarrage(){
     while (true){
         if (etat_jaune()){
             main_logs.log(GOOD_LEVEL,"Equipe Jaune !\n");
+            yeuxThread::yeux.println("Smerci Aisprid  *75$robo jaune 54");
             led_bleu(LOW);
             my_team = TEAM_JAUNE;
             break;
@@ -42,7 +43,7 @@ void procedure_demarrage(){
         if (etat_bleu()){
             main_logs.log(GOOD_LEVEL,"Equipe Bleu!\n");
             led_jaune(LOW);
-            my_team=TEAM_BLEU;
+            my_team=TEAM_BLEU;yeuxThread::yeux.println("Smerci Aisprid  *75$robo bleu 54");
             break;
         }
     }
@@ -83,6 +84,7 @@ void procedure_demarrage(){
     main_logs.log(WARNING_LEVEL,"tirette mise (dans le trou de Boris) !\n");
     while (etat_tirette()==0){}
     main_logs.log(WARNING_LEVEL,"tirette enlevée (du trou de Boris) !\n");
+    yeuxThread::yeux.println("Smerci Aisprid  *75$robo arme 54");
 
 }
 
@@ -114,14 +116,16 @@ void setup(){
 #endif
     //Musique myBeeper = Musique(PA6, 10);
     //myBeeper.playSheetMusic(cantina);
-
+    match_started= false;
     yeuxThread::yeux_setup();
-    yeuxThread::yeux.println("SZigouigoui  *100$score 54");
     SensorsThread::Init();
+    yeuxThread::yeux.println("$A3*100$SENSORS OK");
     listeActionneur::Init();
+    yeuxThread::yeux.println("SA3*100$ACTIO OK");
     wb_setup();
-
+    yeuxThread::yeux.println("SA3*100$WB OK");
     ServosPCA9685::Init();
+    yeuxThread::yeux.println("Smerci Aisprid  *75$score 54");
     match_started= false;
     main_logs.log(GOOD_LEVEL,"Wheeledbase & Actionneurs & Sensors & IHM initied\n");
     //procedure_demarrage();

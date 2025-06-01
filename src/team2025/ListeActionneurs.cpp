@@ -69,7 +69,7 @@ void listeActionneur::Init(){
 
 
     /////BANDEROLE
-    limite_banderole.non_deploye = 126; //En haut
+    limite_banderole.non_deploye = 136; //En haut
     limite_banderole.deploye = 53; // En bas
 
     limite_servo_banderole.non_deploye = 39; //SERRRE

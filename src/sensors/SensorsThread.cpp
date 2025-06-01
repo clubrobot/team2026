@@ -17,8 +17,8 @@ Logger sensors_logs = Logger("SENSORS");
 
 void SensorsThread::Init(){
 
-    i2c_custom_init(&i2c2, 1000000, I2C_ADDRESSINGMODE_7BIT, MASTER_ADDRESS);
-    //i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
+    //i2c_custom_init(&i2c2, 1000000, I2C_ADDRESSINGMODE_7BIT, MASTER_ADDRESS);
+    i2c_init(&i2c2, 1000000, MASTER_ADDRESS);
 
     poly_delay(1000);
 
