@@ -1,2 +1,3 @@
-# team2025
- Club robotique de l'INSA Rennes team 2025
+# team2026
+ Club robotique de l'INSA Rennes team 2026
+
