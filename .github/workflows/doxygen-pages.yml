@@ -11,6 +11,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        # You may pin to the exact commit or the version.
+        # uses: langroodi/doxygenize@7678ae6c3ab3dd9c039a1f814c9bb00ecc17cc17
+        - uses: langroodi/doxygenize@v1.7.1
+          with:
+          # Doxygen configuration file path
+            doxygenconf: ./doc/Doxyfile # default is ./Doxyfile
+          # Generated HTML documents output folder
+            htmloutput: ./doc/html
+                
