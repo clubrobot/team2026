@@ -1,0 +1,5 @@
+<map id="Codewheel::getCounter" name="Codewheel::getCounter">
+<area shape="rect" id="Node000001" title="renvoie le compteur de la roue codeuse" alt="" coords="5,5,160,31"/>
+<area shape="rect" id="Node000002" href="$dd/df3/classCodewheel.html#a481b69520445ed19be3ead3af9a777f7" title="Récupère le nombre de tics stoqués dans le compteur." alt="" coords="208,5,338,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,16,192,16,192,21,160,21"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="AbstractMoveStrategy::getAngPosThreshold" name="AbstractMoveStrategy::getAngPosThreshold">
+<area shape="rect" id="Node000001" title="Retourne la précision angulaire à atteindre." alt="" coords="238,5,388,46"/>
+<area shape="rect" id="Node000002" href="$d9/dee/classTurnOnTheSpot.html#afcc1cdb8cac7b7c624bb1081773d60be" title="Indique si la position désirée est atteinte." alt="" coords="5,5,190,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,28,190,28,190,23,222,23"/>
+</map>

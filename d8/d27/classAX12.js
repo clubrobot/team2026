@@ -1,0 +1,27 @@
+var classAX12 =
+[
+    [ "attach", "d8/d27/classAX12.html#a9e8ecee54bf85d3f07b5af9a727b805c", null ],
+    [ "detach", "d8/d27/classAX12.html#a3e27ab7f923c3dfa641e82e9d64bc510", null ],
+    [ "led", "d8/d27/classAX12.html#a58d79d4e392d8ce952a5db5875d747b8", null ],
+    [ "move", "d8/d27/classAX12.html#ab290e2e6d0d1c2537417dabbb85f0135", null ],
+    [ "moveSpeed", "d8/d27/classAX12.html#aeed2f4a6cd3ceef8ea42c0dd73400fb5", null ],
+    [ "moving", "d8/d27/classAX12.html#a405c72637ba066f7029640aa8f705c9f", null ],
+    [ "Nextmove", "d8/d27/classAX12.html#ab390ad86381f9dc2cbc944354ba11bdf", null ],
+    [ "NextmoveSpeed", "d8/d27/classAX12.html#ad9f6efa05581f7e30f9f090a502c94fb", null ],
+    [ "ping", "d8/d27/classAX12.html#abe51b9336e079929ce28ec72e72811fb", null ],
+    [ "readPosition", "d8/d27/classAX12.html#a0051ca6ed1b26619aef55ca5def61c94", null ],
+    [ "readSpeed", "d8/d27/classAX12.html#a8435f4c2c2c0b769afda199e608120e4", null ],
+    [ "readTemperature", "d8/d27/classAX12.html#a9505d53fa861c549d0707160598be897", null ],
+    [ "readTorque", "d8/d27/classAX12.html#a3b6edc073ad24249b87d83cbd8109f00", null ],
+    [ "readVoltage", "d8/d27/classAX12.html#a88f715439c6f50f3e6dca6c30f6f0897", null ],
+    [ "savedMove", "d8/d27/classAX12.html#a1a4c619a49f3dba09fee3d723d572d7e", null ],
+    [ "setAngleLimit", "d8/d27/classAX12.html#a77ee0f2bc49a625139336b8487010de5", null ],
+    [ "setBD", "d8/d27/classAX12.html#abeeb4f1a19fae282a0c821a80df34607", null ],
+    [ "setEndlessMode", "d8/d27/classAX12.html#a5fe7e1d38159023ff110a529f6a30dd7", null ],
+    [ "setID", "d8/d27/classAX12.html#a9bb6672806c7bead35d48070f5cb319e", null ],
+    [ "setMaxTorque", "d8/d27/classAX12.html#aaf56850782d2a78c5e257de4d34fd556", null ],
+    [ "setMaxTorqueRAM", "d8/d27/classAX12.html#ad211a2e82dbc4d5f010cc6b326db66ab", null ],
+    [ "setTempLimit", "d8/d27/classAX12.html#a9ec66d542930fe9be8795d0dd2a02d92", null ],
+    [ "setVoltageLimit", "d8/d27/classAX12.html#a5c1f3d158312b424129e91628e15b19c", null ],
+    [ "turn", "d8/d27/classAX12.html#a037864a561b6d9db88021ff5d5d2d0c3", null ]
+];

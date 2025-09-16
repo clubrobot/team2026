@@ -1,0 +1,11 @@
+<map id="VL53L5CX::vl53l5cx_dci_write_data" name="VL53L5CX::vl53l5cx_dci_write_data">
+<area shape="rect" id="Node000001" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="5,51,144,92"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="192,22,337,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,58,176,53,177,58,144,63"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="197,87,332,112"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="144,79,182,85,181,90,144,84"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="385,5,520,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="337,30,369,26,370,31,338,36"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="385,55,520,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="338,49,370,54,369,59,337,55"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="AbstractMoveStrategy::getAngVelKp" name="AbstractMoveStrategy::getAngVelKp">
+<area shape="rect" id="Node000001" title="Retourne le coef proportionnel de vitesse angulaire." alt="" coords="242,5,392,46"/>
+<area shape="rect" id="Node000002" href="$d9/dee/classTurnOnTheSpot.html#a520b49b8739d9568b4dc9496b338b680" title="Calcul les nouvelles vitesses désirer." alt="" coords="5,5,194,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,28,194,28,194,23,226,23"/>
+</map>

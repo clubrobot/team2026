@@ -1,0 +1,11 @@
+<map id="PurePursuit" name="PurePursuit">
+<area shape="rect" id="Node000001" title="Trajectoire courbe le long d&#39;une ligne brisée." alt="" coords="165,258,254,283"/>
+<area shape="rect" id="Node000002" href="$de/dc0/classAbstractMoveStrategy.html" title="Interface de Stratégie de mouvement." alt="" coords="5,169,156,195"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,201,193,255,190,259,110,206"/>
+<area shape="rect" id="Node000003" href="$d2/d64/classPositionController.html" title="Classe support des objets AbstractMoveStrategy." alt="" coords="19,80,142,106"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,122,83,169,78,169,78,122"/>
+<area shape="rect" id="Node000004" href="$d2/dfa/classPeriodicProcess.html" title="Classe à implémenter pour gérer les appels dans la loop." alt="" coords="22,5,139,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="83,46,83,80,78,80,78,46"/>
+<area shape="rect" id="Node000005" href="$d4/d9e/structPurePursuit_1_1Waypoint.html" title="Structure d&#39;un point de passage de Purpursuit." alt="" coords="180,169,328,195"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="243,210,218,259,214,256,239,207"/>
+</map>

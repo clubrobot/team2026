@@ -1,0 +1,7 @@
+<map id="AbstractMoveStrategy::getAngVelMax" name="AbstractMoveStrategy::getAngVelMax">
+<area shape="rect" id="Node000001" title="Retourne vitesse angulaire max." alt="" coords="273,27,423,68"/>
+<area shape="rect" id="Node000002" href="$de/d96/classPurePursuit.html#a657a00d409067352855aa685b57c6f45" title="Calcul les nouvelles vitesses désirer." alt="" coords="5,5,225,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="257,39,222,34,222,29,258,34"/>
+<area shape="rect" id="Node000003" href="$d9/dee/classTurnOnTheSpot.html#a520b49b8739d9568b4dc9496b338b680" title="Calcul les nouvelles vitesses désirer." alt="" coords="21,55,209,96"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,61,210,67,209,61,257,56"/>
+</map>

@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CRINSA-team2025:  Fichier source de lib/SensorArray/src/uld/include/VL53L5CX.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript" src="../../darkmode_toggle.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CRINSA-team2025<span id="projectnumber">&#160;V1</span>
+   </div>
+   <div id="projectbrief">Documentation du Club Robot INSA Rennes 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('db/d5e/VL53L5CX_8h_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">VL53L5CX.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by romain on 5/18/25.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef VL53L5CX_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define VL53L5CX_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Arduino.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;platform.h&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;vl53l5cx_api.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define VL53L5CX_SENSOR_FOV 45.0F</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d9/d0e/classVL53L5CX.html">   16</a></span><span class="keyword">class </span><a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ab118632b5470d4c67a1bc1ef7fdd6f32">VL53L5CX</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d9/d0e/classVL53L5CX.html#ab118632b5470d4c67a1bc1ef7fdd6f32">   23</a></span>    <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ab118632b5470d4c67a1bc1ef7fdd6f32">VL53L5CX</a>(i2c_t *i2c)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      memset((<span class="keywordtype">void</span> *)&amp;_dev, 0x0, <span class="keyword">sizeof</span>(<a class="code hl_struct" href="../../da/dce/structVL53L5CX__Configuration.html">VL53L5CX_Configuration</a>));</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      _dev.platform.address = VL53L5CX_DEFAULT_I2C_ADDRESS;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>      _dev.platform.dev_i2c = i2c;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>      p_dev = &amp;_dev;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d9/d0e/classVL53L5CX.html#a75252a801ac4f4c03b49e12bf746dabc">   34</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a75252a801ac4f4c03b49e12bf746dabc">~VL53L5CX</a>() {}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">/* warning: VL53LX class inherits from GenericSensor, RangeSensor and LightSensor, that haven`t a destructor.</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">       The warning should request to introduce a virtual destructor to make sure to delete the object */</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2">   43</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2">init_sensor</a>(uint8_t addr = VL53L5CX_DEFAULT_I2C_ADDRESS)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      uint8_t status = VL53L5CX_STATUS_OK;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      uint8_t isAlive = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      <span class="keywordflow">if</span> (addr != _dev.platform.address) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        status = <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a887be62b79566dc44ae8f7119d492b6c">vl53l5cx_set_i2c_address</a>(addr);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> (status != VL53L5CX_STATUS_OK) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>          <span class="keywordflow">return</span> VL53L5CX_STATUS_ERROR;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      status = <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ae0648ad77717c03d96d1f293c968d683">vl53l5cx_is_alive</a>(&amp;isAlive);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      <span class="keywordflow">if</span> (!isAlive || status != VL53L5CX_STATUS_OK) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> VL53L5CX_STATUS_ERROR;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>      }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>      <span class="comment">// Init VL53L5CX sensor</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      status = <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a5163d3ab9ec64acd1fa2d3080fe98756">vl53l5cx_init</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      <span class="keywordflow">if</span> (status != VL53L5CX_STATUS_OK) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">return</span> VL53L5CX_STATUS_ERROR;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>      <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)status;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">/* vl53l5cx_api.h */</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ae0648ad77717c03d96d1f293c968d683">vl53l5cx_is_alive</a>(</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      uint8_t       *p_is_alive);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a5163d3ab9ec64acd1fa2d3080fe98756">vl53l5cx_init</a>();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a887be62b79566dc44ae8f7119d492b6c">vl53l5cx_set_i2c_address</a>(</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      uint16_t      i2c_address);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a35a2fdbb3afccf00b2a19bf8dba8e41b">vl53l5cx_get_power_mode</a>(</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      uint8_t       *p_power_mode);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ad8810d13170d2bef0b47199c54d9621f">vl53l5cx_set_power_mode</a>(</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      uint8_t       power_mode);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#afe1a31661c55b72124ddec9552d208d6">vl53l5cx_start_ranging</a>();</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a63bfc62532c023bc56cec467d201c69c">vl53l5cx_stop_ranging</a>();</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a44b9e67af87cf4f0a2bdc2323e1157a5">vl53l5cx_check_data_ready</a>(</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>      uint8_t       *p_isReady);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a3b48527b9c832f432feceba5ea4c0e08">vl53l5cx_get_ranging_data</a>(</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      <a class="code hl_struct" href="../../d4/d7d/structVL53L5CX__ResultsData.html">VL53L5CX_ResultsData</a>    *p_results);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a5b6c51322ebc15e260f78c473794b96e">vl53l5cx_get_resolution</a>(</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>      uint8_t       *p_resolution);</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ab973a3ee5cc414fc38861bca7e11ba10">vl53l5cx_set_resolution</a>(</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>      uint8_t                         resolution);</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a129492d3e6e60d54e3262358e8e45db3">vl53l5cx_get_ranging_frequency_hz</a>(</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>      uint8_t       *p_frequency_hz);</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#afb26814b99ad98932ab002741c7d9aa2">vl53l5cx_set_ranging_frequency_hz</a>(</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>      uint8_t       frequency_hz);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#ae7fa6c4607183c4b44aca71d4e0d0bb3">vl53l5cx_get_integration_time_ms</a>(</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>      uint32_t      *p_time_ms);</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span> </div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a3f9f9f9cae46855d99758977de017fab">vl53l5cx_set_integration_time_ms</a>(</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>      uint32_t      integration_time_ms);</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#abb8c00c6f1c7f3715486ecda8e1d78e0">vl53l5cx_get_sharpener_percent</a>(</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>      uint8_t       *p_sharpener_percent);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a4c787e6f7ba9c1d33c08091ec8bf3cb5">vl53l5cx_set_sharpener_percent</a>(</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>      uint8_t       sharpener_percent);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span> </div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a40d09ee28ec78a0b7eef9668a98d87a5">vl53l5cx_get_target_order</a>(</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>      uint8_t       *p_target_order);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a9b0fcda068a014b239c53a42639fc506">vl53l5cx_set_target_order</a>(</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>      uint8_t       target_order);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span></div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a6c6f8541fd900c22e965281a19fae0d3">vl53l5cx_get_ranging_mode</a>(</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>      uint8_t       *p_ranging_mode);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a878f7fab1d2060cd0a08fbd94ed5f945">vl53l5cx_set_ranging_mode</a>(</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>      uint8_t       ranging_mode);</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span> </div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce">vl53l5cx_dci_read_data</a>(</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>      uint8_t       *data,</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>      uint32_t      index,</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>      uint16_t      data_size);</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span></div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997">vl53l5cx_dci_write_data</a>(</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>      uint8_t       *data,</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>      uint32_t      index,</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>      uint16_t      data_size);</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span></div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span> </div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a565fa6466e3a3ba2a9b57116169a3e95">vl53l5cx_dci_replace_data</a>(</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>      uint8_t       *data,</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>      uint32_t      index,</div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>      uint16_t      data_size,</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>      uint8_t       *new_data,</div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>      uint16_t      new_data_size,</div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>      uint16_t      new_data_pos);</div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span> </div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>    <span class="keywordtype">void</span> SwapBuffer(</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>      uint8_t     *buffer,</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>      uint16_t     size);</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span> </div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>    <span class="comment">/* Helpful APIs */</span></div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>    uint8_t get_stream_count(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    {</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>      <span class="keywordflow">return</span> _dev.streamcount;</div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>    };</div>
+<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>  <span class="comment">/* VL53L5CX Device */</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>  VL53L5CX_Configuration _dev;</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>  VL53L5CX_Configuration *p_dev;</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span> </div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>  <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span></div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0">_vl53l5cx_poll_for_answer</a>(</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>      uint8_t       size,</div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>      uint8_t       pos,</div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>      uint16_t      address,</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>      uint8_t       mask,</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>      uint8_t       expected_value);</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span> </div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>  uint8_t _vl53l5cx_poll_for_mcu_boot();</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span></div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a02e2e87988e444f3672d1038beaad6b6">_vl53l5cx_send_offset_data</a>(</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>      uint8_t       resolution);</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span></div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#abfe5561038c9b3edf74dfada249d5831">_vl53l5cx_send_xtalk_data</a>(</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>      uint8_t       resolution);</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span></div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno"><a class="line" href="../../d9/d0e/classVL53L5CX.html#a4e2bede5ba78f81d84547581de70d623">  407</a></span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a4e2bede5ba78f81d84547581de70d623">_vl53l5cx_poll_for_answer_xtalk</a>(</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>      uint16_t      address,</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>      uint8_t       expected_value);</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span></div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno"><a class="line" href="../../d9/d0e/classVL53L5CX.html#a2e966fb7d4ec352b9f24bd1a33d15c71">  415</a></span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a2e966fb7d4ec352b9f24bd1a33d15c71">_vl53l5cx_program_output_config</a>();</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span> </div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>    <span class="comment">/* Platform APIs */</span></div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span></div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span> </div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#aff537fadd902a5ce54e196c7f4cd6bc3">RdByte</a>(</div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span>      <a class="code hl_struct" href="../../de/d5c/structVL53L5CX__Platform.html">VL53L5CX_Platform</a> *p_platform,</div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>      uint16_t RegisterAddress,</div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>      uint8_t *p_value);</div>
+<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span></div>
+<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span> </div>
+<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#aef52427662628a27c97a68deb5e00f11">WrByte</a>(</div>
+<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span>      <a class="code hl_struct" href="../../de/d5c/structVL53L5CX__Platform.html">VL53L5CX_Platform</a> *p_platform,</div>
+<div class="line"><a id="l00443" name="l00443"></a><span class="lineno">  443</span>      uint16_t RegisterAddress,</div>
+<div class="line"><a id="l00444" name="l00444"></a><span class="lineno">  444</span>      uint8_t value);</div>
+<div class="line"><a id="l00445" name="l00445"></a><span class="lineno">  445</span></div>
+<div class="line"><a id="l00455" name="l00455"></a><span class="lineno">  455</span> </div>
+<div class="line"><a id="l00456" name="l00456"></a><span class="lineno">  456</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c">RdMulti</a>(</div>
+<div class="line"><a id="l00457" name="l00457"></a><span class="lineno">  457</span>      <a class="code hl_struct" href="../../de/d5c/structVL53L5CX__Platform.html">VL53L5CX_Platform</a> *p_platform,</div>
+<div class="line"><a id="l00458" name="l00458"></a><span class="lineno">  458</span>      uint16_t RegisterAddress,</div>
+<div class="line"><a id="l00459" name="l00459"></a><span class="lineno">  459</span>      uint8_t *p_values,</div>
+<div class="line"><a id="l00460" name="l00460"></a><span class="lineno">  460</span>      uint32_t size);</div>
+<div class="line"><a id="l00461" name="l00461"></a><span class="lineno">  461</span></div>
+<div class="line"><a id="l00471" name="l00471"></a><span class="lineno">  471</span> </div>
+<div class="line"><a id="l00472" name="l00472"></a><span class="lineno">  472</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008">WrMulti</a>(</div>
+<div class="line"><a id="l00473" name="l00473"></a><span class="lineno">  473</span>      <a class="code hl_struct" href="../../de/d5c/structVL53L5CX__Platform.html">VL53L5CX_Platform</a> *p_platform,</div>
+<div class="line"><a id="l00474" name="l00474"></a><span class="lineno">  474</span>      uint16_t RegisterAddress,</div>
+<div class="line"><a id="l00475" name="l00475"></a><span class="lineno">  475</span>      uint8_t *p_values,</div>
+<div class="line"><a id="l00476" name="l00476"></a><span class="lineno">  476</span>      uint32_t size);</div>
+<div class="line"><a id="l00477" name="l00477"></a><span class="lineno">  477</span></div>
+<div class="line"><a id="l00486" name="l00486"></a><span class="lineno">  486</span> </div>
+<div class="line"><a id="l00487" name="l00487"></a><span class="lineno">  487</span>    uint8_t <a class="code hl_function" href="../../d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4">WaitMs</a>(</div>
+<div class="line"><a id="l00488" name="l00488"></a><span class="lineno">  488</span>      <a class="code hl_struct" href="../../de/d5c/structVL53L5CX__Platform.html">VL53L5CX_Platform</a> *p_platform,</div>
+<div class="line"><a id="l00489" name="l00489"></a><span class="lineno">  489</span>      uint32_t TimeMs);</div>
+<div class="line"><a id="l00490" name="l00490"></a><span class="lineno">  490</span> </div>
+<div class="line"><a id="l00491" name="l00491"></a><span class="lineno">  491</span>  uint8_t vl53l5cx_set_VHV_repeat_count(</div>
+<div class="line"><a id="l00492" name="l00492"></a><span class="lineno">  492</span>    uint32_t repeat_count);</div>
+<div class="line"><a id="l00493" name="l00493"></a><span class="lineno">  493</span> </div>
+<div class="line"><a id="l00494" name="l00494"></a><span class="lineno">  494</span>  uint8_t vl53l5cx_get_VHV_repeat_count(</div>
+<div class="line"><a id="l00495" name="l00495"></a><span class="lineno">  495</span>    uint32_t *p_repeat_count);</div>
+<div class="line"><a id="l00496" name="l00496"></a><span class="lineno">  496</span> </div>
+<div class="line"><a id="l00497" name="l00497"></a><span class="lineno">  497</span>  uint8_t vl53l5cx_disable_internal_cp();</div>
+<div class="line"><a id="l00498" name="l00498"></a><span class="lineno">  498</span> </div>
+<div class="line"><a id="l00499" name="l00499"></a><span class="lineno">  499</span>  uint8_t vl53l5cx_enable_internal_cp();</div>
+<div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>};</div>
+</div>
+<div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span> </div>
+<div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span> </div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span> </div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span><span class="preprocessor">#endif </span><span class="comment">//VL53L5CX_H</span></div>
+<div class="ttc" id="aclassVL53L5CX_html_a02e2e87988e444f3672d1038beaad6b6"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a02e2e87988e444f3672d1038beaad6b6">VL53L5CX::_vl53l5cx_send_offset_data</a></div><div class="ttdeci">uint8_t _vl53l5cx_send_offset_data(uint8_t resolution)</div><div class="ttdoc">Inner function, not available outside this file. This function is used to set the offset data gathere...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:92</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a129492d3e6e60d54e3262358e8e45db3"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a129492d3e6e60d54e3262358e8e45db3">VL53L5CX::vl53l5cx_get_ranging_frequency_hz</a></div><div class="ttdeci">uint8_t vl53l5cx_get_ranging_frequency_hz(uint8_t *p_frequency_hz)</div><div class="ttdoc">This function gets the current ranging frequency in Hz. Ranging frequency corresponds to the time bet...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:946</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a29ffe29599ca86af5ff04e0624dd2ef0"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0">VL53L5CX::_vl53l5cx_poll_for_answer</a></div><div class="ttdeci">uint8_t _vl53l5cx_poll_for_answer(uint8_t size, uint8_t pos, uint16_t address, uint8_t mask, uint8_t expected_value)</div><div class="ttdoc">Inner function, not available outside this file. This function is used to wait for an answer from VL5...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:25</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a2e966fb7d4ec352b9f24bd1a33d15c71"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a2e966fb7d4ec352b9f24bd1a33d15c71">VL53L5CX::_vl53l5cx_program_output_config</a></div><div class="ttdeci">uint8_t _vl53l5cx_program_output_config()</div><div class="ttdoc">Inner function, not available outside this file. This function is used to program the output using th...</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a343f89ce3dd6a030ec99f13ffb3ae20c"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c">VL53L5CX::RdMulti</a></div><div class="ttdeci">uint8_t RdMulti(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t *p_values, uint32_t size)</div><div class="ttdoc">Mandatory function used to read multiples bytes.</div><div class="ttdef"><b>Definition</b> platform.cpp:83</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a35a2fdbb3afccf00b2a19bf8dba8e41b"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a35a2fdbb3afccf00b2a19bf8dba8e41b">VL53L5CX::vl53l5cx_get_power_mode</a></div><div class="ttdeci">uint8_t vl53l5cx_get_power_mode(uint8_t *p_power_mode)</div><div class="ttdoc">This function is used to get the current sensor power mode.</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:417</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a3b48527b9c832f432feceba5ea4c0e08"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a3b48527b9c832f432feceba5ea4c0e08">VL53L5CX::vl53l5cx_get_ranging_data</a></div><div class="ttdeci">uint8_t vl53l5cx_get_ranging_data(VL53L5CX_ResultsData *p_results)</div><div class="ttdoc">This function gets the ranging data, using the selected output and the resolution.</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:698</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a3f9f9f9cae46855d99758977de017fab"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a3f9f9f9cae46855d99758977de017fab">VL53L5CX::vl53l5cx_set_integration_time_ms</a></div><div class="ttdeci">uint8_t vl53l5cx_set_integration_time_ms(uint32_t integration_time_ms)</div><div class="ttdoc">This function sets a new integration time in ms. Integration time must be computed to be lower than t...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:984</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a40d09ee28ec78a0b7eef9668a98d87a5"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a40d09ee28ec78a0b7eef9668a98d87a5">VL53L5CX::vl53l5cx_get_target_order</a></div><div class="ttdeci">uint8_t vl53l5cx_get_target_order(uint8_t *p_target_order)</div><div class="ttdoc">This function gets the current target order (closest or strongest).</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1042</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a44b9e67af87cf4f0a2bdc2323e1157a5"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a44b9e67af87cf4f0a2bdc2323e1157a5">VL53L5CX::vl53l5cx_check_data_ready</a></div><div class="ttdeci">uint8_t vl53l5cx_check_data_ready(uint8_t *p_isReady)</div><div class="ttdoc">This function checks if a new data is ready by polling I2C. If a new data is ready,...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:668</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a4c787e6f7ba9c1d33c08091ec8bf3cb5"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a4c787e6f7ba9c1d33c08091ec8bf3cb5">VL53L5CX::vl53l5cx_set_sharpener_percent</a></div><div class="ttdeci">uint8_t vl53l5cx_set_sharpener_percent(uint8_t sharpener_percent)</div><div class="ttdoc">This function sets a new sharpener value in percent. Sharpener can be changed to blur more or less zo...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1021</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a4e2bede5ba78f81d84547581de70d623"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a4e2bede5ba78f81d84547581de70d623">VL53L5CX::_vl53l5cx_poll_for_answer_xtalk</a></div><div class="ttdeci">uint8_t _vl53l5cx_poll_for_answer_xtalk(uint16_t address, uint8_t expected_value)</div><div class="ttdoc">Inner function, not available outside this file. This function is used to wait for an answer from VL5...</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a5163d3ab9ec64acd1fa2d3080fe98756"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a5163d3ab9ec64acd1fa2d3080fe98756">VL53L5CX::vl53l5cx_init</a></div><div class="ttdeci">uint8_t vl53l5cx_init()</div><div class="ttdoc">Mandatory function used to initialize the sensor. This function must be called after a power on,...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:238</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a5237190c08ea2b9b86e2bf58a05cb997"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997">VL53L5CX::vl53l5cx_dci_write_data</a></div><div class="ttdeci">uint8_t vl53l5cx_dci_write_data(uint8_t *data, uint32_t index, uint16_t data_size)</div><div class="ttdoc">This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1233</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a565fa6466e3a3ba2a9b57116169a3e95"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a565fa6466e3a3ba2a9b57116169a3e95">VL53L5CX::vl53l5cx_dci_replace_data</a></div><div class="ttdeci">uint8_t vl53l5cx_dci_replace_data(uint8_t *data, uint32_t index, uint16_t data_size, uint8_t *new_data, uint16_t new_data_size, uint16_t new_data_pos)</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1287</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a5b6c51322ebc15e260f78c473794b96e"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a5b6c51322ebc15e260f78c473794b96e">VL53L5CX::vl53l5cx_get_resolution</a></div><div class="ttdeci">uint8_t vl53l5cx_get_resolution(uint8_t *p_resolution)</div><div class="ttdoc">This function gets the current resolution (4x4 or 8x8).</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:868</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a5ff6790ca0965fca49a3ca17b3134cc2"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2">VL53L5CX::init_sensor</a></div><div class="ttdeci">int init_sensor(uint8_t addr=VL53L5CX_DEFAULT_I2C_ADDRESS)</div><div class="ttdoc">Initialize the sensor.</div><div class="ttdef"><b>Definition</b> VL53L5CX.h:43</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a604061772cf5c87fe96d455c084b7008"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008">VL53L5CX::WrMulti</a></div><div class="ttdeci">uint8_t WrMulti(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t *p_values, uint32_t size)</div><div class="ttdoc">Mandatory function used to write multiples bytes.</div><div class="ttdef"><b>Definition</b> platform.cpp:45</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a63bfc62532c023bc56cec467d201c69c"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a63bfc62532c023bc56cec467d201c69c">VL53L5CX::vl53l5cx_stop_ranging</a></div><div class="ttdeci">uint8_t vl53l5cx_stop_ranging()</div><div class="ttdoc">This function stops the ranging session. It must be used when the sensor streams, after calling vl53l...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:615</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a6c6f8541fd900c22e965281a19fae0d3"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a6c6f8541fd900c22e965281a19fae0d3">VL53L5CX::vl53l5cx_get_ranging_mode</a></div><div class="ttdeci">uint8_t vl53l5cx_get_ranging_mode(uint8_t *p_ranging_mode)</div><div class="ttdoc">This function is used to get the ranging mode. Two modes are available using ULD : Continuous and aut...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1072</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a75252a801ac4f4c03b49e12bf746dabc"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a75252a801ac4f4c03b49e12bf746dabc">VL53L5CX::~VL53L5CX</a></div><div class="ttdeci">virtual ~VL53L5CX()</div><div class="ttdef"><b>Definition</b> VL53L5CX.h:34</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a878f7fab1d2060cd0a08fbd94ed5f945"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a878f7fab1d2060cd0a08fbd94ed5f945">VL53L5CX::vl53l5cx_set_ranging_mode</a></div><div class="ttdeci">uint8_t vl53l5cx_set_ranging_mode(uint8_t ranging_mode)</div><div class="ttdoc">This function is used to set the ranging mode. Two modes are available using ULD : Continuous and aut...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1092</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a887be62b79566dc44ae8f7119d492b6c"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a887be62b79566dc44ae8f7119d492b6c">VL53L5CX::vl53l5cx_set_i2c_address</a></div><div class="ttdeci">uint8_t vl53l5cx_set_i2c_address(uint16_t i2c_address)</div><div class="ttdoc">This function is used to change the I2C address of the sensor. If multiple VL53L5 sensors are connect...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:404</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a9b0fcda068a014b239c53a42639fc506"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a9b0fcda068a014b239c53a42639fc506">VL53L5CX::vl53l5cx_set_target_order</a></div><div class="ttdeci">uint8_t vl53l5cx_set_target_order(uint8_t target_order)</div><div class="ttdoc">This function sets a new target order. Please use macros VL53L5CX_TARGET_ORDER_STRONGEST and VL53L5CX...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1053</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_a9d17f9ab26e6a1cd6387c6382668d2c4"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4">VL53L5CX::WaitMs</a></div><div class="ttdeci">uint8_t WaitMs(VL53L5CX_Platform *p_platform, uint32_t TimeMs)</div><div class="ttdoc">Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP...</div><div class="ttdef"><b>Definition</b> platform.cpp:122</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_aab1edd9eb2ef44064b2dc0c782fab0ce"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce">VL53L5CX::vl53l5cx_dci_read_data</a></div><div class="ttdeci">uint8_t vl53l5cx_dci_read_data(uint8_t *data, uint32_t index, uint16_t data_size)</div><div class="ttdoc">This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1188</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_ab118632b5470d4c67a1bc1ef7fdd6f32"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#ab118632b5470d4c67a1bc1ef7fdd6f32">VL53L5CX::VL53L5CX</a></div><div class="ttdeci">VL53L5CX(i2c_t *i2c)</div><div class="ttdef"><b>Definition</b> VL53L5CX.h:23</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_ab973a3ee5cc414fc38861bca7e11ba10"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#ab973a3ee5cc414fc38861bca7e11ba10">VL53L5CX::vl53l5cx_set_resolution</a></div><div class="ttdeci">uint8_t vl53l5cx_set_resolution(uint8_t resolution)</div><div class="ttdoc">This function sets a new resolution (4x4 or 8x8).</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:882</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_abb8c00c6f1c7f3715486ecda8e1d78e0"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#abb8c00c6f1c7f3715486ecda8e1d78e0">VL53L5CX::vl53l5cx_get_sharpener_percent</a></div><div class="ttdeci">uint8_t vl53l5cx_get_sharpener_percent(uint8_t *p_sharpener_percent)</div><div class="ttdoc">This function gets the current sharpener in percent. Sharpener can be changed to blur more or less zo...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:1007</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_abfe5561038c9b3edf74dfada249d5831"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#abfe5561038c9b3edf74dfada249d5831">VL53L5CX::_vl53l5cx_send_xtalk_data</a></div><div class="ttdeci">uint8_t _vl53l5cx_send_xtalk_data(uint8_t resolution)</div><div class="ttdoc">Inner function, not available outside this file. This function is used to set the Xtalk data from gen...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:161</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_ad8810d13170d2bef0b47199c54d9621f"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#ad8810d13170d2bef0b47199c54d9621f">VL53L5CX::vl53l5cx_set_power_mode</a></div><div class="ttdeci">uint8_t vl53l5cx_set_power_mode(uint8_t power_mode)</div><div class="ttdoc">This function is used to set the sensor in Low Power mode, for example if the sensor is not used duri...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:445</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_ae0648ad77717c03d96d1f293c968d683"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#ae0648ad77717c03d96d1f293c968d683">VL53L5CX::vl53l5cx_is_alive</a></div><div class="ttdeci">uint8_t vl53l5cx_is_alive(uint8_t *p_is_alive)</div><div class="ttdoc">This function is used to check if the sensor is alive.</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:215</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_ae7fa6c4607183c4b44aca71d4e0d0bb3"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#ae7fa6c4607183c4b44aca71d4e0d0bb3">VL53L5CX::vl53l5cx_get_integration_time_ms</a></div><div class="ttdeci">uint8_t vl53l5cx_get_integration_time_ms(uint32_t *p_time_ms)</div><div class="ttdoc">This function gets the current integration time in ms.</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:970</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_aef52427662628a27c97a68deb5e00f11"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#aef52427662628a27c97a68deb5e00f11">VL53L5CX::WrByte</a></div><div class="ttdeci">uint8_t WrByte(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t value)</div><div class="ttdoc">Mandatory function used to write one single byte.</div><div class="ttdef"><b>Definition</b> platform.cpp:36</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_afb26814b99ad98932ab002741c7d9aa2"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#afb26814b99ad98932ab002741c7d9aa2">VL53L5CX::vl53l5cx_set_ranging_frequency_hz</a></div><div class="ttdeci">uint8_t vl53l5cx_set_ranging_frequency_hz(uint8_t frequency_hz)</div><div class="ttdoc">This function sets a new ranging frequency in Hz. Ranging frequency corresponds to the measurements f...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:958</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_afe1a31661c55b72124ddec9552d208d6"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#afe1a31661c55b72124ddec9552d208d6">VL53L5CX::vl53l5cx_start_ranging</a></div><div class="ttdeci">uint8_t vl53l5cx_start_ranging()</div><div class="ttdoc">This function starts a ranging session. When the sensor streams, host cannot change settings &#39;on-the-...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.cpp:479</div></div>
+<div class="ttc" id="aclassVL53L5CX_html_aff537fadd902a5ce54e196c7f4cd6bc3"><div class="ttname"><a href="../../d9/d0e/classVL53L5CX.html#aff537fadd902a5ce54e196c7f4cd6bc3">VL53L5CX::RdByte</a></div><div class="ttdeci">uint8_t RdByte(VL53L5CX_Platform *p_platform, uint16_t RegisterAddress, uint8_t *p_value)</div><div class="ttdef"><b>Definition</b> platform.cpp:27</div></div>
+<div class="ttc" id="astructVL53L5CX__Configuration_html"><div class="ttname"><a href="../../da/dce/structVL53L5CX__Configuration.html">VL53L5CX_Configuration</a></div><div class="ttdoc">Structure VL53L5CX_Configuration contains the sensor configuration. User MUST not manually change the...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.h:268</div></div>
+<div class="ttc" id="astructVL53L5CX__Platform_html"><div class="ttname"><a href="../../de/d5c/structVL53L5CX__Platform.html">VL53L5CX_Platform</a></div><div class="ttdoc">Structure VL53L5CX_Platform needs to be filled by the customer, depending on his platform....</div><div class="ttdef"><b>Definition</b> platform.h:28</div></div>
+<div class="ttc" id="astructVL53L5CX__ResultsData_html"><div class="ttname"><a href="../../d4/d7d/structVL53L5CX__ResultsData.html">VL53L5CX_ResultsData</a></div><div class="ttdoc">Structure VL53L5CX_ResultsData contains the ranging results of VL53L5CX. If user wants more than 1 ta...</div><div class="ttdef"><b>Definition</b> vl53l5cx_api.h:302</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_ea9b4db6eb8c4e010e445c4c3ea32db4.html">SensorArray</a></li><li class="navelem"><a class="el" href="../../dir_6d62514603d7b088c20cbd77be1b4769.html">src</a></li><li class="navelem"><a class="el" href="../../dir_fc84310656db27b40b31ad5b7e2f318b.html">uld</a></li><li class="navelem"><a class="el" href="../../dir_6a401bff223155456de7908f3ab5ee19.html">include</a></li><li class="navelem"><b>VL53L5CX.h</b></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

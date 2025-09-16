@@ -1,0 +1,24 @@
+<map id="VL53L5CX::vl53l5cx_dci_write_data" name="VL53L5CX::vl53l5cx_dci_write_data">
+<area shape="rect" id="Node000001" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="620,168,759,209"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a565fa6466e3a3ba2a9b57116169a3e95" title=" " alt="" coords="434,103,572,144"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="614,165,562,147,564,142,616,160"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a5163d3ab9ec64acd1fa2d3080fe98756" title="Mandatory function used to initialize the sensor. This function must be called after a power on,..." alt="" coords="216,5,378,31"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="657,159,618,125,571,94,523,72,473,55,378,33,379,27,474,50,525,67,574,89,621,121,660,155"/>
+<area shape="rect" id="Node000009" href="$d9/d0e/classVL53L5CX.html#a878f7fab1d2060cd0a08fbd94ed5f945" title="This function is used to set the ranging mode. Two modes are available using ULD : Continuous and aut..." alt="" coords="434,168,572,209"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="604,192,573,192,573,186,604,186"/>
+<area shape="rect" id="Node000010" href="$d9/d0e/classVL53L5CX.html#ab973a3ee5cc414fc38861bca7e11ba10" title="This function sets a new resolution (4x4 or 8x8)." alt="" coords="434,234,572,274"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="616,217,564,236,562,231,614,212"/>
+<area shape="rect" id="Node000011" href="$d9/d0e/classVL53L5CX.html#afe1a31661c55b72124ddec9552d208d6" title="This function starts a ranging session. When the sensor streams, host cannot change settings &#39;on&#45;the&#45;..." alt="" coords="434,299,572,340"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="658,222,619,255,574,288,552,301,550,296,571,284,615,251,654,218"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="464,96,426,70,385,46,354,34,356,29,387,41,429,65,467,91"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a3f9f9f9cae46855d99758977de017fab" title="This function sets a new integration time in ms. Integration time must be computed to be lower than t..." alt="" coords="212,55,382,96"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="418,106,382,98,383,93,419,101"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#afb26814b99ad98932ab002741c7d9aa2" title="This function sets a new ranging frequency in Hz. Ranging frequency corresponds to the measurements f..." alt="" coords="208,120,386,161"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="419,133,387,136,386,131,418,128"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#a4c787e6f7ba9c1d33c08091ec8bf3cb5" title="This function sets a new sharpener value in percent. Sharpener can be changed to blur more or less zo..." alt="" coords="217,186,377,226"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="441,153,387,175,355,188,353,183,385,170,439,148"/>
+<area shape="rect" id="Node000008" href="$d9/d0e/classVL53L5CX.html#a9b0fcda068a014b239c53a42639fc506" title="This function sets a new target order. Please use macros VL53L5CX_TARGET_ORDER_STRONGEST and VL53L5CX..." alt="" coords="228,251,366,292"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="440,155,436,159,420,179,413,199,405,219,388,240,368,253,365,249,384,236,400,217,408,197,416,176,432,155,437,151"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2" title="Initialize the sensor." alt="" coords="5,5,160,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="200,21,160,21,160,16,200,16"/>
+</map>

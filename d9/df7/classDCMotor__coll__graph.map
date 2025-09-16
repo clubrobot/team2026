@@ -1,0 +1,7 @@
+<map id="DCMotor" name="DCMotor">
+<area shape="rect" id="Node000001" title="Pilotage de moteur continu." alt="" coords="81,79,153,105"/>
+<area shape="rect" id="Node000002" href="$dc/d3c/classNonCopyable.html" title="Classe a hériter pour empécher la copie de cette dernière." alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,41,109,77,105,80,73,44"/>
+<area shape="rect" id="Node000003" href="$d2/d61/classAbstractMotor.html" title="Instance de moteur." alt="" coords="128,5,232,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,44,130,80,126,77,157,41"/>
+</map>

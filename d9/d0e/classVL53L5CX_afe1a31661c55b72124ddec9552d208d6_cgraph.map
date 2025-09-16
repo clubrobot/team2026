@@ -1,0 +1,26 @@
+<map id="VL53L5CX::vl53l5cx_start_ranging" name="VL53L5CX::vl53l5cx_start_ranging">
+<area shape="rect" id="Node000001" title="This function starts a ranging session. When the sensor streams, host cannot change settings &#39;on&#45;the&#45;..." alt="" coords="5,140,144,181"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="564,113,710,154"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,154,549,135,549,140,144,160"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="378,56,516,97"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="121,137,191,112,279,94,362,82,363,87,280,99,192,118,123,142"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="569,206,705,232"/>
+<area shape="poly" id="edge15_Node000001_Node000006" title=" " alt="" coords="93,179,134,225,162,248,193,265,245,280,300,287,356,287,410,281,511,260,588,235,590,240,512,265,411,287,356,292,300,292,244,285,191,269,159,252,130,229,89,183"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="378,171,516,211"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="144,163,363,181,363,187,144,169"/>
+<area shape="rect" id="Node000008" href="$d9/d0e/classVL53L5CX.html#a5b6c51322ebc15e260f78c473794b96e" title="This function gets the current resolution (4x4 or 8x8)." alt="" coords="192,5,330,46"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="97,138,139,101,190,62,206,52,208,57,193,67,142,105,100,142"/>
+<area shape="rect" id="Node000009" href="$d9/d0e/classVL53L5CX.html#aef52427662628a27c97a68deb5e00f11" title="Mandatory function used to write one single byte." alt="" coords="194,229,328,254"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="124,179,216,220,214,225,122,184"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="758,68,893,93"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="709,110,762,95,763,101,711,116"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="758,121,893,146"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="710,131,742,131,742,136,710,136"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="517,95,554,106,552,111,516,100"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="517,74,742,77,742,82,517,80"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="477,95,566,164,608,195,604,199,563,168,473,99"/>
+<area shape="poly" id="edge9_Node000007_Node000002" title=" " alt="" coords="516,168,552,157,554,162,517,173"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="517,199,555,204,554,209,516,204"/>
+<area shape="poly" id="edge12_Node000008_Node000005" title=" " alt="" coords="331,42,364,51,362,56,330,47"/>
+<area shape="poly" id="edge14_Node000009_Node000006" title=" " alt="" coords="328,235,554,221,554,227,328,240"/>
+</map>

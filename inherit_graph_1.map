@@ -1,0 +1,7 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="Node000000" href="$de/dc0/classAbstractMoveStrategy.html" title="Interface de Stratégie de mouvement." alt="" coords="5,31,156,56"/>
+<area shape="rect" id="Node000001" href="$de/d96/classPurePursuit.html" title="Trajectoire courbe le long d&#39;une ligne brisée." alt="" coords="216,5,305,31"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="170,28,215,22,215,27,171,33"/>
+<area shape="rect" id="Node000002" href="$d9/dee/classTurnOnTheSpot.html" title="Rotation du robot sans translations." alt="" coords="204,55,317,80"/>
+<area shape="poly" id="edge6_Node000000_Node000002" title=" " alt="" coords="171,53,204,57,203,63,171,58"/>
+</map>

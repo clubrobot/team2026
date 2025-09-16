@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CRINSA-team2025:  Fichier source de lib/Teleplot/Sphere.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript" src="../../darkmode_toggle.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CRINSA-team2025<span id="projectnumber">&#160;V1</span>
+   </div>
+   <div id="projectbrief">Documentation du Club Robot INSA Rennes 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d3/dca/Sphere_8h_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Sphere.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by awing on 25/05/25.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Teleplot_client.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef TEAM2025_SPHERE_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define TEAM2025_SPHERE_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="../../de/d9d/classSphere.html">   10</a></span><span class="keyword">class </span><a class="code hl_function" href="../../de/d9d/classSphere.html#a058a580f79a56b13399172ad810bc9ee">Sphere</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_function" href="../../de/d9d/classSphere.html#a058a580f79a56b13399172ad810bc9ee">Sphere</a>(<span class="keywordtype">char</span>* nom_forme, <span class="keywordtype">float</span> pos_x, <span class="keywordtype">float</span> pos_y, <span class="keywordtype">float</span> pos_z,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>           <span class="keywordtype">float</span> radius, <span class="keywordtype">float</span> quat_x, <span class="keywordtype">float</span> quat_y, <span class="keywordtype">float</span> quat_z, <span class="keywordtype">float</span> quat_w,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>           <span class="keywordtype">int</span> precision, <span class="keywordtype">char</span>* color, <span class="keywordtype">float</span> transparency);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#af4d3272fef624d9c2a731d8eb6b1bbf8">setPosition</a>(<span class="keywordtype">float</span> pos_x, <span class="keywordtype">float</span> pos_y, <span class="keywordtype">float</span> pos_z);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#ab5460ad7541625131ce2f0eed6aacef6">setXPosition</a>(<span class="keywordtype">float</span> pos_x);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a0ab62eaaacec1d742e356e6b982c4932">setYPosition</a>(<span class="keywordtype">float</span> pos_y);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a4473c36c257fcc7032449043ee1f63cf">setZPosition</a>(<span class="keywordtype">float</span> pos_z);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a9a563adc1ae20e8b1866caf8f2fb0285">setRadius</a>(<span class="keywordtype">float</span> radius);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#acb53e309a628fb8cf3d5121dd4b6b95b">setPrecision</a>(<span class="keywordtype">int</span> precision);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a5a3aecc29052a8c128d691db48192216">setRotation</a>(<span class="keywordtype">float</span> quat_x, <span class="keywordtype">float</span> quat_y, <span class="keywordtype">float</span> quat_z, <span class="keywordtype">float</span> quat_w);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a9df7ab3f341bc505dc31426887fd3543">setQuatX</a>(<span class="keywordtype">float</span> quat_x);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a917e2a700f7df8ba301212266e1e66c6">setQuatY</a>(<span class="keywordtype">float</span> quat_y);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a9066555ce5688963ded7e6f36efea13c">setQuatZ</a>(<span class="keywordtype">float</span> quat_z);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a9729455a2834549f5a63c68356cd62e6">setQuatW</a>(<span class="keywordtype">float</span> quat_w);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#af6f1df4a8baba91b698db7d945e96b56">setColor</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* color);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a9a6b92e63d6c37dece249659eb696b57">setTransparency</a>(<span class="keywordtype">float</span> transparency);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../de/d9d/classSphere.html#a5e3f6d8ad376e41b1b7bc0bc92eaa22b">sendSphereToTeleplot</a>(<a class="code hl_class" href="../../d8/d4b/classTeleplot.html">Teleplot</a> &amp;teleplot);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> NAME_LENGTH = 50; <span class="comment">// Length of the shape name</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> NUMBER_PRECISION = 20; <span class="comment">// Precision for floating point numbers</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_NAME =         0b0000000000000001;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_POS_X =        0b0000000000000010;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_POS_Y =        0b0000000000000100;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_POS_Z =        0b0000000000001000;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_RADIUS =       0b0000000000010000;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_PRECISION =    0b0000000000100000;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_QUAT_X =       0b0000000010000000;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_QUAT_Y =       0b0000000100000000;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_QUAT_Z =       0b0000001000000000;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_QUAT_W =       0b0000010000000000;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_COLOR =        0b0000100000000000;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">const</span> <span class="keywordtype">short</span> MASK_TRANSPARENCY = 0b0001000000000000;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordtype">char</span> nom_forme[NAME_LENGTH]; <span class="comment">// Name of the sphere, initialized to an empty string</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="comment">// position</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordtype">float</span> pos_x;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keywordtype">float</span> pos_y;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">float</span> pos_z;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    <span class="keywordtype">char</span> r_pos_x[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    <span class="keywordtype">char</span> r_pos_y[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordtype">char</span> r_pos_z[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="comment">// radius</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keywordtype">float</span> radius;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordtype">char</span> r_radius[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// precision</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordtype">int</span> precision;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordtype">char</span> r_precision[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    <span class="comment">// rotation (quaternion)</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordtype">float</span> quat_x;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordtype">float</span> quat_y;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    <span class="keywordtype">float</span> quat_z;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="keywordtype">float</span> quat_w;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="keywordtype">char</span> r_quat_x[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordtype">char</span> r_quat_y[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="keywordtype">char</span> r_quat_z[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keywordtype">char</span> r_quat_w[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <span class="comment">//color</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordtype">char</span> color[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="comment">// transparency</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordtype">float</span> transparency;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    <span class="keywordtype">char</span> r_transparency[NUMBER_PRECISION];</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="keywordtype">short</span> modified_mask = 0; <span class="comment">// Mask to track which parameters have been modified</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> * generateTeleplotMessage(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> temps);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>};</div>
+</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="preprocessor">#endif </span><span class="comment">//TEAM2025_SPHERE_H</span></div>
+<div class="ttc" id="aclassSphere_html_a058a580f79a56b13399172ad810bc9ee"><div class="ttname"><a href="../../de/d9d/classSphere.html#a058a580f79a56b13399172ad810bc9ee">Sphere::Sphere</a></div><div class="ttdeci">Sphere(char *nom_forme, float pos_x, float pos_y, float pos_z, float radius, float quat_x, float quat_y, float quat_z, float quat_w, int precision, char *color, float transparency)</div><div class="ttdef"><b>Definition</b> Sphere.cpp:7</div></div>
+<div class="ttc" id="aclassSphere_html_a0ab62eaaacec1d742e356e6b982c4932"><div class="ttname"><a href="../../de/d9d/classSphere.html#a0ab62eaaacec1d742e356e6b982c4932">Sphere::setYPosition</a></div><div class="ttdeci">void setYPosition(float pos_y)</div><div class="ttdoc">modifie la position y de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:97</div></div>
+<div class="ttc" id="aclassSphere_html_a4473c36c257fcc7032449043ee1f63cf"><div class="ttname"><a href="../../de/d9d/classSphere.html#a4473c36c257fcc7032449043ee1f63cf">Sphere::setZPosition</a></div><div class="ttdeci">void setZPosition(float pos_z)</div><div class="ttdoc">modifie la position z de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:105</div></div>
+<div class="ttc" id="aclassSphere_html_a5a3aecc29052a8c128d691db48192216"><div class="ttname"><a href="../../de/d9d/classSphere.html#a5a3aecc29052a8c128d691db48192216">Sphere::setRotation</a></div><div class="ttdeci">void setRotation(float quat_x, float quat_y, float quat_z, float quat_w)</div><div class="ttdoc">modifie le quaternion de rotation de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:129</div></div>
+<div class="ttc" id="aclassSphere_html_a5e3f6d8ad376e41b1b7bc0bc92eaa22b"><div class="ttname"><a href="../../de/d9d/classSphere.html#a5e3f6d8ad376e41b1b7bc0bc92eaa22b">Sphere::sendSphereToTeleplot</a></div><div class="ttdeci">void sendSphereToTeleplot(Teleplot &amp;teleplot)</div><div class="ttdoc">Envoie la sphère à Teleplot.</div><div class="ttdef"><b>Definition</b> Sphere.cpp:216</div></div>
+<div class="ttc" id="aclassSphere_html_a9066555ce5688963ded7e6f36efea13c"><div class="ttname"><a href="../../de/d9d/classSphere.html#a9066555ce5688963ded7e6f36efea13c">Sphere::setQuatZ</a></div><div class="ttdeci">void setQuatZ(float quat_z)</div><div class="ttdoc">modifie le quaternion de rotation z de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:166</div></div>
+<div class="ttc" id="aclassSphere_html_a917e2a700f7df8ba301212266e1e66c6"><div class="ttname"><a href="../../de/d9d/classSphere.html#a917e2a700f7df8ba301212266e1e66c6">Sphere::setQuatY</a></div><div class="ttdeci">void setQuatY(float quat_y)</div><div class="ttdoc">modifie le quaternion de rotation y de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:158</div></div>
+<div class="ttc" id="aclassSphere_html_a9729455a2834549f5a63c68356cd62e6"><div class="ttname"><a href="../../de/d9d/classSphere.html#a9729455a2834549f5a63c68356cd62e6">Sphere::setQuatW</a></div><div class="ttdeci">void setQuatW(float quat_w)</div><div class="ttdoc">modifie le quaternion de rotation w de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:174</div></div>
+<div class="ttc" id="aclassSphere_html_a9a563adc1ae20e8b1866caf8f2fb0285"><div class="ttname"><a href="../../de/d9d/classSphere.html#a9a563adc1ae20e8b1866caf8f2fb0285">Sphere::setRadius</a></div><div class="ttdeci">void setRadius(float radius)</div><div class="ttdoc">modifie le rayon de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:113</div></div>
+<div class="ttc" id="aclassSphere_html_a9a6b92e63d6c37dece249659eb696b57"><div class="ttname"><a href="../../de/d9d/classSphere.html#a9a6b92e63d6c37dece249659eb696b57">Sphere::setTransparency</a></div><div class="ttdeci">void setTransparency(float transparency)</div><div class="ttdoc">modifie la transparence de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:187</div></div>
+<div class="ttc" id="aclassSphere_html_a9df7ab3f341bc505dc31426887fd3543"><div class="ttname"><a href="../../de/d9d/classSphere.html#a9df7ab3f341bc505dc31426887fd3543">Sphere::setQuatX</a></div><div class="ttdeci">void setQuatX(float quat_x)</div><div class="ttdoc">modifie le quaternion de rotation x de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:150</div></div>
+<div class="ttc" id="aclassSphere_html_ab5460ad7541625131ce2f0eed6aacef6"><div class="ttname"><a href="../../de/d9d/classSphere.html#ab5460ad7541625131ce2f0eed6aacef6">Sphere::setXPosition</a></div><div class="ttdeci">void setXPosition(float pos_x)</div><div class="ttdoc">modifie la position x de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:89</div></div>
+<div class="ttc" id="aclassSphere_html_acb53e309a628fb8cf3d5121dd4b6b95b"><div class="ttname"><a href="../../de/d9d/classSphere.html#acb53e309a628fb8cf3d5121dd4b6b95b">Sphere::setPrecision</a></div><div class="ttdeci">void setPrecision(int precision)</div><div class="ttdoc">modifie la précision de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:121</div></div>
+<div class="ttc" id="aclassSphere_html_af4d3272fef624d9c2a731d8eb6b1bbf8"><div class="ttname"><a href="../../de/d9d/classSphere.html#af4d3272fef624d9c2a731d8eb6b1bbf8">Sphere::setPosition</a></div><div class="ttdeci">void setPosition(float pos_x, float pos_y, float pos_z)</div><div class="ttdoc">modifie la position de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:72</div></div>
+<div class="ttc" id="aclassSphere_html_af6f1df4a8baba91b698db7d945e96b56"><div class="ttname"><a href="../../de/d9d/classSphere.html#af6f1df4a8baba91b698db7d945e96b56">Sphere::setColor</a></div><div class="ttdeci">void setColor(const char *color)</div><div class="ttdoc">modifie la couleur de la sphère</div><div class="ttdef"><b>Definition</b> Sphere.cpp:182</div></div>
+<div class="ttc" id="aclassTeleplot_html"><div class="ttname"><a href="../../d8/d4b/classTeleplot.html">Teleplot</a></div><div class="ttdef"><b>Definition</b> Teleplot_client.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_4136405d84fc7ff658638f03b4ac248a.html">Teleplot</a></li><li class="navelem"><b>Sphere.h</b></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

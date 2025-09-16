@@ -1,0 +1,9 @@
+<map id="TurnOnTheSpot::getPositionReached" name="TurnOnTheSpot::getPositionReached">
+<area shape="rect" id="Node000001" title="Indique si la position désirée est atteinte." alt="" coords="5,71,190,111"/>
+<area shape="rect" id="Node000002" href="$de/dc0/classAbstractMoveStrategy.html#aeb5f02ec6bc18993066712b728d901c5" title="Retourne la précision angulaire à atteindre." alt="" coords="238,5,388,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,68,228,49,229,54,167,73"/>
+<area shape="rect" id="Node000003" href="$de/dc0/classAbstractMoveStrategy.html#ac833928eb8dbfd75e119f7bd0c0ba636" title="Retourne la position du robot." alt="" coords="238,71,388,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="190,88,222,88,222,94,190,94"/>
+<area shape="rect" id="Node000004" href="$de/dc0/classAbstractMoveStrategy.html#aa6d458c1d2c57cf049945927ddc5ca52" title="Retourne la position à atteindre." alt="" coords="238,136,388,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,109,229,128,228,133,166,114"/>
+</map>

@@ -1,0 +1,14 @@
+<map id="VL53L5CX::vl53l5cx_get_resolution" name="VL53L5CX::vl53l5cx_get_resolution">
+<area shape="rect" id="Node000001" title="This function gets the current resolution (4x4 or 8x8)." alt="" coords="5,51,144,92"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="192,51,330,92"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,69,176,69,176,74,144,74"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="378,51,523,92"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,69,363,69,363,74,330,74"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="571,5,707,31"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="329,48,378,37,470,25,556,18,557,24,470,30,378,42,330,53"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="383,116,518,142"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="331,90,392,108,390,114,329,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="523,48,576,33,577,38,525,53"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="571,59,707,84"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="524,69,556,69,556,74,524,74"/>
+</map>

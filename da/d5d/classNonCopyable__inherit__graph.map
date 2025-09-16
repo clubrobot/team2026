@@ -1,0 +1,7 @@
+<map id="NonCopyable" name="NonCopyable">
+<area shape="rect" id="Node000001" title="Classe a hériter pour empécher la copie de cette dernière." alt="" coords="50,5,148,31"/>
+<area shape="rect" id="Node000002" href="$dd/df3/classCodewheel.html" title="Fait la passerelle entre les roues codeuses et le stm32." alt="" coords="5,79,91,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,45,59,80,54,77,79,42"/>
+<area shape="rect" id="Node000003" href="$dd/d4c/classDCMotor.html" title="Pilotage de moteur continu." alt="" coords="114,79,187,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,42,144,77,140,80,114,45"/>
+</map>

@@ -1,0 +1,57 @@
+<map id="VL53L5CX::_vl53l5cx_poll_for_answer" name="VL53L5CX::_vl53l5cx_poll_for_answer">
+<area shape="rect" id="Node000001" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="854,222,999,263"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a02e2e87988e444f3672d1038beaad6b6" title="Inner function, not available outside this file. This function is used to set the offset data gathere..." alt="" coords="660,67,806,108"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="897,212,855,167,804,123,784,111,786,106,807,119,859,163,901,208"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a5163d3ab9ec64acd1fa2d3080fe98756" title="Mandatory function used to initialize the sensor. This function must be called after a power on,..." alt="" coords="216,58,378,83"/>
+<area shape="poly" id="edge31_Node000001_Node000003" title=" " alt="" coords="911,209,895,172,872,130,842,90,804,58,775,42,744,29,680,13,612,8,545,11,481,20,423,33,334,60,332,55,422,28,480,15,545,6,612,3,680,8,746,24,777,37,807,54,846,87,877,128,900,170,916,207"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#abfe5561038c9b3edf74dfada249d5831" title="Inner function, not available outside this file. This function is used to set the Xtalk data from gen..." alt="" coords="660,133,806,173"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="865,217,778,176,780,172,868,213"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="664,485,802,525"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="903,277,752,486,747,483,899,274"/>
+<area shape="rect" id="Node000017" href="$d9/d0e/classVL53L5CX.html#afe1a31661c55b72124ddec9552d208d6" title="This function starts a ranging session. When the sensor streams, host cannot change settings &#39;on&#45;the&#45;..." alt="" coords="228,411,366,452"/>
+<area shape="poly" id="edge33_Node000001_Node000017" title=" " alt="" coords="841,270,613,334,523,355,435,378,345,413,343,408,433,373,522,350,612,329,839,265"/>
+<area shape="rect" id="Node000021" href="$d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="664,222,802,263"/>
+<area shape="poly" id="edge25_Node000001_Node000021" title=" " alt="" coords="838,245,802,245,802,240,838,240"/>
+<area shape="rect" id="Node000022" href="$d9/d0e/classVL53L5CX.html#ad8810d13170d2bef0b47199c54d9621f" title="This function is used to set the sensor in Low Power mode, for example if the sensor is not used duri..." alt="" coords="664,550,802,591"/>
+<area shape="poly" id="edge32_Node000001_Node000022" title=" " alt="" coords="922,279,909,334,887,403,854,475,833,508,808,539,792,552,788,548,804,535,828,505,850,472,882,401,904,333,917,277"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="660,65,612,54,551,49,488,49,376,60,376,54,488,44,551,44,613,49,661,60"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#ab973a3ee5cc414fc38861bca7e11ba10" title="This function sets a new resolution (4x4 or 8x8)." alt="" coords="454,107,592,148"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="645,107,593,117,592,112,644,102"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2" title="Initialize the sensor." alt="" coords="5,58,160,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="200,73,160,73,160,68,200,68"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="672,128,659,122,636,109,612,98,552,85,490,77,378,71,379,66,491,72,553,80,613,93,638,104,662,117,674,123"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="644,145,592,139,593,133,645,140"/>
+<area shape="poly" id="edge23_Node000007_Node000005" title=" " alt="" coords="720,470,704,417,681,351,649,280,610,212,581,178,551,151,554,147,585,174,615,209,654,277,686,349,709,416,725,469"/>
+<area shape="rect" id="Node000008" href="$d9/d0e/classVL53L5CX.html#a565fa6466e3a3ba2a9b57116169a3e95" title=" " alt="" coords="454,222,592,263"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="704,474,539,265,543,262,708,471"/>
+<area shape="rect" id="Node000013" href="$d9/d0e/classVL53L5CX.html#ae7fa6c4607183c4b44aca71d4e0d0bb3" title="This function gets the current integration time in ms." alt="" coords="438,518,608,559"/>
+<area shape="poly" id="edge15_Node000007_Node000013" title=" " alt="" coords="649,521,609,528,608,522,648,516"/>
+<area shape="rect" id="Node000014" href="$d9/d0e/classVL53L5CX.html#a129492d3e6e60d54e3262358e8e45db3" title="This function gets the current ranging frequency in Hz. Ranging frequency corresponds to the time bet..." alt="" coords="434,583,612,624"/>
+<area shape="poly" id="edge16_Node000007_Node000014" title=" " alt="" coords="672,535,662,541,638,557,614,573,586,585,584,581,611,568,635,553,659,536,669,531"/>
+<area shape="rect" id="Node000015" href="$d9/d0e/classVL53L5CX.html#a6c6f8541fd900c22e965281a19fae0d3" title="This function is used to get the ranging mode. Two modes are available using ULD : Continuous and aut..." alt="" coords="454,649,592,689"/>
+<area shape="poly" id="edge17_Node000007_Node000015" title=" " alt="" coords="666,537,662,540,646,564,639,588,632,613,614,638,594,651,591,647,610,634,628,610,634,587,641,562,658,537,663,533"/>
+<area shape="rect" id="Node000016" href="$d9/d0e/classVL53L5CX.html#a5b6c51322ebc15e260f78c473794b96e" title="This function gets the current resolution (4x4 or 8x8)." alt="" coords="454,453,592,493"/>
+<area shape="poly" id="edge18_Node000007_Node000016" title=" " alt="" coords="648,495,592,486,593,481,649,490"/>
+<area shape="poly" id="edge24_Node000007_Node000017" title=" " alt="" coords="664,538,663,540,642,579,636,617,639,655,647,692,653,729,654,765,642,800,631,817,614,834,591,851,569,862,547,869,525,871,502,868,479,861,432,834,389,794,356,745,332,691,315,634,304,579,298,528,295,453,300,453,303,528,309,578,320,633,337,689,361,742,393,790,436,830,482,856,503,863,525,866,546,864,567,857,589,846,611,830,627,814,638,798,648,764,648,729,642,693,634,655,631,617,637,577,658,537,660,535"/>
+<area shape="rect" id="Node000018" href="$d9/d0e/classVL53L5CX.html#abb8c00c6f1c7f3715486ecda8e1d78e0" title="This function gets the current sharpener in percent. Sharpener can be changed to blur more or less zo..." alt="" coords="443,714,603,755"/>
+<area shape="poly" id="edge20_Node000007_Node000018" title=" " alt="" coords="665,537,662,540,649,561,642,581,640,621,637,661,629,682,614,703,599,716,595,711,610,699,625,679,632,660,634,620,637,580,644,558,658,537,661,534"/>
+<area shape="rect" id="Node000019" href="$d9/d0e/classVL53L5CX.html#a40d09ee28ec78a0b7eef9668a98d87a5" title="This function gets the current target order (closest or strongest)." alt="" coords="454,779,592,820"/>
+<area shape="poly" id="edge21_Node000007_Node000019" title=" " alt="" coords="665,538,663,540,645,569,638,598,637,625,640,653,643,681,642,709,634,738,614,768,595,784,591,780,610,765,629,736,637,709,637,681,635,654,632,626,633,597,640,567,658,537,661,534"/>
+<area shape="rect" id="Node000020" href="$d9/d0e/classVL53L5CX.html#a878f7fab1d2060cd0a08fbd94ed5f945" title="This function is used to set the ranging mode. Two modes are available using ULD : Continuous and aut..." alt="" coords="454,387,592,428"/>
+<area shape="poly" id="edge22_Node000007_Node000020" title=" " alt="" coords="681,479,611,444,582,431,584,426,613,439,684,474"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="446,216,432,206,415,184,407,164,399,144,384,123,357,102,329,86,331,82,360,98,388,119,404,141,412,162,420,182,436,202,449,212"/>
+<area shape="rect" id="Node000009" href="$d9/d0e/classVL53L5CX.html#a3f9f9f9cae46855d99758977de017fab" title="This function sets a new integration time in ms. Integration time must be computed to be lower than t..." alt="" coords="212,263,382,304"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="439,260,383,271,382,266,438,255"/>
+<area shape="rect" id="Node000010" href="$d9/d0e/classVL53L5CX.html#afb26814b99ad98932ab002741c7d9aa2" title="This function sets a new ranging frequency in Hz. Ranging frequency corresponds to the measurements f..." alt="" coords="208,329,386,369"/>
+<area shape="poly" id="edge12_Node000008_Node000010" title=" " alt="" coords="457,272,435,283,412,301,387,318,361,331,358,326,385,313,409,297,433,279,455,267"/>
+<area shape="rect" id="Node000011" href="$d9/d0e/classVL53L5CX.html#a4c787e6f7ba9c1d33c08091ec8bf3cb5" title="This function sets a new sharpener value in percent. Sharpener can be changed to blur more or less zo..." alt="" coords="217,133,377,173"/>
+<area shape="poly" id="edge13_Node000008_Node000011" title=" " alt="" coords="458,218,385,189,353,177,355,172,387,184,460,213"/>
+<area shape="rect" id="Node000012" href="$d9/d0e/classVL53L5CX.html#a9b0fcda068a014b239c53a42639fc506" title="This function sets a new target order. Please use macros VL53L5CX_TARGET_ORDER_STRONGEST and VL53L5CX..." alt="" coords="228,198,366,239"/>
+<area shape="poly" id="edge14_Node000008_Node000012" title=" " alt="" coords="438,236,366,228,367,223,439,231"/>
+<area shape="poly" id="edge19_Node000016_Node000017" title=" " alt="" coords="438,460,366,447,367,442,439,455"/>
+<area shape="poly" id="edge27_Node000021_Node000003" title=" " alt="" coords="648,222,433,162,408,144,384,123,322,86,325,82,388,119,411,139,435,157,650,217"/>
+<area shape="poly" id="edge29_Node000021_Node000005" title=" " alt="" coords="688,216,611,169,575,151,577,146,614,164,691,211"/>
+<area shape="poly" id="edge26_Node000021_Node000008" title=" " alt="" coords="648,245,593,245,593,240,648,240"/>
+<area shape="poly" id="edge30_Node000021_Node000017" title=" " alt="" coords="649,268,519,305,435,334,421,345,411,357,402,369,388,383,341,413,338,409,384,379,398,366,407,354,417,342,433,329,517,300,648,263"/>
+<area shape="poly" id="edge28_Node000021_Node000020" title=" " alt="" coords="696,275,552,389,549,385,692,271"/>
+</map>

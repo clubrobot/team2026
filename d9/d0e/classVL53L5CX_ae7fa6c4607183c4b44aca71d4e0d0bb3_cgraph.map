@@ -1,0 +1,14 @@
+<map id="VL53L5CX::vl53l5cx_get_integration_time_ms" name="VL53L5CX::vl53l5cx_get_integration_time_ms">
+<area shape="rect" id="Node000001" title="This function gets the current integration time in ms." alt="" coords="5,51,176,92"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="224,51,362,92"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,69,208,69,208,74,176,74"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="410,51,555,92"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="362,69,395,69,395,74,362,74"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="603,5,739,31"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="361,48,410,37,502,25,588,18,589,24,502,30,410,42,362,53"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="415,116,550,142"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="363,90,424,108,422,114,361,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="555,48,608,33,609,38,557,53"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="603,59,739,84"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="556,69,588,69,588,74,556,74"/>
+</map>

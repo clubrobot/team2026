@@ -1,0 +1,20 @@
+<map id="VL53L5CX::vl53l5cx_set_sharpener_percent" name="VL53L5CX::vl53l5cx_set_sharpener_percent">
+<area shape="rect" id="Node000001" title="This function sets a new sharpener value in percent. Sharpener can be changed to blur more or less zo..." alt="" coords="5,44,166,85"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a565fa6466e3a3ba2a9b57116169a3e95" title=" " alt="" coords="214,44,352,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,62,198,62,198,68,166,68"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="400,11,538,52"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="352,50,384,44,385,49,353,55"/>
+<area shape="rect" id="Node000008" href="$d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="400,76,538,117"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="353,74,385,80,384,85,352,79"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="586,76,732,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="531,50,585,69,583,74,529,55"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="780,5,915,31"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="539,17,586,12,678,9,764,10,764,16,678,14,587,17,539,22"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="591,27,727,52"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="539,32,576,33,576,39,538,37"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="709,74,800,35,802,40,711,78"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="780,84,915,110"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="732,94,764,94,764,100,732,100"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="539,94,571,94,571,100,539,100"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="538,73,599,55,600,60,539,79"/>
+</map>

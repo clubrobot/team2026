@@ -1,0 +1,5 @@
+<map id="PurePursuit" name="PurePursuit">
+<area shape="rect" id="Node000001" title="Trajectoire courbe le long d&#39;une ligne brisée." alt="" coords="36,79,125,105"/>
+<area shape="rect" id="Node000002" href="$de/dc0/classAbstractMoveStrategy.html" title="Interface de Stratégie de mouvement." alt="" coords="5,5,156,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,46,83,79,78,79,78,46"/>
+</map>

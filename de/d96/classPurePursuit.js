@@ -1,0 +1,37 @@
+var classPurePursuit =
+[
+    [ "Waypoint", "d4/d9e/structPurePursuit_1_1Waypoint.html", null ],
+    [ "Direction", "de/d96/classPurePursuit.html#a584048cfe1c7e025425011986b410019", [
+      [ "FORWARD", "de/d96/classPurePursuit.html#a584048cfe1c7e025425011986b410019a4cc193c61baf499695ffe17a103be9a4", null ],
+      [ "BACKWARD", "de/d96/classPurePursuit.html#a584048cfe1c7e025425011986b410019a008e94f456df613c2c9cd7f328fa483f", null ],
+      [ "NONE", "de/d96/classPurePursuit.html#a584048cfe1c7e025425011986b410019a35533adc0029236afc7a388e5fb61adc", null ]
+    ] ],
+    [ "addWaypoint", "de/d96/classPurePursuit.html#a8672a8ae53efe3e706f5e00e94f2554b", null ],
+    [ "checkLookAheadGoal", "de/d96/classPurePursuit.html#a317d5860811b40f40909bef6cc6d8f19", null ],
+    [ "checkProjectionGoal", "de/d96/classPurePursuit.html#a10ddd92e112e6fc7ab5e7d817ffd9fa9", null ],
+    [ "computeVelSetpoints", "de/d96/classPurePursuit.html#a657a00d409067352855aa685b57c6f45", null ],
+    [ "getDirection", "de/d96/classPurePursuit.html#a0d9fdb1befa08614df6822988a85ec2a", null ],
+    [ "getDistAfterGoal", "de/d96/classPurePursuit.html#ae777318b78fb671d7c4a7bfdb7a8bb6c", null ],
+    [ "getFinalAngle", "de/d96/classPurePursuit.html#a1209f3fec00042c0ae826c115e4fd472", null ],
+    [ "getLookAhead", "de/d96/classPurePursuit.html#a549f1a5d25d08e3bf2b697483bd76f51", null ],
+    [ "getLookAheadBis", "de/d96/classPurePursuit.html#a662353150619ad27bf3d9c5969a541f6", null ],
+    [ "getNumWaypoints", "de/d96/classPurePursuit.html#a190eec1c08b1b44777b2125de448057c", null ],
+    [ "getPositionReached", "de/d96/classPurePursuit.html#a6613c320f3070a1dec4e1eed14455c4d", null ],
+    [ "getWaypoint", "de/d96/classPurePursuit.html#ad650949b0a832f48159c712542a3378f", null ],
+    [ "load", "de/d96/classPurePursuit.html#a49e7628388bece06e169f9f8ff6e4841", null ],
+    [ "reset", "de/d96/classPurePursuit.html#a7fbc8b6d8116a373a438f3795f255559", null ],
+    [ "save", "de/d96/classPurePursuit.html#a94307f2ba363cdae9566f63cdb9f811b", null ],
+    [ "setDirection", "de/d96/classPurePursuit.html#a5f44936749173662c63f1ce60bcf5e68", null ],
+    [ "setFinalAngle", "de/d96/classPurePursuit.html#a133b1a688e0f753d791ef8d605f0510b", null ],
+    [ "setLookAhead", "de/d96/classPurePursuit.html#a80a78ae6251f346b2320f24a7088b20b", null ],
+    [ "setLookAheadBis", "de/d96/classPurePursuit.html#acea4a27e9a15b22c035df1bfd3fbea6d", null ],
+    [ "m_direction", "de/d96/classPurePursuit.html#a1e02d6cd2990105c5ec9caeda3a5ec48", null ],
+    [ "m_finalAngle", "de/d96/classPurePursuit.html#a129571770b3a61a2d13bdd22b95d82c9", null ],
+    [ "m_goalIndex", "de/d96/classPurePursuit.html#a6751d0db89cf0356c9397efcba7e056e", null ],
+    [ "m_goalParam", "de/d96/classPurePursuit.html#a1cf7466f791b975cf4102e073944b5be", null ],
+    [ "m_goalReached", "de/d96/classPurePursuit.html#a575a120f4d940ec95a12502c41dcbd56", null ],
+    [ "m_lookAhead", "de/d96/classPurePursuit.html#a2ca4964c86c14ae5617ee5f9dd62c336", null ],
+    [ "m_lookAheadBis", "de/d96/classPurePursuit.html#a76b5f246c192ab75506021aed6a2913f", null ],
+    [ "m_numWaypoints", "de/d96/classPurePursuit.html#a8055a8d73d88927c39c604526e237f3e", null ],
+    [ "m_waypoints", "de/d96/classPurePursuit.html#ab132b06bd778cac12c9d963a3106b0d3", null ]
+];

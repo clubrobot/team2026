@@ -1,0 +1,5 @@
+<map id="AbstractCodewheel" name="AbstractCodewheel">
+<area shape="rect" id="Node000001" title="Classe abstraite d&#39;une roue codeuse." alt="" coords="5,5,140,31"/>
+<area shape="rect" id="Node000002" href="$dd/df3/classCodewheel.html" title="Fait la passerelle entre les roues codeuses et le stm32." alt="" coords="30,79,115,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,46,75,79,70,79,70,46"/>
+</map>

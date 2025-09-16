@@ -1,0 +1,9 @@
+<map id="Odometry" name="Odometry">
+<area shape="rect" id="Node000001" title="Calcule la position en temps réel du robot." alt="" coords="141,109,218,135"/>
+<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html" title="Classe à implémenter pour gérer les appels dans la loop." alt="" coords="5,5,122,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,39,168,107,164,111,87,43"/>
+<area shape="rect" id="Node000003" href="$d0/df4/structPosition.html" title="Structure de position." alt="" coords="145,5,214,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,47,182,109,177,109,177,47"/>
+<area shape="rect" id="Node000004" href="$d1/d6f/classAbstractCodewheel.html" title="Classe abstraite d&#39;une roue codeuse." alt="" coords="238,5,372,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="282,43,229,87,198,111,195,106,226,83,278,39"/>
+</map>

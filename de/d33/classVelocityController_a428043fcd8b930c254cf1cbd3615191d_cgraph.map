@@ -1,0 +1,7 @@
+<map id="VelocityController::setSpinShutdown" name="VelocityController::setSpinShutdown">
+<area shape="rect" id="Node000001" title="Change l&#39;état de l&#39;arret d&#39;urgence." alt="" coords="5,5,135,46"/>
+<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html#a910daacfe12010947ec541d3ac565867" title="Execute la méthode process." alt="" coords="183,13,344,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,23,167,23,167,28,135,28"/>
+<area shape="rect" id="Node000003" href="$d2/dfa/classPeriodicProcess.html#a397cd93780d753f5f06335cfe9f2a7f3" title="Méthode à implémenter obligatoirement pour hériter de PeriodicProcess." alt="" coords="392,13,560,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="344,23,376,23,376,28,344,28"/>
+</map>

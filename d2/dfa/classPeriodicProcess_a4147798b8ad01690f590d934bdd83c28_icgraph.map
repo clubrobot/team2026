@@ -1,0 +1,5 @@
+<map id="PeriodicProcess::disable" name="PeriodicProcess::disable">
+<area shape="rect" id="Node000001" title="Désactive le PeriodicProcess." alt="" coords="176,13,339,38"/>
+<area shape="rect" id="Node000002" href="$de/d33/classVelocityController.html#ad9d7a68904dfe039957aea75e48a88a8" title="Calcul l&#39;asservissement." alt="" coords="5,5,128,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,28,128,28,128,23,160,23"/>
+</map>

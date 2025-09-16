@@ -1,0 +1,5 @@
+<map id="ObjectDetector::AnchorBox" name="ObjectDetector::AnchorBox">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,109,183,135"/>
+<area shape="rect" id="Node000002" href="$d8/d43/structPoint.html" title=" " alt="" coords="68,5,120,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,47,97,109,91,109,91,47"/>
+</map>

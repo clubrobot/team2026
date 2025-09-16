@@ -1,0 +1,5 @@
+<map id="Codewheel::getTraveledDistance" name="Codewheel::getTraveledDistance">
+<area shape="rect" id="Node000001" title="Donne la distance parcouru." alt="" coords="182,5,392,31"/>
+<area shape="rect" id="Node000002" href="$dd/df3/classCodewheel.html#a46d7e4b6a5873f986e2ad01c31668c40" title="Donne la distance parcouru et reset le compteur." alt="" coords="5,5,134,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,21,134,21,134,16,166,16"/>
+</map>

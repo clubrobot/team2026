@@ -1,0 +1,17 @@
+<map id="PeriodicProcess::process" name="PeriodicProcess::process">
+<area shape="rect" id="Node000001" title="Méthode à implémenter obligatoirement pour hériter de PeriodicProcess." alt="" coords="422,161,590,186"/>
+<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html#a910daacfe12010947ec541d3ac565867" title="Execute la méthode process." alt="" coords="213,161,374,186"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="407,176,374,176,374,171,407,171"/>
+<area shape="rect" id="Node000003" href="$d5/d9e/classDifferentialController.html#aecf1d9bcec79e50b87349d93acce8629" title="Charge l&#39;entraxe." alt="" coords="16,5,154,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="268,151,222,105,163,60,143,49,146,44,166,55,225,101,272,147"/>
+<area shape="rect" id="Node000004" href="$d6/dc3/classOdometry.html#ae4c55db07acd9dcf1ab2197afb9623b3" title="Defini une nouvelle entraxe pour les roues codeuses." alt="" coords="5,70,165,96"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="254,155,164,111,131,99,133,94,166,106,257,150"/>
+<area shape="rect" id="Node000005" href="$de/d33/classVelocityController.html#a7b1ccf3d8e7b268301a35b0577f51f31" title="Paramètre les accélérations max." alt="" coords="24,120,146,161"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="197,161,146,153,147,147,198,156"/>
+<area shape="rect" id="Node000006" href="$de/d33/classVelocityController.html#aa00bd41d5064587f3324c7b4309fd483" title="Paramètre les décéleration max." alt="" coords="24,185,146,226"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="198,191,147,199,146,194,197,186"/>
+<area shape="rect" id="Node000007" href="$d6/dc3/classOdometry.html#a0e4a3346ceae934ac0ec45c9fb8a6b22" title="Defini la nouvelle dérive orthogonal." alt="" coords="9,250,161,276"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="256,197,166,240,133,252,131,247,164,235,254,192"/>
+<area shape="rect" id="Node000008" href="$de/d33/classVelocityController.html#a428043fcd8b930c254cf1cbd3615191d" title="Change l&#39;état de l&#39;arret d&#39;urgence." alt="" coords="20,300,150,341"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="272,200,225,245,166,291,145,302,143,297,163,286,222,241,268,196"/>
+</map>

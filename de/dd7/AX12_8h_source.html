@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CRINSA-team2025:  Fichier source de lib/AX12/AX12.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="text/javascript" src="../../darkmode_toggle.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">CRINSA-team2025<span id="projectnumber">&#160;V1</span>
+   </div>
+   <div id="projectbrief">Documentation du Club Robot INSA Rennes 2025</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('de/dd7/AX12_8h_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">AX12.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __AX12_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __AX12_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Dynamixel.h&quot;</span>  </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define AX12_BAUDRATE 1000000</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// mask error bit</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define INSTRUCTION_ERROR_MASK      0x20</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define OVERLOAD_ERROR_MASK         0x10</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define CHECKSUM_ERROR_MASK         0X08</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define RANGE_ERROR_MASK            0x04</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define ANGLE_LIMIT_ERROR_MASK      0x02</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#define INPUT_VOLTAGE_ERROR_MASK    0x01</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// Macros to detect error type</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#define INSTRUCTION_ERROR(x)    (x &amp; INSTRUCTION_ERROR_MASK)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define OVERLOAD_ERROR(x)       (x &amp; OVERLOAD_ERROR_MASK)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define CHECKSUM_ERROR(x)       (x &amp; CHECKSUM_ERROR_MASK)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#define RANGE_ERROR(x)          (x &amp; RANGE_ERROR_MASK)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define ANGLE_LIMIT_ERROR(x)    (x &amp; ANGLE_LIMIT_ERROR_MASK)</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#define INPUT_VOLTAGE_ERROR(x)  (x &amp; INPUT_VOLTAGE_ERROR_MASK)</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d8/d27/classAX12.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="../../d8/d27/classAX12.html">AX12</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">private</span>: </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> m_id;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">bool</span> m_endlessMode;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">bool</span> m_holding;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#af8e6041f2e16340f6e0509d402092bb7">SerialBegin</a>(<span class="keywordtype">long</span> baud, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> rtx);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#af8e6041f2e16340f6e0509d402092bb7">SerialBegin</a>(<span class="keywordtype">long</span> baud);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a1309023dbc262ce6b3c1ff40641caa25">end</a>();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a9e8ecee54bf85d3f07b5af9a727b805c">attach</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a3e27ab7f923c3dfa641e82e9d64bc510">detach</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#abe51b9336e079929ce28ec72e72811fb">ping</a>();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a9bb6672806c7bead35d48070f5cb319e">setID</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> newID);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#abeeb4f1a19fae282a0c821a80df34607">setBD</a>(<span class="keywordtype">long</span> baud);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#ab290e2e6d0d1c2537417dabbb85f0135">move</a>(<span class="keywordtype">float</span> <a class="code hl_struct" href="../../d0/df4/structPosition.html">Position</a>, <span class="keywordtype">bool</span> waitForFinish=<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#aeed2f4a6cd3ceef8ea42c0dd73400fb5">moveSpeed</a>(<span class="keywordtype">float</span> <a class="code hl_struct" href="../../d0/df4/structPosition.html">Position</a>, <span class="keywordtype">float</span> Speed, <span class="keywordtype">bool</span> waitForFinish=<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a5fe7e1d38159023ff110a529f6a30dd7">setEndlessMode</a>(<span class="keywordtype">bool</span> Status);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a037864a561b6d9db88021ff5d5d2d0c3">turn</a>(<span class="keywordtype">int</span> Speed);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#ab390ad86381f9dc2cbc944354ba11bdf">Nextmove</a>(<span class="keywordtype">float</span> <a class="code hl_struct" href="../../d0/df4/structPosition.html">Position</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#ad9f6efa05581f7e30f9f090a502c94fb">NextmoveSpeed</a>(<span class="keywordtype">float</span> <a class="code hl_struct" href="../../d0/df4/structPosition.html">Position</a>, <span class="keywordtype">float</span> Speed);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">void</span> <span class="keyword">static</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#af09b5221b2c370187fa29f1c55f1e8ee">action</a>();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a9ec66d542930fe9be8795d0dd2a02d92">setTempLimit</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> Temperature);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a77ee0f2bc49a625139336b8487010de5">setAngleLimit</a>(<span class="keywordtype">float</span> CWLimit, <span class="keywordtype">float</span> CCWLimit);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a5c1f3d158312b424129e91628e15b19c">setVoltageLimit</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> DVoltage, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> UVoltage);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#aaf56850782d2a78c5e257de4d34fd556">setMaxTorque</a>(<span class="keywordtype">int</span> MaxTorque);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#ad211a2e82dbc4d5f010cc6b326db66ab">setMaxTorqueRAM</a>(<span class="keywordtype">int</span> MaxTorque);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">int</span> setSRL(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> SRL);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">int</span> setRDT(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> RDT);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordtype">int</span> setLEDAlarm(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> LEDAlarm);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordtype">int</span> setShutdownAlarm(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> SALARM);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordtype">int</span> setCMargin(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> CWCMargin, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> CCWCMargin);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">int</span> setCSlope( <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> CWCSlope, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> CCWCSlope);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">int</span> setPunch(<span class="keywordtype">int</span> Punch);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a405c72637ba066f7029640aa8f705c9f">moving</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordtype">int</span> lockRegister();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a1a4c619a49f3dba09fee3d723d572d7e">savedMove</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a9505d53fa861c549d0707160598be897">readTemperature</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordtype">float</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a88f715439c6f50f3e6dca6c30f6f0897">readVoltage</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordtype">float</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a0051ca6ed1b26619aef55ca5def61c94">readPosition</a>();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordtype">float</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a8435f4c2c2c0b769afda199e608120e4">readSpeed</a>();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a3b6edc073ad24249b87d83cbd8109f00">readTorque</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordtype">bool</span> isHolding();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordtype">int</span> hold(<span class="keywordtype">bool</span> Status);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d27/classAX12.html#a58d79d4e392d8ce952a5db5875d747b8">led</a>(<span class="keywordtype">bool</span> Status);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif </span><span class="comment">/* __AX12_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassAX12_html"><div class="ttname"><a href="../../d8/d27/classAX12.html">AX12</a></div><div class="ttdef"><b>Definition</b> AX12.h:25</div></div>
+<div class="ttc" id="aclassAX12_html_a0051ca6ed1b26619aef55ca5def61c94"><div class="ttname"><a href="../../d8/d27/classAX12.html#a0051ca6ed1b26619aef55ca5def61c94">AX12::readPosition</a></div><div class="ttdeci">float readPosition()</div><div class="ttdoc">Renvoie la position actuelle de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:290</div></div>
+<div class="ttc" id="aclassAX12_html_a037864a561b6d9db88021ff5d5d2d0c3"><div class="ttname"><a href="../../d8/d27/classAX12.html#a037864a561b6d9db88021ff5d5d2d0c3">AX12::turn</a></div><div class="ttdeci">int turn(int Speed)</div><div class="ttdoc">Fait tourner l&#39;AX12 en mode Moteur à une vitesse définie.</div><div class="ttdef"><b>Definition</b> AX12.cpp:132</div></div>
+<div class="ttc" id="aclassAX12_html_a1309023dbc262ce6b3c1ff40641caa25"><div class="ttname"><a href="../../d8/d27/classAX12.html#a1309023dbc262ce6b3c1ff40641caa25">AX12::end</a></div><div class="ttdeci">static void end()</div><div class="ttdoc">Fini la comm avec le bus d&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:25</div></div>
+<div class="ttc" id="aclassAX12_html_a1a4c619a49f3dba09fee3d723d572d7e"><div class="ttname"><a href="../../d8/d27/classAX12.html#a1a4c619a49f3dba09fee3d723d572d7e">AX12::savedMove</a></div><div class="ttdeci">int savedMove()</div><div class="ttdoc">Renvoie l&#39;action programmée pour le prochain appel d&#39;action.</div><div class="ttdef"><b>Definition</b> AX12.cpp:266</div></div>
+<div class="ttc" id="aclassAX12_html_a3b6edc073ad24249b87d83cbd8109f00"><div class="ttname"><a href="../../d8/d27/classAX12.html#a3b6edc073ad24249b87d83cbd8109f00">AX12::readTorque</a></div><div class="ttdeci">int readTorque()</div><div class="ttdoc">Couple la vitesse de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:312</div></div>
+<div class="ttc" id="aclassAX12_html_a3e27ab7f923c3dfa641e82e9d64bc510"><div class="ttname"><a href="../../d8/d27/classAX12.html#a3e27ab7f923c3dfa641e82e9d64bc510">AX12::detach</a></div><div class="ttdeci">void detach()</div><div class="ttdoc">Enlève la déclaration de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:40</div></div>
+<div class="ttc" id="aclassAX12_html_a405c72637ba066f7029640aa8f705c9f"><div class="ttname"><a href="../../d8/d27/classAX12.html#a405c72637ba066f7029640aa8f705c9f">AX12::moving</a></div><div class="ttdeci">int moving()</div><div class="ttdoc">Regarde si l&#39;AX12 bouge de lui même.</div><div class="ttdef"><b>Definition</b> AX12.cpp:254</div></div>
+<div class="ttc" id="aclassAX12_html_a58d79d4e392d8ce952a5db5875d747b8"><div class="ttname"><a href="../../d8/d27/classAX12.html#a58d79d4e392d8ce952a5db5875d747b8">AX12::led</a></div><div class="ttdeci">int led(bool Status)</div><div class="ttdoc">Modifie l&#39;allumage de la LED.</div><div class="ttdef"><b>Definition</b> AX12.cpp:336</div></div>
+<div class="ttc" id="aclassAX12_html_a5c1f3d158312b424129e91628e15b19c"><div class="ttname"><a href="../../d8/d27/classAX12.html#a5c1f3d158312b424129e91628e15b19c">AX12::setVoltageLimit</a></div><div class="ttdeci">int setVoltageLimit(unsigned char DVoltage, unsigned char UVoltage)</div><div class="ttdoc">Définie les limites de tension de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:199</div></div>
+<div class="ttc" id="aclassAX12_html_a5fe7e1d38159023ff110a529f6a30dd7"><div class="ttname"><a href="../../d8/d27/classAX12.html#a5fe7e1d38159023ff110a529f6a30dd7">AX12::setEndlessMode</a></div><div class="ttdeci">int setEndlessMode(bool Status)</div><div class="ttdoc">Met ou non le mode sans fin de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:122</div></div>
+<div class="ttc" id="aclassAX12_html_a77ee0f2bc49a625139336b8487010de5"><div class="ttname"><a href="../../d8/d27/classAX12.html#a77ee0f2bc49a625139336b8487010de5">AX12::setAngleLimit</a></div><div class="ttdeci">int setAngleLimit(float CWLimit, float CCWLimit)</div><div class="ttdoc">Définie les bornes de rotations.</div><div class="ttdef"><b>Definition</b> AX12.cpp:187</div></div>
+<div class="ttc" id="aclassAX12_html_a8435f4c2c2c0b769afda199e608120e4"><div class="ttname"><a href="../../d8/d27/classAX12.html#a8435f4c2c2c0b769afda199e608120e4">AX12::readSpeed</a></div><div class="ttdeci">float readSpeed()</div><div class="ttdoc">Renvoie la vitesse de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:299</div></div>
+<div class="ttc" id="aclassAX12_html_a88f715439c6f50f3e6dca6c30f6f0897"><div class="ttname"><a href="../../d8/d27/classAX12.html#a88f715439c6f50f3e6dca6c30f6f0897">AX12::readVoltage</a></div><div class="ttdeci">float readVoltage()</div><div class="ttdoc">Lis la tension de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:282</div></div>
+<div class="ttc" id="aclassAX12_html_a9505d53fa861c549d0707160598be897"><div class="ttname"><a href="../../d8/d27/classAX12.html#a9505d53fa861c549d0707160598be897">AX12::readTemperature</a></div><div class="ttdeci">int readTemperature()</div><div class="ttdoc">Lis la température de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:274</div></div>
+<div class="ttc" id="aclassAX12_html_a9bb6672806c7bead35d48070f5cb319e"><div class="ttname"><a href="../../d8/d27/classAX12.html#a9bb6672806c7bead35d48070f5cb319e">AX12::setID</a></div><div class="ttdeci">int setID(unsigned char newID)</div><div class="ttdoc">Déclare une nouvelle ID à l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:57</div></div>
+<div class="ttc" id="aclassAX12_html_a9e8ecee54bf85d3f07b5af9a727b805c"><div class="ttname"><a href="../../d8/d27/classAX12.html#a9e8ecee54bf85d3f07b5af9a727b805c">AX12::attach</a></div><div class="ttdeci">void attach(unsigned char id)</div><div class="ttdoc">Déclare un AX12 dans le bus d&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:33</div></div>
+<div class="ttc" id="aclassAX12_html_a9ec66d542930fe9be8795d0dd2a02d92"><div class="ttname"><a href="../../d8/d27/classAX12.html#a9ec66d542930fe9be8795d0dd2a02d92">AX12::setTempLimit</a></div><div class="ttdeci">int setTempLimit(unsigned char Temperature)</div><div class="ttdoc">Définie la temparture limite de l&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:177</div></div>
+<div class="ttc" id="aclassAX12_html_aaf56850782d2a78c5e257de4d34fd556"><div class="ttname"><a href="../../d8/d27/classAX12.html#aaf56850782d2a78c5e257de4d34fd556">AX12::setMaxTorque</a></div><div class="ttdeci">int setMaxTorque(int MaxTorque)</div><div class="ttdoc">Définie la limite MAX de couple.</div><div class="ttdef"><b>Definition</b> AX12.cpp:208</div></div>
+<div class="ttc" id="aclassAX12_html_ab290e2e6d0d1c2537417dabbb85f0135"><div class="ttname"><a href="../../d8/d27/classAX12.html#ab290e2e6d0d1c2537417dabbb85f0135">AX12::move</a></div><div class="ttdeci">int move(float Position, bool waitForFinish=false)</div><div class="ttdoc">Bouge l&#39;AX12 à un position définie.</div><div class="ttdef"><b>Definition</b> AX12.cpp:76</div></div>
+<div class="ttc" id="aclassAX12_html_ab390ad86381f9dc2cbc944354ba11bdf"><div class="ttname"><a href="../../d8/d27/classAX12.html#ab390ad86381f9dc2cbc944354ba11bdf">AX12::Nextmove</a></div><div class="ttdeci">int Nextmove(float Position)</div><div class="ttdoc">Programme la prochaine action réalisée quand action sera appelé</div><div class="ttdef"><b>Definition</b> AX12.cpp:148</div></div>
+<div class="ttc" id="aclassAX12_html_abe51b9336e079929ce28ec72e72811fb"><div class="ttname"><a href="../../d8/d27/classAX12.html#abe51b9336e079929ce28ec72e72811fb">AX12::ping</a></div><div class="ttdeci">int ping()</div><div class="ttdoc">Ping l&#39;AX12 pour voir s&#39;il est dans le bus.</div><div class="ttdef"><b>Definition</b> AX12.cpp:48</div></div>
+<div class="ttc" id="aclassAX12_html_abeeb4f1a19fae282a0c821a80df34607"><div class="ttname"><a href="../../d8/d27/classAX12.html#abeeb4f1a19fae282a0c821a80df34607">AX12::setBD</a></div><div class="ttdeci">int setBD(long baud)</div><div class="ttdoc">Change le baud d&#39;un AX12 parmis le bus d&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:66</div></div>
+<div class="ttc" id="aclassAX12_html_ad211a2e82dbc4d5f010cc6b326db66ab"><div class="ttname"><a href="../../d8/d27/classAX12.html#ad211a2e82dbc4d5f010cc6b326db66ab">AX12::setMaxTorqueRAM</a></div><div class="ttdeci">int setMaxTorqueRAM(int MaxTorque)</div><div class="ttdoc">Définie dans la RAM la limite MAX de couple.</div><div class="ttdef"><b>Definition</b> AX12.cpp:218</div></div>
+<div class="ttc" id="aclassAX12_html_ad9f6efa05581f7e30f9f090a502c94fb"><div class="ttname"><a href="../../d8/d27/classAX12.html#ad9f6efa05581f7e30f9f090a502c94fb">AX12::NextmoveSpeed</a></div><div class="ttdeci">int NextmoveSpeed(float Position, float Speed)</div><div class="ttdoc">Programme la prochaine action réalisée quand action sera appelé</div><div class="ttdef"><b>Definition</b> AX12.cpp:159</div></div>
+<div class="ttc" id="aclassAX12_html_aeed2f4a6cd3ceef8ea42c0dd73400fb5"><div class="ttname"><a href="../../d8/d27/classAX12.html#aeed2f4a6cd3ceef8ea42c0dd73400fb5">AX12::moveSpeed</a></div><div class="ttdeci">int moveSpeed(float Position, float Speed, bool waitForFinish=false)</div><div class="ttdoc">Bouge l&#39;AX12 à un position &amp; vitesse définie.</div><div class="ttdef"><b>Definition</b> AX12.cpp:100</div></div>
+<div class="ttc" id="aclassAX12_html_af09b5221b2c370187fa29f1c55f1e8ee"><div class="ttname"><a href="../../d8/d27/classAX12.html#af09b5221b2c370187fa29f1c55f1e8ee">AX12::action</a></div><div class="ttdeci">static void action()</div><div class="ttdoc">déclenche l&#39;action pour tout les AX12</div><div class="ttdef"><b>Definition</b> AX12.cpp:167</div></div>
+<div class="ttc" id="aclassAX12_html_af8e6041f2e16340f6e0509d402092bb7"><div class="ttname"><a href="../../d8/d27/classAX12.html#af8e6041f2e16340f6e0509d402092bb7">AX12::SerialBegin</a></div><div class="ttdeci">static void SerialBegin(long baud, unsigned char rtx)</div><div class="ttdoc">Ouvre le port serial défini par le param rtx du bus d&#39;AX12.</div><div class="ttdef"><b>Definition</b> AX12.cpp:10</div></div>
+<div class="ttc" id="astructPosition_html"><div class="ttname"><a href="../../d0/df4/structPosition.html">Position</a></div><div class="ttdoc">Structure de position.</div><div class="ttdef"><b>Definition</b> Odometry.h:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="../../dir_103998d7f9c5d14615117f41e630626c.html">AX12</a></li><li class="navelem"><b>AX12.h</b></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

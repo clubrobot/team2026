@@ -1,0 +1,9 @@
+<map id="Codewheel::update" name="Codewheel::update">
+<area shape="rect" id="Node000001" title="Récupère le nombre de tics stoqués dans le compteur." alt="" coords="642,5,773,31"/>
+<area shape="rect" id="Node000002" href="$dd/df3/classCodewheel.html#a1385b3e054723c02d5c6611afa822918" title="renvoie le compteur de la roue codeuse" alt="" coords="440,5,594,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="627,21,595,21,595,16,627,16"/>
+<area shape="rect" id="Node000003" href="$dd/df3/classCodewheel.html#aeebb10d23afc0761c434475d5940d1bc" title="Donne la distance parcouru." alt="" coords="182,5,392,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="424,21,392,21,392,16,424,16"/>
+<area shape="rect" id="Node000004" href="$dd/df3/classCodewheel.html#a46d7e4b6a5873f986e2ad01c31668c40" title="Donne la distance parcouru et reset le compteur." alt="" coords="5,5,134,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="166,21,134,21,134,16,166,16"/>
+</map>

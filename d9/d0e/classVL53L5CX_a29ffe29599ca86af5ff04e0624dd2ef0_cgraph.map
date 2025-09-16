@@ -1,0 +1,7 @@
+<map id="VL53L5CX::_vl53l5cx_poll_for_answer" name="VL53L5CX::_vl53l5cx_poll_for_answer">
+<area shape="rect" id="Node000001" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="5,23,151,64"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="199,5,334,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,31,183,27,184,32,151,36"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="199,55,334,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,50,184,54,183,60,151,55"/>
+</map>

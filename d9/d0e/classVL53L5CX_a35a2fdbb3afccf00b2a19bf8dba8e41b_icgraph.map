@@ -1,0 +1,5 @@
+<map id="VL53L5CX::vl53l5cx_get_power_mode" name="VL53L5CX::vl53l5cx_get_power_mode">
+<area shape="rect" id="Node000001" title="This function is used to get the current sensor power mode." alt="" coords="192,5,330,46"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#ad8810d13170d2bef0b47199c54d9621f" title="This function is used to set the sensor in Low Power mode, for example if the sensor is not used duri..." alt="" coords="5,5,144,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,28,144,28,144,23,176,23"/>
+</map>

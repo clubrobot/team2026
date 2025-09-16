@@ -1,0 +1,5 @@
+<map id="VL53L5CX::vl53l5cx_set_i2c_address" name="VL53L5CX::vl53l5cx_set_i2c_address">
+<area shape="rect" id="Node000001" title="This function is used to change the I2C address of the sensor. If multiple VL53L5 sensors are connect..." alt="" coords="208,5,346,46"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2" title="Initialize the sensor." alt="" coords="5,13,160,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,28,160,28,160,23,192,23"/>
+</map>

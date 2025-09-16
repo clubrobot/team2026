@@ -1,0 +1,15 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,129,55,155"/>
+<area shape="rect" id="Node000001" href="$db/d05/classgeogebra_1_1Geogebra_1_1Circle.html" title=" " alt="" coords="112,5,282,31"/>
+<area shape="poly" id="edge32_Node000000_Node000001" title=" " alt="" coords="41,114,65,76,82,56,101,40,122,29,124,34,104,44,86,60,70,79,46,117"/>
+<area shape="rect" id="Node000002" href="$d2/d1d/classgeogebra_1_1Geogebra_1_1Ellipse.html" title=" " alt="" coords="110,55,284,80"/>
+<area shape="poly" id="edge33_Node000000_Node000002" title=" " alt="" coords="57,117,101,89,130,78,132,83,104,94,60,122"/>
+<area shape="rect" id="Node000003" href="$d4/df3/classgeogebra_1_1Geogebra_1_1Line.html" title=" " alt="" coords="116,104,278,130"/>
+<area shape="poly" id="edge34_Node000000_Node000003" title=" " alt="" coords="70,134,115,127,116,132,71,139"/>
+<area shape="rect" id="Node000004" href="$d9/dde/classgeogebra_1_1Geogebra_1_1Point.html" title=" " alt="" coords="114,153,280,179"/>
+<area shape="poly" id="edge35_Node000000_Node000004" title=" " alt="" coords="71,145,113,151,113,157,70,151"/>
+<area shape="rect" id="Node000005" href="$da/da0/classgeogebra_1_1Geogebra_1_1Segment.html" title=" " alt="" coords="103,203,291,228"/>
+<area shape="poly" id="edge36_Node000000_Node000005" title=" " alt="" coords="60,162,104,189,132,200,131,205,102,194,57,167"/>
+<area shape="rect" id="Node000006" href="$d2/d66/classgeogebra_1_1Geogebra_1_1Vector.html" title=" " alt="" coords="110,252,284,278"/>
+<area shape="poly" id="edge37_Node000000_Node000006" title=" " alt="" coords="46,167,70,205,86,223,104,239,124,249,122,254,101,243,82,227,66,208,42,170"/>
+</map>

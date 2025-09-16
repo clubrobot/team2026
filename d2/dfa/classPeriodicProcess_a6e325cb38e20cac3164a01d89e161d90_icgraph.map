@@ -1,0 +1,7 @@
+<map id="PeriodicProcess::onProcessDisabling" name="PeriodicProcess::onProcessDisabling">
+<area shape="rect" id="Node000001" title="Méthode exécutée à la désactivation du PeriodicProcess." alt="" coords="387,5,571,46"/>
+<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html#a4147798b8ad01690f590d934bdd83c28" title="Désactive le PeriodicProcess." alt="" coords="176,13,339,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="372,28,340,28,340,23,372,23"/>
+<area shape="rect" id="Node000003" href="$de/d33/classVelocityController.html#ad9d7a68904dfe039957aea75e48a88a8" title="Calcul l&#39;asservissement." alt="" coords="5,5,128,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="160,28,128,28,128,23,160,23"/>
+</map>

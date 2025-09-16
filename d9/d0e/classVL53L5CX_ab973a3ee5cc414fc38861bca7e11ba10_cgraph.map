@@ -1,0 +1,26 @@
+<map id="VL53L5CX::vl53l5cx_set_resolution" name="VL53L5CX::vl53l5cx_set_resolution">
+<area shape="rect" id="Node000001" title="This function sets a new resolution (4x4 or 8x8)." alt="" coords="5,104,144,145"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a02e2e87988e444f3672d1038beaad6b6" title="Inner function, not available outside this file. This function is used to set the offset data gathere..." alt="" coords="192,5,337,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,101,190,57,202,51,205,55,193,61,112,106"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#abfe5561038c9b3edf74dfada249d5831" title="Inner function, not available outside this file. This function is used to set the Xtalk data from gen..." alt="" coords="192,71,337,111"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="143,110,176,104,177,109,144,115"/>
+<area shape="rect" id="Node000008" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="195,201,334,242"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="113,143,193,186,205,192,202,197,190,191,111,147"/>
+<area shape="rect" id="Node000009" href="$d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="195,136,334,177"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="144,133,180,139,179,145,143,139"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="385,136,530,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,44,339,57,354,73,363,88,372,103,387,118,396,125,393,130,383,122,368,106,359,91,350,76,335,61,317,49"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="390,82,525,108"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="324,44,406,74,404,79,322,49"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="578,197,714,222"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="532,174,584,189,583,195,530,180"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="578,144,714,169"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="531,154,563,154,563,159,531,159"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="327,109,382,128,380,133,326,114"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="337,90,374,91,374,96,337,95"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="326,198,380,180,382,185,327,203"/>
+<area shape="poly" id="edge11_Node000008_Node000004" title=" " alt="" coords="334,217,563,210,563,215,334,222"/>
+<area shape="poly" id="edge12_Node000008_Node000006" title=" " alt="" coords="317,199,335,186,350,170,358,155,367,139,383,122,398,113,401,117,387,126,372,142,363,157,354,173,339,190,320,203"/>
+<area shape="poly" id="edge14_Node000009_Node000003" title=" " alt="" coords="334,154,370,154,370,159,334,159"/>
+<area shape="poly" id="edge15_Node000009_Node000006" title=" " alt="" coords="330,133,400,110,401,116,332,138"/>
+</map>

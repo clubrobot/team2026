@@ -1,0 +1,7 @@
+<map id="Codewheel" name="Codewheel">
+<area shape="rect" id="Node000001" title="Fait la passerelle entre les roues codeuses et le stm32." alt="" coords="81,79,166,105"/>
+<area shape="rect" id="Node000002" href="$dc/d3c/classNonCopyable.html" title="Classe a hériter pour empécher la copie de cette dernière." alt="" coords="5,5,104,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,40,114,77,110,80,74,44"/>
+<area shape="rect" id="Node000003" href="$d1/d6f/classAbstractCodewheel.html" title="Classe abstraite d&#39;une roue codeuse." alt="" coords="127,5,262,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,44,138,80,134,77,170,40"/>
+</map>

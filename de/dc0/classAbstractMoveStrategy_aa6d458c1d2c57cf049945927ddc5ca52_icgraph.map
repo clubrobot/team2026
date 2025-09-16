@@ -1,0 +1,7 @@
+<map id="AbstractMoveStrategy::getPosSetpoint" name="AbstractMoveStrategy::getPosSetpoint">
+<area shape="rect" id="Node000001" title="Retourne la position à atteindre." alt="" coords="242,39,392,79"/>
+<area shape="rect" id="Node000002" href="$d9/dee/classTurnOnTheSpot.html#a520b49b8739d9568b4dc9496b338b680" title="Calcul les nouvelles vitesses désirer." alt="" coords="5,5,194,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,48,194,43,194,38,226,42"/>
+<area shape="rect" id="Node000003" href="$d9/dee/classTurnOnTheSpot.html#afcc1cdb8cac7b7c624bb1081773d60be" title="Indique si la position désirée est atteinte." alt="" coords="7,71,192,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,75,193,80,192,75,226,70"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
+<area shape="rect" id="Node000000" href="$d2/dfa/classPeriodicProcess.html" title="Classe à implémenter pour gérer les appels dans la loop." alt="" coords="5,104,122,130"/>
+<area shape="rect" id="Node000001" href="$d7/d82/classBrushlessMotor.html" title=" " alt="" coords="182,5,294,31"/>
+<area shape="poly" id="edge13_Node000000_Node000001" title=" " alt="" coords="91,92,127,65,168,40,193,29,195,34,171,45,130,70,94,96"/>
+<area shape="rect" id="Node000002" href="$d5/d9e/classDifferentialController.html" title="Controle les moteurs." alt="" coords="170,55,307,80"/>
+<area shape="poly" id="edge14_Node000000_Node000002" title=" " alt="" coords="125,97,189,78,191,84,127,102"/>
+<area shape="rect" id="Node000004" href="$d9/df7/classFullSpeedServo.html" title="Pilotage de Servomoteur particulier." alt="" coords="182,104,295,130"/>
+<area shape="poly" id="edge16_Node000000_Node000004" title=" " alt="" coords="137,114,181,114,181,120,137,120"/>
+<area shape="rect" id="Node000005" href="$d6/dc3/classOdometry.html" title="Calcule la position en temps réel du robot." alt="" coords="200,153,277,179"/>
+<area shape="poly" id="edge17_Node000000_Node000005" title=" " alt="" coords="127,132,200,153,199,158,126,137"/>
+<area shape="rect" id="Node000006" href="$d2/d64/classPositionController.html" title="Classe support des objets AbstractMoveStrategy." alt="" coords="177,203,300,228"/>
+<area shape="poly" id="edge18_Node000000_Node000006" title=" " alt="" coords="94,137,130,164,171,189,195,200,193,205,168,194,127,168,91,142"/>
+<area shape="rect" id="Node000003" href="$de/d33/classVelocityController.html" title="Objet de controle de la vitesse." alt="" coords="355,55,477,80"/>
+<area shape="poly" id="edge15_Node000002_Node000003" title=" " alt="" coords="323,65,355,65,355,70,323,70"/>
+</map>

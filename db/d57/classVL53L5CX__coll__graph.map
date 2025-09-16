@@ -1,0 +1,7 @@
+<map id="VL53L5CX" name="VL53L5CX">
+<area shape="rect" id="Node000001" title=" " alt="" coords="46,198,132,223"/>
+<area shape="rect" id="Node000002" href="$da/dce/structVL53L5CX__Configuration.html" title="Structure VL53L5CX_Configuration contains the sensor configuration. User MUST not manually change the..." alt="" coords="5,94,173,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,135,92,197,86,197,86,135"/>
+<area shape="rect" id="Node000003" href="$de/d5c/structVL53L5CX__Platform.html" title="Structure VL53L5CX_Platform needs to be filled by the customer, depending on his platform...." alt="" coords="18,5,160,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="92,47,92,94,86,94,86,47"/>
+</map>

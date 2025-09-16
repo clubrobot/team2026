@@ -1,0 +1,17 @@
+<map id="TurnOnTheSpot::computeVelSetpoints" name="TurnOnTheSpot::computeVelSetpoints">
+<area shape="rect" id="Node000001" title="Calcul les nouvelles vitesses désirer." alt="" coords="5,201,194,242"/>
+<area shape="rect" id="Node000002" href="$de/dc0/classAbstractMoveStrategy.html#a34e828c9189a02c92889a476254d95da" title="Retourne le coef proportionnel de vitesse angulaire." alt="" coords="242,5,392,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,200,163,131,200,92,240,57,247,52,250,56,243,61,203,96,168,135,116,203"/>
+<area shape="rect" id="Node000003" href="$de/dc0/classAbstractMoveStrategy.html#a8e71820d1f3dfea99ec35cf3aaf1319a" title="Retourne vitesse angulaire max." alt="" coords="242,71,392,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="126,199,178,161,240,122,251,116,254,121,243,127,181,166,129,203"/>
+<area shape="rect" id="Node000004" href="$de/dc0/classAbstractMoveStrategy.html#ad2cdd59254831d777e276c053d93e507" title="Retourne le coef proportionnel de vitesse linéaire." alt="" coords="242,136,392,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,198,232,179,233,184,170,203"/>
+<area shape="rect" id="Node000005" href="$de/dc0/classAbstractMoveStrategy.html#a37f4a119ef96ba81c3621d6f640039b0" title="Retourne vitesse linéaire max." alt="" coords="242,201,392,242"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="194,219,226,219,226,224,194,224"/>
+<area shape="rect" id="Node000006" href="$de/dc0/classAbstractMoveStrategy.html#ac833928eb8dbfd75e119f7bd0c0ba636" title="Retourne la position du robot." alt="" coords="242,267,392,307"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="170,240,233,259,232,264,169,245"/>
+<area shape="rect" id="Node000007" href="$de/dc0/classAbstractMoveStrategy.html#aa6d458c1d2c57cf049945927ddc5ca52" title="Retourne la position à atteindre." alt="" coords="242,332,392,373"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="129,240,181,278,243,317,254,322,251,327,240,321,178,282,126,245"/>
+<area shape="rect" id="Node000008" href="$de/dc0/classAbstractMoveStrategy.html#a9be3e48b174c6f084e84af1e903c78a4" title="Charge une nouvelle vitesse pour le robot." alt="" coords="242,397,392,438"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="116,241,168,309,203,347,243,382,250,387,247,392,240,386,200,351,163,312,112,244"/>
+</map>

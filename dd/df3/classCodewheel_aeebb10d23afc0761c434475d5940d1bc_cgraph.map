@@ -1,0 +1,7 @@
+<map id="Codewheel::getTraveledDistance" name="Codewheel::getTraveledDistance">
+<area shape="rect" id="Node000001" title="Donne la distance parcouru." alt="" coords="5,5,216,31"/>
+<area shape="rect" id="Node000002" href="$dd/df3/classCodewheel.html#a1385b3e054723c02d5c6611afa822918" title="renvoie le compteur de la roue codeuse" alt="" coords="264,5,418,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="216,16,248,16,248,21,216,21"/>
+<area shape="rect" id="Node000003" href="$dd/df3/classCodewheel.html#a481b69520445ed19be3ead3af9a777f7" title="Récupère le nombre de tics stoqués dans le compteur." alt="" coords="466,5,596,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="418,16,450,16,450,21,418,21"/>
+</map>

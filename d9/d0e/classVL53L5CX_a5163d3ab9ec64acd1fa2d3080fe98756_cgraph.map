@@ -1,0 +1,39 @@
+<map id="VL53L5CX::vl53l5cx_init" name="VL53L5CX::vl53l5cx_init">
+<area shape="rect" id="Node000001" title="Mandatory function used to initialize the sensor. This function must be called after a power on,..." alt="" coords="5,246,168,271"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a29ffe29599ca86af5ff04e0624dd2ef0" title="Inner function, not available outside this file. This function is used to wait for an answer from VL5..." alt="" coords="595,331,741,372"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,270,148,323,181,353,217,380,265,408,305,425,347,436,402,446,476,459,507,457,546,447,573,434,597,418,638,381,641,385,600,422,575,439,548,452,508,462,476,464,402,452,346,441,303,430,263,413,214,385,177,357,144,327,96,274"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="789,130,924,155"/>
+<area shape="poly" id="edge12_Node000001_Node000003" title=" " alt="" coords="89,244,102,204,127,150,164,95,187,70,214,51,254,31,295,18,337,9,380,4,468,7,554,21,636,43,709,70,819,120,816,124,707,75,634,48,553,26,467,12,380,10,338,14,296,23,256,36,217,55,191,74,168,98,131,153,107,206,94,246"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a9d17f9ab26e6a1cd6387c6382668d2c4" title="Mandatory function, used to wait during an amount of time. It must be filled as it&#39;s used into the AP..." alt="" coords="789,426,924,451"/>
+<area shape="poly" id="edge22_Node000001_Node000004" title=" " alt="" coords="95,271,110,307,135,354,171,403,193,425,217,443,253,462,291,477,371,497,454,505,536,504,615,496,687,483,801,454,802,459,688,488,616,501,536,509,453,511,370,502,290,482,251,467,214,447,189,429,167,407,131,357,105,309,90,273"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a02e2e87988e444f3672d1038beaad6b6" title="Inner function, not available outside this file. This function is used to set the offset data gathere..." alt="" coords="402,397,547,437"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="112,269,159,296,217,324,307,360,392,389,390,394,305,365,215,329,157,301,109,274"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#a604061772cf5c87fe96d455c084b7008" title="Mandatory function used to write multiples bytes." alt="" coords="600,254,736,279"/>
+<area shape="poly" id="edge25_Node000001_Node000006" title=" " alt="" coords="108,243,155,217,215,194,307,172,382,161,418,161,456,165,548,186,575,197,600,211,643,241,639,245,598,215,573,202,547,192,456,170,418,166,382,167,308,177,216,200,158,222,110,247"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#abfe5561038c9b3edf74dfada249d5831" title="Inner function, not available outside this file. This function is used to set the Xtalk data from gen..." alt="" coords="402,331,547,372"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="144,269,388,328,387,333,143,274"/>
+<area shape="rect" id="Node000008" href="$d9/d0e/classVL53L5CX.html#aff537fadd902a5ce54e196c7f4cd6bc3" title=" " alt="" coords="601,103,735,129"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="90,244,106,210,131,165,168,120,190,101,214,85,267,65,322,54,378,51,434,54,538,72,618,95,617,100,536,77,434,59,378,57,323,60,268,70,217,90,193,105,172,124,136,168,110,212,95,246"/>
+<area shape="rect" id="Node000009" href="$d9/d0e/classVL53L5CX.html#a565fa6466e3a3ba2a9b57116169a3e95" title=" " alt="" coords="216,209,354,249"/>
+<area shape="poly" id="edge13_Node000001_Node000009" title=" " alt="" coords="168,244,200,239,201,244,168,249"/>
+<area shape="rect" id="Node000011" href="$d9/d0e/classVL53L5CX.html#a5237190c08ea2b9b86e2bf58a05cb997" title="This function can be used to write &#39;extra data&#39; to DCI. The data can be simple data,..." alt="" coords="406,266,544,307"/>
+<area shape="poly" id="edge21_Node000001_Node000011" title=" " alt="" coords="168,262,390,278,390,283,168,267"/>
+<area shape="rect" id="Node000012" href="$d9/d0e/classVL53L5CX.html#aef52427662628a27c97a68deb5e00f11" title="Mandatory function used to write one single byte." alt="" coords="218,100,352,126"/>
+<area shape="poly" id="edge23_Node000001_Node000012" title=" " alt="" coords="98,243,147,196,214,143,235,131,238,135,217,147,150,200,102,247"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="695,329,739,290,794,225,836,166,840,170,798,228,743,294,699,333"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="715,370,814,416,812,421,713,375"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="536,394,591,375,592,380,538,399"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="527,394,546,382,561,366,570,351,579,336,593,318,632,286,635,290,597,322,583,339,575,354,565,369,549,386,530,398"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="548,349,580,349,580,354,548,354"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="522,328,622,284,624,288,524,333"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="736,123,774,128,773,133,735,128"/>
+<area shape="rect" id="Node000010" href="$d9/d0e/classVL53L5CX.html#aab1edd9eb2ef44064b2dc0c782fab0ce" title="This function can be used to read &#39;extra data&#39; from DCI. Using a known index, the function fills the ..." alt="" coords="406,201,544,241"/>
+<area shape="poly" id="edge14_Node000009_Node000010" title=" " alt="" coords="354,223,390,222,390,227,354,229"/>
+<area shape="poly" id="edge18_Node000009_Node000011" title=" " alt="" coords="355,247,391,258,390,263,353,252"/>
+<area shape="poly" id="edge15_Node000010_Node000002" title=" " alt="" coords="526,240,549,252,632,319,629,323,546,257,524,244"/>
+<area shape="poly" id="edge16_Node000010_Node000003" title=" " alt="" coords="544,204,775,156,776,161,545,209"/>
+<area shape="poly" id="edge17_Node000010_Node000006" title=" " alt="" coords="545,235,596,247,595,252,544,240"/>
+<area shape="poly" id="edge19_Node000011_Node000002" title=" " alt="" coords="538,305,592,323,591,328,536,310"/>
+<area shape="poly" id="edge20_Node000011_Node000006" title=" " alt="" coords="544,277,585,272,585,278,545,282"/>
+<area shape="poly" id="edge24_Node000012_Node000006" title=" " alt="" coords="352,107,397,108,448,113,499,124,549,143,581,163,609,188,651,239,647,242,605,192,577,167,546,147,498,129,447,118,397,113,352,112"/>
+</map>

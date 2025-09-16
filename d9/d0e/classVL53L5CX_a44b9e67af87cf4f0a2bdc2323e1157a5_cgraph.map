@@ -1,0 +1,5 @@
+<map id="VL53L5CX::vl53l5cx_check_data_ready" name="VL53L5CX::vl53l5cx_check_data_ready">
+<area shape="rect" id="Node000001" title="This function checks if a new data is ready by polling I2C. If a new data is ready,..." alt="" coords="5,5,144,46"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c" title="Mandatory function used to read multiples bytes." alt="" coords="192,13,327,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,23,176,23,176,28,144,28"/>
+</map>

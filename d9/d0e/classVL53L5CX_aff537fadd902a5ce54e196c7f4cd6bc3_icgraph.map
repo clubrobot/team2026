@@ -1,0 +1,16 @@
+<map id="VL53L5CX::RdByte" name="VL53L5CX::RdByte">
+<area shape="rect" id="Node000001" title=" " alt="" coords="418,100,551,125"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a35a2fdbb3afccf00b2a19bf8dba8e41b" title="This function is used to get the current sensor power mode." alt="" coords="220,5,358,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="443,95,369,60,343,49,345,44,371,55,445,90"/>
+<area shape="rect" id="Node000004" href="$d9/d0e/classVL53L5CX.html#a5163d3ab9ec64acd1fa2d3080fe98756" title="Mandatory function used to initialize the sensor. This function must be called after a power on,..." alt="" coords="208,70,370,96"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="402,103,370,98,371,93,403,97"/>
+<area shape="rect" id="Node000006" href="$d9/d0e/classVL53L5CX.html#ae0648ad77717c03d96d1f293c968d683" title="This function is used to check if the sensor is alive." alt="" coords="220,120,358,161"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="403,127,359,133,358,128,402,121"/>
+<area shape="rect" id="Node000007" href="$d9/d0e/classVL53L5CX.html#a63bfc62532c023bc56cec467d201c69c" title="This function stops the ranging session. It must be used when the sensor streams, after calling vl53l..." alt="" coords="220,185,358,226"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="448,135,371,175,343,187,341,182,369,170,445,131"/>
+<area shape="rect" id="Node000003" href="$d9/d0e/classVL53L5CX.html#ad8810d13170d2bef0b47199c54d9621f" title="This function is used to set the sensor in Low Power mode, for example if the sensor is not used duri..." alt="" coords="13,5,152,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="204,28,152,28,152,23,204,23"/>
+<area shape="rect" id="Node000005" href="$d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2" title="Initialize the sensor." alt="" coords="5,98,160,124"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="192,99,160,103,159,98,192,94"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="204,131,160,125,160,119,205,126"/>
+</map>

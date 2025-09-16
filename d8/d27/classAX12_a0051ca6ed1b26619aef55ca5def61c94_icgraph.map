@@ -1,0 +1,7 @@
+<map id="AX12::readPosition" name="AX12::readPosition">
+<area shape="rect" id="Node000001" title="Renvoie la position actuelle de l&#39;AX12." alt="" coords="182,31,313,56"/>
+<area shape="rect" id="Node000002" href="$d8/d27/classAX12.html#ab290e2e6d0d1c2537417dabbb85f0135" title="Bouge l&#39;AX12 à un position définie." alt="" coords="24,5,115,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,35,115,27,116,22,167,29"/>
+<area shape="rect" id="Node000003" href="$d8/d27/classAX12.html#aeed2f4a6cd3ceef8ea42c0dd73400fb5" title="Bouge l&#39;AX12 à un position &amp; vitesse définie." alt="" coords="5,55,134,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,57,134,61,134,56,166,52"/>
+</map>

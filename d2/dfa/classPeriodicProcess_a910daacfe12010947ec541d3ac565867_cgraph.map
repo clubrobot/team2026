@@ -1,0 +1,5 @@
+<map id="PeriodicProcess::update" name="PeriodicProcess::update">
+<area shape="rect" id="Node000001" title="Execute la méthode process." alt="" coords="5,5,167,31"/>
+<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html#a397cd93780d753f5f06335cfe9f2a7f3" title="Méthode à implémenter obligatoirement pour hériter de PeriodicProcess." alt="" coords="215,5,383,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,16,199,16,199,21,167,21"/>
+</map>

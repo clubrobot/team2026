@@ -1,0 +1,7 @@
+<map id="AX12::move" name="AX12::move">
+<area shape="rect" id="Node000001" title="Bouge l&#39;AX12 à un position définie." alt="" coords="5,31,97,56"/>
+<area shape="rect" id="Node000002" href="$d8/d27/classAX12.html#a0051ca6ed1b26619aef55ca5def61c94" title="Renvoie la position actuelle de l&#39;AX12." alt="" coords="157,5,288,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,34,141,28,142,33,97,39"/>
+<area shape="rect" id="Node000003" href="$d8/d27/classAX12.html#a5fe7e1d38159023ff110a529f6a30dd7" title="Met ou non le mode sans fin de l&#39;AX12." alt="" coords="145,55,300,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="97,47,129,52,129,57,97,53"/>
+</map>

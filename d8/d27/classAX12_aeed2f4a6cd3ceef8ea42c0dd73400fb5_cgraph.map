@@ -1,0 +1,7 @@
+<map id="AX12::moveSpeed" name="AX12::moveSpeed">
+<area shape="rect" id="Node000001" title="Bouge l&#39;AX12 à un position &amp; vitesse définie." alt="" coords="5,31,134,56"/>
+<area shape="rect" id="Node000002" href="$d8/d27/classAX12.html#a0051ca6ed1b26619aef55ca5def61c94" title="Renvoie la position actuelle de l&#39;AX12." alt="" coords="194,5,325,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,32,178,26,179,32,135,38"/>
+<area shape="rect" id="Node000003" href="$d8/d27/classAX12.html#a5fe7e1d38159023ff110a529f6a30dd7" title="Met ou non le mode sans fin de l&#39;AX12." alt="" coords="182,55,337,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,49,166,53,166,58,134,54"/>
+</map>

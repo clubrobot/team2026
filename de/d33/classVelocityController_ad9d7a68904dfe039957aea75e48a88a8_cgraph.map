@@ -1,0 +1,11 @@
+<map id="VelocityController::process" name="VelocityController::process">
+<area shape="rect" id="Node000001" title="Calcul l&#39;asservissement." alt="" coords="5,63,128,103"/>
+<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html#a4147798b8ad01690f590d934bdd83c28" title="Désactive le PeriodicProcess." alt="" coords="176,13,339,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,62,197,41,199,46,129,67"/>
+<area shape="rect" id="Node000004" href="$de/d33/classVelocityController.html#a0b601849cb1f8b70478f530c0d198a60" title="Calcul la vitesse à atteindre." alt="" coords="192,63,322,103"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="128,80,177,80,177,86,128,86"/>
+<area shape="rect" id="Node000005" href="$d5/d9e/classDifferentialController.html#a8597663d4601cd0f2d413311e85e2ccc" title="Calcul l&#39;asservissement." alt="" coords="189,128,326,169"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="129,101,183,120,181,125,127,106"/>
+<area shape="rect" id="Node000003" href="$d2/dfa/classPeriodicProcess.html#a6e325cb38e20cac3164a01d89e161d90" title="Méthode exécutée à la désactivation du PeriodicProcess." alt="" coords="387,5,571,46"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,23,371,23,371,28,340,28"/>
+</map>

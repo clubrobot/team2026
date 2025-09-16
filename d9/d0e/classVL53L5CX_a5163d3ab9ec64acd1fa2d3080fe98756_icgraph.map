@@ -1,0 +1,5 @@
+<map id="VL53L5CX::vl53l5cx_init" name="VL53L5CX::vl53l5cx_init">
+<area shape="rect" id="Node000001" title="Mandatory function used to initialize the sensor. This function must be called after a power on,..." alt="" coords="208,5,370,31"/>
+<area shape="rect" id="Node000002" href="$d9/d0e/classVL53L5CX.html#a5ff6790ca0965fca49a3ca17b3134cc2" title="Initialize the sensor." alt="" coords="5,5,160,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="192,21,160,21,160,16,192,16"/>
+</map>
