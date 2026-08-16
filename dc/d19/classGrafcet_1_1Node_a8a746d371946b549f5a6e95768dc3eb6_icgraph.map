@@ -1,7 +1,0 @@
-<map id="Grafcet::Node::Node" name="Grafcet::Node::Node">
-<area shape="rect" id="Node000001" title=" " alt="" coords="211,35,349,60"/>
-<area shape="rect" id="Node000002" href="$dc/d19/classGrafcet_1_1Node.html#a18b858889d61a5463e2b1bd79b23fcce" title="attache un enfant au noeud" alt="" coords="5,5,163,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,38,163,33,163,27,196,32"/>
-<area shape="rect" id="Node000003" href="$da/d58/classGrafcet_1_1Transition.html#a5ca97401fe473bfce6f1538633da59df" title="Vérifie si la transition est activé Vérifie si la transition est activé en vérifiant l&#39;état de ses pa..." alt="" coords="20,55,148,96"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,62,149,69,148,64,195,57"/>
-</map>

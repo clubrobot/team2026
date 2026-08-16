@@ -19,7 +19,6 @@ var hierarchy =
     [ "Color", "d0/da2/structColor.html", null ],
     [ "HazelnutGripper::ColorData", "d6/d6e/structHazelnutGripper_1_1ColorData.html", null ],
     [ "CRC16", "db/d6d/classCRC16.html", null ],
-    [ "Cube", "df/dd5/classCube.html", null ],
     [ "ObjectDetector::Detector", "d1/d34/structObjectDetector_1_1Detector.html", null ],
     [ "DynamixelClass", "df/dc5/classDynamixelClass.html", null ],
     [ "Elevator", "d9/db0/classElevator.html", null ],
@@ -28,10 +27,6 @@ var hierarchy =
     [ "HazelnutGripper::GripperFinger", "d6/d59/classHazelnutGripper_1_1GripperFinger.html", null ],
     [ "Logger", "db/d67/classLogger.html", null ],
     [ "Musique", "d6/da1/classMusique.html", null ],
-    [ "Grafcet::Node", "dc/d19/classGrafcet_1_1Node.html", [
-      [ "Grafcet::ActionNode", "d6/d86/classGrafcet_1_1ActionNode.html", null ],
-      [ "Grafcet::Transition", "da/d58/classGrafcet_1_1Transition.html", null ]
-    ] ],
     [ "NonCopyable", "dc/d3c/classNonCopyable.html", null ],
     [ "ObjectDetector", "d6/dd4/classObjectDetector.html", null ],
     [ "PeriodicProcess", "d2/dfa/classPeriodicProcess.html", [
@@ -43,10 +38,7 @@ var hierarchy =
     [ "SensorArray::SensorConfig", "d8/de7/structSensorArray_1_1SensorConfig.html", null ],
     [ "SensorArray::SensorHandle", "de/d73/structSensorArray_1_1SensorHandle.html", null ],
     [ "ShiftRegister", "de/ded/classShiftRegister.html", null ],
-    [ "Sphere", "de/d9d/classSphere.html", null ],
-    [ "Grafcet::StateMachine", "da/d23/classGrafcet_1_1StateMachine.html", null ],
     [ "StepByStepMotor", "d9/dd4/classStepByStepMotor.html", null ],
-    [ "Teleplot", "d8/d4b/classTeleplot.html", null ],
     [ "VL53L5CX", "d9/d0e/classVL53L5CX.html", null ],
     [ "VL53L5CX_Configuration", "da/dce/structVL53L5CX__Configuration.html", null ],
     [ "VL53L5CX_Platform", "de/d5c/structVL53L5CX__Platform.html", null ],

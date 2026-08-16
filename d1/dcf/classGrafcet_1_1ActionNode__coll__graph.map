@@ -1,5 +1,0 @@
-<map id="Grafcet::ActionNode" name="Grafcet::ActionNode">
-<area shape="rect" id="Node000001" title="Représente un noeud d&#39;action dans le grafcet Les noeuds d&#39;action n&#39;exécute qu&#39;une seule fois leur opé..." alt="" coords="5,79,144,105"/>
-<area shape="rect" id="Node000002" href="$dc/d19/classGrafcet_1_1Node.html" title="Représente un noeud dans le graphcet Un noeud peut être un noeud d&#39;action ou un noeud de transition...." alt="" coords="24,5,125,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,46,77,79,72,79,72,46"/>
-</map>

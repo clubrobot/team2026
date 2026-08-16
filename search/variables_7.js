@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['m_5fangle_0',['m_angle',['../d9/db0/classElevator.html#a274b87c95d17f37c30d7515ef50a2fc5',1,'Elevator']]],
-  ['match_5fstarted_1',['match_started',['../d0/da2/group__globals.html#gaadde643e28b989f94107d8675db4956a',1,'variables_globales.cpp']]],
-  ['my_5fteam_2',['my_team',['../d0/da2/group__globals.html#gaf334f1cc30dc197a71560bb83617478b',1,'variables_globales.cpp']]]
+  ['step_5fangle_0',['step_angle',['../d0/d04/classBournsACEncoder.html#a899f37716a3a6a9b5fa880c38fcc3359',1,'BournsACEncoder::step_angle'],['../d8/d86/classHazelnutGripper_1_1BournsACEncoder.html#ac22ae4828a350a797957fbf9cf09bbe7',1,'HazelnutGripper::BournsACEncoder::step_angle']]],
+  ['stratlogger_1',['stratLogger',['../d6/d2e/namespacecerveau.html#a2ab470b4ed3caf569e11f6553129839c',1,'cerveau']]]
 ];

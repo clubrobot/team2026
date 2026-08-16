@@ -1,7 +1,5 @@
 var group__libs =
 [
-    [ "Grafcet", "db/de0/group__grafcet.html", "db/de0/group__grafcet" ],
-    [ "Teleplot", "d4/dac/group__teleplot.html", "d4/dac/group__teleplot" ],
     [ "coloring.h", "d4/d36/coloring_8h.html", null ],
     [ "Logger.h", "dd/da4/Logger_8h.html", null ],
     [ "Buttons", "dc/d2e/classButtons.html", null ],

@@ -1,3 +1,7 @@
 <map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
-<area shape="rect" id="Node000000" href="$d6/dd4/classObjectDetector.html" title=" " alt="" coords="5,5,114,31"/>
+<area shape="rect" id="Node000000" href="$d2/dfa/classPeriodicProcess.html" title="Classe à implémenter pour gérer les appels dans la loop." alt="" coords="5,31,122,56"/>
+<area shape="rect" id="Node000001" href="$d7/d82/classBrushlessMotor.html" title=" " alt="" coords="170,5,282,31"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="137,29,169,24,170,30,138,35"/>
+<area shape="rect" id="Node000002" href="$d9/df7/classFullSpeedServo.html" title="Pilotage de Servomoteur particulier." alt="" coords="170,55,283,80"/>
+<area shape="poly" id="edge6_Node000000_Node000002" title=" " alt="" coords="138,52,169,56,169,62,137,57"/>
 </map>

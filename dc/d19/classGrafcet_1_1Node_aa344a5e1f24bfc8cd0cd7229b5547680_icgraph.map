@@ -1,5 +1,0 @@
-<map id="Grafcet::Node::action" name="Grafcet::Node::action">
-<area shape="rect" id="Node000001" title="action à réaliser lorsque le noeud est actif" alt="" coords="204,13,346,38"/>
-<area shape="rect" id="Node000002" href="$da/d23/classGrafcet_1_1StateMachine.html#a3cd1bf2b44333f78964cb723438d4457" title="Parcours le grafcet en executant les actions Utilise une queue pour garder en mémoire les noeuds acti..." alt="" coords="5,5,156,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,28,156,28,156,23,188,23"/>
-</map>

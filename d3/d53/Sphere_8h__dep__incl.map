@@ -1,5 +1,0 @@
-<map id="Sphere.h" name="Sphere.h">
-<area shape="rect" id="Node000001" title="Définition de la classe Sphere pour le téléplot permettant d&#39;envoyer des sphères 3D à un serveur Tele..." alt="" coords="8,5,80,31"/>
-<area shape="rect" id="Node000002" href="$d3/d64/Teleplot_8h.html" title="Wrapper header pour importer la librairie." alt="" coords="5,79,83,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,46,47,79,41,79,41,46"/>
-</map>

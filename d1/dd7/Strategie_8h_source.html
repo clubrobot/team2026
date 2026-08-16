@@ -118,7 +118,7 @@ $(function(){initNavTree('d1/dd7/Strategie_8h_source.html','../../'); initResiza
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define TEAM2026_STRATEGIE_H</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Elevator.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d05/Grafcet_8h.html">Grafcet.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Grafcet.h&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;HazelnutGripper.h&quot;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/da4/Logger_8h.html">Logger.h</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;Components/Odometry.h&quot;</span></div>
@@ -133,7 +133,7 @@ $(function(){initNavTree('d1/dd7/Strategie_8h_source.html','../../'); initResiza
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">namespace </span><a class="code hl_namespace" href="../../da/d00/namespacecerveau_1_1strategie.html">cerveau::strategie</a> {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">inline</span> <a class="code hl_class" href="../../d6/d86/classGrafcet_1_1ActionNode.html">Grafcet::ActionNode</a>* yellowStartingNode = {};</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">inline</span> Grafcet::ActionNode* yellowStartingNode = {};</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">inline</span> Grafcet::ActionNode* bleuStartingNode = {};</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">inline</span> <span class="keyword">auto</span>* strat = <span class="keyword">new</span> Grafcet::StateMachine();</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
@@ -153,9 +153,7 @@ $(function(){initNavTree('d1/dd7/Strategie_8h_source.html','../../'); initResiza
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">#endif </span><span class="comment">//TEAM2026_STRATEGIE_H</span></div>
-<div class="ttc" id="aGrafcet_8h_html"><div class="ttname"><a href="../../db/d05/Grafcet_8h.html">Grafcet.h</a></div><div class="ttdoc">Header wrapper pour faciliter les import.</div></div>
 <div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="../../dd/da4/Logger_8h.html">Logger.h</a></div><div class="ttdoc">Un logger qui permet d&#39;avoir une belle sortie console.</div></div>
-<div class="ttc" id="aclassGrafcet_1_1ActionNode_html"><div class="ttname"><a href="../../d6/d86/classGrafcet_1_1ActionNode.html">Grafcet::ActionNode</a></div><div class="ttdoc">Représente un noeud d&#39;action dans le grafcet Les noeuds d&#39;action n&#39;exécute qu&#39;une seule fois leur opé...</div><div class="ttdef"><b>Definition</b> ActionNode.h:27</div></div>
 <div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="../../db/d67/classLogger.html">Logger</a></div><div class="ttdoc">Log pour la sortie console avec des couleurs et éventuellement la sortie LCD.</div><div class="ttdef"><b>Definition</b> Logger.h:49</div></div>
 <div class="ttc" id="anamespacecerveau_1_1strategie_html"><div class="ttname"><a href="../../da/d00/namespacecerveau_1_1strategie.html">cerveau::strategie</a></div><div class="ttdoc">Contient les fonctions et variables nécessaires pour gérer la stratégie du robot.</div><div class="ttdef"><b>Definition</b> Strategie.cpp:8</div></div>
 <div class="ttc" id="anamespacecerveau_html"><div class="ttname"><a href="../../d6/d2e/namespacecerveau.html">cerveau</a></div><div class="ttdoc">Contient les fonctions et variables nécessaires pour gérer la stratégie du robot.</div></div>

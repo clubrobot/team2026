@@ -118,7 +118,7 @@ $(function(){initNavTree('d1/dd7/Strategie_8h.html','../../'); initResizable(tru
 <p>Contient les diverses stratégies que le robot peut executer.  
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &quot;Elevator.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/d05/Grafcet_8h_source.html">Grafcet.h</a>&quot;</code><br />
+<code>#include &quot;Grafcet.h&quot;</code><br />
 <code>#include &quot;HazelnutGripper.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/da4/Logger_8h_source.html">Logger.h</a>&quot;</code><br />
 <code>#include &quot;Components/Odometry.h&quot;</code><br />
@@ -128,49 +128,28 @@ Graphe des dépendances par inclusion de Strategie.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d61/Strategie_8h__incl.png" border="0" usemap="#aStrategie_8h" alt=""/></div>
 <map name="aStrategie_8h" id="aStrategie_8h">
-<area shape="rect" title="Contient les diverses stratégies que le robot peut executer." alt="" coords="516,5,600,31"/>
-<area shape="rect" title=" " alt="" coords="172,79,251,105"/>
-<area shape="poly" title=" " alt="" coords="516,30,267,81,266,76,515,25"/>
-<area shape="rect" href="../../db/d05/Grafcet_8h.html" title="Header wrapper pour faciliter les import." alt="" coords="274,79,349,105"/>
-<area shape="poly" title=" " alt="" coords="517,34,364,78,363,73,516,29"/>
-<area shape="rect" href="../../d3/d04/HazelnutGripper_8h_source.html" title=" " alt="" coords="436,79,560,105"/>
-<area shape="poly" title=" " alt="" coords="550,33,520,69,516,65,546,30"/>
-<area shape="rect" href="../../dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="584,79,655,105"/>
-<area shape="poly" title=" " alt="" coords="570,29,601,65,597,69,566,33"/>
-<area shape="rect" title=" " alt="" coords="776,153,940,178"/>
-<area shape="poly" title=" " alt="" coords="584,29,821,143,818,148,582,34"/>
-<area shape="rect" href="../../d1/dfc/Geogebra_8h_source.html" title=" " alt="" coords="793,79,880,105"/>
-<area shape="poly" title=" " alt="" coords="601,28,779,73,777,78,600,33"/>
-<area shape="rect" href="../../da/d78/StateMachine_8h.html" title="La machine a état permettant de parcourir le grafcet." alt="" coords="22,153,134,178"/>
-<area shape="poly" title=" " alt="" coords="275,107,133,150,132,145,273,102"/>
-<area shape="rect" href="../../db/d92/Node_8h.html" title="Représentation d&#39;un noeud du grafcet." alt="" coords="168,226,231,252"/>
-<area shape="poly" title=" " alt="" coords="275,104,233,122,214,136,199,154,194,167,191,182,194,211,189,212,186,182,188,166,195,151,210,132,230,118,273,99"/>
-<area shape="rect" href="../../dc/dc1/Transition_8h.html" title="Un noeud de transition du grafcet permettant d&#39;évaluer la condition de passage d&#39;un noeud d&#39;action à ..." alt="" coords="209,153,297,178"/>
-<area shape="poly" title=" " alt="" coords="304,107,274,142,270,139,300,103"/>
-<area shape="rect" href="../../db/dc0/ActionNode_8h.html" title="Un noeud d&#39;action du grafcet, permettant de réaliser des actions de front montant." alt="" coords="320,153,420,178"/>
-<area shape="poly" title=" " alt="" coords="323,103,353,139,349,142,319,107"/>
-<area shape="rect" title=" " alt="" coords="87,226,144,252"/>
-<area shape="poly" title=" " alt="" coords="87,177,105,211,100,214,82,180"/>
-<area shape="rect" title=" " alt="" coords="5,300,130,326"/>
-<area shape="poly" title=" " alt="" coords="80,179,72,285,67,284,75,178"/>
-<area shape="poly" title=" " alt="" coords="100,177,167,216,164,220,97,181"/>
-<area shape="poly" title=" " alt="" coords="178,255,104,295,102,290,176,250"/>
-<area shape="rect" title=" " alt="" coords="171,300,228,326"/>
-<area shape="poly" title=" " alt="" coords="202,252,202,284,197,284,197,252"/>
-<area shape="poly" title=" " alt="" coords="246,180,220,215,216,212,242,177"/>
-<area shape="rect" title=" " alt="" coords="293,226,370,252"/>
-<area shape="poly" title=" " alt="" coords="268,177,309,214,305,218,264,181"/>
-<area shape="poly" title=" " alt="" coords="342,181,243,222,241,218,340,176"/>
-<area shape="poly" title=" " alt="" coords="366,180,348,214,343,211,361,177"/>
-<area shape="rect" href="../../d5/d92/GripperFinger_8h_source.html" title=" " alt="" coords="444,153,553,178"/>
-<area shape="poly" title=" " alt="" coords="501,105,501,137,496,137,496,105"/>
-<area shape="rect" title=" " alt="" coords="470,226,527,252"/>
-<area shape="poly" title=" " alt="" coords="501,179,501,211,496,211,496,179"/>
-<area shape="rect" title=" " alt="" coords="576,153,652,178"/>
-<area shape="poly" title=" " alt="" coords="621,105,619,137,614,137,616,105"/>
-<area shape="rect" href="../../d4/d36/coloring_8h.html" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="676,153,752,178"/>
-<area shape="poly" title=" " alt="" coords="637,103,688,141,685,145,634,107"/>
-<area shape="poly" title=" " alt="" coords="843,104,853,137,848,138,838,106"/>
+<area shape="rect" title="Contient les diverses stratégies que le robot peut executer." alt="" coords="287,5,370,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,84,105"/>
+<area shape="poly" title=" " alt="" coords="287,33,100,79,98,74,286,27"/>
+<area shape="rect" title=" " alt="" coords="107,79,182,105"/>
+<area shape="poly" title=" " alt="" coords="298,34,191,75,189,71,296,29"/>
+<area shape="rect" href="../../d3/d04/HazelnutGripper_8h_source.html" title=" " alt="" coords="206,79,331,105"/>
+<area shape="poly" title=" " alt="" coords="321,33,290,69,286,65,317,30"/>
+<area shape="rect" href="../../dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="354,79,426,105"/>
+<area shape="poly" title=" " alt="" coords="341,29,372,65,368,69,337,33"/>
+<area shape="rect" title=" " alt="" coords="462,153,627,178"/>
+<area shape="poly" title=" " alt="" coords="355,29,439,77,522,141,519,145,436,81,352,34"/>
+<area shape="rect" href="../../d1/dfc/Geogebra_8h_source.html" title=" " alt="" coords="501,79,588,105"/>
+<area shape="poly" title=" " alt="" coords="366,29,494,71,492,76,364,34"/>
+<area shape="rect" href="../../d5/d92/GripperFinger_8h_source.html" title=" " alt="" coords="130,153,239,178"/>
+<area shape="poly" title=" " alt="" coords="256,107,212,144,209,140,253,103"/>
+<area shape="rect" title=" " alt="" coords="156,226,213,252"/>
+<area shape="poly" title=" " alt="" coords="187,179,187,211,182,211,182,179"/>
+<area shape="rect" title=" " alt="" coords="263,153,338,178"/>
+<area shape="poly" title=" " alt="" coords="376,107,329,145,326,141,373,103"/>
+<area shape="rect" href="../../d4/d36/coloring_8h.html" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="362,153,439,178"/>
+<area shape="poly" title=" " alt="" coords="394,104,399,137,394,138,389,105"/>
+<area shape="poly" title=" " alt="" coords="547,105,547,137,542,137,542,105"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -224,13 +203,13 @@ auto&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::stratLogger<
 <tr class="memdesc:a2ab470b4ed3caf569e11f6553129839c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le logger à utiliser par les composants de la stratégie. <br /></td></tr>
 <tr class="separator:a2ab470b4ed3caf569e11f6553129839c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a735202ab6eed0e89eada0a81f4d7ee2d" id="r_a735202ab6eed0e89eada0a81f4d7ee2d"><td class="memItemLeft" align="right" valign="top"><a id="a735202ab6eed0e89eada0a81f4d7ee2d" name="a735202ab6eed0e89eada0a81f4d7ee2d"></a>
-<a class="el" href="../../d6/d86/classGrafcet_1_1ActionNode.html">Grafcet::ActionNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::yellowStartingNode</b> = {}</td></tr>
+Grafcet::ActionNode *&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::yellowStartingNode</b> = {}</td></tr>
 <tr class="separator:a735202ab6eed0e89eada0a81f4d7ee2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d3d284b5d2eb1791051a31a09220cd9" id="r_a6d3d284b5d2eb1791051a31a09220cd9"><td class="memItemLeft" align="right" valign="top"><a id="a6d3d284b5d2eb1791051a31a09220cd9" name="a6d3d284b5d2eb1791051a31a09220cd9"></a>
-<a class="el" href="../../d6/d86/classGrafcet_1_1ActionNode.html">Grafcet::ActionNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::bleuStartingNode</b> = {}</td></tr>
+Grafcet::ActionNode *&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::bleuStartingNode</b> = {}</td></tr>
 <tr class="separator:a6d3d284b5d2eb1791051a31a09220cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04b021f30e2f24d61c1a79e8e02ebd5f" id="r_a04b021f30e2f24d61c1a79e8e02ebd5f"><td class="memItemLeft" align="right" valign="top"><a id="a04b021f30e2f24d61c1a79e8e02ebd5f" name="a04b021f30e2f24d61c1a79e8e02ebd5f"></a>
-auto *&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::strat</b> = new <a class="el" href="../../da/d23/classGrafcet_1_1StateMachine.html">Grafcet::StateMachine</a>()</td></tr>
+auto *&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::strat</b> = new Grafcet::StateMachine()</td></tr>
 <tr class="separator:a04b021f30e2f24d61c1a79e8e02ebd5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bd02f8b55eae565c11e84c6f4af434d" id="r_a0bd02f8b55eae565c11e84c6f4af434d"><td class="memItemLeft" align="right" valign="top"><a id="a0bd02f8b55eae565c11e84c6f4af434d" name="a0bd02f8b55eae565c11e84c6f4af434d"></a>
 Position&#160;</td><td class="memItemRight" valign="bottom"><b>cerveau::strategie::start</b> = {}</td></tr>

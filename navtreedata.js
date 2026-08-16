@@ -25,13 +25,9 @@
 var NAVTREE =
 [
   [ "Robot Principal", "index.html", [
-    [ "Introduction", "index.html#autotoc_md5", null ],
-    [ "Compilation", "index.html#autotoc_md6", null ],
-    [ "Fonctionnement du code", "index.html#autotoc_md7", [
-      [ "Introduction", "db/de0/group__grafcet.html#autotoc_md0", null ],
-      [ "Compilation", "db/de0/group__grafcet.html#autotoc_md1", null ],
-      [ "Utilisation", "db/de0/group__grafcet.html#autotoc_md2", null ]
-    ] ],
+    [ "Introduction", "index.html#autotoc_md0", null ],
+    [ "Compilation", "index.html#autotoc_md1", null ],
+    [ "Fonctionnement du code", "index.html#autotoc_md2", null ],
     [ "Topics", "topics.html", "topics" ],
     [ "Espaces de nommage", "namespaces.html", [
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
@@ -46,7 +42,7 @@ var NAVTREE =
       [ "Index des classes", "classes.html", null ],
       [ "Hiérarchie des classes", "hierarchy.html", "hierarchy" ],
       [ "Membres de classe", "functions.html", [
-        [ "Tout", "functions.html", "functions_dup" ],
+        [ "Tout", "functions.html", null ],
         [ "Fonctions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
@@ -65,8 +61,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d9/d0e/classVL53L5CX.html#a63bfc62532c023bc56cec467d201c69c",
-"functions_e.html"
+"dc/d9e/ShiftRegister_8h_source.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

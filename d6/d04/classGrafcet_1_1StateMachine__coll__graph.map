@@ -1,8 +1,0 @@
-<map id="Grafcet::StateMachine" name="Grafcet::StateMachine">
-<area shape="rect" id="Node000001" title="La machine à état permettant de parcourir le grafcet." alt="" coords="5,198,156,223"/>
-<area shape="rect" id="Node000002" href="$dc/d19/classGrafcet_1_1Node.html" title="Représente un noeud dans le graphcet Un noeud peut être un noeud d&#39;action ou un noeud de transition...." alt="" coords="30,5,131,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,47,74,94,74,135,81,197,76,197,69,135,69,94,74,46"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="160,94,294,135"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="113,37,198,91,195,96,110,42"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,146,101,199,98,195,182,141"/>
-</map>

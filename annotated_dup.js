@@ -1,11 +1,5 @@
 var annotated_dup =
 [
-    [ "Grafcet", "d9/d57/namespaceGrafcet.html", [
-      [ "ActionNode", "d6/d86/classGrafcet_1_1ActionNode.html", "d6/d86/classGrafcet_1_1ActionNode" ],
-      [ "Node", "dc/d19/classGrafcet_1_1Node.html", "dc/d19/classGrafcet_1_1Node" ],
-      [ "StateMachine", "da/d23/classGrafcet_1_1StateMachine.html", "da/d23/classGrafcet_1_1StateMachine" ],
-      [ "Transition", "da/d58/classGrafcet_1_1Transition.html", "da/d58/classGrafcet_1_1Transition" ]
-    ] ],
     [ "HazelnutGripper", "d2/d51/namespaceHazelnutGripper.html", [
       [ "AbstractAbsoluteEncoder", "d1/de1/classHazelnutGripper_1_1AbstractAbsoluteEncoder.html", "d1/de1/classHazelnutGripper_1_1AbstractAbsoluteEncoder" ],
       [ "BournsACEncoder", "d8/d86/classHazelnutGripper_1_1BournsACEncoder.html", "d8/d86/classHazelnutGripper_1_1BournsACEncoder" ],
@@ -22,7 +16,6 @@ var annotated_dup =
     [ "Clock", "df/d45/classClock.html", "df/d45/classClock" ],
     [ "Color", "d0/da2/structColor.html", null ],
     [ "CRC16", "db/d6d/classCRC16.html", null ],
-    [ "Cube", "df/dd5/classCube.html", "df/dd5/classCube" ],
     [ "DynamixelClass", "df/dc5/classDynamixelClass.html", null ],
     [ "Elevator", "d9/db0/classElevator.html", "d9/db0/classElevator" ],
     [ "EndStop", "df/d5b/classEndStop.html", "df/d5b/classEndStop" ],
@@ -36,10 +29,8 @@ var annotated_dup =
     [ "Point", "d8/d43/structPoint.html", null ],
     [ "SensorArray", "de/d4b/classSensorArray.html", "de/d4b/classSensorArray" ],
     [ "ShiftRegister", "de/ded/classShiftRegister.html", null ],
-    [ "Sphere", "de/d9d/classSphere.html", "de/d9d/classSphere" ],
     [ "StepByStepMotor", "d9/dd4/classStepByStepMotor.html", null ],
     [ "STM32HALTimer", "d8/dd9/classSTM32HALTimer.html", null ],
-    [ "Teleplot", "d8/d4b/classTeleplot.html", "d8/d4b/classTeleplot" ],
     [ "VL53L5CX", "d9/d0e/classVL53L5CX.html", "d9/d0e/classVL53L5CX" ],
     [ "VL53L5CX_Configuration", "da/dce/structVL53L5CX__Configuration.html", null ],
     [ "VL53L5CX_Platform", "de/d5c/structVL53L5CX__Platform.html", null ],

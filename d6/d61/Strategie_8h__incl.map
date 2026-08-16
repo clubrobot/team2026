@@ -1,45 +1,24 @@
 <map id="Strategie.h" name="Strategie.h">
-<area shape="rect" id="Node000001" title="Contient les diverses stratégies que le robot peut executer." alt="" coords="516,5,600,31"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="172,79,251,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="516,30,267,81,266,76,515,25"/>
-<area shape="rect" id="Node000003" href="$db/d05/Grafcet_8h.html" title="Header wrapper pour faciliter les import." alt="" coords="274,79,349,105"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="517,34,364,78,363,73,516,29"/>
-<area shape="rect" id="Node000012" href="$d3/d04/HazelnutGripper_8h_source.html" title=" " alt="" coords="436,79,560,105"/>
-<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="550,33,520,69,516,65,546,30"/>
-<area shape="rect" id="Node000015" href="$dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="584,79,655,105"/>
-<area shape="poly" id="edge19_Node000001_Node000015" title=" " alt="" coords="570,29,601,65,597,69,566,33"/>
-<area shape="rect" id="Node000018" title=" " alt="" coords="776,153,940,178"/>
-<area shape="poly" id="edge22_Node000001_Node000018" title=" " alt="" coords="584,29,821,143,818,148,582,34"/>
-<area shape="rect" id="Node000019" href="$d1/dfc/Geogebra_8h_source.html" title=" " alt="" coords="793,79,880,105"/>
-<area shape="poly" id="edge23_Node000001_Node000019" title=" " alt="" coords="601,28,779,73,777,78,600,33"/>
-<area shape="rect" id="Node000004" href="$da/d78/StateMachine_8h.html" title="La machine a état permettant de parcourir le grafcet." alt="" coords="22,153,134,178"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="275,107,133,150,132,145,273,102"/>
-<area shape="rect" id="Node000007" href="$db/d92/Node_8h.html" title="Représentation d&#39;un noeud du grafcet." alt="" coords="168,226,231,252"/>
-<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="275,104,233,122,214,136,199,154,194,167,191,182,194,211,189,212,186,182,188,166,195,151,210,132,230,118,273,99"/>
-<area shape="rect" id="Node000009" href="$dc/dc1/Transition_8h.html" title="Un noeud de transition du grafcet permettant d&#39;évaluer la condition de passage d&#39;un noeud d&#39;action à ..." alt="" coords="209,153,297,178"/>
-<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="304,107,274,142,270,139,300,103"/>
-<area shape="rect" id="Node000011" href="$db/dc0/ActionNode_8h.html" title="Un noeud d&#39;action du grafcet, permettant de réaliser des actions de front montant." alt="" coords="320,153,420,178"/>
-<area shape="poly" id="edge13_Node000003_Node000011" title=" " alt="" coords="323,103,353,139,349,142,319,107"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="87,226,144,252"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="87,177,105,211,100,214,82,180"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="5,300,130,326"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="80,179,72,285,67,284,75,178"/>
-<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="100,177,167,216,164,220,97,181"/>
-<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="178,255,104,295,102,290,176,250"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="171,300,228,326"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="202,252,202,284,197,284,197,252"/>
-<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="246,180,220,215,216,212,242,177"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="293,226,370,252"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="268,177,309,214,305,218,264,181"/>
-<area shape="poly" id="edge15_Node000011_Node000007" title=" " alt="" coords="342,181,243,222,241,218,340,176"/>
-<area shape="poly" id="edge14_Node000011_Node000010" title=" " alt="" coords="366,180,348,214,343,211,361,177"/>
-<area shape="rect" id="Node000013" href="$d5/d92/GripperFinger_8h_source.html" title=" " alt="" coords="444,153,553,178"/>
-<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="501,105,501,137,496,137,496,105"/>
-<area shape="rect" id="Node000014" title=" " alt="" coords="470,226,527,252"/>
-<area shape="poly" id="edge18_Node000013_Node000014" title=" " alt="" coords="501,179,501,211,496,211,496,179"/>
-<area shape="rect" id="Node000016" title=" " alt="" coords="576,153,652,178"/>
-<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="621,105,619,137,614,137,616,105"/>
-<area shape="rect" id="Node000017" href="$d4/d36/coloring_8h.html" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="676,153,752,178"/>
-<area shape="poly" id="edge21_Node000015_Node000017" title=" " alt="" coords="637,103,688,141,685,145,634,107"/>
-<area shape="poly" id="edge24_Node000019_Node000018" title=" " alt="" coords="843,104,853,137,848,138,838,106"/>
+<area shape="rect" id="Node000001" title="Contient les diverses stratégies que le robot peut executer." alt="" coords="287,5,370,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,84,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="287,33,100,79,98,74,286,27"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,79,182,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="298,34,191,75,189,71,296,29"/>
+<area shape="rect" id="Node000004" href="$d3/d04/HazelnutGripper_8h_source.html" title=" " alt="" coords="206,79,331,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="321,33,290,69,286,65,317,30"/>
+<area shape="rect" id="Node000007" href="$dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="354,79,426,105"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="341,29,372,65,368,69,337,33"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="462,153,627,178"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="355,29,439,77,522,141,519,145,436,81,352,34"/>
+<area shape="rect" id="Node000011" href="$d1/dfc/Geogebra_8h_source.html" title=" " alt="" coords="501,79,588,105"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="366,29,494,71,492,76,364,34"/>
+<area shape="rect" id="Node000005" href="$d5/d92/GripperFinger_8h_source.html" title=" " alt="" coords="130,153,239,178"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="256,107,212,144,209,140,253,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="156,226,213,252"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="187,179,187,211,182,211,182,179"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="263,153,338,178"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="376,107,329,145,326,141,373,103"/>
+<area shape="rect" id="Node000009" href="$d4/d36/coloring_8h.html" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="362,153,439,178"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="394,104,399,137,394,138,389,105"/>
+<area shape="poly" id="edge11_Node000011_Node000010" title=" " alt="" coords="547,105,547,137,542,137,542,105"/>
 </map>

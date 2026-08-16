@@ -1,5 +1,0 @@
-<map id="Grafcet::Node::enabled" name="Grafcet::Node::enabled">
-<area shape="rect" id="Node000001" title="vérifie si le noeud est activé" alt="" coords="181,13,333,38"/>
-<area shape="rect" id="Node000002" href="$da/d58/classGrafcet_1_1Transition.html#a5ca97401fe473bfce6f1538633da59df" title="Vérifie si la transition est activé Vérifie si la transition est activé en vérifiant l&#39;état de ses pa..." alt="" coords="5,5,133,46"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,28,133,28,133,23,165,23"/>
-</map>

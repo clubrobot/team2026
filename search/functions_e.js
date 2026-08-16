@@ -1,6 +1,12 @@
 var searchData=
 [
-  ['ping_0',['ping',['../d8/d27/classAX12.html#abe51b9336e079929ce28ec72e72811fb',1,'AX12']]],
-  ['playsheetmusic_1',['playSheetMusic',['../d6/da1/classMusique.html#a7ef86a7455fabe702da26335b7624b84',1,'Musique']]],
-  ['process_2',['process',['../d7/d82/classBrushlessMotor.html#a98354b392f6cb937e2961df5e2a1f038',1,'BrushlessMotor::process()'],['../d9/df7/classFullSpeedServo.html#a219f6a6330241256242c6c77c5fa045e',1,'FullSpeedServo::process()'],['../d2/dfa/classPeriodicProcess.html#a397cd93780d753f5f06335cfe9f2a7f3',1,'PeriodicProcess::process()']]]
+  ['rdbyte_0',['RdByte',['../d9/d0e/classVL53L5CX.html#aff537fadd902a5ce54e196c7f4cd6bc3',1,'VL53L5CX']]],
+  ['rdmulti_1',['RdMulti',['../d9/d0e/classVL53L5CX.html#a343f89ce3dd6a030ec99f13ffb3ae20c',1,'VL53L5CX']]],
+  ['read_2',['read',['../d9/df7/classFullSpeedServo.html#a9877b6c705724403c10656116a6084c0',1,'FullSpeedServo']]],
+  ['readposition_3',['readPosition',['../d8/d27/classAX12.html#a0051ca6ed1b26619aef55ca5def61c94',1,'AX12']]],
+  ['readspeed_4',['readSpeed',['../d8/d27/classAX12.html#a8435f4c2c2c0b769afda199e608120e4',1,'AX12']]],
+  ['readtemperature_5',['readTemperature',['../d8/d27/classAX12.html#a9505d53fa861c549d0707160598be897',1,'AX12']]],
+  ['readtorque_6',['readTorque',['../d8/d27/classAX12.html#a3b6edc073ad24249b87d83cbd8109f00',1,'AX12']]],
+  ['readvoltage_7',['readVoltage',['../d8/d27/classAX12.html#a88f715439c6f50f3e6dca6c30f6f0897',1,'AX12']]],
+  ['restart_8',['restart',['../df/d45/classClock.html#a52e5cc059c78fa8067d24d9d63070ca1',1,'Clock']]]
 ];

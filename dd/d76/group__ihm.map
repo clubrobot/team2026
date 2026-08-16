@@ -1,6 +1,5 @@
 <map id="IHM" name="IHM">
-<area shape="rect" id="Node000004" href="$d0/de1/group__core.html" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="199,5,247,31"/>
-<area shape="rect" id="Node000001" title="Tout le code permettant de communiquer avec l&#39;utilisateur." alt="" coords="5,97,52,123"/>
-<area shape="rect" id="Node000003" href="$d0/dd5/group__libs.html" title="Toutes les librairies." alt="" coords="160,95,286,120"/>
-<area shape="rect" id="Node000002" href="$d4/dac/group__teleplot.html" title="La librairie Teleplot permet d&#39;envoyer des données à un serveur connecté en usb." alt="" coords="189,172,256,198"/>
+<area shape="rect" id="Node000003" href="$d0/de1/group__core.html" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="199,5,247,31"/>
+<area shape="rect" id="Node000001" title="Tout le code permettant de communiquer avec l&#39;utilisateur." alt="" coords="5,67,52,92"/>
+<area shape="rect" id="Node000002" href="$d0/dd5/group__libs.html" title="Toutes les librairies." alt="" coords="160,97,286,123"/>
 </map>

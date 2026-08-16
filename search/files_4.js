@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['killer_2eh_0',['Killer.h',['../d6/d64/Killer_8h.html',1,'']]]
+  ['logger_2eh_0',['Logger.h',['../dd/da4/Logger_8h.html',1,'']]]
 ];

@@ -1,5 +1,0 @@
-<map id="Grafcet::Transition" name="Grafcet::Transition">
-<area shape="rect" id="Node000001" title="Représente une transition dans le grafcet Les noeuds de transition présente une fonction personnalisé..." alt="" coords="5,79,133,105"/>
-<area shape="rect" id="Node000002" href="$dc/d19/classGrafcet_1_1Node.html" title="Représente un noeud dans le graphcet Un noeud peut être un noeud d&#39;action ou un noeud de transition...." alt="" coords="18,5,120,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,46,72,79,66,79,66,46"/>
-</map>

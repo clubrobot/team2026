@@ -110,18 +110,18 @@ $(function(){initNavTree('index.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> Copyright (C) 2026 Club Robot INSA Rennes This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details. You should have received a copy of the GNU Affero General Public License along with this program. If not, see <a href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md0"></a>
 Introduction</h1>
 <p>Dans ce dépôt, vous trouverez le code source du robot du Club Robot INSA Rennes. Il est à noter que ce code est principalement destiné à un usage interne et n'est pas forcément adapté à vos usages, mais vous pouvez l'utiliser à vos risques et périls.</p>
 <p>Nous utilisons pour le robot un microcontrôleur STM32 ainsi que FreeRTOS avec une couche de compatibilité pour les fonctions Arduino. Afin d'uploader le code sur le microcontrôleur, nous utilisons platformio, qui est un outil de compilation et d'upload multi-plateforme. Il est donc nécessaire de l'installer pour pouvoir compiler le code du robot.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md1"></a>
 Compilation</h1>
 <p><a href="https://docs.platformio.org/en/latest/core/installation/index.html">Installez platformio sur votre machine locale</a> si ce n'est pas déjà fait. Ensuite, vous pouvez utiliser la commande suivante pour compiler le code du robot :</p>
 <div class="fragment"><div class="line">platformio run</div>
 <div class="line">#ou</div>
 <div class="line">make build-upload</div>
 </div><!-- fragment --><p>Vous pouvez consulter le fichier <code>Makefile</code> pour une liste (non-exhaustive) de ce que vous pouvez faire avec platformio. Ce fichier contient également des alias de commande pour faciliter l'utilisation de platformio.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md2"></a>
 Fonctionnement du code</h1>
 <p>Le point d'entrée du code est situé dans le fichier <code><a class="el" href="df/d0a/main_8cpp.html" title="Contient le code principal du robot.">src/main.cpp</a></code>. Là, vous trouverez les fonctions nécessaires pour initialiser le robot, puis passer le contrôle à FreeRTOS. Une fois lancé, FreeRTOS va exécuter les différentes tâches du robot en parallèle :</p><ul>
 <li><b>WheeledBase loop</b> Cette tâche est responsable de tout ce qui touche à la base roulante du robot, c'est-à-dire gestion de l'asservissement, des moteurs, des encodeurs, etc.</li>
@@ -131,7 +131,7 @@ Fonctionnement du code</h1>
 <p>Il existe une dernière tâche, le killer (<code>src/cerveau/killer.cpp</code>), qui est responsable de l'arrêt du robot à la fin du temps imparti pour le match. Cette tâche est lancée par un timer FreeRTOS une fois que le match se fini.</p>
 <dl class="section see"><dt>Voir également</dt><dd>base_roulante </dd>
 <dd>
-<a class="el" href="db/de0/group__grafcet.html">libgrafcet</a> </dd></dl>
+libgrafcet </dd></dl>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>
 </div><!-- contents -->

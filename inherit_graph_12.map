@@ -1,7 +1,3 @@
 <map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
-<area shape="rect" id="Node000000" href="$dc/d19/classGrafcet_1_1Node.html" title="Représente un noeud dans le graphcet Un noeud peut être un noeud d&#39;action ou un noeud de transition...." alt="" coords="5,31,107,56"/>
-<area shape="rect" id="Node000001" href="$d6/d86/classGrafcet_1_1ActionNode.html" title="Représente un noeud d&#39;action dans le grafcet Les noeuds d&#39;action n&#39;exécute qu&#39;une seule fois leur opé..." alt="" coords="155,5,293,31"/>
-<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="122,31,154,26,154,31,122,36"/>
-<area shape="rect" id="Node000002" href="$da/d58/classGrafcet_1_1Transition.html" title="Représente une transition dans le grafcet Les noeuds de transition présente une fonction personnalisé..." alt="" coords="160,55,288,80"/>
-<area shape="poly" id="edge5_Node000000_Node000002" title=" " alt="" coords="122,50,160,56,160,61,121,56"/>
+<area shape="rect" id="Node000000" href="$d6/d6e/structHazelnutGripper_1_1ColorData.html" title="Structure regroupant les valeurs brutes du capteur de couleur TCS3472." alt="" coords="5,5,183,31"/>
 </map>

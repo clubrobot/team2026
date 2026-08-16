@@ -1,32 +1,22 @@
 <map id="coloring.h" name="coloring.h">
-<area shape="rect" id="Node000001" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="174,5,250,31"/>
-<area shape="rect" id="Node000002" href="$dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="176,79,248,105"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,46,215,79,209,79,209,46"/>
-<area shape="rect" id="Node000003" href="$df/dd9/SensorArray_8h_source.html" title=" " alt="" coords="161,153,263,178"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="215,120,215,152,209,152,209,120"/>
-<area shape="rect" id="Node000006" href="$df/d0a/main_8cpp.html" title="Contient le code principal du robot." alt="" coords="163,300,237,326"/>
-<area shape="poly" id="edge17_Node000002_Node000006" title=" " alt="" coords="161,101,98,119,67,134,39,155,25,171,19,186,12,227,9,240,12,251,26,266,43,279,83,297,125,306,163,309,163,315,124,311,82,302,40,284,22,270,7,253,3,240,7,226,14,185,21,168,35,151,64,129,96,114,160,96"/>
-<area shape="rect" id="Node000007" href="$d1/dd7/Strategie_8h.html" title="Contient les diverses stratégies que le robot peut executer." alt="" coords="49,153,132,178"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="180,115,113,154,110,150,177,111"/>
-<area shape="rect" id="Node000009" href="$d2/dfd/Teleplot__client_8h.html" title="Implémentation d&#39;un client Teleplot pour envoyer des données à un serveur Teleplot." alt="" coords="461,153,576,178"/>
-<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="263,102,467,149,466,155,262,107"/>
-<area shape="rect" id="Node000013" href="$d5/d78/ihm_8h.html" title="Contient diverses fonctions permettant d&#39;intéragir avec l&#39;utilisateur via les boutons et les leds." alt="" coords="344,153,397,178"/>
-<area shape="poly" id="edge15_Node000002_Node000013" title=" " alt="" coords="254,109,345,150,343,155,251,114"/>
-<area shape="rect" id="Node000004" href="$d7/da3/ObjectDetector_8h_source.html" title=" " alt="" coords="133,226,251,252"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="207,194,198,227,193,225,202,192"/>
-<area shape="rect" id="Node000005" href="$d7/db8/SensorsThread_8h.html" title="Contient les fonctions et variables nécessaires pour gérer le thread des capteurs." alt="" coords="275,226,394,252"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="247,184,315,223,312,228,244,189"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="299,262,224,302,222,297,297,257"/>
-<area shape="rect" id="Node000008" href="$dd/d07/Automate_8h.html" title="Contient le code nécessaire pour jouer un match." alt="" coords="22,226,109,252"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="84,194,72,227,67,225,79,192"/>
-<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="103,257,178,297,176,302,100,262"/>
-<area shape="rect" id="Node000010" href="$df/d81/Cube_8h.html" title="Définition de la classe Cube pour le téléplot permettant d&#39;envoyer des cubes 3D à un serveur Teleplot..." alt="" coords="616,226,677,252"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="555,184,626,223,623,228,552,189"/>
-<area shape="rect" id="Node000011" href="$d3/d64/Teleplot_8h.html" title="Wrapper header pour importer la librairie." alt="" coords="517,300,595,326"/>
-<area shape="poly" id="edge14_Node000009_Node000011" title=" " alt="" coords="512,194,507,222,510,251,525,277,544,298,540,301,521,280,505,253,502,222,507,193"/>
-<area shape="rect" id="Node000012" href="$d3/dca/Sphere_8h.html" title="Définition de la classe Sphere pour le téléplot permettant d&#39;envoyer des sphères 3D à un serveur Tele..." alt="" coords="520,226,592,252"/>
-<area shape="poly" id="edge12_Node000009_Node000012" title=" " alt="" coords="534,191,552,225,547,227,529,193"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="621,264,573,302,569,298,618,260"/>
-<area shape="poly" id="edge13_Node000012_Node000011" title=" " alt="" coords="559,267,559,300,553,300,553,267"/>
-<area shape="poly" id="edge16_Node000013_Node000006" title=" " alt="" coords="395,189,413,220,415,237,409,254,397,264,380,273,335,289,238,309,236,304,334,283,378,268,394,260,404,250,410,237,408,222,390,191"/>
+<area shape="rect" id="Node000001" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="305,5,381,31"/>
+<area shape="rect" id="Node000002" href="$dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="308,79,379,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="346,46,346,79,340,79,340,46"/>
+<area shape="rect" id="Node000003" href="$df/dd9/SensorArray_8h_source.html" title=" " alt="" coords="156,153,258,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="308,115,232,154,229,150,305,110"/>
+<area shape="rect" id="Node000006" href="$df/d0a/main_8cpp.html" title="Contient le code principal du robot." alt="" coords="308,300,381,326"/>
+<area shape="poly" id="edge11_Node000002_Node000006" title=" " alt="" coords="339,120,332,153,329,202,332,252,343,299,338,300,327,252,323,202,327,152,333,119"/>
+<area shape="rect" id="Node000007" href="$d1/dd7/Strategie_8h.html" title="Contient les diverses stratégies que le robot peut executer." alt="" coords="342,153,425,178"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="360,117,379,151,374,153,355,120"/>
+<area shape="rect" id="Node000009" href="$d5/d78/ihm_8h.html" title="Contient diverses fonctions permettant d&#39;intéragir avec l&#39;utilisateur via les boutons et les leds." alt="" coords="449,153,501,178"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="380,110,454,150,451,154,377,115"/>
+<area shape="rect" id="Node000004" href="$d7/da3/ObjectDetector_8h_source.html" title=" " alt="" coords="5,226,124,252"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="170,188,90,228,88,223,168,183"/>
+<area shape="rect" id="Node000005" href="$d7/db8/SensorsThread_8h.html" title="Contient les fonctions et variables nécessaires pour gérer le thread des capteurs." alt="" coords="148,226,267,252"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="210,194,210,226,204,226,204,194"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="245,257,322,297,320,302,243,262"/>
+<area shape="rect" id="Node000008" href="$dd/d07/Automate_8h.html" title="Contient le code nécessaire pour jouer un match." alt="" coords="342,226,430,252"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="387,194,388,226,383,226,382,194"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="374,267,354,301,349,298,369,264"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="472,194,462,224,444,254,411,282,376,302,373,297,408,278,440,250,457,222,467,192"/>
 </map>
