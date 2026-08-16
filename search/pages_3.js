@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['principal_0',['Robot Principal',['../index.html',1,'']]]
+  ['robot_20principal_0',['Robot Principal',['../index.html',1,'']]]
 ];

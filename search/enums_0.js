@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['direction_0',['Direction',['../de/d96/classPurePursuit.html#a584048cfe1c7e025425011986b410019',1,'PurePursuit']]]
+  ['operationmode_0',['OperationMode',['../d2/d51/namespaceHazelnutGripper.html#ae95107e2ef0b4d9214d62304d04d8cbc',1,'HazelnutGripper']]]
 ];

@@ -118,11 +118,9 @@ Graphe de collaboration de Elevator:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d69/classElevator__coll__graph.png" border="0" usemap="#aElevator_coll__map" alt="Collaboration graph"/></div>
 <map name="aElevator_coll__map" id="aElevator_coll__map">
-<area shape="rect" title=" " alt="" coords="119,94,188,120"/>
+<area shape="rect" title=" " alt="" coords="55,94,124,120"/>
 <area shape="rect" href="../../d4/ddc/classAbstractAbsoluteEncoder.html" title=" " alt="" coords="5,5,174,31"/>
-<area shape="poly" title=" " alt="" coords="107,43,125,68,144,92,140,95,120,72,103,46"/>
-<area shape="rect" href="../../d8/da9/classPID.html" title="Classe d&#39;asservissement." alt="" coords="197,5,240,31"/>
-<area shape="poly" title=" " alt="" coords="208,46,192,72,169,95,165,92,187,68,204,43"/>
+<area shape="poly" title=" " alt="" coords="92,47,92,94,87,94,87,47"/>
 </map>
 <center><span class="legend">[<a target="top" href="../../graph_legend.html">légende</a>]</span></center></div>
 <table class="memberdecls">
@@ -137,7 +135,7 @@ Fonctions membres publiques</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>task</b> (void *pvParameters)</td></tr>
 <tr class="memdesc:ae000e1642b8ccad2e611daf874865681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcul l'asservissement. <br /></td></tr>
 <tr class="separator:ae000e1642b8ccad2e611daf874865681"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78a85b9c449af11516101a95745a7155" id="r_a78a85b9c449af11516101a95745a7155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78a85b9c449af11516101a95745a7155">setPID</a> (<a class="el" href="../../d8/da9/classPID.html">PID</a> &amp;pid)</td></tr>
+<tr class="memitem:a78a85b9c449af11516101a95745a7155" id="r_a78a85b9c449af11516101a95745a7155"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a78a85b9c449af11516101a95745a7155">setPID</a> (PID &amp;pid)</td></tr>
 <tr class="memdesc:a78a85b9c449af11516101a95745a7155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge l'asservissement.  <br /></td></tr>
 <tr class="separator:a78a85b9c449af11516101a95745a7155"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -152,7 +150,7 @@ AbstractMotor &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_moto
 <tr class="memitem:a274b87c95d17f37c30d7515ef50a2fc5" id="r_a274b87c95d17f37c30d7515ef50a2fc5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a274b87c95d17f37c30d7515ef50a2fc5">m_angle</a></td></tr>
 <tr class="separator:a274b87c95d17f37c30d7515ef50a2fc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59137c2c45a2859f524491448ce32bca" id="r_a59137c2c45a2859f524491448ce32bca"><td class="memItemLeft" align="right" valign="top"><a id="a59137c2c45a2859f524491448ce32bca" name="a59137c2c45a2859f524491448ce32bca"></a>
-<a class="el" href="../../d8/da9/classPID.html">PID</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_pid</b></td></tr>
+PID *&#160;</td><td class="memItemRight" valign="bottom"><b>m_pid</b></td></tr>
 <tr class="separator:a59137c2c45a2859f524491448ce32bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
@@ -200,7 +198,7 @@ AbstractMotor &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_moto
         <tr>
           <td class="memname">void Elevator::setPID </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d8/da9/classPID.html">PID</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pid</em></span></td><td>)</td>
+          <td class="paramtype">PID &amp;</td>          <td class="paramname"><span class="paramname"><em>pid</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -212,7 +210,7 @@ AbstractMotor &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_moto
 </div><div class="memdoc">
 
 <p>Charge l'asservissement. </p>
-<p>Charge les pointeurs <a class="el" href="../../d8/da9/classPID.html" title="Classe d&#39;asservissement.">PID</a> pour l'asservissement de <a class="el" href="../../d5/d9e/classDifferentialController.html" title="Controle les moteurs.">DifferentialController</a>.</p>
+<p>Charge les pointeurs PID pour l'asservissement de DifferentialController.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">pid</td><td>Asservissement angulaire. </td></tr>

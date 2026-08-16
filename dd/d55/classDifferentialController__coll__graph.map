@@ -1,7 +1,0 @@
-<map id="DifferentialController" name="DifferentialController">
-<area shape="rect" id="Node000001" title="Controle les moteurs." alt="" coords="47,109,184,135"/>
-<area shape="rect" id="Node000002" href="$d2/dfa/classPeriodicProcess.html" title="Classe à implémenter pour gérer les appels dans la loop." alt="" coords="5,5,122,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,44,112,107,107,110,74,46"/>
-<area shape="rect" id="Node000003" href="$d8/da9/classPID.html" title="Classe d&#39;asservissement." alt="" coords="146,5,189,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="157,46,124,110,119,107,152,44"/>
-</map>

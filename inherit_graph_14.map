@@ -1,3 +1,5 @@
 <map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
-<area shape="rect" id="Node000000" href="$da/d23/classGrafcet_1_1StateMachine.html" title="La machine à état permettant de parcourir le grafcet." alt="" coords="5,5,156,31"/>
+<area shape="rect" id="Node000000" href="$d1/de1/classHazelnutGripper_1_1AbstractAbsoluteEncoder.html" title="Interface pour un encodeur de position absolue." alt="" coords="5,5,175,46"/>
+<area shape="rect" id="Node000001" href="$d8/d86/classHazelnutGripper_1_1BournsACEncoder.html" title=" " alt="" coords="223,13,449,38"/>
+<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="190,23,222,23,222,28,190,28"/>
 </map>

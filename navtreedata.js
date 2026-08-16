@@ -25,12 +25,9 @@
 var NAVTREE =
 [
   [ "Robot Principal", "index.html", [
-    [ "Introduction", "index.html#autotoc_md8", null ],
-    [ "Compilation", "index.html#autotoc_md9", null ],
-    [ "Fonctionnement du code", "index.html#autotoc_md10", [
-      [ "PC, DC, VC, kézako ?", "d5/dc1/group__wheeledbase.html#autotoc_md5", null ],
-      [ "Et comment tout ça est relié ?", "d5/dc1/group__wheeledbase.html#autotoc_md6", null ],
-      [ "Comment régler ces constantes alors ?", "d5/dc1/group__wheeledbase.html#autotoc_md7", null ],
+    [ "Introduction", "index.html#autotoc_md5", null ],
+    [ "Compilation", "index.html#autotoc_md6", null ],
+    [ "Fonctionnement du code", "index.html#autotoc_md7", [
       [ "Introduction", "db/de0/group__grafcet.html#autotoc_md0", null ],
       [ "Compilation", "db/de0/group__grafcet.html#autotoc_md1", null ],
       [ "Utilisation", "db/de0/group__grafcet.html#autotoc_md2", null ]
@@ -40,7 +37,6 @@ var NAVTREE =
       [ "Liste des espaces de nommage", "namespaces.html", "namespaces_dup" ],
       [ "Membres de l'espace de nommage", "namespacemembers.html", [
         [ "Tout", "namespacemembers.html", null ],
-        [ "Fonctions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Énumérations", "namespacemembers_enum.html", null ]
       ] ]
@@ -51,16 +47,15 @@ var NAVTREE =
       [ "Hiérarchie des classes", "hierarchy.html", "hierarchy" ],
       [ "Membres de classe", "functions.html", [
         [ "Tout", "functions.html", "functions_dup" ],
-        [ "Fonctions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Énumérations", "functions_enum.html", null ],
-        [ "Valeurs énumérées", "functions_eval.html", null ]
+        [ "Fonctions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Fichiers", "files.html", [
       [ "Liste des fichiers", "files.html", "files_dup" ],
       [ "Membres de fichier", "globals.html", [
         [ "Tout", "globals.html", null ],
+        [ "Fonctions", "globals_func.html", null ],
         [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
@@ -70,9 +65,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d6/d6e/structHazelnutGripper_1_1ColorData.html",
-"db/de0/group__grafcet.html#autotoc_md0",
-"df/dd5/classCube.html#ae26b05950fd5224da30863a75c825162"
+"d9/d0e/classVL53L5CX.html#a63bfc62532c023bc56cec467d201c69c",
+"functions_e.html"
 ];
 
 var SYNCONMSG = 'cliquez pour désactiver la synchronisation du panel';

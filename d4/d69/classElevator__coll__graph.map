@@ -1,7 +1,5 @@
 <map id="Elevator" name="Elevator">
-<area shape="rect" id="Node000001" title=" " alt="" coords="119,94,188,120"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="55,94,124,120"/>
 <area shape="rect" id="Node000002" href="$d4/ddc/classAbstractAbsoluteEncoder.html" title=" " alt="" coords="5,5,174,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,43,125,68,144,92,140,95,120,72,103,46"/>
-<area shape="rect" id="Node000003" href="$d8/da9/classPID.html" title="Classe d&#39;asservissement." alt="" coords="197,5,240,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,46,192,72,169,95,165,92,187,68,204,43"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,47,92,94,87,94,87,47"/>
 </map>

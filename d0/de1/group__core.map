@@ -1,7 +1,8 @@
 <map id="Core" name="Core">
-<area shape="rect" id="Node000001" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="5,93,54,119"/>
-<area shape="rect" id="Node000003" href="$dd/d76/group__ihm.html" title="Tout le code permettant de communiquer avec l&#39;utilisateur." alt="" coords="228,5,274,31"/>
-<area shape="rect" id="Node000004" href="$df/df6/group__sensors.html" title="Tout le code lié aux capteurs du robot." alt="" coords="216,55,286,80"/>
-<area shape="rect" id="Node000002" href="$db/da1/group__strategy.html" title="Tout le code lié à la stratégie du robot." alt="" coords="216,131,286,156"/>
-<area shape="rect" id="Node000005" href="$d5/dc1/group__wheeledbase.html" title="Tout le code lié au déplacement du robot." alt="" coords="200,192,302,218"/>
+<area shape="rect" id="Node000002" href="$d0/dc3/group__codewheel__hardware__timers.html" title=" " alt="" coords="200,5,345,46"/>
+<area shape="rect" id="Node000001" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="5,117,54,142"/>
+<area shape="rect" id="Node000004" href="$dd/d76/group__ihm.html" title="Tout le code permettant de communiquer avec l&#39;utilisateur." alt="" coords="249,70,296,96"/>
+<area shape="rect" id="Node000005" href="$df/df6/group__sensors.html" title="Tout le code lié aux capteurs du robot." alt="" coords="238,120,307,145"/>
+<area shape="rect" id="Node000003" href="$db/da1/group__strategy.html" title="Tout le code lié à la stratégie du robot." alt="" coords="238,193,307,218"/>
+<area shape="rect" id="Node000006" href="$d5/dc1/group__wheeledbase.html" title="Tout le code lié au déplacement du robot." alt="" coords="221,254,324,280"/>
 </map>

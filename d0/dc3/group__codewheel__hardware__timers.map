@@ -1,0 +1,6 @@
+<map id="Codewheel_hardware_timers" name="Codewheel_hardware_timers">
+<area shape="rect" id="Node000001" title=" " alt="" coords="180,47,325,88"/>
+<area shape="rect" id="Node000003" href="$d0/de1/group__core.html" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="44,5,93,31"/>
+<area shape="rect" id="Node000004" href="$d0/da2/group__globals.html" title="Toutes les variables exposées dans le namespace globale." alt="" coords="5,55,132,80"/>
+<area shape="rect" id="Node000002" href="$d5/dc1/group__wheeledbase.html" title="Tout le code lié au déplacement du robot." alt="" coords="17,104,120,130"/>
+</map>

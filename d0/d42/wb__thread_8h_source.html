@@ -113,60 +113,21 @@ $(function(){initNavTree('d0/d42/wb__thread_8h_source.html','../../'); initResiz
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef WB_THREAD_H</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define WB_THREAD_H</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Wheeledbase.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="../../d3/d78/wb__const_8h.html">wb_const.h</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;WheelMotor.h&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Codewheel.h&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;Odometry.h&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;PID.h&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="../../dc/d06/VelocityController_8h.html">VelocityController.h</a>&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;PositionController.h&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;PurePursuit.h&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="../../dd/d63/TurnOnTheSpot_8h.html">TurnOnTheSpot.h</a>&quot;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;mathutils.h&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// Load the different modules</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">extern</span> DRV8844 driver;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">extern</span> WheelMotor leftWheel;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">extern</span> WheelMotor rightWheel;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">extern</span> TIM_HandleTypeDef htim23;<span class="comment">//Right</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">extern</span> TIM_HandleTypeDef htim24;<span class="comment">//Left</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">extern</span> <a class="code hl_class" href="../../dd/df3/classCodewheel.html">Codewheel</a> leftCodewheel;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">extern</span> <a class="code hl_class" href="../../dd/df3/classCodewheel.html">Codewheel</a> rightCodewheel;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">extern</span> <a class="code hl_class" href="../../d6/dc3/classOdometry.html">Odometry</a> odometry;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">extern</span> <a class="code hl_class" href="../../de/d33/classVelocityController.html">VelocityController</a> velocityControl;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#if ENABLE_VELOCITYCONTROLLER_LOGS</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">extern</span> VelocityControllerLogs controllerLogs;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">// ENABLE_VELOCITYCONTROLLER_LOGS</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">extern</span> <a class="code hl_class" href="../../d8/da9/classPID.html">PID</a> linVelPID;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">extern</span> <a class="code hl_class" href="../../d8/da9/classPID.html">PID</a> angVelPID;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">extern</span> <a class="code hl_class" href="../../d2/d64/classPositionController.html">PositionController</a> positionControl;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">extern</span> <a class="code hl_class" href="../../de/d96/classPurePursuit.html">PurePursuit</a> purePursuit;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">extern</span> <a class="code hl_class" href="../../d9/dee/classTurnOnTheSpot.html">TurnOnTheSpot</a> turnOnTheSpot;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> wb_setup();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keywordtype">void</span> wb_loop(<span class="keywordtype">void</span> *pvParameters);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif </span><span class="comment">//WB_THREAD_H</span></div>
-<div class="ttc" id="aTurnOnTheSpot_8h_html"><div class="ttname"><a href="../../dd/d63/TurnOnTheSpot_8h.html">TurnOnTheSpot.h</a></div><div class="ttdoc">Implémentation d&#39;AbstractMoveStrategy qui fait tourner le robot sur lui-même.</div></div>
-<div class="ttc" id="aVelocityController_8h_html"><div class="ttname"><a href="../../dc/d06/VelocityController_8h.html">VelocityController.h</a></div><div class="ttdoc">Contrôleur de vitesse pour un robot à base différentielle.</div></div>
-<div class="ttc" id="aclassCodewheel_html"><div class="ttname"><a href="../../dd/df3/classCodewheel.html">Codewheel</a></div><div class="ttdoc">Fait la passerelle entre les roues codeuses et le stm32.</div><div class="ttdef"><b>Definition</b> Codewheel.h:18</div></div>
-<div class="ttc" id="aclassOdometry_html"><div class="ttname"><a href="../../d6/dc3/classOdometry.html">Odometry</a></div><div class="ttdoc">Calcule la position en temps réel du robot.</div><div class="ttdef"><b>Definition</b> Odometry.h:73</div></div>
-<div class="ttc" id="aclassPID_html"><div class="ttname"><a href="../../d8/da9/classPID.html">PID</a></div><div class="ttdoc">Classe d&#39;asservissement.</div><div class="ttdef"><b>Definition</b> PID.h:16</div></div>
-<div class="ttc" id="aclassPositionController_html"><div class="ttname"><a href="../../d2/d64/classPositionController.html">PositionController</a></div><div class="ttdoc">Classe support des objets AbstractMoveStrategy.</div><div class="ttdef"><b>Definition</b> PositionController.h:21</div></div>
-<div class="ttc" id="aclassPurePursuit_html"><div class="ttname"><a href="../../de/d96/classPurePursuit.html">PurePursuit</a></div><div class="ttdoc">Trajectoire courbe le long d&#39;une ligne brisée.</div><div class="ttdef"><b>Definition</b> PurePursuit.h:20</div></div>
-<div class="ttc" id="aclassTurnOnTheSpot_html"><div class="ttname"><a href="../../d9/dee/classTurnOnTheSpot.html">TurnOnTheSpot</a></div><div class="ttdoc">Rotation du robot sans translations.</div><div class="ttdef"><b>Definition</b> TurnOnTheSpot.h:19</div></div>
-<div class="ttc" id="aclassVelocityController_html"><div class="ttname"><a href="../../de/d33/classVelocityController.html">VelocityController</a></div><div class="ttdoc">Objet de controle de la vitesse.</div><div class="ttdef"><b>Definition</b> VelocityController.h:30</div></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;STM32HALTimer.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> TIM_HandleTypeDef htim23;<span class="comment">//Right</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">extern</span> TIM_HandleTypeDef htim24;<span class="comment">//Left</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>Wheeledbase::WheeledBase <a class="code hl_function" href="../../d0/d42/wb__thread_8h.html#ad5ee9b3f0c22cd71363ae8168f8c748d">wb_setup</a>();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>[[noreturn]] <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d42/wb__thread_8h.html#a03dd279a9cf8c57fab4c51be73f59b03">wb_loop</a>(<span class="keywordtype">void</span> *pvParameters);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">//WB_THREAD_H</span></div>
 <div class="ttc" id="awb__const_8h_html"><div class="ttname"><a href="../../d3/d78/wb__const_8h.html">wb_const.h</a></div><div class="ttdoc">Diverses constantes concernant la base roulante.</div></div>
+<div class="ttc" id="awb__thread_8h_html_a03dd279a9cf8c57fab4c51be73f59b03"><div class="ttname"><a href="../../d0/d42/wb__thread_8h.html#a03dd279a9cf8c57fab4c51be73f59b03">wb_loop</a></div><div class="ttdeci">void wb_loop(void *pvParameters)</div><div class="ttdef"><b>Definition</b> wb_thread.cpp:152</div></div>
+<div class="ttc" id="awb__thread_8h_html_ad5ee9b3f0c22cd71363ae8168f8c748d"><div class="ttname"><a href="../../d0/d42/wb__thread_8h.html#ad5ee9b3f0c22cd71363ae8168f8c748d">wb_setup</a></div><div class="ttdeci">Wheeledbase::WheeledBase wb_setup()</div><div class="ttdef"><b>Definition</b> wb_thread.cpp:109</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

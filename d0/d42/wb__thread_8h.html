@@ -115,92 +115,26 @@ $(function(){initNavTree('d0/d42/wb__thread_8h.html','../../'); initResizable(tr
 
 <p>Contient les fonctions et variables nécessaires pour gérer le thread de base roulante.  
 <a href="#details">Plus de détails...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d3/d78/wb__const_8h_source.html">wb_const.h</a>&quot;</code><br />
-<code>#include &quot;WheelMotor.h&quot;</code><br />
-<code>#include &quot;Codewheel.h&quot;</code><br />
-<code>#include &quot;Odometry.h&quot;</code><br />
-<code>#include &quot;PID.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dc/d06/VelocityController_8h_source.html">VelocityController.h</a>&quot;</code><br />
-<code>#include &quot;PositionController.h&quot;</code><br />
-<code>#include &quot;PurePursuit.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../dd/d63/TurnOnTheSpot_8h_source.html">TurnOnTheSpot.h</a>&quot;</code><br />
-<code>#include &quot;mathutils.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;Wheeledbase.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d3/d78/wb__const_8h_source.html">wb_const.h</a>&quot;</code><br />
+<code>#include &quot;STM32HALTimer.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de wb_thread.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/d87/wb__thread_8h__incl.png" border="0" usemap="#awb__thread_8h" alt=""/></div>
 <map name="awb__thread_8h" id="awb__thread_8h">
-<area shape="rect" title="Contient les fonctions et variables nécessaires pour gérer le thread de base roulante." alt="" coords="802,5,893,31"/>
-<area shape="rect" href="../../d3/d78/wb__const_8h.html" title="Diverses constantes concernant la base roulante." alt="" coords="721,79,809,105"/>
-<area shape="poly" title=" " alt="" coords="835,34,792,71,789,67,832,30"/>
-<area shape="rect" title=" " alt="" coords="104,226,204,252"/>
-<area shape="poly" title=" " alt="" coords="802,31,701,52,584,82,474,117,366,156,198,222,196,217,364,151,472,112,583,76,700,46,801,25"/>
-<area shape="rect" href="../../db/df9/Codewheel_8h_source.html" title=" " alt="" coords="228,226,323,252"/>
-<area shape="poly" title=" " alt="" coords="806,34,658,82,466,157,317,222,315,217,464,152,656,76,804,29"/>
-<area shape="rect" href="../../d3/d12/Odometry_8h_source.html" title=" " alt="" coords="892,374,979,399"/>
-<area shape="poly" title=" " alt="" coords="894,20,1018,33,1171,59,1241,78,1300,101,1323,115,1340,129,1352,146,1356,164,1356,241,1353,255,1344,269,1315,293,1271,315,1218,333,1100,362,995,380,994,375,1099,357,1216,328,1269,310,1312,289,1340,265,1348,253,1350,240,1350,164,1347,148,1336,133,1320,119,1298,106,1240,83,1170,64,1018,38,893,25"/>
-<area shape="rect" href="../../d3/d17/PID_8h_source.html" title=" " alt="" coords="274,374,328,399"/>
-<area shape="poly" title=" " alt="" coords="802,25,604,41,338,70,212,89,107,112,66,124,35,138,15,151,9,165,9,240,11,287,18,305,33,324,49,334,72,344,133,359,259,378,258,384,132,365,71,349,47,339,30,328,13,308,5,288,4,241,4,164,11,148,32,133,64,119,105,107,211,84,338,65,603,36,802,20"/>
-<area shape="rect" href="../../dc/d06/VelocityController_8h.html" title="Contrôleur de vitesse pour un robot à base différentielle." alt="" coords="347,226,479,252"/>
-<area shape="poly" title=" " alt="" coords="819,34,710,81,563,157,448,221,446,216,561,152,708,77,816,29"/>
-<area shape="rect" href="../../d3/d3a/PositionController_8h_source.html" title=" " alt="" coords="946,300,1080,326"/>
-<area shape="poly" title=" " alt="" coords="894,23,981,41,1034,57,1089,77,1144,104,1196,137,1242,177,1279,225,1284,239,1279,254,1267,264,1250,273,1204,288,1096,307,1095,301,1203,283,1248,268,1264,260,1275,250,1279,239,1275,228,1238,180,1193,141,1142,108,1087,82,1032,62,980,46,893,28"/>
-<area shape="rect" href="../../d2/d54/PurePursuit_8h_source.html" title=" " alt="" coords="859,226,959,252"/>
-<area shape="poly" title=" " alt="" coords="853,31,904,211,899,212,848,32"/>
-<area shape="rect" href="../../dd/d63/TurnOnTheSpot_8h.html" title="Implémentation d&#39;AbstractMoveStrategy qui fait tourner le robot sur lui&#45;même." alt="" coords="1033,226,1156,252"/>
-<area shape="poly" title=" " alt="" coords="863,30,1072,214,1068,218,859,34"/>
-<area shape="rect" href="../../dc/d58/mathutils_8h_source.html" title=" " alt="" coords="1180,226,1264,252"/>
-<area shape="poly" title=" " alt="" coords="870,29,1190,216,1187,221,867,34"/>
-<area shape="rect" href="../../df/dbb/Wheeledbase_8h.html" title="Fonctions de convénience pour faire les déplacements facilement." alt="" coords="688,153,797,178"/>
-<area shape="poly" title=" " alt="" coords="764,106,753,138,748,137,759,104"/>
-<area shape="poly" title=" " alt="" coords="687,174,486,195,220,228,220,223,485,189,687,169"/>
-<area shape="poly" title=" " alt="" coords="688,177,535,198,339,228,338,223,534,193,687,171"/>
-<area shape="poly" title=" " alt="" coords="755,177,799,225,917,360,913,364,795,228,751,180"/>
-<area shape="rect" title=" " alt="" coords="417,447,478,473"/>
-<area shape="poly" title=" " alt="" coords="732,181,690,228,656,279,642,301,620,328,548,392,481,441,477,436,544,388,616,324,638,298,652,276,685,225,728,177"/>
-<area shape="poly" title=" " alt="" coords="715,181,680,201,646,228,628,254,621,279,612,304,591,328,559,347,530,359,502,365,475,367,416,368,343,376,342,371,415,363,474,362,501,360,528,354,557,343,587,324,607,301,616,278,624,252,642,225,677,196,713,177"/>
-<area shape="poly" title=" " alt="" coords="688,181,485,225,484,220,687,176"/>
-<area shape="poly" title=" " alt="" coords="798,166,839,171,885,182,931,199,972,224,995,253,1009,284,1004,286,990,256,968,228,928,203,883,187,838,176,797,171"/>
-<area shape="poly" title=" " alt="" coords="772,176,868,217,866,222,769,181"/>
-<area shape="poly" title=" " alt="" coords="798,175,1020,220,1019,225,797,181"/>
-<area shape="poly" title=" " alt="" coords="798,171,958,192,1165,223,1165,229,958,197,797,176"/>
-<area shape="rect" title=" " alt="" coords="699,226,785,252"/>
-<area shape="poly" title=" " alt="" coords="745,179,745,211,740,211,740,179"/>
-<area shape="rect" href="../../dd/da4/Logger_8h.html" title="Un logger qui permet d&#39;avoir une belle sortie console." alt="" coords="503,226,574,252"/>
-<area shape="poly" title=" " alt="" coords="708,181,588,223,586,218,707,176"/>
-<area shape="rect" href="../../d6/d32/NonCopyable_8h_source.html" title=" " alt="" coords="44,300,152,326"/>
-<area shape="poly" title=" " alt="" coords="246,255,143,296,141,291,244,250"/>
-<area shape="poly" title=" " alt="" coords="301,250,383,287,435,307,488,323,594,346,701,363,877,379,876,385,700,368,593,351,487,328,433,312,381,292,299,255"/>
-<area shape="poly" title=" " alt="" coords="259,255,236,275,218,301,212,330,220,354,238,376,264,397,297,418,333,433,403,451,401,456,332,438,295,423,261,401,234,379,215,357,207,330,213,299,232,271,255,251"/>
-<area shape="rect" href="../../d5/d78/PeriodicProcess_8h_source.html" title=" " alt="" coords="834,447,960,473"/>
-<area shape="poly" title=" " alt="" coords="932,401,913,435,908,432,927,398"/>
-<area shape="rect" href="../../da/dc4/My__Clock_8h_source.html" title=" " alt="" coords="839,521,928,547"/>
-<area shape="poly" title=" " alt="" coords="897,474,891,506,886,505,892,473"/>
-<area shape="rect" title=" " alt="" coords="705,602,780,628"/>
-<area shape="poly" title=" " alt="" coords="863,549,779,597,776,592,861,545"/>
-<area shape="rect" title=" " alt="" coords="830,602,924,628"/>
-<area shape="poly" title=" " alt="" coords="885,547,882,587,877,587,880,547"/>
-<area shape="rect" title=" " alt="" coords="948,595,1121,635"/>
-<area shape="poly" title=" " alt="" coords="908,545,985,585,982,590,905,549"/>
-<area shape="poly" title=" " alt="" coords="327,397,410,438,408,442,325,402"/>
-<area shape="rect" href="../../d9/d02/DifferentialController_8h_source.html" title=" " alt="" coords="227,300,375,326"/>
-<area shape="poly" title=" " alt="" coords="395,255,334,294,331,289,392,250"/>
-<area shape="poly" title=" " alt="" coords="351,324,833,441,832,446,350,329"/>
-<area shape="poly" title=" " alt="" coords="304,326,304,358,298,358,298,326"/>
-<area shape="rect" title=" " alt="" coords="351,374,472,399"/>
-<area shape="poly" title=" " alt="" coords="321,324,382,363,379,367,318,328"/>
-<area shape="poly" title=" " alt="" coords="1002,328,961,365,958,361,998,324"/>
-<area shape="poly" title=" " alt="" coords="1015,326,1010,361,1004,382,994,401,970,425,943,442,940,438,967,421,989,398,999,380,1005,360,1010,325"/>
-<area shape="poly" title=" " alt="" coords="914,252,933,358,928,359,908,253"/>
-<area shape="poly" title=" " alt="" coords="895,255,798,323,730,365,658,402,572,433,494,452,493,447,570,428,656,397,728,360,795,319,892,250"/>
-<area shape="poly" title=" " alt="" coords="928,250,984,289,981,293,925,255"/>
-<area shape="poly" title=" " alt="" coords="1100,252,1105,287,1102,308,1094,327,1074,348,1049,364,1022,374,995,381,994,376,1020,369,1046,359,1070,344,1089,324,1097,307,1099,287,1095,253"/>
-<area shape="poly" title=" " alt="" coords="1082,255,1040,292,1036,288,1079,251"/>
-<area shape="rect" title=" " alt="" coords="1155,300,1212,326"/>
-<area shape="poly" title=" " alt="" coords="1111,250,1158,288,1155,292,1108,255"/>
-<area shape="poly" title=" " alt="" coords="525,254,510,268,497,286,489,305,490,325,510,369,536,411,566,450,598,487,662,548,714,590,711,595,658,552,594,490,562,454,532,414,506,371,485,326,483,304,492,283,506,265,521,251"/>
-<area shape="rect" href="../../d4/d36/coloring_8h.html" title="Définitions des codes ANSI pour colorer le shell." alt="" coords="500,300,576,326"/>
-<area shape="poly" title=" " alt="" coords="541,252,541,284,536,284,536,252"/>
+<area shape="rect" title="Contient les fonctions et variables nécessaires pour gérer le thread de base roulante." alt="" coords="56,5,147,31"/>
+<area shape="rect" title=" " alt="" coords="5,153,115,178"/>
+<area shape="poly" title=" " alt="" coords="86,33,65,54,48,80,44,109,51,138,46,139,39,109,43,78,61,50,83,30"/>
+<area shape="rect" href="../../d3/d78/wb__const_8h.html" title="Diverses constantes concernant la base roulante." alt="" coords="58,79,145,105"/>
+<area shape="poly" title=" " alt="" coords="104,31,104,63,99,63,99,31"/>
+<area shape="rect" href="../../d3/dfe/STM32HALTimer_8h_source.html" title=" " alt="" coords="169,79,303,105"/>
+<area shape="poly" title=" " alt="" coords="125,29,201,69,199,74,123,34"/>
+<area shape="poly" title=" " alt="" coords="97,106,77,141,72,138,92,104"/>
+<area shape="rect" title=" " alt="" coords="168,153,243,178"/>
+<area shape="poly" title=" " alt="" coords="233,106,219,139,214,137,228,104"/>
+<area shape="rect" title=" " alt="" coords="268,153,458,178"/>
+<area shape="poly" title=" " alt="" coords="259,103,329,142,327,147,256,108"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -218,61 +152,65 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:ac6463b43520a41154ab652923a8721f4" id="r_ac6463b43520a41154ab652923a8721f4"><td class="memItemLeft" align="right" valign="top"><a id="ac6463b43520a41154ab652923a8721f4" name="ac6463b43520a41154ab652923a8721f4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wb_setup</b> ()</td></tr>
-<tr class="separator:ac6463b43520a41154ab652923a8721f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03dd279a9cf8c57fab4c51be73f59b03" id="r_a03dd279a9cf8c57fab4c51be73f59b03"><td class="memItemLeft" align="right" valign="top"><a id="a03dd279a9cf8c57fab4c51be73f59b03" name="a03dd279a9cf8c57fab4c51be73f59b03"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wb_loop</b> (void *pvParameters)</td></tr>
+<tr class="memitem:ad5ee9b3f0c22cd71363ae8168f8c748d" id="r_ad5ee9b3f0c22cd71363ae8168f8c748d"><td class="memItemLeft" align="right" valign="top">Wheeledbase::WheeledBase&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5ee9b3f0c22cd71363ae8168f8c748d">wb_setup</a> ()</td></tr>
+<tr class="separator:ad5ee9b3f0c22cd71363ae8168f8c748d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03dd279a9cf8c57fab4c51be73f59b03" id="r_a03dd279a9cf8c57fab4c51be73f59b03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03dd279a9cf8c57fab4c51be73f59b03">wb_loop</a> (void *pvParameters)</td></tr>
 <tr class="separator:a03dd279a9cf8c57fab4c51be73f59b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:gaffbc10fcbbcb4b7e16551c4a2f83865d" id="r_gaffbc10fcbbcb4b7e16551c4a2f83865d"><td class="memItemLeft" align="right" valign="top">
-DRV8844&#160;</td><td class="memItemRight" valign="bottom"><b>driver</b></td></tr>
-<tr class="separator:gaffbc10fcbbcb4b7e16551c4a2f83865d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0f114affb14d11e6d650c070049b2963" id="r_ga0f114affb14d11e6d650c070049b2963"><td class="memItemLeft" align="right" valign="top">
-WheelMotor&#160;</td><td class="memItemRight" valign="bottom"><b>leftWheel</b></td></tr>
-<tr class="separator:ga0f114affb14d11e6d650c070049b2963"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae5bc1f92315934ba295d83be6a0d9d27" id="r_gae5bc1f92315934ba295d83be6a0d9d27"><td class="memItemLeft" align="right" valign="top">
-WheelMotor&#160;</td><td class="memItemRight" valign="bottom"><b>rightWheel</b></td></tr>
-<tr class="separator:gae5bc1f92315934ba295d83be6a0d9d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4a2f1838d25a2ba94589e7c774a2beae" id="r_ga4a2f1838d25a2ba94589e7c774a2beae"><td class="memItemLeft" align="right" valign="top">
 TIM_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>htim23</b></td></tr>
 <tr class="separator:ga4a2f1838d25a2ba94589e7c774a2beae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafa040c5ad7082671f465c9959770f4a0" id="r_gafa040c5ad7082671f465c9959770f4a0"><td class="memItemLeft" align="right" valign="top">
 TIM_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><b>htim24</b></td></tr>
 <tr class="separator:gafa040c5ad7082671f465c9959770f4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab2ae3c36dd4e918d4b97fb26faa70f02" id="r_gab2ae3c36dd4e918d4b97fb26faa70f02"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../dd/df3/classCodewheel.html">Codewheel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>leftCodewheel</b></td></tr>
-<tr class="separator:gab2ae3c36dd4e918d4b97fb26faa70f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf92c23bc5806f1d2965b3d979258974c" id="r_gaf92c23bc5806f1d2965b3d979258974c"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../dd/df3/classCodewheel.html">Codewheel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rightCodewheel</b></td></tr>
-<tr class="separator:gaf92c23bc5806f1d2965b3d979258974c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab094448afeb87b34b04865a7cb455e92" id="r_gab094448afeb87b34b04865a7cb455e92"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../d6/dc3/classOdometry.html">Odometry</a>&#160;</td><td class="memItemRight" valign="bottom"><b>odometry</b></td></tr>
-<tr class="separator:gab094448afeb87b34b04865a7cb455e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad36eb14fdf6a1c5b44b779d98941f3c7" id="r_gad36eb14fdf6a1c5b44b779d98941f3c7"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../de/d33/classVelocityController.html">VelocityController</a>&#160;</td><td class="memItemRight" valign="bottom"><b>velocityControl</b></td></tr>
-<tr class="separator:gad36eb14fdf6a1c5b44b779d98941f3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga678911ffa6fb6b64db6c566e30d0da7b" id="r_ga678911ffa6fb6b64db6c566e30d0da7b"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../d8/da9/classPID.html">PID</a>&#160;</td><td class="memItemRight" valign="bottom"><b>linVelPID</b></td></tr>
-<tr class="separator:ga678911ffa6fb6b64db6c566e30d0da7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0cfc8ab6174294205ae9aaec663b3b12" id="r_ga0cfc8ab6174294205ae9aaec663b3b12"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../d8/da9/classPID.html">PID</a>&#160;</td><td class="memItemRight" valign="bottom"><b>angVelPID</b></td></tr>
-<tr class="separator:ga0cfc8ab6174294205ae9aaec663b3b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga63e787998937cf864eea16e80d3d6aec" id="r_ga63e787998937cf864eea16e80d3d6aec"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../d2/d64/classPositionController.html">PositionController</a>&#160;</td><td class="memItemRight" valign="bottom"><b>positionControl</b></td></tr>
-<tr class="separator:ga63e787998937cf864eea16e80d3d6aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga03ede4fa09381c6ada8a06ce61052765" id="r_ga03ede4fa09381c6ada8a06ce61052765"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../de/d96/classPurePursuit.html">PurePursuit</a>&#160;</td><td class="memItemRight" valign="bottom"><b>purePursuit</b></td></tr>
-<tr class="separator:ga03ede4fa09381c6ada8a06ce61052765"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga86a57547f0081c2c7c585259de602fe7" id="r_ga86a57547f0081c2c7c585259de602fe7"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="../../d9/dee/classTurnOnTheSpot.html">TurnOnTheSpot</a>&#160;</td><td class="memItemRight" valign="bottom"><b>turnOnTheSpot</b></td></tr>
-<tr class="separator:ga86a57547f0081c2c7c585259de602fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Contient les fonctions et variables nécessaires pour gérer le thread de base roulante. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a03dd279a9cf8c57fab4c51be73f59b03" name="a03dd279a9cf8c57fab4c51be73f59b03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03dd279a9cf8c57fab4c51be73f59b03">&#9670;&#160;</a></span>wb_loop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wb_loop </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>pvParameters</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Boucle principale de la tâche FreeRTOS </p><dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pvParameters</td><td>Les paramètres de la tâche tels que demandé par les tâches FreeRTOS </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad5ee9b3f0c22cd71363ae8168f8c748d" name="ad5ee9b3f0c22cd71363ae8168f8c748d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5ee9b3f0c22cd71363ae8168f8c748d">&#9670;&#160;</a></span>wb_setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Wheeledbase::WheeledBase wb_setup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Créé et initialise la base roulante </p><dl class="section return"><dt>Renvoie</dt><dd>La Base roulante </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

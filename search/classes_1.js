@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['basicmovestrategy_0',['BasicMoveStrategy',['../de/d22/classBasicMoveStrategy.html',1,'']]],
-  ['basicturnstrategy_1',['BasicTurnStrategy',['../db/d2b/classBasicTurnStrategy.html',1,'']]],
-  ['block_5fheader_2',['Block_header',['../dc/da5/unionBlock__header.html',1,'']]],
-  ['bournsacencoder_3',['BournsACEncoder',['../d0/d04/classBournsACEncoder.html',1,'BournsACEncoder'],['../d8/d86/classHazelnutGripper_1_1BournsACEncoder.html',1,'HazelnutGripper::BournsACEncoder']]],
-  ['brushlessmotor_4',['BrushlessMotor',['../d7/d82/classBrushlessMotor.html',1,'']]],
-  ['buttons_5',['Buttons',['../dc/d2e/classButtons.html',1,'']]]
+  ['block_5fheader_0',['Block_header',['../dc/da5/unionBlock__header.html',1,'']]],
+  ['bournsacencoder_1',['BournsACEncoder',['../d0/d04/classBournsACEncoder.html',1,'BournsACEncoder'],['../d8/d86/classHazelnutGripper_1_1BournsACEncoder.html',1,'HazelnutGripper::BournsACEncoder']]],
+  ['brushlessmotor_2',['BrushlessMotor',['../d7/d82/classBrushlessMotor.html',1,'']]],
+  ['buttons_3',['Buttons',['../dc/d2e/classButtons.html',1,'']]]
 ];

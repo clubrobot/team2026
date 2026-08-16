@@ -1,5 +1,3 @@
 <map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
-<area shape="rect" id="Node000000" href="$dc/d2e/classButtons.html" title="Représente un bouton." alt="" coords="5,5,72,31"/>
-<area shape="rect" id="Node000001" href="$d8/d45/classLedButton.html" title="Représente un bouton avec une LED intégrée." alt="" coords="120,5,201,31"/>
-<area shape="poly" id="edge8_Node000000_Node000001" title=" " alt="" coords="87,16,119,16,119,21,87,21"/>
+<area shape="rect" id="Node000000" href="$df/d45/classClock.html" title=" " alt="" coords="5,5,60,31"/>
 </map>

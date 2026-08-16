@@ -1,7 +1,5 @@
 <map id="Wheeled base" name="Wheeled base">
-<area shape="rect" id="Node000005" href="$d0/de1/group__core.html" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="357,23,406,48"/>
-<area shape="rect" id="Node000004" href="$d0/dd5/group__libs.html" title="Toutes les librairies." alt="" coords="318,219,444,244"/>
-<area shape="rect" id="Node000002" href="$d1/d2c/group__wb__global__define.html" title="Les valeurs des identifiants des constantes." alt="" coords="327,308,436,334"/>
-<area shape="rect" id="Node000003" href="$d0/df9/group__wb__slowdown__define.html" title="Les paramètres de ralentissement du robot à la fin de goto." alt="" coords="285,358,478,398"/>
-<area shape="rect" id="Node000001" title="Tout le code lié au déplacement du robot." alt="" coords="5,241,108,267"/>
+<area shape="rect" id="Node000002" href="$d0/dc3/group__codewheel__hardware__timers.html" title=" " alt="" coords="226,5,371,46"/>
+<area shape="rect" id="Node000003" href="$d0/de1/group__core.html" title="Tout le code lié directement au fonctionnement du robot." alt="" coords="274,70,322,96"/>
+<area shape="rect" id="Node000001" title="Tout le code lié au déplacement du robot." alt="" coords="5,42,108,68"/>
 </map>
