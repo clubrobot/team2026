@@ -17,18 +17,19 @@
 
 void killer::killer_loop(void *pvParameters)
 {
-
-    printf("Waiiiting\n");
+    auto *wb = static_cast<Wheeledbase::WheeledBase*>(pvParameters);
+    auto log = Logger("KILLER");
+    log.log(INFO_LEVEL, "Waiiiiting\n");
     vTaskDelay(pdMS_TO_TICKS(100000));
 
-    printf("In comming\n");
+    log.log(INFO_LEVEL, "In comming\n");
     vTaskDelete(gripper_handle);
     vTaskDelete(hl_robot);
     vTaskDelete(hl_wb);
     vTaskDelete(hl_sens);
 
-    leftWheel.setVelocity(0);
-    rightWheel.setVelocity(0);
+    wb->leftWheel->setVelocity(0);
+    wb->rightWheel->setVelocity(0);
 
     ihm::ihmLogger.log(SCREEN_LEVEL, "END");
 

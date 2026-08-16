@@ -12,7 +12,7 @@
       "name": "awing"
     }
   ],
-  "license": "UNLICENSED",
+  "license": "Affero General Public License v3.0",
   "frameworks": "*",
   "platforms": "*",
   "headers": [

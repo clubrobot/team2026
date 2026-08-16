@@ -7,54 +7,31 @@
 
 #ifndef WB_THREAD_H
 #define WB_THREAD_H
-
+#include "Wheeledbase.h"
 #include "wb_const.h"
+#include "STM32HALTimer.h"
 
-#include "WheelMotor.h"
-#include "Codewheel.h"
-#include "Odometry.h"
-#include "PID.h"
-#include "VelocityController.h"
-#include "PositionController.h"
-#include "PurePursuit.h"
-#include "TurnOnTheSpot.h"
-
-#include "mathutils.h"
-
-// Load the different modules
 /**
- * @defgroup wb-componants Composants de la base roulante
+ * @defgroup codewheel_hardware_timers
+ * @ingroup wheeledbase
+ * @ingroup core
  * @ingroup globals
- * @brief Les divers constituants (moteurs, pid...) de la base roulante
  * @{
  */
-extern DRV8844 driver;
-extern WheelMotor leftWheel;
-extern WheelMotor rightWheel;
-
 extern TIM_HandleTypeDef htim23;//Right
 extern TIM_HandleTypeDef htim24;//Left
+///@}
 
-extern Codewheel leftCodewheel;
-extern Codewheel rightCodewheel;
+/**
+ * Créé et initialise la base roulante
+ * @return La Base roulante
+ */
+Wheeledbase::WheeledBase wb_setup();
 
-extern Odometry odometry;
-
-extern VelocityController velocityControl;
-#if ENABLE_VELOCITYCONTROLLER_LOGS
-extern VelocityControllerLogs controllerLogs;
-#endif // ENABLE_VELOCITYCONTROLLER_LOGS
-
-extern PID linVelPID;
-extern PID angVelPID;
-
-extern PositionController positionControl;
-
-extern PurePursuit purePursuit;
-extern TurnOnTheSpot turnOnTheSpot;
-/// @}
-
-void wb_setup();
-void wb_loop(void *pvParameters);
+/**
+ * Boucle principale de la tâche FreeRTOS
+ * @param pvParameters Les paramètres de la tâche tels que demandé par les tâches FreeRTOS
+ */
+[[noreturn]] void wb_loop(void *pvParameters);
 
 #endif //WB_THREAD_H

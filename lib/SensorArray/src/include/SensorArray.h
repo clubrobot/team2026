@@ -8,9 +8,10 @@
 #include <Arduino.h>
 #include <Wire.h>
 
+#include "../../Wheeledbase/include/Components/Odometry.h"
 #include "Logger.h"
 #include "Types.h"
-#include "../../../Odometry/Odometry.h"
+#include "Wheeledbase.h"
 #include "uld/include/VL53L5CX.h"
 
 #define MASTER_ADDRESS 0x01
@@ -65,7 +66,7 @@ public:
     void Stop();
 
     //Get new data
-    uint8_t getNormalisedData();
+    uint8_t getNormalisedData(const Wheeledbase::WheeledBase& wheeledbase);
     void Print();
     bool isThereAnObstacle(float start, float end, float distance);
 
@@ -90,7 +91,7 @@ private:
 
 
     void ApplyPowerConfig() const;
-    uint8_t AquireRawData();
+    uint8_t AquireRawData(const Wheeledbase::WheeledBase& wheeledbase);
     static void Mesurement_to_Point(uint16_t measure, uint8_t x, uint8_t y, Point* point);
 
 

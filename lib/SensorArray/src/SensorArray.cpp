@@ -7,8 +7,8 @@
 #include "Sphere.h"
 #include "Teleplot_client.h"
 #include "../../Include/My_Clock.h"
-#include "../../Odometry/Odometry.h"
-#include "../../Wheeledbase/Wheeledbase.h"
+#include "../../Wheeledbase/include/Components/Odometry.h"
+#include "../../Wheeledbase/include/Wheeledbase.h"
 #include "include/Types.h"
 #include "uld/include/VL53L5CX.h"
 
@@ -185,10 +185,10 @@ uint8_t SensorArray::Start()
 }
 
 
-uint8_t SensorArray::AquireRawData()
+uint8_t SensorArray::AquireRawData(const Wheeledbase::WheeledBase& wheeledbase)
 {
 
-    const Position* position = Wheeledbase::GET_POSITION();
+    const Position* position = Wheeledbase::getPosition(&wheeledbase);
 
     //Switch the origin buffers
     for (int i = 0; i < 8; ++i)
@@ -251,10 +251,10 @@ void SensorArray::Mesurement_to_Point(uint16_t measure, uint8_t x, uint8_t y, Po
     point->y = measure * tan(y_angle * PI / 180);
 }
 
-uint8_t SensorArray::getNormalisedData()
+uint8_t SensorArray::getNormalisedData(const Wheeledbase::WheeledBase& wheeledbase)
 {
 
-    uint8_t status = AquireRawData();
+    uint8_t status = AquireRawData(wheeledbase);
 
     if (status != VL53L5CX_STATUS_OK)
     {

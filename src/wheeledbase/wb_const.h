@@ -16,7 +16,7 @@
 //Turn left when thinking moving forward               -> increase right codewheel radius
 
 
-inline WBConstants wb_consts = {
+inline Wheeledbase::WBConstants wb_consts = {
     .LEFTWHEEL_RADIUS = 23.8125,
     .LEFTWHEEL_CONSTANT = 0.209380534*2,
     .LEFTWHEEL_MAXPWM = 1.0,

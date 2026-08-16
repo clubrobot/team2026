@@ -13,7 +13,7 @@
 #include "Geogebra.h"
 #include "include/Types.h"
 
-void procedure_demarrage(){
+void procedure_demarrage(Wheeledbase::WheeledBase& wheeledbase) {
 
     cerveau::automate::Team team;
     cerveau::automate::automateLogger.log(INFO_LEVEL,"Le robot est armé!\n");
@@ -46,10 +46,10 @@ void procedure_demarrage(){
         team = cerveau::automate::JAUNE;
         Logger::sameLine(" Jaune");
     }
-    cerveau::automate::init(team);
+    cerveau::automate::init(team, wheeledbase);
     cerveau::automate::ourTeam = team;
-    while(ihm::etat_tirette()==1){vTaskDelay(pdMS_TO_TICKS(100));}
-    while (ihm::etat_tirette()==0){vTaskDelay(pdMS_TO_TICKS(100));}
+    while(ihm::etat_tirette()){vTaskDelay(pdMS_TO_TICKS(100));}
+    while (!ihm::etat_tirette()){vTaskDelay(pdMS_TO_TICKS(100));}
     ihm::ihmLogger.log(SCREEN_LEVEL, "Lets go !");
 
     BaseType_t ret_gripper = xTaskCreate(
@@ -62,7 +62,7 @@ void procedure_demarrage(){
     if(ret_gripper!=pdPASS) {Error_Handler()}
 }
 
-void cerveau::automate::init(const Team team) {
+void cerveau::automate::init(const Team team, Wheeledbase::WheeledBase& wheeledbase) {
     if (team == BLEU) {
         strategie::start = positions_bleu[Depart_B];
         strategie::generateBlueStrat();
@@ -72,11 +72,12 @@ void cerveau::automate::init(const Team team) {
         strategie::generateYellowStrat();
         //strategie::stratDeSecoursJaune();
     }
-    Wheeledbase::SET_POSITION(&strategie::start);
+    Wheeledbase::setPosition(&wheeledbase, &strategie::start);
 }
 
 void cerveau::automate::play_match(void *pvParameters) {
-    procedure_demarrage();
+    auto *wheeledbase = static_cast<Wheeledbase::WheeledBase*>(pvParameters);
+    procedure_demarrage(*wheeledbase);
     //while (true) {
     //    for (int i = 0; i < 4; ++i) {
     //        HazelnutGripper::GripperFinger *finger = &HazelnutGripper::Gripper::getFinger(i);
@@ -96,9 +97,6 @@ void cerveau::automate::play_match(void *pvParameters) {
     //Wheeledbase::SET_OPENLOOP_VELOCITIES(100,0);
 
 
-    while (true) {}
-    Wheeledbase::GOTO_DELTA(810, 0, true);
-    Wheeledbase::GOTO_DELTA(-810, 0, true);
 
     /*
 

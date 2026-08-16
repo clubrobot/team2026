@@ -36,14 +36,15 @@ void SensorsThread::Init(){
 
 
 void SensorsThread::Thread(void *pvParameters){
+    auto *wb = static_cast<Wheeledbase::WheeledBase*>(pvParameters);
 
     for (;;){
         //getNormalisedData is REQUIRED to later work with sensors
-        sensors.getNormalisedData();
+        sensors.getNormalisedData(*wb);
         bool obstacle = false;
         obstacle = sensors.isThereAnObstacle(-PI/4, PI/4, 400);
         obstacle |= sensors.isThereAnObstacle(PI/4, -PI/4, 300);
 
-        velocityControl.set_stop(obstacle);
+        wb->velocityControl->set_stop(obstacle);
     }
 }

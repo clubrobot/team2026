@@ -1,6 +1,6 @@
 #ifndef TEAM2026_GEOGEBRA_H_CERTIF
 #define TEAM2026_GEOGEBRA_H_CERTIF
-#include "Odometry.h" 
+#include "Components/Odometry.h"
 #define Depart_J 0
 #define R1L_J 1
 #define R2L_J 2

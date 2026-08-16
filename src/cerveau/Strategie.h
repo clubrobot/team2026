@@ -16,7 +16,7 @@
 #include "Grafcet.h"
 #include "HazelnutGripper.h"
 #include "Logger.h"
-#include "Odometry.h"
+#include "Components/Odometry.h"
 #include "Geogebra.h"
 
 #ifndef ELEVATOR_IN_POS

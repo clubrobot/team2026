@@ -2,70 +2,12 @@
 #include "wb_thread.h"
 
 #include "DRV8844.h"
-
-//Declare all modules
-DRV8844 driver(wb_consts.LEFT_MOTOR_EN, wb_consts.LEFT_MOTOR_DIR, wb_consts.LEFT_MOTOR_PWM, wb_consts.RIGHT_MOTOR_EN,
-               wb_consts.RIGHT_MOTOR_DIR, wb_consts.RIGHT_MOTOR_PWM, wb_consts.DRIVER_FAULT, wb_consts.DRIVER_RESET);
-WheelMotor leftWheel;
-WheelMotor rightWheel;
+#include "Components/Codewheel.h"
+#include "Controller/VelocityController.h"
+#include "Controller/PositionController.h"
 
 TIM_HandleTypeDef htim23; //Right
 TIM_HandleTypeDef htim24; //Left
-
-Codewheel leftCodewheel(&htim24);
-Codewheel rightCodewheel(&htim23);
-
-Odometry odometry;
-
-VelocityController velocityControl;
-#if ENABLE_VELOCITYCONTROLLER_LOGS
-VelocityControllerLogs controllerLogs;
-#endif // ENABLE_VELOCITYCONTROLLER_LOGS
-
-PID linVelPID;
-PID angVelPID;
-
-PositionController positionControl;
-
-PurePursuit purePursuit;
-TurnOnTheSpot turnOnTheSpot;
-
-void write_default_params()
-{
-    leftWheel.setWheelRadius(wb_consts.LEFTWHEEL_RADIUS);
-    leftWheel.setConstant(wb_consts.LEFTWHEEL_CONSTANT);
-    rightWheel.setWheelRadius(wb_consts.RIGHTWHEEL_RADIUS);
-    rightWheel.setConstant(wb_consts.RIGHTWHEEL_CONSTANT);
-
-    leftCodewheel.setWheelRadius(wb_consts.LEFTCODEWHEEL_RADIUS);
-    leftCodewheel.setCountsPerRev(wb_consts.LEFTCODEWHEEL_COUNTSPERREV);
-    rightCodewheel.setWheelRadius(wb_consts.RIGHTCODEWHEEL_RADIUS);
-    rightCodewheel.setCountsPerRev(wb_consts.RIGHTCODEWHEEL_COUNTSPERREV);
-
-    odometry.setAxleTrack(wb_consts.ODOMETRY_AXLETRACK);
-    odometry.setSlippage(wb_consts.ODOMETRY_SLIPPAGE);
-
-    velocityControl.setAxleTrack(wb_consts.VELOCITYCONTROL_AXLETRACK);
-    velocityControl.setMaxLinAcc(wb_consts.VELOCITYCONTROL_MAXLINACC);
-    velocityControl.setMaxLinDec(wb_consts.VELOCITYCONTROL_MAXLINDEC);
-    velocityControl.setMaxAngAcc(wb_consts.VELOCITYCONTROL_MAXANGACC);
-    velocityControl.setMaxAngDec(wb_consts.VELOCITYCONTROL_MAXANGDEC);
-
-    velocityControl.setSpinShutdown(wb_consts.VELOCITYCONTROL_SPINSHUTDOWN);
-    linVelPID.setTunings(wb_consts.LINVELPID_KP, wb_consts.LINVELPID_KI, wb_consts.LINVELPID_KD);
-    linVelPID.setOutputLimits(wb_consts.LINVELPID_MINOUTPUT, wb_consts.LINVELPID_MAXOUTPUT);
-
-    angVelPID.setTunings(wb_consts.ANGVELPID_KP, wb_consts.ANGVELPID_KI, wb_consts.ANGVELPID_KD);
-    angVelPID.setOutputLimits(wb_consts.ANGVELPID_MINOUTPUT, wb_consts.ANGVELPID_MAXOUTPUT);
-
-    positionControl.setVelTunings(wb_consts.POSITIONCONTROL_LINVELKP, wb_consts.POSITIONCONTROL_ANGVELKP);
-    positionControl.setVelLimits(wb_consts.POSITIONCONTROL_LINVELMAX, wb_consts.POSITIONCONTROL_ANGVELMAX);
-    positionControl.setPosThresholds(wb_consts.POSITIONCONTROL_LINPOSTHRESHOLD,
-                                     wb_consts.POSITIONCONTROL_ANGPOSTHRESHOLD);
-    purePursuit.setLookAhead(wb_consts.PUREPURSUIT_LOOKAHEAD);
-    purePursuit.setLookAheadBis(wb_consts.PUREPURSUIT_LOOKAHEADBIS);
-}
-
 
 void codewheels_setup()
 {
@@ -161,59 +103,45 @@ void codewheels_setup()
 
     HAL_TIM_Encoder_Start_IT(&htim24, TIM_CHANNEL_ALL);
 
-    leftCodewheel.m_htim = &htim24;
-    leftCodewheel.m_tim = TIM24;
-    rightCodewheel.m_htim = &htim23;
-    rightCodewheel.m_tim = TIM23;
 }
 
 // Setup
-void wb_setup()
+Wheeledbase::WheeledBase wb_setup()
 {
-    //TODO once
-    write_default_params();
+    auto driver = std::make_unique<DRV8844>(wb_consts.LEFT_MOTOR_EN, wb_consts.LEFT_MOTOR_DIR, wb_consts.LEFT_MOTOR_PWM, wb_consts.RIGHT_MOTOR_EN,
+               wb_consts.RIGHT_MOTOR_DIR, wb_consts.RIGHT_MOTOR_PWM, wb_consts.DRIVER_FAULT, wb_consts.DRIVER_RESET);
+    auto leftWheel = std::make_unique<WheelMotor>();
+    auto rightWheel = std::make_unique<WheelMotor>();
 
-    driver.init();
+    auto leftTimer = std::make_unique<STM32HALTimer>(&htim24);
+    auto rightTimer = std::make_unique<STM32HALTimer>(&htim23);
 
-    driver.attach(&leftWheel,0);
-    driver.attach(&rightWheel,1);
+    auto leftCodewheel = std::make_unique<Codewheel>(std::move(leftTimer));
+    auto rightCodewheel = std::make_unique<Codewheel>(std::move(rightTimer));
 
+    auto odometry = std::make_unique<Odometry>();
 
-    // Codewheels
-    codewheels_setup();
+    auto velocityControl = std::make_unique<VelocityController>();
+    auto positionControl = std::make_unique<PositionController>();
 
-    leftCodewheel.reset();
-    rightCodewheel.reset();
+    auto linPID = std::make_unique<PID>();
+    auto angPID = std::make_unique<PID>();
 
-    // Odometry
-    odometry.setCodewheels(leftCodewheel, rightCodewheel);
-    odometry.setTimestep(wb_consts.ODOMETRY_TIMESTEP);
-    odometry.enable();
-
-    // Engineering control
-    velocityControl.setWheels(leftWheel, rightWheel);
-    velocityControl.setPID(linVelPID, angVelPID);
-    velocityControl.disable();
-
-    velocityControl.setTimestep(10e-3);
-
-    // const float maxLinVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity());
-    //const float maxAngVel = min(leftWheel.getMaxVelocity(), rightWheel.getMaxVelocity()) * 2 / VELOCITYCONTROL_AXLETRACK_VALUE;
-
-    //linVelPID.setOutputLimits(-maxLinVel, maxLinVel);
-    //angVelPID.setOutputLimits(-maxAngVel, maxAngVel);
-
-#if ENABLE_VELOCITYCONTROLLER_LOGS
-    controllerLogs.setController(velocityControl);
-    controllerLogs.setTimestep(VELOCITYCONTROLLER_LOGS_TIMESTEP);
-    controllerLogs.enable();
-#endif // VELOCITYENABLE_CONTROLLER_LOGS
-
-    // Position control
-    positionControl.setTimestep(wb_consts.POSITIONCONTROL_TIMESTEP);
-    positionControl.disable();
-
-    //purePursuit.load(PUREPURSUIT_ADDRESS);
+    Wheeledbase::WheeledBase wb = Wheeledbase::WheeledBase(
+        std::move(driver),
+        std::move(leftWheel),
+        std::move(rightWheel),
+        std::move(leftCodewheel),
+        std::move(rightCodewheel),
+        std::move(odometry),
+        std::move(velocityControl),
+        std::move(positionControl),
+        std::move(linPID),
+        std::move(angPID),
+        wb_consts,
+        [&]() { codewheels_setup(); }
+    );
+    return wb;
 }
 
 #define SMOOTHING_FACTOR 0.2
@@ -222,33 +150,9 @@ float smoothLinVel = 0;
 float smoothAngVel = 0;
 
 void wb_loop(void *pvParameters){
-for(;;) {
-    // Update odometry
-    if (odometry.update()){
+    auto *wb = static_cast<Wheeledbase::WheeledBase*>(pvParameters);
+    Wheeledbase::run(wb, []() {
+        vTaskDelay(pdMS_TO_TICKS(10));
+    });
 
-        smoothLinVel = SMOOTHING_FACTOR * odometry.getLinVel() + (1 - SMOOTHING_FACTOR) * smoothLinVel;
-        smoothAngVel = SMOOTHING_FACTOR * odometry.getAngVel() + (1 - SMOOTHING_FACTOR) * smoothAngVel;
-
-        positionControl.setPosInput(*odometry.getPosition());
-        velocityControl.setInputs(smoothLinVel, smoothAngVel);
-    }
-    // Compute trajectory
-    if (positionControl.update())
-    {
-        float linVelSetpoint = positionControl.getLinVelSetpoint();
-        float angVelSetpoint = positionControl.getAngVelSetpoint();
-        velocityControl.setSetpoints(linVelSetpoint, angVelSetpoint);
-    }
-        // Integrate engineering control
-#if ENABLE_VELOCITYCONTROLLER_LOGS
-        if (velocityControl.update())
-            controllerLogs.update();
-#else
-        velocityControl.update();
-#endif // ENABLE_VELOCITYCONTROLLER_LOGS
-
-    vTaskDelay(pdMS_TO_TICKS(10));
-
-    //printf("%s:%lu:%d\n", "nom_variable", millis(), millis()%10000);
-}
 }

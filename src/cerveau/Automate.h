@@ -13,6 +13,7 @@
 #define TEAM2026_AUTOMATE_H
 
 #include "Strategie.h"
+#include "Wheeledbase.h"
 
 /**
  * @namespace cerveau::automate
@@ -28,7 +29,7 @@ namespace cerveau::automate {
     typedef s_Team Team;
     inline Team ourTeam;
 
-    void init(Team team);
+    void init(Team team, Wheeledbase::WheeledBase& wheeledbase);
     void play_match(void *pvParameters);
 }
 
