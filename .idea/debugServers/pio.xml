@@ -1,0 +1,16 @@
+<component name="DebugServers">
+  <generic-debug-target name="pio" uniqueID="c34f61d1-6af9-4bd8-be10-12843558d2ae">
+    <debugger version="1">
+      <debugger kind="GDB" isBundled="true" />
+      <env />
+    </debugger>
+    <gdbserver exe="piodebuggdb" args="-- -x .pioinit">
+      <env script="">
+        <var name="TERM" value="xterm" />
+      </env>
+    </gdbserver>
+    <console enabled="true" port="4444" />
+    <target reset-before="false" />
+    <connection remote-string="--" custom-script="echo Connecting to target...\n&#10;$GDBTargetCommand$&#10;echo Connected to target!\n" warmup-ms="500" />
+  </generic-debug-target>
+</component>
