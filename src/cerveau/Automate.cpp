@@ -3,6 +3,7 @@
 //
 
 #include "Automate.h"
+#include "Automate.h"
 
 #include "FreeRTOS.h"
 #include "Killer.h"
@@ -15,7 +16,7 @@
 
 void procedure_demarrage(Wheeledbase::WheeledBase& wheeledbase) {
 
-    cerveau::automate::Team team;
+    //cerveau::automate::Team team;
     cerveau::automate::automateLogger.log(INFO_LEVEL,"Le robot est armé!\n");
 
     //Detect tirette
@@ -25,7 +26,7 @@ void procedure_demarrage(Wheeledbase::WheeledBase& wheeledbase) {
     HazelnutGripper::Gripper::spreadFingers(0);
     HazelnutGripper::Gripper::setRotationAll(0);
 #if LCD_OUTPUT
-    ihm::ihmLogger.log(SCREEN_LEVEL, "Team ?");
+    ihm::ihmLogger.log(SCREEN_LEVEL, "Bienvenue !");
 #endif
     bool etat=false;
     bool t = false;
@@ -35,19 +36,6 @@ void procedure_demarrage(Wheeledbase::WheeledBase& wheeledbase) {
         t = !t;
         vTaskDelay(pdMS_TO_TICKS(100));
     }
-    if (ihm::etat_bleu()) {
-        digitalWrite(PD11, 0);
-        cerveau::automate::automateLogger.log(INFO_LEVEL,"Equipe bleue détectée\n");
-        team = cerveau::automate::BLEU;
-        Logger::sameLine(" Bleu");
-    } else {
-        digitalWrite(PD11, 0);
-        cerveau::automate::automateLogger.log(INFO_LEVEL,"Equipe jaune détectée\n");
-        team = cerveau::automate::JAUNE;
-        Logger::sameLine(" Jaune");
-    }
-    cerveau::automate::init(team, wheeledbase);
-    cerveau::automate::ourTeam = team;
     while(ihm::etat_tirette()){vTaskDelay(pdMS_TO_TICKS(100));}
     while (!ihm::etat_tirette()){vTaskDelay(pdMS_TO_TICKS(100));}
     ihm::ihmLogger.log(SCREEN_LEVEL, "Lets go !");
@@ -75,120 +63,132 @@ void cerveau::automate::init(const Team team, Wheeledbase::WheeledBase& wheeledb
     Wheeledbase::setPosition(&wheeledbase, &strategie::start);
 }
 
+
+
+
+/**
+ * Parse a command string into a Control struct.
+ * @param control the current Control struct to fill with parsed values.
+ * @param command The command string to parse.
+ * @return The parsed Control struct.
+ *
+ * command format:
+ *   - First character: identifier (e.g., 'L' for linear speed, 'A' for angular speed, etc.) should be lower than 128
+ *   - Second character: value | 128 meaning the first bit is reserved for Serial alignment purposes, rest is data
+ */
+void cerveau::manual::parse_command(const message& command)
+{
+    const char identifier = command.data[0];
+    char value = command.data[1];
+    value = value & valueMask;
+    value /= maxValue;
+
+    switch (identifier)
+    {
+    case posLinSpeed:
+        control.linSpeed = static_cast<float>(value);
+        break;
+    case negLinSpeed:
+        control.linSpeed = static_cast<float>(-value);
+        break;
+    case posAngSpeed:
+        control.angSpeed = static_cast<float>(value);
+        break;
+    case negAngSpeed:
+        control.angSpeed = static_cast<float>(-value);
+        break;
+    case elevatorAngle:
+        control.elevatorAngle += static_cast<float>(value);
+        break;
+    case negElevatorAngle:
+        control.elevatorAngle -= static_cast<float>(value);
+        break;
+    case gripperOpen:
+        control.gripperOpen = static_cast<bool>(value);
+        break;
+    case gripperRotateA:
+        control.gripperRotate &= ~fingerA;
+        control.gripperRotate |= (value * 255) & fingerA;
+        break;
+    case gripperRotateB:
+        control.gripperRotate &= ~fingerB;
+        control.gripperRotate |= (value * 255) & fingerB;
+        break;
+    case gripperRotateC:
+        control.gripperRotate &= ~fingerC;
+        control.gripperRotate |= (value * 255) & fingerC;
+        break;
+    case gripperRotateD:
+        control.gripperRotate &= ~fingerD;
+        control.gripperRotate |= (value * 255) & fingerD;
+        break;
+    default:
+        automate::automateLogger.log(ERROR_LEVEL, "Unknown command 0x%x", command);
+        break;
+    }
+
+}
+
+void cerveau::manual::execute_command(Wheeledbase::WheeledBase* wb)
+{
+    Wheeledbase::setVelocities(wb, control.linSpeed, control.angSpeed);
+    status.linSpeed = control.linSpeed;
+    status.angSpeed = control.angSpeed;
+    map(control.elevatorAngle, 0.0f, 1.0f, HazelnutGripper::Elevator::BAS, HazelnutGripper::Elevator::HAUT);
+    HazelnutGripper::Elevator::setAngle(control.elevatorAngle);
+    status.elevatorAngle = control.elevatorAngle;
+    if (control.gripperOpen != status.gripperOpen)
+    {
+        if (control.gripperOpen)
+        {
+            HazelnutGripper::Gripper::openAll();
+        }
+        else
+        {
+            HazelnutGripper::Gripper::closeAll();
+        }
+        status.gripperOpen = control.gripperOpen;
+    }
+    if (control.gripperRotate != status.gripperRotate)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            HazelnutGripper::Gripper::getFinger(i).setAngle(1, (control.gripperRotate & (1 << i)) * 180);
+        }
+        status.gripperRotate = control.gripperRotate;
+    }
+}
+
+cerveau::manual::message cerveau::manual::get_command()
+{
+    if (Serial.available() >= 2)
+    {
+        return {
+            static_cast<char>(Serial.read()),
+            static_cast<char>(Serial.read()),
+        };
+    }
+    return message{{0, 0}};
+
+}
+
+void cerveau::manual::ManualControlRunner::process(float timestep)
+{
+    execute_command(this->wb);
+}
+
 void cerveau::automate::play_match(void *pvParameters) {
     auto *wheeledbase = static_cast<Wheeledbase::WheeledBase*>(pvParameters);
     procedure_demarrage(*wheeledbase);
-    //while (true) {
-    //    for (int i = 0; i < 4; ++i) {
-    //        HazelnutGripper::GripperFinger *finger = &HazelnutGripper::Gripper::getFinger(i);
-    //        finger->setSensingMode(HazelnutGripper::OperationMode::Continuous);
-    //        while (!finger->hasNewColorData()) {
-    //            vTaskDelay(pdMS_TO_TICKS(20));
-    //        }
-    //        auto [clear, red, green, blue] = finger->getColor();
-    //        printf("Finger %d - Clear: %d, Red: %d, Green: %d, Blue: %d\n", i, clear, red, green, blue);
-    //        vTaskDelay(pdMS_TO_TICKS(50));
-    //    }
-    //    vTaskDelay(pdMS_TO_TICKS(100));
-    //}
-    strategie::strat->execute();
-    vTaskDelete(nullptr);
-
-    //Wheeledbase::SET_OPENLOOP_VELOCITIES(100,0);
-
-
-
-    /*
-
-    HazelnutGripper::Gripper::closeAll();
-
-    HazelnutGripper::Gripper::setRotationAll(0);
-
-    while (!HazelnutGripper::Gripper::getFinger(0).isTargetReached())
+    manual::runner.setWb(wheeledbase);
+    manual::Control control = {};
+    while (true)
     {
-        printf("%d %d %d %d\n",HazelnutGripper::Gripper::getFinger(0).isTargetReached(), HazelnutGripper::Gripper::getFinger(1).isTargetReached(), HazelnutGripper::Gripper::getFinger(2).isTargetReached(), HazelnutGripper::Gripper::getFinger(3).isTargetReached());
-        vTaskDelay(pdMS_TO_TICKS(1));
+        if (auto command = manual::get_command(); command.data[0] != 0)
+        {
+            manual::parse_command(command);
+        }
+        manual::runner.update();
     }
-
-    Wheeledbase::GOTO_DELTA(400, 0, true);
-    HazelnutGripper::Elevator::setAngle(10);
-    while (abs(HazelnutGripper::Elevator::getAngle() - 10) > 3)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-    printf("Reading colors\n");
-    vTaskDelay(pdMS_TO_TICKS(2000));
-
-    printf("Reading color ends\n");
-    HazelnutGripper::Elevator::setAngle(20);
-    HazelnutGripper::Gripper::openAll();
-    Wheeledbase::GOTO_DELTA(50, 0, true);
-
-    printf("Waiting for fingers\n");
-    while (!HazelnutGripper::Gripper::getFinger(0).isTargetReached() || abs(HazelnutGripper::Elevator::getAngle() - 20) > 3)
-    {
-        printf("%d %d %d %d\n",HazelnutGripper::Gripper::getFinger(0).isTargetReached(), HazelnutGripper::Gripper::getFinger(1).isTargetReached(), HazelnutGripper::Gripper::getFinger(2).isTargetReached(), HazelnutGripper::Gripper::getFinger(3).isTargetReached());
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-
-
-    printf("New angle\n");
-    HazelnutGripper::Elevator::setAngle(0);
-    while (abs(HazelnutGripper::Elevator::getAngle()) > 3)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-    vTaskDelay(pdMS_TO_TICKS(1000));
-    HazelnutGripper::Gripper::closeAll();
-
-    vTaskDelay(pdMS_TO_TICKS(1000));
-    while (!HazelnutGripper::Gripper::getFinger(0).isTargetReached())
-    {
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-    HazelnutGripper::Elevator::setAngle(60);
-
-    while (abs(HazelnutGripper::Elevator::getAngle() - 60) > 3)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-
-    Wheeledbase::TURNTO_DELTA(PI/2);
-
-    HazelnutGripper::Gripper::spreadFingers(180);
-
-    vTaskDelay(pdMS_TO_TICKS(1000));
-
-    HazelnutGripper::Gripper::getFinger(1).setAngle(1,180);
-    HazelnutGripper::Gripper::getFinger(3).setAngle(1,180);
-
-
-    vTaskDelay(pdMS_TO_TICKS(2000));
-
-
-    HazelnutGripper::Gripper::spreadFingers(0);
-
-    HazelnutGripper::Elevator::setAngle(0);
-    while (abs(HazelnutGripper::Elevator::getAngle() - 0) > 3)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-    vTaskDelay(pdMS_TO_TICKS(1000));
-    HazelnutGripper::Gripper::openAll();
-
-    while (!HazelnutGripper::Gripper::getFinger(0).isTargetReached())
-    {
-        printf("%d %d %d %d\n",HazelnutGripper::Gripper::getFinger(0).isTargetReached(), HazelnutGripper::Gripper::getFinger(1).isTargetReached(), HazelnutGripper::Gripper::getFinger(2).isTargetReached(), HazelnutGripper::Gripper::getFinger(3).isTargetReached());
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-
-    HazelnutGripper::Elevator::setAngle(60);
-
-    while (abs(HazelnutGripper::Elevator::getAngle() - 53) > 3)
-    {
-        vTaskDelay(pdMS_TO_TICKS(1));
-    }
-
-    HazelnutGripper::Gripper::closeAll();*/
     vTaskDelete(nullptr);
 }
