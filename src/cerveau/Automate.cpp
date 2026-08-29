@@ -163,10 +163,21 @@ cerveau::manual::message cerveau::manual::get_command()
 {
     if (Serial.available() >= 2)
     {
-        return {
-            static_cast<char>(Serial.read()),
-            static_cast<char>(Serial.read()),
-        };
+        if (const auto first = static_cast<uint8_t>(Serial.read()); (first & reservedMask) == 0)
+        {
+            const auto second = static_cast<uint8_t>(Serial.read());
+            if ((second & reservedMask) != 0)
+            {
+                return message{{static_cast<char>(first), static_cast<char>(second)}};
+            }
+            if (Serial.available() >= 1)
+            {
+                if (const auto third = static_cast<uint8_t>(Serial.read()); (third & reservedMask) != 0)
+                {
+                    return message{{static_cast<char>(second), static_cast<char>(third)}};
+                }
+            }
+        }
     }
     return message{{0, 0}};
 
