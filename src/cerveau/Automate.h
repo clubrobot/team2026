@@ -69,6 +69,7 @@ namespace cerveau::manual
 
     enum Masks : u_int8_t
     {
+        reservedMask = 0b10000000,
         identifierMask = 0b00011111,
         valueMask = 0b01111111,
         fingerA = 0b00001000,
