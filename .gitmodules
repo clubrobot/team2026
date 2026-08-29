@@ -13,3 +13,9 @@
 [submodule "lib/Grafcet"]
 	path = lib/Grafcet
 	url = git@github.com:clubrobot/libgrafcet.git
+[submodule "lib/TraceRecorder"]
+	path = lib/TraceRecorder
+	url = git@github.com:clubrobot/TraceRecorder-FreeRTOS.git
+[submodule "lib/STM32duino FreeRTOS"]
+	path = lib/STM32duino FreeRTOS
+	url = git@github.com:clubrobot/STM32FreeRTOS.git
