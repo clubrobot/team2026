@@ -176,7 +176,7 @@ void setup(){
   Logger::setLcdOutput(lcd);
   lcd.clear();
 
-  SensorsThread::Init();
+  //SensorsThread::Init();
 
 
   drv8876.init();
@@ -284,15 +284,15 @@ void setup(){
     if(ret_wb!=pdPASS) {Error_Handler()}
 
 
-    BaseType_t ret_sens= xTaskCreate(
-                 SensorsThread::Thread,
-                "Sensors loop",
-                 10000,
-                 static_cast<void*>(&wheeledbase),
-                 5,
-                 &hl_sens );
+    //BaseType_t ret_sens= xTaskCreate(
+    //             SensorsThread::Thread,
+    //            "Sensors loop",
+    //             10000,
+    //             static_cast<void*>(&wheeledbase),
+    //             5,
+    //             &hl_sens );
 
-     if(ret_sens!=pdPASS) {Error_Handler()}
+    // if(ret_sens!=pdPASS) {Error_Handler()}
 
 
     BaseType_t ret_robot = xTaskCreate(

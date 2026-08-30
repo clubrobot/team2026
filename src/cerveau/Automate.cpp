@@ -139,6 +139,7 @@ void cerveau::manual::execute_command(Wheeledbase::WheeledBase* wb)
     status.elevatorAngle = control.elevatorAngle;
     if (control.gripperOpen != status.gripperOpen)
     {
+        HazelnutGripper::Gripper::spreadFingers(180);
         if (control.gripperOpen)
         {
             HazelnutGripper::Gripper::openAll();
@@ -148,13 +149,16 @@ void cerveau::manual::execute_command(Wheeledbase::WheeledBase* wb)
             HazelnutGripper::Gripper::closeAll();
         }
         status.gripperOpen = control.gripperOpen;
+        HazelnutGripper::Gripper::spreadFingers(0);
     }
     if (control.gripperRotate != status.gripperRotate)
     {
+        HazelnutGripper::Gripper::spreadFingers(180);
         for (int i = 0; i < 4; i++)
         {
             HazelnutGripper::Gripper::getFinger(i).setAngle(1, (control.gripperRotate & (1 << i)) * 180);
         }
+        HazelnutGripper::Gripper::spreadFingers(0);
         status.gripperRotate = control.gripperRotate;
     }
 }
@@ -193,6 +197,7 @@ void cerveau::automate::play_match(void *pvParameters) {
     procedure_demarrage(*wheeledbase);
     manual::runner.setWb(wheeledbase);
     manual::Control control = {};
+    automateLogger.log(INFO_LEVEL, "Manual control started");
     while (true)
     {
         if (auto command = manual::get_command(); command.data[0] != 0)
