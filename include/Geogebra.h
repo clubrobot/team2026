@@ -30,7 +30,7 @@
 #define R3D_B 9
 #define R0P_B 10
 #define R0L_B 11
-#define Depart_B 12
+#define Depart_B 0
 #define R0T_B 13
 #define R0bisT_B 14
 #define R1T_B 15
@@ -38,10 +38,10 @@
 
 //position geogebra de la team jaune
 inline Position positions_jaune[] = {
-   Position(300.0f, 1741.0f,-PI/2), //Depart_{J}_jaune
-   Position(440.00000000000006f, 400.0f,PI), //R1L_{J}_jaune
-   Position(1099.11517132674f, 438.52527975099997f,-PI/2), //R2L_{J}_jaune
-   Position(1147.951679161948f, 535.2824981187007f,PI/2), //R3L_{J}_jaune
+   Position(0, 0,0), //R2D_{B}_bleu
+   Position(700, 0,0), //R1L_{B}_bleu
+   Position(740, 0,0), //R1D_{B}_bleu
+   Position(740, 0,-PI/2 - 2 * PI), //R2P_{B}_bleu
    Position(400.0f, 400.0f,-PI/2), //R1P_{J}_jaune
    Position(1099.11517132674f, 398.52527975099997f,-PI/2), //R2P_{J}_jaune
    Position(1147.951679161948f, 575.2824981187008f,PI/2), //R3P_{J}_jaune
@@ -59,10 +59,10 @@ inline Position positions_jaune[] = {
 
 //position geogebra de la team bleu
 inline Position positions_bleu[] = {
-   Position(2048.9483875455016f, 351.0496055811986f,- 3 * PI / 4+3.14), //R2D_{B}_bleu
-   Position(2558.8519471753484f, 402.0237154489629f,PI+3.14), //R1L_{B}_bleu
-   Position(2899.7100722722757f, 560.1534813867162f,PI/2), //R1D_{B}_bleu
-   Position(1899.7407953662669f, 399.2899572672202f,-PI/2+3.14), //R2P_{B}_bleu
+   Position(0, 0,0), //R2D_{B}_bleu
+   Position(960, 0,0), //R1L_{B}_bleu
+   Position(1000, 0,0), //R1D_{B}_bleu
+   Position(1000, 0,-PI/2), //R2P_{B}_bleu
    Position(1899.6643874376964f, 439.28988429000924f,-PI/2+3.14), //R2L_{B}_bleu
    Position(1850.6431432355478f, 535.9536387208536f,PI/2), //R3L_{B}_bleu
    Position(1850.5667353069769f, 575.9535657436428f,PI/2), //R3P_{B}_bleu
