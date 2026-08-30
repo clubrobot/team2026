@@ -9,7 +9,7 @@
 
 #include <Arduino.h>
 #include <STM32FreeRTOS.h>
-#include <Wheeledbase.h>
+#include "Wheeledbase.h"
 
 #include <My_Clock.h>
 #include <PrintfSupport.h>
@@ -154,7 +154,7 @@ void setup(){
 
     DWT_Init(); //Très important
 
-#if configUSE_TRACE_FACILITY
+#if configUSE_TRACE_FACILITY && DEBUG
     xTraceEnable(TRC_START);
 #endif
 #if DEBUG
@@ -165,7 +165,7 @@ void setup(){
     //Wheeledbase::PRINT_PARAMS();
 #endif
     match_started= true;
-    wb_setup();
+    auto wheeledbase = wb_setup();
 
 #if TEST_NO_FREERTOS
     main_logs.log(WARNING_LEVEL,"Not using FreeRTOS\n");
@@ -176,7 +176,7 @@ void setup(){
   Logger::setLcdOutput(lcd);
   lcd.clear();
 
-  SensorsThread::Init();
+  //SensorsThread::Init();
 
 
   drv8876.init();
@@ -278,21 +278,21 @@ void setup(){
                 wb_loop,
                 "Wheeledbase loop",
                 10000,
-                nullptr,
+                static_cast<void*>(&wheeledbase),
                 5,//Prio max
                 &hl_wb );
     if(ret_wb!=pdPASS) {Error_Handler()}
 
 
-    BaseType_t ret_sens= xTaskCreate(
-                 SensorsThread::Thread,
-                "Sensors loop",
-                 10000,
-                 nullptr,
-                 5,
-                 &hl_sens );
+    //BaseType_t ret_sens= xTaskCreate(
+    //             SensorsThread::Thread,
+    //            "Sensors loop",
+    //             10000,
+    //             static_cast<void*>(&wheeledbase),
+    //             5,
+    //             &hl_sens );
 
-     if(ret_sens!=pdPASS) {Error_Handler()}
+    // if(ret_sens!=pdPASS) {Error_Handler()}
 
 
     BaseType_t ret_robot = xTaskCreate(
@@ -310,8 +310,8 @@ void setup(){
     vTaskGetInfo(hl_robot, &q, pdTRUE, eInvalid);
     vTaskStartScheduler();//On commence FreeRTOS
     //On devrait pas être là; Uh oh
-    leftWheel.setVelocity(0);
-    rightWheel.setVelocity(0);
+    wheeledbase.leftWheel->setVelocity(0);
+    wheeledbase.rightWheel->setVelocity(0);
     motor.setVelocity(0);
     main_logs.log(ERROR_LEVEL,"FreeRTOS crashed\n");
     Error_Handler();
