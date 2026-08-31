@@ -3,7 +3,6 @@
 //
 
 #include "Automate.h"
-#include "Automate.h"
 
 #include "FreeRTOS.h"
 #include "Killer.h"
